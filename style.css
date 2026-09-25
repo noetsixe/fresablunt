@@ -62,27 +62,67 @@ body {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
 
-    width: 24px;
-    height: 24px;
+    transform: translate(-50%, -50%);
 
     padding: 0;
     border: 0;
     background: transparent;
 
-    font-size: 20px;
-    line-height: 24px;
-
     cursor: pointer;
     z-index: 10;
-
-    /* Todo el emoji queda gris */
-    filter: grayscale(1) brightness(1.35) contrast(0.8);
 
     animation: strawberry-blink 1.2s steps(1, end) infinite;
 
     -webkit-tap-highlight-color: transparent;
+}
+
+.pixel-strawberry {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    transform: translate(-50%, -50%);
+
+    background: #C0C0C0;
+
+    image-rendering: pixelated;
+
+    clip-path: polygon(
+        25% 0%,
+        40% 0%,
+        50% 12%,
+        60% 0%,
+        75% 0%,
+
+        75% 12%,
+        88% 12%,
+        88% 25%,
+        100% 25%,
+        100% 63%,
+        88% 63%,
+        88% 75%,
+        75% 75%,
+        75% 88%,
+        63% 88%,
+        63% 100%,
+        38% 100%,
+        38% 88%,
+        25% 88%,
+        25% 75%,
+        12% 75%,
+        12% 63%,
+        0% 63%,
+        0% 25%,
+        12% 25%,
+        12% 12%,
+        25% 12%
+    );
 }
 
 @keyframes strawberry-blink {
