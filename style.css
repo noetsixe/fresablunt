@@ -79,6 +79,22 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+.pixel-strawberry {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 28px;
+    height: 27px;
+
+    transform: translate(-50%, -50%) rotate(8deg);
+
+    image-rendering: pixelated;
+
+    filter: drop-shadow(0 0 3px rgba(255, 20, 147, 0.35));
+}
+
 .pixel-strawberry .berry {
     position: absolute;
 
@@ -203,28 +219,6 @@ body {
     top: 18px;
 }
 
-/* PARPADEO SUAVE */
-@keyframes strawberry-blink {
-    0% {
-        opacity: 1;
-    }
-
-    35% {
-        opacity: 0.65;
-    }
-
-    55% {
-        opacity: 1;
-    }
-
-    75% {
-        opacity: 0.75;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
     0% {
