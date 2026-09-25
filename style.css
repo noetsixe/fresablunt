@@ -80,7 +80,7 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART — 16 × 16 (EXACTA A TU DISEÑO)
+   FRESA PIXEL ART — 16 × 16 (CORREGIDA)
    ========================================= */
 
 .pixel-strawberry {
@@ -88,7 +88,7 @@ body {
     left: 50%;
     top: 50%;
 
-    /* Ajusta el tamaño que quieras aquí en píxeles */
+    /* Tamaño de la fresa en pantalla */
     width: 120px; 
     height: 120px;
 
@@ -101,8 +101,9 @@ body {
     background-position: center;
     background-size: contain;
 
-    /* Vector SVG codificado píxel a píxel exacto de tu dibujo */
-    background-image: url("data:image/svg+xml;utf8,
+    /* SVG Base64 completo y cerrado */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj48cGF0aCBmaWxsPSIjYjAwMDVkIiBkPSJNNyAwaDF2MUg3ek0xIDFIMnYxSDF6TTYgMWgxdjFINnoPOTAxSDJ2MUg5ek0xIDJoMTB2MUgxek0xMiAySDJ2MUgxMnpNMSAzaDl2MUgxek0xMSAzaDF2MUgxMXpNMSA0aDd2MUgxek0wIDVoOHYxSDB6TTEwIDVoMXYxSDEwei0xIDZoN3YxSDF6TTAgN2g3djFINDpNOSA3aDF2MUg5ek0xIDhoNXZ1SDF6TTIgOWgzdjFIMnpNNyA5aDF2MUg3ek0xMiA5aDF2MWgtMXpNMyAxMGgydjFIM3pNNCAxMWgydjFINDpNOSAxMWgxdjFIMXpNNSAxMmgzdjFINXpNMTIgMTJoMXYxaC0xek01IDEzaDR2MUg1ek04IDE4aDV2MUg4eiIvPjxwYXRoIGZpbGw9IiNmZjAwN2YiIGQ9Ik04IDRoNHYxSDh6TTggNWgydjFIOHpNMTEgNWgydjFoLTJ6TTggNmg1djFIDHpNNyA3aDJ2MUg3ek0xMCA3aDR2MWgtNHpNNiA4aDl2MUg2ek01IDloMnYxSDV6TTggNWg0djFIDHpNMTMgOWgydjFoLTJ6TTUgMTBoOXYxSDV6TTYgMTFoM3YxSDZ6TTEwIDExaDV2MWgtNXpNODAxMmg0djFIDHpNMTMgMTJoMnYxaC0yek05IDEzaDV2MUg5eiIvPjwvc3ZnPg==");
+}
 
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
@@ -126,6 +127,7 @@ body {
         opacity: 1;
     }
 }
+
 /* =========================================
    TEMBLOR DE SPRITE
    ========================================= */
