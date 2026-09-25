@@ -61,6 +61,7 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
+
     transform: translate(-50%, -50%);
 
     width: 24px;
@@ -75,6 +76,9 @@ body {
 
     cursor: pointer;
     z-index: 10;
+
+    /* Todo el emoji queda gris */
+    filter: grayscale(1) brightness(1.35) contrast(0.8);
 
     animation: strawberry-blink 1.2s steps(1, end) infinite;
 
@@ -93,68 +97,6 @@ body {
         opacity: 0;
     }
 }
-
-/* =========================================
-   HOJAS VERDES
-   ========================================= */
-
-.strawberry-leaves {
-    position: absolute;
-
-    left: 47%;
-    top: 5px;
-
-    width: 48px;
-    height: 20px;
-
-    transform: translateX(-50%) rotate(-8deg);
-
-    z-index: 15;
-}
-
-.strawberry-leaves span {
-    position: absolute;
-
-    display: block;
-
-    background: #00FF00;
-
-    width: 13px;
-    height: 10px;
-
-    border-radius: 0;
-
-    clip-path: polygon(
-        0 100%,
-        0 25%,
-        50% 0,
-        100% 25%,
-        100% 100%
-    );
-}
-
-.strawberry-leaves span:nth-child(1) {
-    left: 0;
-    top: 6px;
-
-    transform: rotate(-25deg);
-}
-
-.strawberry-leaves span:nth-child(2) {
-    left: 17px;
-    top: 0;
-
-    width: 15px;
-    height: 12px;
-}
-
-.strawberry-leaves span:nth-child(3) {
-    right: 0;
-    top: 6px;
-
-    transform: rotate(25deg);
-}
-
 /* =========================================
    TEMBLOR DE SPRITE
    ========================================= */
