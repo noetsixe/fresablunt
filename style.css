@@ -80,7 +80,7 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART — 16 × 16 (EXACTA A TU DISEÑO)
+   FRESA PIXEL ART — 16 × 16 (TU DISEÑO EXACTO)
    ========================================= */
 
 .pixel-strawberry {
@@ -88,14 +88,14 @@ body {
     left: 50%;
     top: 50%;
 
-    /* Tamaño base de cada píxel */
+    /* Tamaño base de píxel */
     width: 6px; 
     height: 6px;
 
-    /* Escalado y rotación */
-    transform: translate(-50%, -50%) scale(2.5) rotate(8deg);
+    /* Escalado y rotación para la intro retro */
+    transform: translate(-50%, -50%) scale(3) rotate(8deg);
 
-    /* Mapeo píxel por píxel exacto de tu imagen */
+    /* Mapeo píxel por píxel exacto de tu lienzo */
     box-shadow:
         /* Fila 0 */
         7px 0px #b0005d,
@@ -128,6 +128,7 @@ body {
         /* Fila 14 */
         8px 84px #b0005d, 9px 84px #b0005d, 10px 84px #b0005d, 11px 84px #b0005d, 12px 84px #b0005d;
 }
+
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
     0% {
