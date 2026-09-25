@@ -1,3 +1,4 @@
+```css
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -13,269 +14,481 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000000;
+}
+
+body {
+    background: #0000AA;
 }
 
 
 /* =========================================
-   PANTALLA DE INICIO (PANTALLA DE CONSOLA)
+   PANTALLA DE INICIO
    ========================================= */
 
 #intro {
     position: fixed;
     inset: 0;
+
     width: 100vw;
     height: 100vh;
+
     overflow: hidden;
+
     background: #030005;
+
+    image-rendering: pixelated;
+
     z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Rejilla retro de fondo tipo escenario arcade */
+
+/* Fondo */
+
 #intro-background {
     position: absolute;
     inset: 0;
-    background-color: #030005;
-    background-image: 
-        linear-gradient(rgba(255, 0, 127, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 127, 0.07) 1px, transparent 1px);
-    background-size: 32px 32px;
+
+    background: #030005;
+
     z-index: 0;
 }
 
 
 /* =========================================
-   FRESA ARCADE (SPRITE PRINCIPAL)
+   FRESA PIXEL ART
    ========================================= */
 
 #strawberry {
-    position: relative;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    /* Tamaño real del área donde haces click */
     width: 120px;
     height: 120px;
+
+    transform: translate(-50%, -50%);
+
     padding: 0;
     border: 0;
     background: transparent;
+
     cursor: pointer;
     z-index: 10;
+
     animation: strawberry-blink 0.9s ease-in-out infinite;
+
     -webkit-tap-highlight-color: transparent;
 }
 
+
+/* Sprite de fresa */
+
 .pixel-strawberry {
     display: block;
+
     width: 100%;
     height: 100%;
+
     transform: rotate(8deg);
 
-    /* Renderizado estricto de píxeles sin suavizado */
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 
     background-image: url("./strawberry.svg");
     background-repeat: no-repeat;
     background-position: center;
-    /* Rellena el contenedor manteniendo la proporción exacta 1:1 */
-    background-size: contain; 
+    background-size: 32px 32px;
 }
 
 
 /* =========================================
-   TEXTO UI TIPO CONSOLA (PRESS START)
+   PARPADEO SUAVE
    ========================================= */
 
-#intro::after {
-    content: "PRESS START / CLICK TO PLAY";
-    position: absolute;
-    bottom: 18%;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: #ff007f;
-    text-shadow: 0 0 8px rgba(255, 0, 127, 0.8);
-    z-index: 20;
-    animation: press-start 1.2s steps(2, start) infinite;
-}
+@keyframes strawberry-blink {
+    0% {
+        opacity: 1;
+    }
 
-@keyframes press-start {
-    to {
-        visibility: hidden;
+    35% {
+        opacity: 0.65;
+    }
+
+    55% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
 
 /* =========================================
-   EFECTO SCANLINES (TUBO CRT DE CONSOLA)
+   TEMBLOR DE SPRITE
    ========================================= */
 
-#intro-scanlines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px,
-        transparent 4px
-    );
+@keyframes strawberry-idle {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0);
+    }
+
+    25% {
+        transform:
+            translate(-50%, -50%)
+            translate(-1px, 0);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            translate(1px, 1px);
+    }
+
+    75% {
+        transform:
+            translate(-50%, -50%)
+            translate(0, -1px);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0);
+    }
 }
 
 
 /* =========================================
-   ANIMACIONES Y ESTADOS
+   EFECTO AL PASAR EL MOUSE
    ========================================= */
 
-/* Parpadeo sutil */
-@keyframes strawberry-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.75; }
-}
-
 #strawberry:hover {
-    filter: brightness(1.2) drop-shadow(0 0 10px #ff007f);
+    filter: brightness(1.15);
 }
 
 #strawberry:active {
-    transform: scale(0.92);
+    transform:
+        translate(-50%, -50%)
+        scale(0.94);
 }
 
 
 /* =========================================
-   RESTO DE TU SITIO WEB
+   BLUNT
    ========================================= */
 
 #blunt {
     position: absolute;
+
     left: 50%;
     top: -180px;
+
     width: 30px;
     height: 150px;
+
     transform: translateX(-50%);
+
     opacity: 0;
+
     z-index: 30;
+
     pointer-events: none;
 }
 
+
 .blunt-paper {
     position: absolute;
+
     width: 30px;
     height: 120px;
+
     background: #c8894c;
+
     border: 2px solid #000;
+
     image-rendering: pixelated;
 }
 
+
 .blunt-tip {
     position: absolute;
+
     left: 2px;
     bottom: 0;
+
     width: 26px;
     height: 30px;
+
     background: #111;
+
     border: 2px solid #000;
 }
+
+
+/* =========================================
+   IMPACTO
+   ========================================= */
 
 #impact {
     position: absolute;
     inset: 0;
+
     z-index: 50;
+
     pointer-events: none;
+
     opacity: 0;
 }
+
 
 .impact-flash {
     position: absolute;
     inset: 0;
+
     background: #FF3366;
+
     opacity: 0;
 }
 
+
+/* =========================================
+   JUGO
+   ========================================= */
+
 .juice {
     position: absolute;
+
     width: 8px;
     height: 8px;
+
     background: #FF3366;
+
+    border-radius: 0;
+
     opacity: 0;
+
+    box-shadow: none;
 }
+
+
+/* =========================================
+   TRANSICIÓN
+   ========================================= */
 
 #transition {
     position: absolute;
     inset: 0;
+
     background: #0000AA;
+
     opacity: 0;
+
     z-index: 90;
+
     pointer-events: none;
 }
 
+
+/* =========================================
+   PÁGINA PRINCIPAL
+   ========================================= */
+
 #main-site {
     position: relative;
+
     width: 100%;
     min-height: 100vh;
+
     background: #0000AA;
     color: #00FF00;
+
     opacity: 0;
+
     visibility: hidden;
+
     overflow-y: auto;
+
     z-index: 1;
 }
 
+
+/* =========================================
+   HEADER
+   ========================================= */
+
 header {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     padding: 20px;
+
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     z-index: 10;
 }
 
+
 .logo {
     color: #00FF00;
+
     text-decoration: none;
+
     font-size: 12px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
+
 nav {
     display: flex;
+
     gap: 20px;
 }
 
+
 nav a {
     color: #00FF00;
+
     text-decoration: none;
+
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
+
+/* =========================================
+   HERO
+   ========================================= */
+
 .hero {
     min-height: 100vh;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     text-align: center;
 }
 
-.hero-content { padding: 20px; }
-.eyebrow { font-size: 10px; letter-spacing: 3px; }
-.hero h1 { font-size: clamp(45px, 10vw, 120px); line-height: 1; letter-spacing: -3px; }
-.hero-content > p:last-child { margin-top: 15px; font-size: 11px; }
 
-#music, #visuals, #about { min-height: 100vh; padding: 100px 20px; }
-#music h2, #visuals h2, #about h2 { font-size: 70px; }
+.hero-content {
+    padding: 20px;
+}
 
-footer { padding: 30px; font-size: 10px; }
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+
+.hero h1 {
+    font-size: clamp(45px, 10vw, 120px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+}
+
+
+.hero-content > p:last-child {
+    margin-top: 15px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   SECCIONES
+   ========================================= */
+
+#music,
+#visuals,
+#about {
+    min-height: 100vh;
+
+    padding: 100px 20px;
+}
+
+
+#music h2,
+#visuals h2,
+#about h2 {
+    font-size: 70px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    padding: 30px;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media (max-width: 600px) {
-    #strawberry { width: 90px; height: 90px; }
-    nav { display: none; }
+
+    #strawberry {
+        width: 72px;
+        height: 82px;
+    }
+
+    nav {
+        display: none;
+    }
 }
+
+
+/* =========================================
+   EFECTO CRT / SCANLINES
+   ========================================= */
+
+#intro {
+    position: relative;
+    overflow: hidden;
+}
+
+#intro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 50;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.025) 0px,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+}
+```
