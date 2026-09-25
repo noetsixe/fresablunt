@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fresa Blunt</title>
+
+    <meta
+        name="description"
+        content="Fresa Blunt — artista, música y universo visual."
+    >
+
+    <meta name="theme-color" content="#000000">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         INTRO
+    ========================================== -->
+
+    <main id="intro">
+
+        <div id="intro-background"></div>
+
+        <div id="strawberry-container">
+
+            <!-- FRESA -->
+            <button id="strawberry" aria-label="Entrar">
+
+                <span class="strawberry-body">
+
+                    <span class="seed seed-1"></span>
+                    <span class="seed seed-2"></span>
+                    <span class="seed seed-3"></span>
+                    <span class="seed seed-4"></span>
+                    <span class="seed seed-5"></span>
+                    <span class="seed seed-6"></span>
+                    <span class="seed seed-7"></span>
+                    <span class="seed seed-8"></span>
+
+                </span>
+
+                <span class="strawberry-leaf">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             BLUNT
+        ====================================== -->
+
+        <div id="blunt">
+
+            <div class="blunt-paper"></div>
+
+            <div class="blunt-tip"></div>
+
+            <div class="blunt-smoke"></div>
+
+        </div>
+
+
+        <!-- =====================================
+             IMPACTO
+        ====================================== -->
+
+        <div id="impact">
+
+            <div class="impact-flash"></div>
+
+            <div class="juice juice-1"></div>
+            <div class="juice juice-2"></div>
+            <div class="juice juice-3"></div>
+            <div class="juice juice-4"></div>
+            <div class="juice juice-5"></div>
+
+        </div>
+
+
+        <!-- =====================================
+             TRANSICIÓN
+        ====================================== -->
+
+        <div id="transition"></div>
+
+    </main>
+
+
+    <!-- =========================================
+         PÁGINA PRINCIPAL
+    ========================================== -->
+
+    <main id="main-site">
+
+        <header>
+
+            <a href="/" class="logo">
+                FRESA BLUNT
+            </a>
+
+            <nav>
+                <a href="#music">MUSIC</a>
+                <a href="#visuals">VISUALS</a>
+                <a href="#about">ABOUT</a>
+                <a href="/press/">PRESS</a>
+                <a href="/industry/">INDUSTRY</a>
+            </nav>
+
+        </header>
+
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    FRESA BLUNT
+                </p>
+
+                <h1>
+                    WELCOME
+                </h1>
+
+                <p>
+                    Enter the world.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section id="music">
+            <h2>MUSIC</h2>
+        </section>
+
+        <section id="visuals">
+            <h2>VISUALS</h2>
+        </section>
+
+        <section id="about">
+            <h2>ABOUT</h2>
+        </section>
+
+
+        <footer>
+
+            <p>
+                © FRESA BLUNT
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
