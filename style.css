@@ -33,7 +33,7 @@ body {
 
     overflow: hidden;
 
-    background: #080018;
+    background: #05080A;
 
     image-rendering: pixelated;
 
@@ -47,7 +47,7 @@ body {
     position: absolute;
     inset: 0;
 
-    background: #080018;
+    background: #05080A;
 
     z-index: 0;
 }
