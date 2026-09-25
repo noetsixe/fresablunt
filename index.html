@@ -2,78 +2,69 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fresa Blunt</title>
 
     <meta
         name="description"
-        content="Fresa Blunt — artista, música y universo visual."
+        content="Fresa Blunt — música, visuales y universo artístico."
     >
-
-    <meta name="theme-color" content="#000000">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================================
+    <!-- =====================================
          INTRO
-    ========================================== -->
+    ====================================== -->
 
     <main id="intro">
 
+        <!-- Fondo de la intro -->
         <div id="intro-background"></div>
 
-        <div id="strawberry-container">
+        <!-- Fresa central -->
+        <button id="strawberry" aria-label="Entrar al mundo de Fresa Blunt">
 
-            <!-- FRESA -->
-            <button id="strawberry" aria-label="Entrar">
+            <div class="strawberry-body">
 
-                <span class="strawberry-body">
+                <div class="seed seed-1"></div>
+                <div class="seed seed-2"></div>
+                <div class="seed seed-3"></div>
+                <div class="seed seed-4"></div>
+                <div class="seed seed-5"></div>
+                <div class="seed seed-6"></div>
+                <div class="seed seed-7"></div>
+                <div class="seed seed-8"></div>
 
-                    <span class="seed seed-1"></span>
-                    <span class="seed seed-2"></span>
-                    <span class="seed seed-3"></span>
-                    <span class="seed seed-4"></span>
-                    <span class="seed seed-5"></span>
-                    <span class="seed seed-6"></span>
-                    <span class="seed seed-7"></span>
-                    <span class="seed seed-8"></span>
+            </div>
 
-                </span>
+            <div class="strawberry-leaves">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-                <span class="strawberry-leaf">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-
-            </button>
-
-        </div>
+        </button>
 
 
-        <!-- =====================================
-             BLUNT
-        ====================================== -->
+        <!-- =================================
+             BLUNT QUE CAE
+        ================================== -->
 
         <div id="blunt">
 
             <div class="blunt-paper"></div>
-
             <div class="blunt-tip"></div>
-
-            <div class="blunt-smoke"></div>
 
         </div>
 
 
-        <!-- =====================================
+        <!-- =================================
              IMPACTO
-        ====================================== -->
+        ================================== -->
 
         <div id="impact">
 
@@ -88,18 +79,15 @@
         </div>
 
 
-        <!-- =====================================
-             TRANSICIÓN
-        ====================================== -->
-
+        <!-- Pantalla para la transición -->
         <div id="transition"></div>
 
     </main>
 
 
-    <!-- =========================================
+    <!-- =====================================
          PÁGINA PRINCIPAL
-    ========================================== -->
+    ====================================== -->
 
     <main id="main-site">
 
@@ -120,7 +108,9 @@
         </header>
 
 
-        <section class="hero">
+        <!-- HERO -->
+
+        <section class="hero" id="home">
 
             <div class="hero-content">
 
@@ -141,18 +131,34 @@
         </section>
 
 
+        <!-- MUSIC -->
+
         <section id="music">
+
             <h2>MUSIC</h2>
+
         </section>
+
+
+        <!-- VISUALS -->
 
         <section id="visuals">
+
             <h2>VISUALS</h2>
+
         </section>
+
+
+        <!-- ABOUT -->
 
         <section id="about">
+
             <h2>ABOUT</h2>
+
         </section>
 
+
+        <!-- FOOTER -->
 
         <footer>
 
