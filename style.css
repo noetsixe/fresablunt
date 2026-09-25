@@ -80,12 +80,11 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART 16×16
+   FRESA PIXEL ART — 16 × 16
    ========================================= */
 
 .pixel-strawberry {
     position: absolute;
-
     left: 50%;
     top: 50%;
 
@@ -96,15 +95,35 @@ body {
 
     image-rendering: pixelated;
 
-    background-image:
-        /* FILA 1 */
-        linear-gradient(#FF1493 0 0);
+    background:
+        /* HOJAS */
+        linear-gradient(#39b54a 0 0) 18px 0 / 12px 3px no-repeat,
+        linear-gradient(#39b54a 0 0) 12px 3px / 24px 3px no-repeat,
+        linear-gradient(#39b54a 0 0) 9px 6px / 30px 3px no-repeat,
+        linear-gradient(#39b54a 0 0) 15px 9px / 18px 3px no-repeat,
 
-    background-size: 3px 3px;
+        /* FRESA */
+        linear-gradient(#ff174f 0 0) 12px 12px / 24px 3px no-repeat,
+        linear-gradient(#ff174f 0 0) 6px 15px / 36px 3px no-repeat,
+        linear-gradient(#ff174f 0 0) 3px 18px / 42px 18px no-repeat,
+        linear-gradient(#ff174f 0 0) 6px 36px / 36px 6px no-repeat,
+        linear-gradient(#ff174f 0 0) 12px 42px / 24px 3px no-repeat,
 
-    filter: drop-shadow(
-        0 0 3px rgba(255, 20, 147, 0.35)
-    );
+        /* SOMBRA */
+        linear-gradient(#e60046 0 0) 3px 27px / 6px 9px no-repeat,
+        linear-gradient(#e60046 0 0) 6px 36px / 6px 6px no-repeat,
+
+        /* BRILLO */
+        linear-gradient(#ff5c7c 0 0) 12px 18px / 3px 6px no-repeat,
+
+        /* SEMILLAS */
+        linear-gradient(#ffd84d 0 0) 18px 18px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 30px 18px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 12px 27px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 24px 27px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 36px 27px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 18px 36px / 3px 3px no-repeat,
+        linear-gradient(#ffd84d 0 0) 30px 36px / 3px 3px no-repeat;
 }
 
 /* PARPADEO SUAVE */
