@@ -80,7 +80,7 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART — 16 × 16 (TU DISEÑO EXACTO)
+   FRESA PIXEL ART — 16 × 16 (EXACTA A TU DISEÑO)
    ========================================= */
 
 .pixel-strawberry {
@@ -88,46 +88,21 @@ body {
     left: 50%;
     top: 50%;
 
-    /* Tamaño base de píxel */
-    width: 6px; 
-    height: 6px;
+    /* Ajusta el tamaño que quieras aquí en píxeles */
+    width: 120px; 
+    height: 120px;
 
-    /* Escalado y rotación para la intro retro */
-    transform: translate(-50%, -50%) scale(3) rotate(8deg);
+    transform: translate(-50%, -50%) rotate(8deg);
 
-    /* Mapeo píxel por píxel exacto de tu lienzo */
-    box-shadow:
-        /* Fila 0 */
-        7px 0px #b0005d,
-        /* Fila 1 */
-        1px 6px #b0005d, 2px 6px #b0005d, 6px 6px #b0005d, 9px 6px #b0005d, 10px 6px #b0005d,
-        /* Fila 2 */
-        1px 12px #b0005d, 2px 12px #b0005d, 3px 12px #b0005d, 4px 12px #b0005d, 5px 12px #b0005d, 6px 12px #b0005d, 7px 12px #b0005d, 8px 12px #b0005d, 9px 12px #b0005d, 10px 12px #b0005d, 12px 12px #b0005d, 13px 12px #b0005d,
-        /* Fila 3 */
-        1px 18px #b0005d, 2px 18px #b0005d, 3px 18px #b0005d, 4px 18px #b0005d, 5px 18px #b0005d, 6px 18px #b0005d, 7px 18px #b0005d, 8px 18px #b0005d, 9px 18px #b0005d, 11px 18px #b0005d,
-        /* Fila 4 */
-        1px 24px #b0005d, 2px 24px #b0005d, 3px 24px #b0005d, 4px 24px #b0005d, 5px 24px #b0005d, 6px 24px #b0005d, 7px 24px #b0005d, 8px 24px #ff007f, 9px 24px #ff007f, 10px 24px #ff007f, 11px 24px #ff007f,
-        /* Fila 5 */
-        0px 30px #b0005d, 1px 30px #b0005d, 2px 30px #b0005d, 3px 30px #b0005d, 4px 30px #b0005d, 5px 30px #b0005d, 6px 30px #b0005d, 7px 30px #b0005d, 8px 30px #ff007f, 9px 30px #ff007f, 10px 30px #b0005d, 11px 30px #ff007f, 12px 30px #ff007f,
-        /* Fila 6 */
-        1px 36px #b0005d, 2px 36px #b0005d, 3px 36px #b0005d, 4px 36px #b0005d, 5px 36px #b0005d, 6px 36px #b0005d, 7px 36px #b0005d, 8px 36px #ff007f, 9px 36px #ff007f, 10px 36px #ff007f, 11px 36px #ff007f, 12px 36px #ff007f,
-        /* Fila 7 */
-        0px 42px #b0005d, 1px 42px #b0005d, 2px 42px #b0005d, 3px 42px #b0005d, 4px 42px #b0005d, 5px 42px #b0005d, 6px 42px #b0005d, 7px 42px #ff007f, 8px 42px #ff007f, 9px 42px #b0005d, 10px 42px #ff007f, 11px 42px #ff007f, 12px 42px #ff007f, 13px 42px #ff007f,
-        /* Fila 8 */
-        1px 48px #b0005d, 2px 48px #b0005d, 3px 48px #b0005d, 4px 48px #b0005d, 5px 48px #b0005d, 6px 48px #ff007f, 7px 48px #ff007f, 8px 48px #ff007f, 9px 48px #ff007f, 10px 48px #ff007f, 11px 48px #ff007f, 12px 48px #ff007f, 13px 48px #ff007f, 14px 48px #ff007f,
-        /* Fila 9 */
-        2px 54px #b0005d, 3px 54px #b0005d, 4px 54px #b0005d, 5px 54px #ff007f, 6px 54px #ff007f, 7px 54px #b0005d, 8px 54px #ff007f, 9px 54px #ff007f, 10px 54px #ff007f, 11px 54px #ff007f, 12px 54px #b0005d, 13px 54px #ff007f, 14px 54px #ff007f,
-        /* Fila 10 */
-        3px 60px #b0005d, 4px 60px #b0005d, 5px 60px #ff007f, 6px 60px #ff007f, 7px 60px #ff007f, 8px 60px #ff007f, 9px 60px #ff007f, 10px 60px #ff007f, 11px 60px #ff007f, 12px 60px #ff007f, 13px 60px #ff007f, 14px 60px #ff007f,
-        /* Fila 11 */
-        4px 66px #b0005d, 5px 66px #b0005d, 6px 66px #ff007f, 7px 66px #ff007f, 8px 66px #ff007f, 9px 66px #b0005d, 10px 66px #ff007f, 11px 66px #ff007f, 12px 66px #ff007f, 13px 66px #ff007f, 14px 66px #ff007f,
-        /* Fila 12 */
-        5px 72px #b0005d, 6px 72px #b0005d, 7px 72px #b0005d, 8px 72px #ff007f, 9px 72px #ff007f, 10px 72px #ff007f, 11px 72px #ff007f, 12px 72px #b0005d, 13px 72px #ff007f, 14px 72px #ff007f,
-        /* Fila 13 */
-        5px 78px #b0005d, 6px 78px #b0005d, 7px 78px #b0005d, 8px 78px #b0005d, 9px 78px #ff007f, 10px 78px #ff007f, 11px 78px #ff007f, 12px 78px #ff007f, 13px 78px #ff007f,
-        /* Fila 14 */
-        8px 84px #b0005d, 9px 84px #b0005d, 10px 84px #b0005d, 11px 84px #b0005d, 12px 84px #b0005d;
-}
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    /* Vector SVG codificado píxel a píxel exacto de tu dibujo */
+    background-image: url("data:image/svg+xml;utf8,
 
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
