@@ -33,7 +33,7 @@ body {
 
     overflow: hidden;
 
-    background: #0A0610;
+    background: #030005;
 
     image-rendering: pixelated;
 
@@ -47,7 +47,7 @@ body {
     position: absolute;
     inset: 0;
 
-    background: #0A0610;
+    background: #030005;
 
     z-index: 0;
 }
@@ -89,6 +89,9 @@ body {
     height: 18px;
 
     background: transparent;
+}
+.pixel-strawberry {
+    filter: drop-shadow(0 0 3px rgba(255, 20, 147, 0.35));
 }
 
 /* BLOQUES DEL CUERPO */
@@ -583,4 +586,27 @@ footer {
     nav {
         display: none;
     }
+}
+
+/* EFECTO CRT / SCANLINES */
+#intro {
+    position: relative;
+    overflow: hidden;
+}
+
+#intro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 50;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.025) 0px,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 3px
+    );
 }
