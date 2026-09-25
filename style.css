@@ -80,11 +80,7 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART — 18 × 18
-   ========================================= */
-
-/* =========================================
-   FRESA PIXEL ART — 18 × 18 (EXACTO)
+   FRESA PIXEL ART — 16 × 16 (EXACTA A TU DISEÑO)
    ========================================= */
 
 .pixel-strawberry {
@@ -92,43 +88,45 @@ body {
     left: 50%;
     top: 50%;
 
-    /* Ajusta este tamaño para hacerla más grande o pequeña */
-    width: 4px; 
-    height: 4px;
+    /* Tamaño base de cada píxel */
+    width: 6px; 
+    height: 6px;
 
-    /* Escalado visual para que no se vea minúscula */
+    /* Escalado y rotación */
     transform: translate(-50%, -50%) scale(2.5) rotate(8deg);
 
-    /* Pixel art exacto mapeado píxel por píxel */
-    box-shadow: 
+    /* Mapeo píxel por píxel exacto de tu imagen */
+    box-shadow:
+        /* Fila 0 */
+        7px 0px #b0005d,
         /* Fila 1 */
-        8px 0px #1a3c10, 9px 0px #1a3c10,
+        1px 6px #b0005d, 2px 6px #b0005d, 6px 6px #b0005d, 9px 6px #b0005d, 10px 6px #b0005d,
         /* Fila 2 */
-        6px 4px #1a3c10, 7px 4px #3b7a24, 8px 4px #3b7a24, 9px 4px #1a3c10, 12px 4px #1a3c10, 13px 4px #1a3c10,
+        1px 12px #b0005d, 2px 12px #b0005d, 3px 12px #b0005d, 4px 12px #b0005d, 5px 12px #b0005d, 6px 12px #b0005d, 7px 12px #b0005d, 8px 12px #b0005d, 9px 12px #b0005d, 10px 12px #b0005d, 12px 12px #b0005d, 13px 12px #b0005d,
         /* Fila 3 */
-        4px 8px #1a3c10, 5px 8px #3b7a24, 6px 8px #3b7a24, 7px 8px #5ca038, 8px 8px #5ca038, 9px 8px #3b7a24, 10px 8px #1a3c10, 11px 8px #3b7a24, 12px 8px #3b7a24, 13px 8px #1a3c10,
+        1px 18px #b0005d, 2px 18px #b0005d, 3px 18px #b0005d, 4px 18px #b0005d, 5px 18px #b0005d, 6px 18px #b0005d, 7px 18px #b0005d, 8px 18px #b0005d, 9px 18px #b0005d, 11px 18px #b0005d,
         /* Fila 4 */
-        3px 12px #1a3c10, 4px 12px #3b7a24, 5px 12px #5ca038, 6px 12px #5ca038, 7px 12px #5ca038, 8px 12px #3b7a24, 9px 12px #3b7a24, 10px 12px #1a3c10, 11px 12px #880015, 12px 12px #880015,
+        1px 24px #b0005d, 2px 24px #b0005d, 3px 24px #b0005d, 4px 24px #b0005d, 5px 24px #b0005d, 6px 24px #b0005d, 7px 24px #b0005d, 8px 24px #ff007f, 9px 24px #ff007f, 10px 24px #ff007f, 11px 24px #ff007f,
         /* Fila 5 */
-        2px 16px #1a3c10, 3px 16px #3b7a24, 4px 16px #5ca038, 5px 16px #5ca038, 6px 16px #3b7a24, 7px 16px #3b7a24, 8px 16px #1a3c10, 9px 16px #880015, 10px 16px #b81424, 11px 16px #b81424, 12px 16px #880015,
+        0px 30px #b0005d, 1px 30px #b0005d, 2px 30px #b0005d, 3px 30px #b0005d, 4px 30px #b0005d, 5px 30px #b0005d, 6px 30px #b0005d, 7px 30px #b0005d, 8px 30px #ff007f, 9px 30px #ff007f, 10px 30px #b0005d, 11px 30px #ff007f, 12px 30px #ff007f,
         /* Fila 6 */
-        1px 20px #1a3c10, 2px 20px #3b7a24, 3px 20px #5ca038, 4px 20px #3b7a24, 5px 20px #1a3c10, 8px 20px #880015, 9px 20px #b81424, 10px 20px #e62234, 11px 20px #b81424, 12px 20px #880015,
+        1px 36px #b0005d, 2px 36px #b0005d, 3px 36px #b0005d, 4px 36px #b0005d, 5px 36px #b0005d, 6px 36px #b0005d, 7px 36px #b0005d, 8px 36px #ff007f, 9px 36px #ff007f, 10px 36px #ff007f, 11px 36px #ff007f, 12px 36px #ff007f,
         /* Fila 7 */
-        1px 24px #1a3c10, 2px 24px #3b7a24, 3px 24px #1a3c10, 7px 24px #880015, 8px 24px #e62234, 9px 24px #e62234, 10px 24px #b81424, 11px 24px #b81424, 12px 24px #880015, 13px 24px #880015,
+        0px 42px #b0005d, 1px 42px #b0005d, 2px 42px #b0005d, 3px 42px #b0005d, 4px 42px #b0005d, 5px 42px #b0005d, 6px 42px #b0005d, 7px 42px #ff007f, 8px 42px #ff007f, 9px 42px #b0005d, 10px 42px #ff007f, 11px 42px #ff007f, 12px 42px #ff007f, 13px 42px #ff007f,
         /* Fila 8 */
-        6px 28px #880015, 7px 28px #e62234, 8px 28px #e62234, 9px 28px #880015, 10px 28px #b81424, 11px 28px #b81424, 12px 28px #880015, 13px 28px #880015,
+        1px 48px #b0005d, 2px 48px #b0005d, 3px 48px #b0005d, 4px 48px #b0005d, 5px 48px #b0005d, 6px 48px #ff007f, 7px 48px #ff007f, 8px 48px #ff007f, 9px 48px #ff007f, 10px 48px #ff007f, 11px 48px #ff007f, 12px 48px #ff007f, 13px 48px #ff007f, 14px 48px #ff007f,
         /* Fila 9 */
-        6px 32px #880015, 7px 32px #e62234, 8px 32px #880015, 9px 32px #b81424, 10px 32px #b81424, 11px 32px #880015, 12px 32px #880015, 13px 32px #880015,
+        2px 54px #b0005d, 3px 54px #b0005d, 4px 54px #b0005d, 5px 54px #ff007f, 6px 54px #ff007f, 7px 54px #b0005d, 8px 54px #ff007f, 9px 54px #ff007f, 10px 54px #ff007f, 11px 54px #ff007f, 12px 54px #b0005d, 13px 54px #ff007f, 14px 54px #ff007f,
         /* Fila 10 */
-        7px 36px #880015, 8px 36px #b81424, 9px 36px #b81424, 10px 36px #880015, 11px 36px #880015, 12px 36px #880015,
+        3px 60px #b0005d, 4px 60px #b0005d, 5px 60px #ff007f, 6px 60px #ff007f, 7px 60px #ff007f, 8px 60px #ff007f, 9px 60px #ff007f, 10px 60px #ff007f, 11px 60px #ff007f, 12px 60px #ff007f, 13px 60px #ff007f, 14px 60px #ff007f,
         /* Fila 11 */
-        2px 40px #1a3c10, 3px 40px #3b7a24, 4px 40px #1a3c10, 8px 40px #880015, 9px 40px #880015, 10px 40px #880015, 11px 40px #880015, 12px 40px #1a3c10, 13px 40px #3b7a24, 14px 40px #1a3c10,
+        4px 66px #b0005d, 5px 66px #b0005d, 6px 66px #ff007f, 7px 66px #ff007f, 8px 66px #ff007f, 9px 66px #b0005d, 10px 66px #ff007f, 11px 66px #ff007f, 12px 66px #ff007f, 13px 66px #ff007f, 14px 66px #ff007f,
         /* Fila 12 */
-        1px 44px #1a3c10, 2px 44px #3b7a24, 3px 44px #5ca038, 4px 44px #3b7a24, 5px 44px #1a3c10, 8px 44px #880015, 9px 44px #880015, 11px 44px #1a3c10, 12px 44px #3b7a24, 13px 44px #5ca038, 14px 44px #3b7a24, 15px 44px #1a3c10,
+        5px 72px #b0005d, 6px 72px #b0005d, 7px 72px #b0005d, 8px 72px #ff007f, 9px 72px #ff007f, 10px 72px #ff007f, 11px 72px #ff007f, 12px 72px #b0005d, 13px 72px #ff007f, 14px 72px #ff007f,
         /* Fila 13 */
-        1px 48px #1a3c10, 2px 48px #3b7a24, 3px 48px #3b7a24, 4px 48px #1a3c10, 12px 48px #1a3c10, 13px 48px #3b7a24, 14px 48px #3b7a24, 15px 48px #1a3c10,
+        5px 78px #b0005d, 6px 78px #b0005d, 7px 78px #b0005d, 8px 78px #b0005d, 9px 78px #ff007f, 10px 78px #ff007f, 11px 78px #ff007f, 12px 78px #ff007f, 13px 78px #ff007f,
         /* Fila 14 */
-        2px 52px #1a3c10, 3px 52px #1a3c10, 13px 52px #1a3c10, 14px 52px #1a3c10;
+        8px 84px #b0005d, 9px 84px #b0005d, 10px 84px #b0005d, 11px 84px #b0005d, 12px 84px #b0005d;
 }
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
