@@ -59,165 +59,39 @@ body {
 
 #strawberry {
     position: absolute;
-
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
 
-    width: 58px;
-    height: 68px;
-
-    transform: translate(-50%, -50%) rotate(-8deg) skewX(-6deg);
+    width: 24px;
+    height: 24px;
 
     padding: 0;
     border: 0;
     background: transparent;
 
+    font-size: 20px;
+    line-height: 24px;
+
     cursor: pointer;
-
-    image-rendering: pixelated;
-
     z-index: 10;
 
-    animation: strawberry-idle 1.15s steps(4, end) infinite;
+    animation: strawberry-blink 1.2s steps(1, end) infinite;
 
     -webkit-tap-highlight-color: transparent;
 }
 
+@keyframes strawberry-blink {
+    0%,
+    45%,
+    100% {
+        opacity: 1;
+    }
 
-/* =========================================
-   CUERPO PIXELADO
-   ========================================= */
-
-.strawberry-body {
-    position: absolute;
-
-    left: 50%;
-    top: 17px;
-
-    width: 43px;
-    height: 50px;
-
-    transform: translateX(-50%);
-
-    background: #C9184A;
-
-    clip-path: polygon(
-        20% 0%,
-        42% 0%,
-        50% 7%,
-        61% 0%,
-        80% 3%,
-        80% 10%,
-        91% 10%,
-        91% 21%,
-        100% 21%,
-        100% 48%,
-        91% 48%,
-        91% 66%,
-        80% 66%,
-        80% 81%,
-        65% 81%,
-        65% 92%,
-        50% 100%,
-        35% 92%,
-        35% 81%,
-        20% 81%,
-        20% 66%,
-        9% 66%,
-        9% 48%,
-        0% 48%,
-        0% 21%,
-        9% 21%,
-        9% 10%,
-        20% 10%
-    );
-
-    box-shadow: none;
-}
-
-
-/* =========================================
-   PIXELES DE SOMBRA
-   ========================================= */
-
-.strawberry-body::before {
-    content: "";
-
-    position: absolute;
-
-    left: 7px;
-    bottom: 8px;
-
-    width: 10px;
-    height: 18px;
-
-    background: #D91F52;
-
-    box-shadow:
-        10px 10px #D91F52,
-        20px 15px #D91F52;
-}
-
-
-/* =========================================
-   SEMILLAS PIXEL
-   ========================================= */
-
-.seed {
-    position: absolute;
-
-    width: 3px;
-    height: 5px;
-
-    background: #0000AA;
-
-    border-radius: 0;
-    transform: none;
-
-    z-index: 5;
-}
-
-
-/* Posiciones */
-
-.seed-1 {
-    left: 11px;
-    top: 14px;
-}
-
-.seed-2 {
-    left: 24px;
-    top: 11px;
-}
-
-.seed-3 {
-    left: 34px;
-    top: 17px;
-}
-
-.seed-4 {
-    left: 15px;
-    top: 27px;
-}
-
-.seed-5 {
-    left: 28px;
-    top: 25px;
-}
-
-.seed-6 {
-    left: 37px;
-    top: 33px;
-}
-
-.seed-7 {
-    left: 21px;
-    top: 38px;
-}
-
-.seed-8 {
-    left: 32px;
-    top: 42px;
+    50%,
+    95% {
+        opacity: 0;
+    }
 }
 
 /* =========================================
