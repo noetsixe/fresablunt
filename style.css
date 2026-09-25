@@ -62,8 +62,8 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 30px;
 
     transform: translate(-50%, -50%);
 
@@ -79,52 +79,129 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+/* SPRITE */
 .pixel-strawberry {
     position: absolute;
     left: 50%;
     top: 50%;
 
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
 
     transform: translate(-50%, -50%);
 
+    image-rendering: pixelated;
+}
+
+/* CUERPO */
+.pixel-strawberry .berry {
+    position: absolute;
+
+    left: 4px;
+    top: 6px;
+
+    width: 16px;
+    height: 15px;
+
     background: #C0C0C0;
 
-    image-rendering: pixelated;
-
     clip-path: polygon(
-        25% 0%,
-        40% 0%,
-        50% 12%,
-        60% 0%,
-        75% 0%,
-
-        75% 12%,
-        88% 12%,
-        88% 25%,
-        100% 25%,
-        100% 63%,
-        88% 63%,
-        88% 75%,
-        75% 75%,
-        75% 88%,
-        63% 88%,
-        63% 100%,
-        38% 100%,
-        38% 88%,
-        25% 88%,
-        25% 75%,
-        12% 75%,
-        12% 63%,
-        0% 63%,
-        0% 25%,
-        12% 25%,
-        12% 12%,
-        25% 12%
+        18% 0%,
+        82% 0%,
+        82% 8%,
+        94% 8%,
+        94% 20%,
+        100% 20%,
+        100% 55%,
+        88% 55%,
+        88% 70%,
+        75% 70%,
+        75% 84%,
+        62% 84%,
+        62% 94%,
+        50% 100%,
+        38% 94%,
+        38% 84%,
+        25% 84%,
+        25% 70%,
+        12% 70%,
+        12% 55%,
+        0% 55%,
+        0% 20%,
+        6% 20%,
+        6% 8%,
+        18% 8%
     );
 }
 
+/* HOJAS PIXELADAS */
+.pixel-strawberry .leaf {
+    position: absolute;
+    background: #C0C0C0;
+}
+
+.leaf-1 {
+    left: 7px;
+    top: 2px;
+    width: 7px;
+    height: 5px;
+}
+
+.leaf-2 {
+    left: 11px;
+    top: 0;
+    width: 5px;
+    height: 6px;
+}
+
+.leaf-3 {
+    left: 15px;
+    top: 2px;
+    width: 5px;
+    height: 5px;
+}
+
+/* SEMILLAS */
+.pixel-strawberry .seed {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: #606060;
+}
+
+.seed-1 {
+    left: 8px;
+    top: 9px;
+}
+
+.seed-2 {
+    left: 14px;
+    top: 9px;
+}
+
+.seed-3 {
+    left: 6px;
+    top: 13px;
+}
+
+.seed-4 {
+    left: 11px;
+    top: 13px;
+}
+
+.seed-5 {
+    left: 16px;
+    top: 13px;
+}
+
+.seed-6 {
+    left: 11px;
+    top: 17px;
+}
+
+/* PARPADEO */
 @keyframes strawberry-blink {
     0%,
     45%,
