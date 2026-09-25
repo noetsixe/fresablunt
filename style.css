@@ -63,14 +63,13 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 82px;
-    height: 92px;
+    width: 58px;
+    height: 68px;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(-8deg) skewX(-6deg);
 
     padding: 0;
     border: 0;
-
     background: transparent;
 
     cursor: pointer;
@@ -93,48 +92,44 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 20px;
+    top: 17px;
 
-    width: 58px;
-    height: 62px;
+    width: 43px;
+    height: 50px;
 
     transform: translateX(-50%);
 
-    background: #FF3366;
-
-    /*
-       Silueta pixelada
-    */
+    background: #C9184A;
 
     clip-path: polygon(
         20% 0%,
-        40% 0%,
+        42% 0%,
         50% 7%,
-        60% 0%,
-        80% 0%,
-        80% 7%,
-        90% 7%,
-        90% 18%,
-        100% 18%,
-        100% 45%,
-        90% 45%,
-        90% 65%,
-        80% 65%,
-        80% 80%,
-        65% 80%,
+        61% 0%,
+        80% 3%,
+        80% 10%,
+        91% 10%,
+        91% 21%,
+        100% 21%,
+        100% 48%,
+        91% 48%,
+        91% 66%,
+        80% 66%,
+        80% 81%,
+        65% 81%,
         65% 92%,
         50% 100%,
         35% 92%,
-        35% 80%,
-        20% 80%,
-        20% 65%,
-        10% 65%,
-        10% 45%,
-        0% 45%,
-        0% 18%,
-        10% 18%,
-        10% 7%,
-        20% 7%
+        35% 81%,
+        20% 81%,
+        20% 66%,
+        9% 66%,
+        9% 48%,
+        0% 48%,
+        0% 21%,
+        9% 21%,
+        9% 10%,
+        20% 10%
     );
 
     box-shadow: none;
@@ -171,13 +166,12 @@ body {
 .seed {
     position: absolute;
 
-    width: 4px;
-    height: 7px;
+    width: 3px;
+    height: 5px;
 
     background: #0000AA;
 
     border-radius: 0;
-
     transform: none;
 
     z-index: 5;
@@ -187,45 +181,44 @@ body {
 /* Posiciones */
 
 .seed-1 {
-    left: 15px;
-    top: 17px;
+    left: 11px;
+    top: 14px;
 }
 
 .seed-2 {
-    left: 28px;
-    top: 13px;
+    left: 24px;
+    top: 11px;
 }
 
 .seed-3 {
-    left: 41px;
-    top: 18px;
+    left: 34px;
+    top: 17px;
 }
 
 .seed-4 {
-    left: 20px;
-    top: 32px;
+    left: 15px;
+    top: 27px;
 }
 
 .seed-5 {
-    left: 35px;
-    top: 30px;
+    left: 28px;
+    top: 25px;
 }
 
 .seed-6 {
-    left: 46px;
-    top: 38px;
+    left: 37px;
+    top: 33px;
 }
 
 .seed-7 {
-    left: 27px;
-    top: 47px;
+    left: 21px;
+    top: 38px;
 }
 
 .seed-8 {
-    left: 39px;
-    top: 49px;
+    left: 32px;
+    top: 42px;
 }
-
 
 /* =========================================
    HOJAS VERDES
@@ -234,17 +227,16 @@ body {
 .strawberry-leaves {
     position: absolute;
 
-    left: 50%;
-    top: 7px;
+    left: 47%;
+    top: 5px;
 
-    width: 64px;
-    height: 25px;
+    width: 48px;
+    height: 20px;
 
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(-8deg);
 
     z-index: 15;
 }
-
 
 .strawberry-leaves span {
     position: absolute;
@@ -253,8 +245,8 @@ body {
 
     background: #00FF00;
 
-    width: 17px;
-    height: 13px;
+    width: 13px;
+    height: 10px;
 
     border-radius: 0;
 
@@ -267,37 +259,27 @@ body {
     );
 }
 
-
-/* Hoja izquierda */
-
 .strawberry-leaves span:nth-child(1) {
-    left: 2px;
-    top: 7px;
+    left: 0;
+    top: 6px;
 
     transform: rotate(-25deg);
 }
 
-
-/* Hoja central */
-
 .strawberry-leaves span:nth-child(2) {
-    left: 23px;
+    left: 17px;
     top: 0;
 
-    width: 19px;
-    height: 16px;
+    width: 15px;
+    height: 12px;
 }
 
-
-/* Hoja derecha */
-
 .strawberry-leaves span:nth-child(3) {
-    right: 2px;
-    top: 7px;
+    right: 0;
+    top: 6px;
 
     transform: rotate(25deg);
 }
-
 
 /* =========================================
    TEMBLOR DE SPRITE
