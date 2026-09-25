@@ -80,19 +80,37 @@ body {
 }
 
 /* =========================================
-   FRESA PIXEL ART — 16 × 16 (CORREGIDA)
+   FRESA PIXEL ART — CONTENEDOR CONTENIDO
    ========================================= */
 
-.pixel-strawberry {
+#strawberry {
     position: absolute;
     left: 50%;
     top: 50%;
 
-    /* Tamaño de la fresa en pantalla */
-    width: 120px; 
+    /* Le damos tamaño real al botón donde haces click */
+    width: 120px;
     height: 120px;
 
-    transform: translate(-50%, -50%) rotate(8deg);
+    transform: translate(-50%, -50%);
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+    z-index: 10;
+
+    animation: strawberry-blink 0.9s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Dibujamos la fresa con un SVG limpio inline dentro del CSS */
+.pixel-strawberry {
+    width: 100%;
+    height: 100%;
+
+    transform: rotate(8deg);
 
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -101,10 +119,10 @@ body {
     background-position: center;
     background-size: contain;
 
-    /* SVG Base64 completo y cerrado */
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj48cGF0aCBmaWxsPSIjYjAwMDVkIiBkPSJNNyAwaDF2MUg3ek0xIDFIMnYxSDF6TTYgMWgxdjFINnoPOTAxSDJ2MUg5ek0xIDJoMTB2MUgxek0xMiAySDJ2MUgxMnpNMSAzaDl2MUgxek0xMSAzaDF2MUgxMXpNMSA0aDd2MUgxek0wIDVoOHYxSDB6TTEwIDVoMXYxSDEwei0xIDZoN3YxSDF6TTAgN2g3djFINDpNOSA3aDF2MUg5ek0xIDhoNXZ1SDF6TTIgOWgzdjFIMnpNNyA5aDF2MUg3ek0xMiA5aDF2MWgtMXpNMyAxMGgydjFIM3pNNCAxMWgydjFINDpNOSAxMWgxdjFIMXpNNSAxMmgzdjFINXpNMTIgMTJoMXYxaC0xek01IDEzaDR2MUg1ek04IDE4aDV2MUg4eiIvPjxwYXRoIGZpbGw9IiNmZjAwN2YiIGQ9Ik04IDRoNHYxSDh6TTggNWgydjFIOHpNMTEgNWgydjFoLTJ6TTggNmg1djFIDHpNNyA3aDJ2MUg3ek0xMCA3aDR2MWgtNHpNNiA4aDl2MUg2ek01IDloMnYxSDV6TTggNWg0djFIDHpNMTMgOWgydjFoLTJ6TTUgMTBoOXYxSDV6TTYgMTFoM3YxSDZ6TTEwIDExaDV2MWgtNXpNODAxMmg0djFIDHpNMTMgMTJoMnYxaC0yek05IDEzaDV2MUg5eiIvPjwvc3ZnPg==");
-}
-
+    background-image: url("data:image/svg+xml;utf8,
+<svg viewBox="0 0 16 16"><path fill="%23b0005d" d="M7 0h1v1H7zM1 1h2v1H1zM6 1h1v1H6zM9 1h2v1H9zM1 2h10v1H1zM12 2h2v1h-2zM1 3h9v1H1zM11 3h1v1h-1zM1 4h7v1H1zM0 5h8v1H0zM10 5h1v1h-1zM1 6h7v1H1zM0 7h7v1H0zM9 7h1v1H9zM1 8h5v1H1zM2 9h3v1H2zM7 9h1v1H7zM12 9h1v1h-1zM3 10h2v1H3zM4 11h2v1H4zM9 11h1v1H9zM5 12h3v1H5zM12 12h1v1h-1zM5 13h4v1H5zM8 14h5v1H8z" /><path fill="%23ff007f" d="M8 4h4v1H8zM8 5h2v1H8zM11 5h2v1h-2zM8 6h5v1H8zM7 7h2v1H7zM10 7h4v1h-4zM6 8h9v1H6zM5 9h2v1H5zM8 9h4v1H8zM13 9h2v1h-2zM5 10h9v1H5zM6 11h3v1H6zM10 11h5v1H6zM10 11h5v1h-5zM8 12h4v1H8zM13 12h2v1h-2zM9 13h5v1H9z" /></svg>
+    ");
+}   
 /* PARPADEO SUAVE */
 @keyframes strawberry-blink {
     0% {
