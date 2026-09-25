@@ -1,0 +1,686 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    z-index: 100;
+}
+
+
+/* Fondo */
+
+#intro-background {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    transition:
+        background 0.25s ease,
+        transform 0.1s ease;
+}
+
+
+/* =========================================
+   FRESA
+========================================= */
+
+#strawberry {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 150px;
+    height: 175px;
+
+    transform: translate(-50%, -50%);
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    animation: strawberry-idle 0.8s infinite ease-in-out;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Cuerpo de la fresa */
+
+.strawberry-body {
+    position: absolute;
+
+    left: 50%;
+    top: 45px;
+
+    width: 130px;
+    height: 125px;
+
+    transform: translateX(-50%);
+
+    background: #e91e3a;
+
+    border-radius: 48% 48% 52% 52% / 42% 42% 65% 65%;
+
+    box-shadow:
+        inset -12px -15px 25px rgba(120, 0, 20, 0.25),
+        inset 10px 8px 20px rgba(255, 100, 120, 0.18),
+        0 0 25px rgba(255, 30, 60, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+/* Parte inferior puntiaguda */
+
+.strawberry-body::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -13px;
+    left: 50%;
+
+    width: 35px;
+    height: 35px;
+
+    background: #e91e3a;
+
+    transform: translateX(-50%) rotate(45deg);
+
+    border-radius: 0 0 8px 0;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   SEMILLAS
+========================================= */
+
+.seed {
+    position: absolute;
+
+    width: 7px;
+    height: 11px;
+
+    background: #ffd86b;
+
+    border-radius: 50%;
+
+    transform: rotate(25deg);
+
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Posiciones */
+
+.seed-1 {
+    left: 27px;
+    top: 25px;
+}
+
+.seed-2 {
+    left: 58px;
+    top: 20px;
+}
+
+.seed-3 {
+    left: 91px;
+    top: 27px;
+}
+
+.seed-4 {
+    left: 39px;
+    top: 53px;
+}
+
+.seed-5 {
+    left: 73px;
+    top: 51px;
+}
+
+.seed-6 {
+    left: 105px;
+    top: 60px;
+}
+
+.seed-7 {
+    left: 51px;
+    top: 84px;
+}
+
+.seed-8 {
+    left: 84px;
+    top: 88px;
+}
+
+
+/* =========================================
+   HOJAS
+========================================= */
+
+.strawberry-leaves {
+    position: absolute;
+
+    left: 50%;
+    top: 27px;
+
+    width: 90px;
+    height: 45px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+
+.strawberry-leaves span {
+    position: absolute;
+
+    display: block;
+
+    width: 42px;
+    height: 24px;
+
+    background: #35a84f;
+
+    border-radius: 100% 0 100% 0;
+}
+
+
+/* Hoja izquierda */
+
+.strawberry-leaves span:nth-child(1) {
+    left: 4px;
+    top: 8px;
+
+    transform: rotate(25deg);
+}
+
+
+/* Hoja central */
+
+.strawberry-leaves span:nth-child(2) {
+    left: 25px;
+    top: 0;
+
+    transform: rotate(-5deg);
+}
+
+
+/* Hoja derecha */
+
+.strawberry-leaves span:nth-child(3) {
+    right: 3px;
+    top: 8px;
+
+    transform: rotate(65deg);
+}
+
+
+/* =========================================
+   TEMBLOR NATURAL DE LA FRESA
+========================================= */
+
+@keyframes strawberry-idle {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+
+    20% {
+        transform:
+            translate(calc(-50% - 1px), calc(-50% + 1px))
+            rotate(-1deg);
+    }
+
+    40% {
+        transform:
+            translate(calc(-50% + 1px), calc(-50% - 1px))
+            rotate(1deg);
+    }
+
+    60% {
+        transform:
+            translate(calc(-50% - 1px), calc(-50% + 1px))
+            rotate(-0.5deg);
+    }
+
+    80% {
+        transform:
+            translate(calc(-50% + 1px), calc(-50% - 1px))
+            rotate(0.5deg);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   BLUNT
+========================================= */
+
+#blunt {
+    position: absolute;
+
+    left: 50%;
+    top: -180px;
+
+    width: 38px;
+    height: 175px;
+
+    transform:
+        translateX(-50%)
+        rotate(4deg);
+
+    opacity: 0;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+
+/* Papel */
+
+.blunt-paper {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 38px;
+    height: 145px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b87942 0%,
+            #d69a58 35%,
+            #c8894c 65%,
+            #a96838 100%
+        );
+
+    border-radius: 7px 7px 4px 4px;
+
+    box-shadow:
+        inset 2px 0 3px rgba(255, 255, 255, 0.15),
+        inset -3px 0 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Punta */
+
+.blunt-tip {
+    position: absolute;
+
+    left: 2px;
+    bottom: 0;
+
+    width: 34px;
+    height: 38px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #171717 0%,
+            #111 35%,
+            #050505 70%
+        );
+
+    border-radius: 50% 50% 45% 45%;
+
+    box-shadow:
+        0 0 5px rgba(255, 80, 20, 0.5);
+}
+
+
+/* =========================================
+   IMPACTO
+========================================= */
+
+#impact {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    opacity: 0;
+}
+
+
+/* Flash */
+
+.impact-flash {
+    position: absolute;
+
+    inset: 0;
+
+    background: #ff1744;
+
+    opacity: 0;
+}
+
+
+/* =========================================
+   JUGO
+========================================= */
+
+.juice {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: #d50032;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 40, 0.4);
+}
+
+
+.juice-1 {
+    left: 50%;
+    top: 50%;
+}
+
+.juice-2 {
+    left: 48%;
+    top: 49%;
+}
+
+.juice-3 {
+    left: 53%;
+    top: 51%;
+}
+
+.juice-4 {
+    left: 49%;
+    top: 54%;
+}
+
+.juice-5 {
+    left: 52%;
+    top: 47%;
+}
+
+
+/* =========================================
+   TRANSICIÓN
+========================================= */
+
+#transition {
+    position: absolute;
+
+    inset: 0;
+
+    background: #000;
+
+    opacity: 0;
+
+    z-index: 90;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   PÁGINA PRINCIPAL
+========================================= */
+
+#main-site {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #000;
+    color: #fff;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    overflow-y: auto;
+
+    transition: opacity 1s ease;
+
+    z-index: 1;
+}
+
+
+/* Header */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 25px 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
+}
+
+
+.logo {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+nav {
+    display: flex;
+
+    gap: 25px;
+}
+
+
+nav a {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.7;
+
+    transition: opacity 0.2s ease;
+}
+
+
+nav a:hover {
+    opacity: 1;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.hero-content {
+    padding: 30px;
+}
+
+
+.eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+
+    opacity: 0.5;
+}
+
+
+.hero h1 {
+    font-size: clamp(60px, 12vw, 180px);
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+}
+
+
+.hero-content > p:last-child {
+    margin-top: 25px;
+
+    opacity: 0.5;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+#music,
+#visuals,
+#about {
+    min-height: 100vh;
+
+    padding: 120px 40px;
+}
+
+
+#music h2,
+#visuals h2,
+#about h2 {
+    font-size: clamp(50px, 10vw, 140px);
+
+    letter-spacing: -4px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 40px;
+
+    opacity: 0.4;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    #strawberry {
+        width: 125px;
+        height: 155px;
+    }
+
+    .strawberry-body {
+        width: 110px;
+        height: 108px;
+    }
+
+    .strawberry-leaves {
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    #music,
+    #visuals,
+    #about {
+        padding: 100px 20px;
+    }
+}
