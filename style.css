@@ -1,6 +1,6 @@
 /* =========================================
-   RESET
-========================================= */
+   FRESA BLUNT — RETRO ARCADE INTRO
+   ========================================= */
 
 * {
     margin: 0;
@@ -16,22 +16,27 @@ body {
 }
 
 body {
-    background: #000;
-    font-family: Arial, Helvetica, sans-serif;
+    background: #0000AA;
 }
 
 
 /* =========================================
-   INTRO
-========================================= */
+   PANTALLA DE INICIO
+   ========================================= */
 
 #intro {
     position: fixed;
     inset: 0;
+
     width: 100vw;
     height: 100vh;
-    background: #000;
+
     overflow: hidden;
+
+    background: #0000AA;
+
+    image-rendering: pixelated;
+
     z-index: 100;
 }
 
@@ -41,16 +46,16 @@ body {
 #intro-background {
     position: absolute;
     inset: 0;
-    background: #000;
-    transition:
-        background 0.25s ease,
-        transform 0.1s ease;
+
+    background: #0000AA;
+
+    z-index: 0;
 }
 
 
 /* =========================================
    FRESA
-========================================= */
+   ========================================= */
 
 #strawberry {
     position: absolute;
@@ -58,155 +63,186 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 150px;
-    height: 175px;
+    width: 82px;
+    height: 92px;
 
     transform: translate(-50%, -50%);
 
-    border: none;
-    outline: none;
+    padding: 0;
+    border: 0;
+
     background: transparent;
 
     cursor: pointer;
 
-    z-index: 20;
+    image-rendering: pixelated;
 
-    animation: strawberry-idle 0.8s infinite ease-in-out;
+    z-index: 10;
+
+    animation: strawberry-idle 1.15s steps(4, end) infinite;
 
     -webkit-tap-highlight-color: transparent;
 }
 
 
-/* Cuerpo de la fresa */
+/* =========================================
+   CUERPO PIXELADO
+   ========================================= */
 
 .strawberry-body {
     position: absolute;
 
     left: 50%;
-    top: 45px;
+    top: 20px;
 
-    width: 130px;
-    height: 125px;
+    width: 58px;
+    height: 62px;
 
     transform: translateX(-50%);
 
-    background: #e91e3a;
+    background: #FF3366;
 
-    border-radius: 48% 48% 52% 52% / 42% 42% 65% 65%;
+    /*
+       Silueta pixelada
+    */
 
-    box-shadow:
-        inset -12px -15px 25px rgba(120, 0, 20, 0.25),
-        inset 10px 8px 20px rgba(255, 100, 120, 0.18),
-        0 0 25px rgba(255, 30, 60, 0.12);
+    clip-path: polygon(
+        20% 0%,
+        40% 0%,
+        50% 7%,
+        60% 0%,
+        80% 0%,
+        80% 7%,
+        90% 7%,
+        90% 18%,
+        100% 18%,
+        100% 45%,
+        90% 45%,
+        90% 65%,
+        80% 65%,
+        80% 80%,
+        65% 80%,
+        65% 92%,
+        50% 100%,
+        35% 92%,
+        35% 80%,
+        20% 80%,
+        20% 65%,
+        10% 65%,
+        10% 45%,
+        0% 45%,
+        0% 18%,
+        10% 18%,
+        10% 7%,
+        20% 7%
+    );
 
-    transition:
-        transform 0.2s ease,
-        filter 0.2s ease;
-}
-
-
-/* Parte inferior puntiaguda */
-
-.strawberry-body::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: -13px;
-    left: 50%;
-
-    width: 35px;
-    height: 35px;
-
-    background: #e91e3a;
-
-    transform: translateX(-50%) rotate(45deg);
-
-    border-radius: 0 0 8px 0;
-
-    z-index: -1;
+    box-shadow: none;
 }
 
 
 /* =========================================
-   SEMILLAS
-========================================= */
+   PIXELES DE SOMBRA
+   ========================================= */
+
+.strawberry-body::before {
+    content: "";
+
+    position: absolute;
+
+    left: 7px;
+    bottom: 8px;
+
+    width: 10px;
+    height: 18px;
+
+    background: #D91F52;
+
+    box-shadow:
+        10px 10px #D91F52,
+        20px 15px #D91F52;
+}
+
+
+/* =========================================
+   SEMILLAS PIXEL
+   ========================================= */
 
 .seed {
     position: absolute;
 
-    width: 7px;
-    height: 11px;
+    width: 4px;
+    height: 7px;
 
-    background: #ffd86b;
+    background: #0000AA;
 
-    border-radius: 50%;
+    border-radius: 0;
 
-    transform: rotate(25deg);
+    transform: none;
 
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+    z-index: 5;
 }
 
 
 /* Posiciones */
 
 .seed-1 {
-    left: 27px;
-    top: 25px;
+    left: 15px;
+    top: 17px;
 }
 
 .seed-2 {
-    left: 58px;
-    top: 20px;
+    left: 28px;
+    top: 13px;
 }
 
 .seed-3 {
-    left: 91px;
-    top: 27px;
+    left: 41px;
+    top: 18px;
 }
 
 .seed-4 {
-    left: 39px;
-    top: 53px;
+    left: 20px;
+    top: 32px;
 }
 
 .seed-5 {
-    left: 73px;
-    top: 51px;
+    left: 35px;
+    top: 30px;
 }
 
 .seed-6 {
-    left: 105px;
-    top: 60px;
+    left: 46px;
+    top: 38px;
 }
 
 .seed-7 {
-    left: 51px;
-    top: 84px;
+    left: 27px;
+    top: 47px;
 }
 
 .seed-8 {
-    left: 84px;
-    top: 88px;
+    left: 39px;
+    top: 49px;
 }
 
 
 /* =========================================
-   HOJAS
-========================================= */
+   HOJAS VERDES
+   ========================================= */
 
 .strawberry-leaves {
     position: absolute;
 
     left: 50%;
-    top: 27px;
+    top: 7px;
 
-    width: 90px;
-    height: 45px;
+    width: 64px;
+    height: 25px;
 
     transform: translateX(-50%);
 
-    z-index: 5;
+    z-index: 15;
 }
 
 
@@ -215,92 +251,110 @@ body {
 
     display: block;
 
-    width: 42px;
-    height: 24px;
+    background: #00FF00;
 
-    background: #35a84f;
+    width: 17px;
+    height: 13px;
 
-    border-radius: 100% 0 100% 0;
+    border-radius: 0;
+
+    clip-path: polygon(
+        0 100%,
+        0 25%,
+        50% 0,
+        100% 25%,
+        100% 100%
+    );
 }
 
 
 /* Hoja izquierda */
 
 .strawberry-leaves span:nth-child(1) {
-    left: 4px;
-    top: 8px;
+    left: 2px;
+    top: 7px;
 
-    transform: rotate(25deg);
+    transform: rotate(-25deg);
 }
 
 
 /* Hoja central */
 
 .strawberry-leaves span:nth-child(2) {
-    left: 25px;
+    left: 23px;
     top: 0;
 
-    transform: rotate(-5deg);
+    width: 19px;
+    height: 16px;
 }
 
 
 /* Hoja derecha */
 
 .strawberry-leaves span:nth-child(3) {
-    right: 3px;
-    top: 8px;
+    right: 2px;
+    top: 7px;
 
-    transform: rotate(65deg);
+    transform: rotate(25deg);
 }
 
 
 /* =========================================
-   TEMBLOR NATURAL DE LA FRESA
-========================================= */
+   TEMBLOR DE SPRITE
+   ========================================= */
 
 @keyframes strawberry-idle {
 
     0% {
         transform:
             translate(-50%, -50%)
-            rotate(0deg);
+            translate(0, 0);
     }
 
-    20% {
+    25% {
         transform:
-            translate(calc(-50% - 1px), calc(-50% + 1px))
-            rotate(-1deg);
+            translate(-50%, -50%)
+            translate(-1px, 0);
     }
 
-    40% {
+    50% {
         transform:
-            translate(calc(-50% + 1px), calc(-50% - 1px))
-            rotate(1deg);
+            translate(-50%, -50%)
+            translate(1px, 1px);
     }
 
-    60% {
+    75% {
         transform:
-            translate(calc(-50% - 1px), calc(-50% + 1px))
-            rotate(-0.5deg);
-    }
-
-    80% {
-        transform:
-            translate(calc(-50% + 1px), calc(-50% - 1px))
-            rotate(0.5deg);
+            translate(-50%, -50%)
+            translate(0, -1px);
     }
 
     100% {
         transform:
             translate(-50%, -50%)
-            rotate(0deg);
+            translate(0, 0);
     }
 }
 
 
 /* =========================================
+   EFECTO AL PASAR EL MOUSE
+   ========================================= */
+
+#strawberry:hover {
+    filter: brightness(1.15);
+}
+
+#strawberry:active {
+    transform:
+        translate(-50%, -50%)
+        scale(0.94);
+}
+
+
+/* =========================================
    BLUNT
-========================================= */
+   ========================================= */
 
 #blunt {
     position: absolute;
@@ -308,12 +362,10 @@ body {
     left: 50%;
     top: -180px;
 
-    width: 38px;
-    height: 175px;
+    width: 30px;
+    height: 150px;
 
-    transform:
-        translateX(-50%)
-        rotate(4deg);
+    transform: translateX(-50%);
 
     opacity: 0;
 
@@ -323,35 +375,19 @@ body {
 }
 
 
-/* Papel */
-
 .blunt-paper {
     position: absolute;
 
-    left: 0;
-    top: 0;
+    width: 30px;
+    height: 120px;
 
-    width: 38px;
-    height: 145px;
+    background: #c8894c;
 
-    background:
-        linear-gradient(
-            90deg,
-            #b87942 0%,
-            #d69a58 35%,
-            #c8894c 65%,
-            #a96838 100%
-        );
+    border: 2px solid #000;
 
-    border-radius: 7px 7px 4px 4px;
-
-    box-shadow:
-        inset 2px 0 3px rgba(255, 255, 255, 0.15),
-        inset -3px 0 4px rgba(0, 0, 0, 0.25);
+    image-rendering: pixelated;
 }
 
-
-/* Punta */
 
 .blunt-tip {
     position: absolute;
@@ -359,31 +395,21 @@ body {
     left: 2px;
     bottom: 0;
 
-    width: 34px;
-    height: 38px;
+    width: 26px;
+    height: 30px;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #171717 0%,
-            #111 35%,
-            #050505 70%
-        );
+    background: #111;
 
-    border-radius: 50% 50% 45% 45%;
-
-    box-shadow:
-        0 0 5px rgba(255, 80, 20, 0.5);
+    border: 2px solid #000;
 }
 
 
 /* =========================================
    IMPACTO
-========================================= */
+   ========================================= */
 
 #impact {
     position: absolute;
-
     inset: 0;
 
     z-index: 50;
@@ -394,14 +420,11 @@ body {
 }
 
 
-/* Flash */
-
 .impact-flash {
     position: absolute;
-
     inset: 0;
 
-    background: #ff1744;
+    background: #FF3366;
 
     opacity: 0;
 }
@@ -409,61 +432,33 @@ body {
 
 /* =========================================
    JUGO
-========================================= */
+   ========================================= */
 
 .juice {
     position: absolute;
 
-    width: 18px;
-    height: 18px;
+    width: 8px;
+    height: 8px;
 
-    background: #d50032;
+    background: #FF3366;
 
-    border-radius: 50%;
+    border-radius: 0;
 
     opacity: 0;
 
-    box-shadow:
-        0 0 10px rgba(255, 0, 40, 0.4);
-}
-
-
-.juice-1 {
-    left: 50%;
-    top: 50%;
-}
-
-.juice-2 {
-    left: 48%;
-    top: 49%;
-}
-
-.juice-3 {
-    left: 53%;
-    top: 51%;
-}
-
-.juice-4 {
-    left: 49%;
-    top: 54%;
-}
-
-.juice-5 {
-    left: 52%;
-    top: 47%;
+    box-shadow: none;
 }
 
 
 /* =========================================
    TRANSICIÓN
-========================================= */
+   ========================================= */
 
 #transition {
     position: absolute;
-
     inset: 0;
 
-    background: #000;
+    background: #0000AA;
 
     opacity: 0;
 
@@ -475,7 +470,7 @@ body {
 
 /* =========================================
    PÁGINA PRINCIPAL
-========================================= */
+   ========================================= */
 
 #main-site {
     position: relative;
@@ -483,8 +478,8 @@ body {
     width: 100%;
     min-height: 100vh;
 
-    background: #000;
-    color: #fff;
+    background: #0000AA;
+    color: #00FF00;
 
     opacity: 0;
 
@@ -492,13 +487,13 @@ body {
 
     overflow-y: auto;
 
-    transition: opacity 1s ease;
-
     z-index: 1;
 }
 
 
-/* Header */
+/* =========================================
+   HEADER
+   ========================================= */
 
 header {
     position: fixed;
@@ -508,7 +503,7 @@ header {
 
     width: 100%;
 
-    padding: 25px 35px;
+    padding: 20px;
 
     display: flex;
 
@@ -520,48 +515,39 @@ header {
 
 
 .logo {
-    color: #fff;
+    color: #00FF00;
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 12px;
 
-    font-weight: 700;
+    font-weight: bold;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 
 nav {
     display: flex;
 
-    gap: 25px;
+    gap: 20px;
 }
 
 
 nav a {
-    color: #fff;
+    color: #00FF00;
 
     text-decoration: none;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    letter-spacing: 2px;
-
-    opacity: 0.7;
-
-    transition: opacity 0.2s ease;
-}
-
-
-nav a:hover {
-    opacity: 1;
+    letter-spacing: 1px;
 }
 
 
 /* =========================================
    HERO
-========================================= */
+   ========================================= */
 
 .hero {
     min-height: 100vh;
@@ -576,111 +562,80 @@ nav a:hover {
 
 
 .hero-content {
-    padding: 30px;
+    padding: 20px;
 }
 
 
 .eyebrow {
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    margin-bottom: 20px;
-
-    opacity: 0.5;
+    font-size: 10px;
+    letter-spacing: 3px;
 }
 
 
 .hero h1 {
-    font-size: clamp(60px, 12vw, 180px);
+    font-size: clamp(45px, 10vw, 120px);
 
-    line-height: 0.9;
+    line-height: 1;
 
-    letter-spacing: -5px;
+    letter-spacing: -3px;
 }
 
 
 .hero-content > p:last-child {
-    margin-top: 25px;
+    margin-top: 15px;
 
-    opacity: 0.5;
-
-    font-size: 13px;
-
-    letter-spacing: 2px;
+    font-size: 11px;
 }
 
 
 /* =========================================
-   SECTIONS
-========================================= */
+   SECCIONES
+   ========================================= */
 
 #music,
 #visuals,
 #about {
     min-height: 100vh;
 
-    padding: 120px 40px;
+    padding: 100px 20px;
 }
 
 
 #music h2,
 #visuals h2,
 #about h2 {
-    font-size: clamp(50px, 10vw, 140px);
-
-    letter-spacing: -4px;
+    font-size: 70px;
 }
 
 
 /* =========================================
    FOOTER
-========================================= */
+   ========================================= */
 
 footer {
-    padding: 40px;
+    padding: 30px;
 
-    opacity: 0.4;
-
-    font-size: 11px;
+    font-size: 10px;
 }
 
 
 /* =========================================
-   RESPONSIVE
-========================================= */
+   MOBILE
+   ========================================= */
 
 @media (max-width: 600px) {
 
     #strawberry {
-        width: 125px;
-        height: 155px;
+        width: 72px;
+        height: 82px;
     }
 
     .strawberry-body {
-        width: 110px;
-        height: 108px;
-    }
-
-    .strawberry-leaves {
-        transform: translateX(-50%) scale(0.9);
-    }
-
-    header {
-        padding: 20px;
+        width: 52px;
+        height: 57px;
     }
 
     nav {
         display: none;
-    }
-
-    .hero h1 {
-        letter-spacing: -3px;
-    }
-
-    #music,
-    #visuals,
-    #about {
-        padding: 100px 20px;
     }
 }
