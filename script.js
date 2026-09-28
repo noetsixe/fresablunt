@@ -26,7 +26,7 @@ function animateStrawberry() {
     if (started) return;
 
     strawberryImage.style.backgroundImage =
-        `url("./strawberry_0${frame}.png")`;
+    `url("./Fresa${frame}.png")`;
 
     frame += direction;
 
