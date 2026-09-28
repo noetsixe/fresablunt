@@ -10,12 +10,44 @@ const impact = document.getElementById("impact");
 const impactFlash = document.querySelector(".impact-flash");
 const transition = document.getElementById("transition");
 const mainSite = document.getElementById("main-site");
+const strawberryImage = document.querySelector(".pixel-strawberry");
 
 let started = false;
+let frame = 1;
+let direction = 1;
 
 
 /* =========================================
-   CLICK EN LA FRESA
+   ANIMACIÓN IDLE DE LA FRESA
+========================================= */
+
+function animateStrawberry() {
+
+    if (started) return;
+
+    strawberryImage.style.backgroundImage =
+        `url("./strawberry_0${frame}.png")`;
+
+    frame += direction;
+
+    if (frame >= 6) {
+        frame = 6;
+        direction = -1;
+    }
+
+    if (frame <= 1) {
+        frame = 1;
+        direction = 1;
+    }
+
+    setTimeout(animateStrawberry, 110);
+}
+
+animateStrawberry();
+
+
+/* =========================================
+   CLICK / TOUCH EN LA FRESA
 ========================================= */
 
 strawberry.addEventListener("click", () => {
@@ -24,15 +56,10 @@ strawberry.addEventListener("click", () => {
 
     started = true;
 
-    /* Evita volver a pulsarla */
     strawberry.style.pointerEvents = "none";
-
-    /* Detiene el pequeño temblor */
     strawberry.style.animation = "none";
 
-    /* Inicia la caída del blunt */
     dropBlunt();
-
 });
 
 
@@ -43,11 +70,6 @@ strawberry.addEventListener("click", () => {
 function dropBlunt() {
 
     blunt.style.opacity = "1";
-
-    /*
-        El blunt empieza arriba de la pantalla
-        y cae atravesando exactamente el centro.
-    */
 
     blunt.animate(
         [
@@ -78,17 +100,9 @@ function dropBlunt() {
         }
     );
 
-    /*
-        El impacto ocurre cuando el blunt
-        atraviesa la fresa.
-    */
-
     setTimeout(() => {
-
         createImpact();
-
     }, 650);
-
 }
 
 
@@ -98,21 +112,13 @@ function dropBlunt() {
 
 function createImpact() {
 
-    /* Activa el impacto */
     impact.style.opacity = "1";
 
-    /* Flash rojo */
     impactFlash.animate(
         [
-            {
-                opacity: 0
-            },
-            {
-                opacity: 0.9
-            },
-            {
-                opacity: 0
-            }
+            { opacity: 0 },
+            { opacity: 0.9 },
+            { opacity: 0 }
         ],
         {
             duration: 280,
@@ -120,10 +126,6 @@ function createImpact() {
         }
     );
 
-
-    /* =====================================
-       VIBRACIÓN DE TODA LA PANTALLA
-    ====================================== */
 
     intro.animate(
         [
@@ -143,24 +145,12 @@ function createImpact() {
     );
 
 
-    /* =====================================
-       CAMBIO DE COLOR DEL FONDO
-    ====================================== */
-
     introBackground.animate(
         [
-            {
-                background: "#000"
-            },
-            {
-                background: "#ff1744"
-            },
-            {
-                background: "#8b001f"
-            },
-            {
-                background: "#450010"
-            }
+            { background: "#000" },
+            { background: "#ff1744" },
+            { background: "#8b001f" },
+            { background: "#450010" }
         ],
         {
             duration: 500,
@@ -170,29 +160,17 @@ function createImpact() {
     );
 
 
-    /* =====================================
-       JUGO / SANGRE
-    ====================================== */
-
     createJuice();
 
 
-    /*
-        Después del impacto dejamos la imagen
-        unos segundos antes de entrar al sitio.
-    */
-
     setTimeout(() => {
-
         enterMainSite();
-
     }, 3000);
-
 }
 
 
 /* =========================================
-   JUGO DE LA FRESA
+   JUGO / PARTÍCULAS
 ========================================= */
 
 function createJuice() {
@@ -235,29 +213,19 @@ function createJuice() {
         );
 
     });
-
 }
 
 
 /* =========================================
-   ENTRADA A LA PÁGINA PRINCIPAL
+   ENTRADA AL SITIO
 ========================================= */
 
 function enterMainSite() {
 
-    /*
-        Cubrimos la escena con negro
-        para hacer la transición.
-    */
-
     transition.animate(
         [
-            {
-                opacity: 0
-            },
-            {
-                opacity: 1
-            }
+            { opacity: 0 },
+            { opacity: 1 }
         ],
         {
             duration: 700,
@@ -269,20 +237,14 @@ function enterMainSite() {
 
     setTimeout(() => {
 
-        /* Ocultamos completamente la intro */
         intro.style.display = "none";
 
-        /* Mostramos la página principal */
         mainSite.style.visibility = "visible";
 
         mainSite.animate(
             [
-                {
-                    opacity: 0
-                },
-                {
-                    opacity: 1
-                }
+                { opacity: 0 },
+                { opacity: 1 }
             ],
             {
                 duration: 1000,
@@ -293,9 +255,7 @@ function enterMainSite() {
 
         mainSite.style.opacity = "1";
 
-        /* Permitimos scroll */
         document.body.style.overflow = "auto";
 
     }, 750);
-
 }
