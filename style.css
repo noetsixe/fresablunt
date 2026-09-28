@@ -42,12 +42,7 @@ body {
 #intro-background {
     position: absolute;
     inset: 0;
-    background-color: #100A18;
-   
-   background-image:
-        linear-gradient(rgba(245, 121, 188, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245, 121, 188, 0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background: #100A18;
     z-index: 0;
 }
 
