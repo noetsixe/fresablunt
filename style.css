@@ -72,18 +72,15 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    transform: rotate(8deg);
 
-    /* Renderizado estricto de píxeles sin suavizado */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 
-    background-image: url("./strawberry.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-
-    /* Tamaño visual de la fresa */
-    background-size: 72px 72px;
+    transition: none;
 }
 
 
