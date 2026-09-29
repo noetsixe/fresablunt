@@ -83,7 +83,23 @@ body {
 /* =========================================
    TEXTO UI TIPO CONSOLA (PRESS START)
    ========================================= */
-
+#intro::before {
+    content: "FRESA BLUNT";
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    
+    color: #F579BC;
+    text-shadow: 2px 2px 0 #3A102D;
+    
+    z-index: 20;
+}
 #intro::after {
     content: "PRESS START / CLICK TO PLAY";
     position: absolute;
