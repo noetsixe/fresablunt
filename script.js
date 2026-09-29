@@ -24,10 +24,10 @@ const shineColors = [
     "#bd82ed"
 ];
 
-let shineStart = performance.now();
+const shineImages = [];
 
-let shineTime = 0;
-let shineAnimation;
+let shineReady = false;
+let shineStart = performance.now();
 
 let started = false;
 let frame = 1;
@@ -66,7 +66,33 @@ function animateStrawberry() {
 }
 
 animateStrawberry();
-animateRainbowShine();
+
+/* =========================================
+   PREPARAR DESTELLO
+========================================= */
+
+for (let i = 1; i <= 6; i++) {
+
+    const img = new Image();
+
+    img.onload = () => {
+
+        shineImages[i] = img;
+
+        if (i === 6) {
+            shineReady = true;
+
+            shineCanvas.width = img.naturalWidth;
+            shineCanvas.height = img.naturalHeight;
+
+            shineCtx.imageSmoothingEnabled = false;
+
+            animateRainbowShine();
+        }
+    };
+
+    img.src = `./Fresa${i}.png`;
+}
 /* =========================================
    PRECARGAR FRAMES DE LA FRESA
 ========================================= */
@@ -294,13 +320,12 @@ function enterMainSite() {
 
 function animateRainbowShine() {
 
+    if (!shineReady) return;
+
     const now = performance.now();
 
-    /*
-       El destello aparece cada 2.8 segundos.
-    */
-    const cycle = 2800;
-    const duration = 900;
+    const cycle = 2600;
+    const duration = 1000;
 
     const elapsed = (now - shineStart) % cycle;
 
@@ -311,10 +336,6 @@ function animateRainbowShine() {
         shineCanvas.height
     );
 
-    /*
-       Si estamos fuera del momento del destello,
-       no dibujamos nada.
-    */
     if (elapsed < duration) {
 
         const progress = elapsed / duration;
@@ -328,119 +349,75 @@ function animateRainbowShine() {
 
 function drawRainbowShine(progress) {
 
+    const img = shineImages[frame];
+
+    if (!img) return;
+
+    const w = shineCanvas.width;
+    const h = shineCanvas.height;
+
     /*
-       Usamos el tamaño real del PNG.
+       POSICIÓN DEL DESTELLO
+       IZQUIERDA → DERECHA
     */
-    const img = new Image();
 
-    img.onload = function () {
+    const startX = -w * 0.35;
+    const endX = w * 1.35;
 
-        const w = img.naturalWidth;
-        const h = img.naturalHeight;
+    const x =
+        startX +
+        (endX - startX) * progress;
 
-        shineCanvas.width = w;
-        shineCanvas.height = h;
 
-        const ctx = shineCtx;
+    /*
+       DIBUJAMOS LOS COLORES
+    */
 
-        ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < shineColors.length; i++) {
 
-        /*
-           Posición del destello:
-           IZQUIERDA -> DERECHA
-        */
-        const startX = -w * 0.25;
-        const endX = w * 1.25;
+        const bandX = x - (i * 5);
 
-        const x =
-            startX +
-            (endX - startX) * progress;
+        shineCtx.save();
 
-        /*
-           Dibujamos pequeños segmentos diagonales.
-           Cada color mide 3 px.
-        */
-        const bandWidth = 3;
-        const spacing = 5;
-
-        for (let i = 0; i < shineColors.length; i++) {
-
-            /*
-               Cada color entra ligeramente
-               después del anterior.
-            */
-            const offset = i * spacing;
-
-            const bandX = x - offset;
-
-            ctx.save();
-
-            ctx.translate(bandX, h / 2);
-            ctx.rotate(-Math.PI / 4);
-
-            ctx.fillStyle = shineColors[i];
-
-            ctx.fillRect(
-                -bandWidth / 2,
-                -h * 0.18,
-                bandWidth,
-                h * 0.36
-            );
-
-            ctx.restore();
-        }
-
-        /*
-           Guardamos el destello.
-        */
-        const shinePixels =
-            ctx.getImageData(0, 0, w, h);
-
-        /*
-           Limpiamos el canvas.
-        */
-        ctx.clearRect(0, 0, w, h);
-
-        /*
-           Dibujamos únicamente los píxeles
-           que pertenecen a la fresa.
-        */
-        const maskCanvas =
-            document.createElement("canvas");
-
-        maskCanvas.width = w;
-        maskCanvas.height = h;
-
-        const maskCtx =
-            maskCanvas.getContext("2d");
-
-        maskCtx.drawImage(img, 0, 0);
-
-        const mask =
-            maskCtx.getImageData(0, 0, w, h);
-
-        /*
-           Aplicamos la transparencia del PNG
-           al destello.
-        */
-        for (let i = 0; i < shinePixels.data.length; i += 4) {
-
-            shinePixels.data[i + 3] =
-                Math.floor(
-                    shinePixels.data[i + 3] *
-                    (mask.data[i + 3] / 255)
-                );
-        }
-
-        ctx.putImageData(
-            shinePixels,
-            0,
-            0
+        shineCtx.translate(
+            bandX,
+            h / 2
         );
-    };
+
+        shineCtx.rotate(
+            -Math.PI / 4
+        );
+
+        shineCtx.fillStyle =
+            shineColors[i];
+
+        shineCtx.fillRect(
+            -1.5,
+            -h * 0.22,
+            3,
+            h * 0.44
+        );
+
+        shineCtx.restore();
+    }
+
 
     /*
-       Usamos el frame actual de la fresa.
+       RECORTAR EL DESTELLO
+       A LA SILUETA DE LA FRESA
     */
-    img.src = `./Fresa${frame}.png`;
+
+    shineCtx.globalCompositeOperation =
+        "destination-in";
+
+    shineCtx.drawImage(
+        img,
+        0,
+        0,
+        w,
+        h
+    );
+
+    shineCtx.globalCompositeOperation =
+        "source-over";
 }
