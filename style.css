@@ -123,16 +123,6 @@ body {
     animation: press-start 1s steps(2, start) infinite;
 }
 
-@keyframes strawberry-blink {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.92;
-    }
-}
-
 
 /* =========================================
    EFECTO SCANLINES (TUBO CRT DE CONSOLA)
@@ -165,12 +155,12 @@ body {
     }
 
     50% {
-        opacity: 0.75;
+        opacity: 0.92;
     }
 }
 
 #strawberry:hover {
-    filter: brightness(1.2) drop-shadow(0 0 10px#F579BC);
+    filter: brightness(1.08) drop-shadow(2px 2px 0 #8C3567);
 }
 
 #strawberry:active {
