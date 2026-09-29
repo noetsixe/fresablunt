@@ -377,8 +377,7 @@ height: 70px;
 }
 
 /* =========================================
-   DESTELLO PRISMÁTICO — ANIME / ARCADE
-   FRANJAS SÓLIDAS DENTRO DE LA FRESA
+   DESTELLO ARCOÍRIS PIXELADO
 ========================================= */
 
 .pixel-strawberry {
@@ -390,37 +389,41 @@ height: 70px;
     content: "";
 
     position: absolute;
-    inset: -10%;
+    inset: 0;
 
     pointer-events: none;
 
     /*
-       Franjas de color SÓLIDAS.
-       No hay degradado entre colores.
+       Pequeños píxeles diagonales.
+       Cada zona tiene un color distinto.
     */
-    background: linear-gradient(
-        105deg,
-        transparent 0% 34%,
+    background-image:
+        linear-gradient(
+            135deg,
+            transparent 0 42%,
+            #ff6bb5 42% 44%,
+            #ff9d5c 44% 46%,
+            #ffe66d 46% 48%,
+            #8ee6a0 48% 50%,
+            #70d9e8 50% 52%,
+            #819cff 52% 54%,
+            #bd82ed 54% 56%,
+            transparent 56% 100%
+        );
 
-        #ff86bd 34% 40%,
-        #ffb35f 40% 46%,
-        #ffe96f 46% 52%,
-        #9fe6a0 52% 58%,
-        #8fe8e8 58% 64%,
-        #8fa8ff 64% 70%,
-        #c59aff 70% 76%,
-
-        transparent 76% 100%
-    );
-
-    background-size: 220% 100%;
-    background-position: 140% 0;
+    /*
+       Hace que las franjas sean mucho más
+       pequeñas y pixeladas.
+    */
+    background-size: 180% 180%;
+    background-position: 160% 160%;
 
     opacity: 0;
 
     /*
-       La silueta de la fresa recorta
-       completamente el destello.
+       CLAVE:
+       el destello usa exactamente la silueta
+       del frame actual de la fresa.
     */
     -webkit-mask-image: var(--strawberry-mask);
     mask-image: var(--strawberry-mask);
@@ -431,38 +434,40 @@ height: 70px;
     -webkit-mask-position: center;
     mask-position: center;
 
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
 
-    animation: prism-shine-anime 5.5s steps(1, end) infinite;
+    animation: strawberry-rainbow 2.2s steps(8, end) infinite;
 }
 
 
-@keyframes prism-shine-anime {
+@keyframes strawberry-rainbow {
 
-    /* Espera */
-    0%,
-    68%,
-    100% {
-        background-position: 140% 0;
+    0% {
+        background-position: 160% 160%;
         opacity: 0;
     }
 
-    /* Entra el primer color */
+    8% {
+        opacity: 0.65;
+    }
+
+    45% {
+        background-position: 20% 20%;
+        opacity: 0.65;
+    }
+
+    65% {
+        background-position: -70% -70%;
+        opacity: 0.35;
+    }
+
     72% {
-        background-position: 90% 0;
-        opacity: 0.45;
+        opacity: 0;
     }
 
-    /* Cruza la fresa */
-    82% {
-        background-position: 0% 0;
-        opacity: 0.45;
-    }
-
-    /* Sale */
-    88% {
-        background-position: -90% 0;
+    100% {
+        background-position: -70% -70%;
         opacity: 0;
     }
 }
