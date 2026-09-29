@@ -59,7 +59,9 @@ body {
     background: transparent;
     cursor: pointer;
     z-index: 10;
-    animation: strawberry-blink 0.9s ease-in-out infinite;
+    animation:
+    strawberry-blink 0.9s ease-in-out infinite,
+    strawberry-glitch 3.6s steps(1, end) infinite;
     -webkit-tap-highlight-color: transparent;
 }
 
