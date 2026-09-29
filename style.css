@@ -456,7 +456,7 @@ height: 70px;
 #strawberry {
     animation:
         strawberry-blink 0.9s ease-in-out infinite,
-        strawberry-glitch 3.6s steps(1, end) infinite;
+        strawberry-glitch 9s steps(1, end) infinite;
 }
 
 @keyframes strawberry-glitch {
