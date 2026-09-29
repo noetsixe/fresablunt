@@ -11,6 +11,11 @@ const impactFlash = document.querySelector(".impact-flash");
 const transition = document.getElementById("transition");
 const mainSite = document.getElementById("main-site");
 const strawberryImage = document.querySelector(".pixel-strawberry");
+const shineCanvas = document.getElementById("strawberry-shine");
+const shineCtx = shineCanvas.getContext("2d");
+
+let shineTime = 0;
+let shineAnimation;
 
 let started = false;
 let frame = 1;
@@ -49,6 +54,7 @@ function animateStrawberry() {
 }
 
 animateStrawberry();
+startStrawberryShine();
 
 /* =========================================
    PRECARGAR FRAMES DE LA FRESA
@@ -270,4 +276,137 @@ function enterMainSite() {
         document.body.style.overflow = "auto";
 
     }, 750);
+}
+/* =========================================
+   DESTELLO ARCOÍRIS DE LA FRESA
+========================================= */
+
+function startStrawberryShine() {
+
+    shineCanvas.width = 90;
+    shineCanvas.height = 90;
+
+    shineCanvas.style.position = "absolute";
+    shineCanvas.style.inset = "0";
+    shineCanvas.style.width = "100%";
+    shineCanvas.style.height = "100%";
+    shineCanvas.style.pointerEvents = "none";
+    shineCanvas.style.zIndex = "5";
+
+    drawStrawberryShine();
+
+}
+
+
+function drawStrawberryShine() {
+
+    if (started) return;
+
+    const ctx = shineCtx;
+    const w = shineCanvas.width;
+    const h = shineCanvas.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    /*
+       Posición del destello.
+       Va claramente de izquierda → derecha.
+    */
+    const progress = (shineTime % 180) / 180;
+
+    const x = -25 + progress * (w + 50);
+
+    /*
+       Ancho pequeño del destello.
+    */
+    const shineWidth = 3;
+
+    /*
+       Colores que van cambiando durante el recorrido.
+    */
+    const colors = [
+        "#ff9d5c",
+        "#ffe66d",
+        "#8ee6a0",
+        "#70d9e8",
+        "#819cff",
+        "#bd82ed",
+        "#ff6bb5"
+    ];
+
+    /*
+       El color cambia con el movimiento.
+       No arrastramos siempre el mismo arcoíris.
+    */
+    const colorIndex =
+        Math.floor((shineTime / 8)) % colors.length;
+
+    const color = colors[colorIndex];
+
+    /*
+       Línea diagonal de 3 px.
+    */
+    ctx.save();
+
+    ctx.translate(x, h / 2);
+    ctx.rotate(-Math.PI / 4);
+
+    ctx.fillStyle = color;
+
+    ctx.fillRect(
+        -shineWidth / 2,
+        -70,
+        shineWidth,
+        140
+    );
+
+    ctx.restore();
+
+    /*
+       Ahora usamos la transparencia real
+       de la fresa como máscara.
+    */
+    const currentFrame = new Image();
+
+    currentFrame.onload = function () {
+
+        const maskCanvas = document.createElement("canvas");
+        maskCanvas.width = w;
+        maskCanvas.height = h;
+
+        const maskCtx = maskCanvas.getContext("2d");
+
+        maskCtx.drawImage(
+            currentFrame,
+            0,
+            0,
+            w,
+            h
+        );
+
+        /*
+           Conserva solamente los píxeles
+           que existen en la fresa.
+        */
+        ctx.globalCompositeOperation = "destination-in";
+
+        ctx.drawImage(
+            maskCanvas,
+            0,
+            0,
+            w,
+            h
+        );
+
+        ctx.globalCompositeOperation = "source-over";
+
+        shineTime += 1;
+
+        shineAnimation = requestAnimationFrame(
+            drawStrawberryShine
+        );
+    };
+
+    currentFrame.src =
+        `./Fresa${frame}.png`;
 }
