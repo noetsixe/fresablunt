@@ -27,8 +27,11 @@ function animateStrawberry() {
 
     const sprite = `url("./Fresa${frame}.png")`;
 
-strawberryImage.style.backgroundImage = sprite;
-strawberryImage.style.setProperty("--strawberry-mask", sprite);
+    strawberryImage.style.backgroundImage = sprite;
+    strawberryImage.style.setProperty(
+        "--strawberry-mask",
+        sprite
+    );
 
     frame += direction;
 
