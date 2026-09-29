@@ -383,6 +383,7 @@ height: 70px;
 .pixel-strawberry {
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 /* Cada color es una línea independiente */
@@ -392,7 +393,7 @@ height: 70px;
     top: -35%;
     left: -25%;
 
-    width: 1px;
+    width: 2px;
     height: 170%;
 
     opacity: 0;
@@ -401,8 +402,12 @@ height: 70px;
 
     pointer-events: none;
 
+    z-index: 5;
+
     -webkit-mask-image: var(--strawberry-mask);
     mask-image: var(--strawberry-mask);
+   -webkit-mask-mode: alpha;
+mask-mode: alpha;
 
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
