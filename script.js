@@ -356,13 +356,15 @@ function drawRainbowShine(progress) {
     const w = shineCanvas.width;
     const h = shineCanvas.height;
 
+    shineCtx.clearRect(0, 0, w, h);
+
     /*
-       POSICIÓN DEL DESTELLO
+       REFLEXIÓN DIAGONAL
        IZQUIERDA → DERECHA
     */
 
-    const startX = -w * 0.35;
-    const endX = w * 1.35;
+    const startX = -w * 0.25;
+    const endX = w * 1.25;
 
     const x =
         startX +
@@ -370,12 +372,16 @@ function drawRainbowShine(progress) {
 
 
     /*
-       DIBUJAMOS LOS COLORES
+       SEGMENTOS PEQUEÑOS
+       Cada color aparece ligeramente
+       después del anterior.
     */
 
     for (let i = 0; i < shineColors.length; i++) {
 
-        const bandX = x - (i * 5);
+        const offset = i * 4;
+
+        const bandX = x - offset;
 
         shineCtx.save();
 
@@ -391,11 +397,16 @@ function drawRainbowShine(progress) {
         shineCtx.fillStyle =
             shineColors[i];
 
+        /*
+           Ya NO atraviesa toda la fresa.
+           Es un pequeño fragmento.
+        */
+
         shineCtx.fillRect(
             -1.5,
-            -h * 0.22,
+            -7,
             3,
-            h * 0.44
+            14
         );
 
         shineCtx.restore();
@@ -403,8 +414,8 @@ function drawRainbowShine(progress) {
 
 
     /*
-       RECORTAR EL DESTELLO
-       A LA SILUETA DE LA FRESA
+       RECORTAR EXACTAMENTE
+       A LA SILUETA DEL PNG
     */
 
     shineCtx.globalCompositeOperation =
