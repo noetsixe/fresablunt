@@ -66,7 +66,7 @@ function animateStrawberry() {
 }
 
 animateStrawberry();
-
+animateRainbowShine();
 /* =========================================
    PRECARGAR FRAMES DE LA FRESA
 ========================================= */
@@ -289,135 +289,158 @@ function enterMainSite() {
     }, 750);
 }
 /* =========================================
-   DESTELLO ARCOÍRIS DE LA FRESA
+   DESTELLO ARCOÍRIS PIXELADO
 ========================================= */
 
-function startStrawberryShine() {
+function animateRainbowShine() {
 
-    shineCanvas.width = 90;
-    shineCanvas.height = 90;
+    const now = performance.now();
 
-    shineCanvas.style.position = "absolute";
-    shineCanvas.style.inset = "0";
-    shineCanvas.style.width = "100%";
-    shineCanvas.style.height = "100%";
-    shineCanvas.style.pointerEvents = "none";
-    shineCanvas.style.zIndex = "5";
+    /*
+       El destello aparece cada 2.8 segundos.
+    */
+    const cycle = 2800;
+    const duration = 900;
 
-    drawStrawberryShine();
+    const elapsed = (now - shineStart) % cycle;
 
+    shineCtx.clearRect(
+        0,
+        0,
+        shineCanvas.width,
+        shineCanvas.height
+    );
+
+    /*
+       Si estamos fuera del momento del destello,
+       no dibujamos nada.
+    */
+    if (elapsed < duration) {
+
+        const progress = elapsed / duration;
+
+        drawRainbowShine(progress);
+    }
+
+    requestAnimationFrame(animateRainbowShine);
 }
 
 
-function drawStrawberryShine() {
-
-    if (started) return;
-
-    const ctx = shineCtx;
-    const w = shineCanvas.width;
-    const h = shineCanvas.height;
-
-    ctx.clearRect(0, 0, w, h);
+function drawRainbowShine(progress) {
 
     /*
-       Posición del destello.
-       Va claramente de izquierda → derecha.
+       Usamos el tamaño real del PNG.
     */
-    const progress = (shineTime % 180) / 180;
+    const img = new Image();
 
-    const x = -25 + progress * (w + 50);
+    img.onload = function () {
 
-    /*
-       Ancho pequeño del destello.
-    */
-    const shineWidth = 3;
+        const w = img.naturalWidth;
+        const h = img.naturalHeight;
 
-    /*
-       Colores que van cambiando durante el recorrido.
-    */
-    const colors = [
-        "#ff9d5c",
-        "#ffe66d",
-        "#8ee6a0",
-        "#70d9e8",
-        "#819cff",
-        "#bd82ed",
-        "#ff6bb5"
-    ];
+        shineCanvas.width = w;
+        shineCanvas.height = h;
 
-    /*
-       El color cambia con el movimiento.
-       No arrastramos siempre el mismo arcoíris.
-    */
-    const colorIndex =
-        Math.floor((shineTime / 8)) % colors.length;
+        const ctx = shineCtx;
 
-    const color = colors[colorIndex];
+        ctx.clearRect(0, 0, w, h);
 
-    /*
-       Línea diagonal de 3 px.
-    */
-    ctx.save();
+        /*
+           Posición del destello:
+           IZQUIERDA -> DERECHA
+        */
+        const startX = -w * 0.25;
+        const endX = w * 1.25;
 
-    ctx.translate(x, h / 2);
-    ctx.rotate(-Math.PI / 4);
+        const x =
+            startX +
+            (endX - startX) * progress;
 
-    ctx.fillStyle = color;
+        /*
+           Dibujamos pequeños segmentos diagonales.
+           Cada color mide 3 px.
+        */
+        const bandWidth = 3;
+        const spacing = 5;
 
-    ctx.fillRect(
-        -shineWidth / 2,
-        -70,
-        shineWidth,
-        140
-    );
+        for (let i = 0; i < shineColors.length; i++) {
 
-    ctx.restore();
+            /*
+               Cada color entra ligeramente
+               después del anterior.
+            */
+            const offset = i * spacing;
 
-    /*
-       Ahora usamos la transparencia real
-       de la fresa como máscara.
-    */
-    const currentFrame = new Image();
+            const bandX = x - offset;
 
-    currentFrame.onload = function () {
+            ctx.save();
 
-        const maskCanvas = document.createElement("canvas");
+            ctx.translate(bandX, h / 2);
+            ctx.rotate(-Math.PI / 4);
+
+            ctx.fillStyle = shineColors[i];
+
+            ctx.fillRect(
+                -bandWidth / 2,
+                -h * 0.18,
+                bandWidth,
+                h * 0.36
+            );
+
+            ctx.restore();
+        }
+
+        /*
+           Guardamos el destello.
+        */
+        const shinePixels =
+            ctx.getImageData(0, 0, w, h);
+
+        /*
+           Limpiamos el canvas.
+        */
+        ctx.clearRect(0, 0, w, h);
+
+        /*
+           Dibujamos únicamente los píxeles
+           que pertenecen a la fresa.
+        */
+        const maskCanvas =
+            document.createElement("canvas");
+
         maskCanvas.width = w;
         maskCanvas.height = h;
 
-        const maskCtx = maskCanvas.getContext("2d");
+        const maskCtx =
+            maskCanvas.getContext("2d");
 
-        maskCtx.drawImage(
-            currentFrame,
-            0,
-            0,
-            w,
-            h
-        );
+        maskCtx.drawImage(img, 0, 0);
+
+        const mask =
+            maskCtx.getImageData(0, 0, w, h);
 
         /*
-           Conserva solamente los píxeles
-           que existen en la fresa.
+           Aplicamos la transparencia del PNG
+           al destello.
         */
-        ctx.globalCompositeOperation = "destination-in";
+        for (let i = 0; i < shinePixels.data.length; i += 4) {
 
-        ctx.drawImage(
-            maskCanvas,
+            shinePixels.data[i + 3] =
+                Math.floor(
+                    shinePixels.data[i + 3] *
+                    (mask.data[i + 3] / 255)
+                );
+        }
+
+        ctx.putImageData(
+            shinePixels,
             0,
-            0,
-            w,
-            h
-        );
-
-        ctx.globalCompositeOperation = "source-over";
-
-        shineTime += 1;
-
-        shineAnimation = requestAnimationFrame(
-            drawStrawberryShine
+            0
         );
     };
 
-    currentFrame.src =
-        `./Fresa${frame}.png`;
+    /*
+       Usamos el frame actual de la fresa.
+    */
+    img.src = `./Fresa${frame}.png`;
 }
