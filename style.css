@@ -162,6 +162,19 @@ visibility: hidden;
     pointer-events: none;
    }
 
+#intro-scanlines {
+    animation: crt-flicker 0.12s infinite;
+}
+
+@keyframes crt-flicker {
+    0%, 100% {
+        opacity: 0.72;
+    }
+
+    50% {
+        opacity: 0.66;
+    }
+}
 
 /* =========================================
    ANIMACIONES Y ESTADOS
