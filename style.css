@@ -373,3 +373,88 @@ height: 70px;
         display: none;
     }
 }
+
+/* =========================================
+   DESTELLO PRISMÁTICO DE LA FRESA
+========================================= */
+
+#strawberry::after {
+    content: "";
+    position: absolute;
+
+    width: 7px;
+    height: 55px;
+
+    left: -15px;
+    top: 18px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 143, 203, 0),
+        rgba(255, 143, 203, 0.65),
+        rgba(255, 179, 107, 0.65),
+        rgba(255, 233, 138, 0.65),
+        rgba(159, 230, 160, 0.65),
+        rgba(143, 232, 232, 0.65),
+        rgba(143, 168, 255, 0.65),
+        rgba(197, 154, 255, 0.65),
+        rgba(197, 154, 255, 0)
+    );
+
+    transform: rotate(25deg);
+    opacity: 0;
+
+    pointer-events: none;
+    z-index: 20;
+
+    image-rendering: pixelated;
+
+    animation: prism-shine 3.8s steps(1, end) infinite;
+}
+
+
+/* =========================================
+   MOVIMIENTO DEL DESTELLO
+========================================= */
+
+@keyframes prism-shine {
+
+    0% {
+        left: -18px;
+        opacity: 0;
+    }
+
+    8% {
+        left: -12px;
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.8;
+    }
+
+    20% {
+        left: 18px;
+        opacity: 0.75;
+    }
+
+    28% {
+        left: 48px;
+        opacity: 0.65;
+    }
+
+    36% {
+        left: 78px;
+        opacity: 0.45;
+    }
+
+    42% {
+        left: 105px;
+        opacity: 0;
+    }
+
+    100% {
+        left: 105px;
+        opacity: 0;
+    }
+}
