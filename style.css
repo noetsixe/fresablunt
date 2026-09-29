@@ -101,19 +101,27 @@ body {
     z-index: 20;
 }
 #intro::after {
-    content: "PRESS START / CLICK TO PLAY";
+    content: "PRESS START";
     position: absolute;
-    bottom: 18%;
-    font-family: 'Courier New', Courier, monospace;
+    bottom: 16%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: 'Courier New', monospace;
     font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 3px;
-color: #FFE3F2;
-text-shadow:
-    0 0 4px #F579BC,
-    0 0 10px rgba(245, 121, 188, 0.45);
+    font-size: 16px;
+    letter-spacing: 4px;
+    white-space: nowrap;
+
+    color: #FFE3F2;
+
+    text-shadow:
+        2px 2px 0 #8C3567,
+        0 0 8px rgba(245, 121, 188, 0.35);
+
     z-index: 20;
-    animation: press-start 1.2s steps(2, start) infinite;
+
+    animation: press-start 1s steps(2, start) infinite;
 }
 
 @keyframes press-start {
