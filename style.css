@@ -52,8 +52,8 @@ body {
 
 #strawberry {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 90px;
+    height: 90px;
     padding: 0;
     border: 0;
     background: transparent;
@@ -314,12 +314,11 @@ footer {
 
 @media (max-width: 600px) {
     #strawberry {
-        width: 150px;
-height: 150px;
+        width: 90px;
+height: 90px;
     }
 
     nav {
         display: none;
     }
 }
-```
