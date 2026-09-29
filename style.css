@@ -385,6 +385,10 @@ height: 70px;
     overflow: hidden;
 }
 
+/* =========================================
+   DESTELLO ARCOÍRIS PIXELADO SUTIL
+========================================= */
+
 .pixel-strawberry::after {
     content: "";
 
@@ -393,38 +397,28 @@ height: 70px;
 
     pointer-events: none;
 
-    /*
-       Pequeños píxeles diagonales.
-       Cada zona tiene un color distinto.
-    */
     background-image:
         linear-gradient(
             135deg,
-            transparent 0 42%,
-            #ff6bb5 42% 44%,
-            #ff9d5c 44% 46%,
-            #ffe66d 46% 48%,
-            #8ee6a0 48% 50%,
-            #70d9e8 50% 52%,
-            #819cff 52% 54%,
-            #bd82ed 54% 56%,
-            transparent 56% 100%
+
+            transparent 0 46%,
+
+            #ff6bb5 46% 46.7%,
+            #ff9d5c 46.7% 47.4%,
+            #ffe66d 47.4% 48.1%,
+            #8ee6a0 48.1% 48.8%,
+            #70d9e8 48.8% 49.5%,
+            #819cff 49.5% 50.2%,
+            #bd82ed 50.2% 50.9%,
+
+            transparent 50.9% 100%
         );
 
-    /*
-       Hace que las franjas sean mucho más
-       pequeñas y pixeladas.
-    */
-    background-size: 180% 180%;
-    background-position: 160% 160%;
+    background-size: 170% 170%;
+    background-position: 150% 150%;
 
     opacity: 0;
 
-    /*
-       CLAVE:
-       el destello usa exactamente la silueta
-       del frame actual de la fresa.
-    */
     -webkit-mask-image: var(--strawberry-mask);
     mask-image: var(--strawberry-mask);
 
@@ -437,37 +431,36 @@ height: 70px;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 
-    animation: strawberry-rainbow 2.2s steps(8, end) infinite;
+    animation: strawberry-rainbow 2.2s steps(10, end) infinite;
 }
 
 
 @keyframes strawberry-rainbow {
 
     0% {
-        background-position: 160% 160%;
+        background-position: 150% 150%;
         opacity: 0;
     }
 
-    8% {
-        opacity: 0.65;
+    10% {
+        opacity: 0.38;
     }
 
     45% {
-        background-position: 20% 20%;
-        opacity: 0.65;
+        background-position: 15% 15%;
+        opacity: 0.38;
     }
 
-    65% {
-        background-position: -70% -70%;
-        opacity: 0.35;
+    62% {
+        background-position: -65% -65%;
+        opacity: 0.18;
     }
 
-    72% {
+    70% {
         opacity: 0;
     }
 
     100% {
-        background-position: -70% -70%;
         opacity: 0;
     }
 }
