@@ -11,6 +11,20 @@ const impactFlash = document.querySelector(".impact-flash");
 const transition = document.getElementById("transition");
 const mainSite = document.getElementById("main-site");
 const strawberryImage = document.querySelector(".pixel-strawberry");
+const shineCanvas = document.getElementById("strawberry-shine");
+const shineCtx = shineCanvas.getContext("2d");
+
+const shineColors = [
+    "#ff6bb5",
+    "#ff9d5c",
+    "#ffe66d",
+    "#8ee6a0",
+    "#70d9e8",
+    "#819cff",
+    "#bd82ed"
+];
+
+let shineStart = performance.now();
 
 let shineTime = 0;
 let shineAnimation;
