@@ -327,8 +327,8 @@ footer {
 
 @media (max-width: 600px) {
     #strawberry {
-        width: 90px;
-        height: 90px;
+        width: 150px;
+height: 150px;
     }
 
     nav {
