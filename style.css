@@ -377,8 +377,8 @@ height: 70px;
 }
 
 /* =========================================
-   DESTELLO PRISMÁTICO REAL
-   CONTENIDO DENTRO DEL SPRITE
+   DESTELLO PRISMÁTICO — ANIME / ARCADE
+   FRANJAS SÓLIDAS DENTRO DE LA FRESA
 ========================================= */
 
 .pixel-strawberry {
@@ -390,32 +390,38 @@ height: 70px;
     content: "";
 
     position: absolute;
-    inset: 0;
+    inset: -10%;
 
     pointer-events: none;
 
+    /*
+       Franjas de color SÓLIDAS.
+       No hay degradado entre colores.
+    */
     background: linear-gradient(
         105deg,
-        transparent 35%,
-        rgba(255, 143, 203, 0.00) 40%,
-        rgba(255, 143, 203, 0.45) 44%,
-        rgba(255, 179, 107, 0.45) 47%,
-        rgba(255, 233, 138, 0.45) 50%,
-        rgba(159, 230, 160, 0.42) 53%,
-        rgba(143, 232, 232, 0.42) 56%,
-        rgba(143, 168, 255, 0.42) 59%,
-        rgba(197, 154, 255, 0.40) 62%,
-        rgba(197, 154, 255, 0.00) 67%,
-        transparent 72%
+        transparent 0% 34%,
+
+        #ff86bd 34% 40%,
+        #ffb35f 40% 46%,
+        #ffe96f 46% 52%,
+        #9fe6a0 52% 58%,
+        #8fe8e8 58% 64%,
+        #8fa8ff 64% 70%,
+        #c59aff 70% 76%,
+
+        transparent 76% 100%
     );
 
-    background-size: 280% 100%;
-    background-position: -140% 0;
+    background-size: 220% 100%;
+    background-position: 140% 0;
 
     opacity: 0;
 
-    animation: prism-shine 4.5s ease-in-out infinite;
-
+    /*
+       La silueta de la fresa recorta
+       completamente el destello.
+    */
     -webkit-mask-image: var(--strawberry-mask);
     mask-image: var(--strawberry-mask);
 
@@ -427,25 +433,36 @@ height: 70px;
 
     -webkit-mask-size: contain;
     mask-size: contain;
+
+    animation: prism-shine-anime 5.5s steps(1, end) infinite;
 }
 
-@keyframes prism-shine {
 
-    0%, 70%, 100% {
-        background-position: -140% 0;
+@keyframes prism-shine-anime {
+
+    /* Espera */
+    0%,
+    68%,
+    100% {
+        background-position: 140% 0;
         opacity: 0;
     }
 
-    74% {
-        opacity: 0.55;
+    /* Entra el primer color */
+    72% {
+        background-position: 90% 0;
+        opacity: 0.45;
     }
 
-    84% {
-        background-position: 140% 0;
-        opacity: 0.55;
+    /* Cruza la fresa */
+    82% {
+        background-position: 0% 0;
+        opacity: 0.45;
     }
 
+    /* Sale */
     88% {
+        background-position: -90% 0;
         opacity: 0;
     }
 }
