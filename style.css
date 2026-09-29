@@ -1,4 +1,3 @@
-```css
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -124,9 +123,13 @@ body {
     animation: press-start 1s steps(2, start) infinite;
 }
 
-@keyframes press-start {
-    to {
-        visibility: hidden;
+@keyframes strawberry-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.92;
     }
 }
 
