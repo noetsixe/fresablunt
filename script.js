@@ -45,7 +45,14 @@ function animateStrawberry() {
 
 animateStrawberry();
 
+/* =========================================
+   PRECARGAR FRAMES DE LA FRESA
+========================================= */
 
+for (let i = 1; i <= 6; i++) {
+    const img = new Image();
+    img.src = `./Fresa${i}.png`;
+}
 /* =========================================
    CLICK / TOUCH EN LA FRESA
 ========================================= */
