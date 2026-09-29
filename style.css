@@ -390,40 +390,27 @@ height: 70px;
 
 .shine {
     position: absolute;
-    top: -35%;
-    left: -25%;
+
+    /*
+       La línea vive SOLO dentro del sprite.
+    */
+    top: 0;
+    left: -10%;
 
     width: 3px;
-    height: 170%;
+    height: 100%;
 
     opacity: 0;
-
-    transform: rotate(35deg);
 
     pointer-events: none;
     z-index: 5;
 
-    /*
-       La imagen de cada frame de la fresa
-       funciona como máscara.
-    */
-    -webkit-mask-image: var(--strawberry-mask);
-    mask-image: var(--strawberry-mask);
-
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-
-    -webkit-mask-position: center;
-    mask-position: center;
-
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-
-    -webkit-mask-mode: alpha;
-    mask-mode: alpha;
+    transform: rotate(35deg);
+    transform-origin: center;
 
     animation: rainbow-line 1.25s linear infinite;
 }
+
 
 /* Colores */
 
