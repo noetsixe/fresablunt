@@ -377,7 +377,7 @@ height: 70px;
 }
 
 /* =========================================
-   DESTELLO ARCOÍRIS DINÁMICO
+   DESTELLO ARCOÍRIS PIXELADO
 ========================================= */
 
 .pixel-strawberry {
@@ -385,30 +385,21 @@ height: 70px;
     overflow: hidden;
 }
 
-.pixel-strawberry::after {
-    content: "";
+/* Cada color es una línea independiente */
 
+.shine {
     position: absolute;
-    inset: 0;
+    top: -35%;
+    left: -25%;
 
-    pointer-events: none;
-
-    /*
-       Varias líneas diminutas.
-       Cada una representa un color.
-    */
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0 48%,
-            #ffe66d 48% 49%,
-            transparent 49% 100%
-        );
-
-    background-size: 180% 180%;
-    background-position: -140% 140%;
+    width: 1px;
+    height: 170%;
 
     opacity: 0;
+
+    transform: rotate(35deg);
+
+    pointer-events: none;
 
     -webkit-mask-image: var(--strawberry-mask);
     mask-image: var(--strawberry-mask);
@@ -422,32 +413,70 @@ height: 70px;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
 
-    animation: rainbow-main 1.4s linear infinite;
+    animation:
+        rainbow-line 1.25s linear infinite;
+}
+
+/* Colores */
+
+.shine-pink {
+    background: #ff6bb5;
+    animation-delay: 0s;
+}
+
+.shine-orange {
+    background: #ff9d5c;
+    animation-delay: 0.08s;
+}
+
+.shine-yellow {
+    background: #ffe66d;
+    animation-delay: 0.16s;
+}
+
+.shine-green {
+    background: #8ee6a0;
+    animation-delay: 0.24s;
+}
+
+.shine-cyan {
+    background: #70d9e8;
+    animation-delay: 0.32s;
+}
+
+.shine-blue {
+    background: #819cff;
+    animation-delay: 0.40s;
+}
+
+.shine-purple {
+    background: #bd82ed;
+    animation-delay: 0.48s;
 }
 
 
-@keyframes rainbow-main {
+@keyframes rainbow-line {
 
     0% {
-        background-position: -140% 140%;
+        left: -25%;
         opacity: 0;
     }
 
-    10% {
-        opacity: 0.30;
+    12% {
+        opacity: 0.28;
     }
 
-    50% {
-        background-position: 0% 0%;
-        opacity: 0.30;
+    72% {
+        opacity: 0.28;
     }
 
-    90% {
-        background-position: 140% -140%;
+    88% {
+        left: 125%;
         opacity: 0;
     }
 
     100% {
+        left: 125%;
         opacity: 0;
     }
 }
