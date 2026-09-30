@@ -370,7 +370,7 @@ function drawRainbowShine(progress) {
     const centerY = h * 0.5;
 
     const radiusX = w * 0.28;
-    const radiusY = h * 0.42;
+    const radiusY = h * 0.75;
 
     const pixel = 3;
 
@@ -483,11 +483,11 @@ const colorPosition =
             shineCtx.fillStyle = color;
 
             shineCtx.fillRect(
-                x,
-                y,
-                pixel,
-                pixel
-            );
+    x,
+    y,
+    pixel + 1,
+    pixel + 1
+);
         }
     }
 
