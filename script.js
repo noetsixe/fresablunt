@@ -369,19 +369,40 @@ function drawRainbowShine(progress) {
 
     const centerY = h * 0.5;
 
-    /*
-       TAMAÑO DEL ÁREA ILUMINADA
-    */
-
     const radiusX = w * 0.28;
     const radiusY = h * 0.42;
 
+    const pixel = 3;
+
 
     /*
-       PÍXELES DE COLOR DENTRO DEL ÁREA
+       COLORES QUE VAN APARECIENDO
     */
 
-    const pixel = 3;
+    const colors = [
+        "#ff6bb5",
+        "#ff9d5c",
+        "#ffe66d",
+        "#8ee6a0",
+        "#70d9e8",
+        "#819cff",
+        "#bd82ed",
+        "#ff6bb5",
+        "#ff9d5c"
+    ];
+
+
+    /*
+       POSICIÓN DEL CICLO DE COLOR
+    */
+
+    const colorFlow =
+        progress * 9;
+
+
+    /*
+       DIBUJAR EL BAÑO DE LUZ
+    */
 
     for (
         let y = 0;
@@ -408,7 +429,7 @@ function drawRainbowShine(progress) {
 
 
             /*
-               Intensidad del halo
+               INTENSIDAD DEL HALO
             */
 
             const intensity =
@@ -416,35 +437,50 @@ function drawRainbowShine(progress) {
 
 
             /*
-               COLOR SEGÚN POSICIÓN
+               CADA ZONA DE LA LUZ
+               TIENE UN MOMENTO DIFERENTE
+               DEL CICLO DE COLOR.
             */
 
+            const localPosition =
+                (x / w) * 3;
+
+            const colorPosition =
+                colorFlow + localPosition;
+
+
             const colorIndex =
-                Math.floor(
-                    ((x - centerX) / radiusX + 1) *
-                    3.5
-                );
+                Math.floor(colorPosition)
+                % colors.length;
 
             const color =
-                shineColors[
-                    Math.max(
-                        0,
-                        Math.min(
-                            shineColors.length - 1,
-                            colorIndex
-                        )
-                    )
-                ];
+                colors[colorIndex];
 
 
             /*
-               Borde suave mediante
-               bloques de píxeles
+               CADA COLOR APARECE Y
+               DESAPARECE GRADUALMENTE.
+            */
+
+            const colorPhase =
+                colorPosition % 1;
+
+            const colorIntensity =
+                Math.sin(
+                    colorPhase * Math.PI
+                );
+
+
+            /*
+               INTENSIDAD FINAL
             */
 
             shineCtx.globalAlpha =
-                0.08 +
-                intensity * 0.32;
+                colorIntensity *
+                (
+                    0.06 +
+                    intensity * 0.34
+                );
 
             shineCtx.fillStyle = color;
 
@@ -457,17 +493,23 @@ function drawRainbowShine(progress) {
         }
     }
 
+
     /*
-       CENTRO BLANCO DEL REFLEJO
+       PEQUEÑO CENTRO BLANCO
     */
 
-    shineCtx.globalAlpha = 0.55;
+    const sparkle =
+        Math.sin(progress * Math.PI);
 
-    shineCtx.fillStyle = "#fff4fa";
+    shineCtx.globalAlpha =
+        sparkle * 0.55;
+
+    shineCtx.fillStyle =
+        "#fff4fa";
 
     shineCtx.fillRect(
-        Math.round(centerX - 2),
-        Math.round(centerY - 2),
+        Math.round(centerX - 3),
+        Math.round(centerY - 3),
         6,
         6
     );
@@ -477,7 +519,8 @@ function drawRainbowShine(progress) {
 
 
     /*
-       RECORTAR TODO A LA FRESA
+       RECORTAR A LA SILUETA
+       DE LA FRESA
     */
 
     shineCtx.globalCompositeOperation =
