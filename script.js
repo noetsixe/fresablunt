@@ -325,7 +325,7 @@ function animateRainbowShine() {
     const now = performance.now();
 
     const cycle = 10000;
-const duration = 800;
+const duration = 1500;
 
     const elapsed = (now - shineStart) % cycle;
 
