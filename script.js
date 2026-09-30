@@ -359,110 +359,125 @@ function drawRainbowShine(progress) {
     shineCtx.clearRect(0, 0, w, h);
 
     /*
-       POSICIÓN DEL REFLEJO
-       ABAJO-IZQUIERDA → ARRIBA-DERECHA
+       POSICIÓN DEL BAÑO DE LUZ
+       IZQUIERDA → DERECHA
     */
 
-    const startX = -w * 0.20;
-    const startY = h * 1.10;
-
-    const endX = w * 1.20;
-    const endY = -h * 0.10;
-
     const centerX =
-        startX + (endX - startX) * progress;
+        -w * 0.35 +
+        (w * 1.7) * progress;
 
-    const centerY =
-        startY + (endY - startY) * progress;
+    const centerY = h * 0.5;
+
+    /*
+       TAMAÑO DEL ÁREA ILUMINADA
+    */
+
+    const radiusX = w * 0.28;
+    const radiusY = h * 0.42;
 
 
     /*
-       REFLEJO PIXELADO
+       PÍXELES DE COLOR DENTRO DEL ÁREA
     */
 
     const pixel = 3;
 
-    for (let i = 0; i < shineColors.length; i++) {
+    for (
+        let y = 0;
+        y < h;
+        y += pixel
+    ) {
 
-        const color = shineColors[i];
+        for (
+            let x = 0;
+            x < w;
+            x += pixel
+        ) {
 
-        const offset = (i - 3) * pixel;
+            const dx =
+                (x - centerX) / radiusX;
 
-        const x =
-            Math.round(centerX + offset);
+            const dy =
+                (y - centerY) / radiusY;
 
-        const y =
-            Math.round(centerY - offset);
+            const distance =
+                dx * dx + dy * dy;
 
-
-        /*
-           Halo exterior
-        */
-
-        shineCtx.globalAlpha = 0.22;
-        shineCtx.fillStyle = color;
-
-        shineCtx.fillRect(
-            x - pixel,
-            y,
-            pixel,
-            pixel
-        );
-
-        shineCtx.fillRect(
-            x + pixel,
-            y,
-            pixel,
-            pixel
-        );
-
-        shineCtx.fillRect(
-            x,
-            y - pixel,
-            pixel,
-            pixel
-        );
-
-        shineCtx.fillRect(
-            x,
-            y + pixel,
-            pixel,
-            pixel
-        );
+            if (distance > 1) continue;
 
 
-        /*
-           Núcleo
-        */
+            /*
+               Intensidad del halo
+            */
 
-        shineCtx.globalAlpha = 0.75;
-        shineCtx.fillRect(
-            x,
-            y,
-            pixel,
-            pixel
-        );
+            const intensity =
+                1 - distance;
+
+
+            /*
+               COLOR SEGÚN POSICIÓN
+            */
+
+            const colorIndex =
+                Math.floor(
+                    ((x - centerX) / radiusX + 1) *
+                    3.5
+                );
+
+            const color =
+                shineColors[
+                    Math.max(
+                        0,
+                        Math.min(
+                            shineColors.length - 1,
+                            colorIndex
+                        )
+                    )
+                ];
+
+
+            /*
+               Borde suave mediante
+               bloques de píxeles
+            */
+
+            shineCtx.globalAlpha =
+                0.08 +
+                intensity * 0.32;
+
+            shineCtx.fillStyle = color;
+
+            shineCtx.fillRect(
+                x,
+                y,
+                pixel,
+                pixel
+            );
+        }
     }
+
+    /*
+       CENTRO BLANCO DEL REFLEJO
+    */
+
+    shineCtx.globalAlpha = 0.55;
+
+    shineCtx.fillStyle = "#fff4fa";
+
+    shineCtx.fillRect(
+        Math.round(centerX - 2),
+        Math.round(centerY - 2),
+        6,
+        6
+    );
+
 
     shineCtx.globalAlpha = 1;
 
 
     /*
-       PEQUEÑO DESTELLO CENTRAL
-    */
-
-    shineCtx.fillStyle = "#fff4fa";
-
-    shineCtx.fillRect(
-        Math.round(centerX),
-        Math.round(centerY),
-        pixel,
-        pixel
-    );
-
-
-    /*
-       RECORTE A LA SILUETA
+       RECORTAR TODO A LA FRESA
     */
 
     shineCtx.globalCompositeOperation =
