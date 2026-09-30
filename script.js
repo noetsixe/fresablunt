@@ -325,7 +325,7 @@ function animateRainbowShine() {
     const now = performance.now();
 
     const cycle = 10000;
-const duration = 1500;
+const duration = 1700;
 
     const elapsed = (now - shineStart) % cycle;
 
@@ -483,7 +483,7 @@ const colorIntensity =
     colorIntensity *
     (
         0.04 +
-        intensity * 0.20
+        intensity * 0.14
     );
 
             shineCtx.fillStyle = color;
