@@ -359,15 +359,15 @@ function drawRainbowShine(progress) {
     shineCtx.clearRect(0, 0, w, h);
 
     /*
-       TRAYECTORIA DIAGONAL
+       POSICIÓN DEL REFLEJO
        ABAJO-IZQUIERDA → ARRIBA-DERECHA
     */
 
-    const startX = -w * 0.25;
-    const startY = h * 1.15;
+    const startX = -w * 0.20;
+    const startY = h * 1.10;
 
-    const endX = w * 1.25;
-    const endY = -h * 0.15;
+    const endX = w * 1.20;
+    const endY = -h * 0.10;
 
     const centerX =
         startX + (endX - startX) * progress;
@@ -377,29 +377,92 @@ function drawRainbowShine(progress) {
 
 
     /*
-       PEQUEÑOS SEGMENTOS DE COLOR
+       REFLEJO PIXELADO
     */
+
+    const pixel = 3;
 
     for (let i = 0; i < shineColors.length; i++) {
 
-        const offset = i * 5;
+        const color = shineColors[i];
 
-        const x = centerX - offset;
-        const y = centerY + offset;
+        const offset = (i - 3) * pixel;
 
-        shineCtx.fillStyle = shineColors[i];
+        const x =
+            Math.round(centerX + offset);
+
+        const y =
+            Math.round(centerY - offset);
+
+
+        /*
+           Halo exterior
+        */
+
+        shineCtx.globalAlpha = 0.22;
+        shineCtx.fillStyle = color;
 
         shineCtx.fillRect(
-            Math.round(x),
-            Math.round(y),
-            3,
-            3
+            x - pixel,
+            y,
+            pixel,
+            pixel
+        );
+
+        shineCtx.fillRect(
+            x + pixel,
+            y,
+            pixel,
+            pixel
+        );
+
+        shineCtx.fillRect(
+            x,
+            y - pixel,
+            pixel,
+            pixel
+        );
+
+        shineCtx.fillRect(
+            x,
+            y + pixel,
+            pixel,
+            pixel
+        );
+
+
+        /*
+           Núcleo
+        */
+
+        shineCtx.globalAlpha = 0.75;
+        shineCtx.fillRect(
+            x,
+            y,
+            pixel,
+            pixel
         );
     }
 
+    shineCtx.globalAlpha = 1;
+
 
     /*
-       RECORTAR A LA SILUETA DE LA FRESA
+       PEQUEÑO DESTELLO CENTRAL
+    */
+
+    shineCtx.fillStyle = "#fff4fa";
+
+    shineCtx.fillRect(
+        Math.round(centerX),
+        Math.round(centerY),
+        pixel,
+        pixel
+    );
+
+
+    /*
+       RECORTE A LA SILUETA
     */
 
     shineCtx.globalCompositeOperation =
