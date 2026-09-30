@@ -401,9 +401,37 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     #strawberry {
         width: 70px;
-height: 70px;
+        height: 70px;
+    }
+
+    .arcade-hud {
+        top: 6%;
+        left: 6%;
+        right: 6%;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .hud-left {
+        gap: 10px;
+    }
+
+    .hud-score {
+        font-size: 12px;
+    }
+
+    .score-value {
+        margin-top: 3px;
+        letter-spacing: 2px;
+    }
+
+    #intro::after {
+        bottom: 12%;
+        font-size: 10px;
+        letter-spacing: 2.5px;
     }
 
     nav {
