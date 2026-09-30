@@ -416,11 +416,12 @@ height: 70px;
 ========================================= */
 
 #strawberry {
+    filter: drop-shadow(2px 2px 0 #8C3567);
+
     animation:
         strawberry-blink 0.9s ease-in-out infinite,
         strawberry-glitch 9s steps(1, end) infinite;
 }
-
 @keyframes strawberry-glitch {
 
     0%, 91%, 100% {
