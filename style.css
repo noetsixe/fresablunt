@@ -147,11 +147,11 @@ body {
     letter-spacing: 3px;
     white-space: nowrap;
 
-    color: #FFE3F2;
+    color: #e672b1;
 
     text-shadow:
-        2px 2px 0 #8C3567,
-        0 0 8px rgba(245, 121, 188, 0.35);
+    2px 2px 0 #8C3567,
+    0 0 8px rgba(230, 114, 177, 0.35);
 
     z-index: 20;
 
