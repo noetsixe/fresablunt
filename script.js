@@ -380,16 +380,14 @@ function drawRainbowShine(progress) {
     */
 
     const colors = [
-        "#ff6bb5",
-        "#ff9d5c",
-        "#ffe66d",
-        "#8ee6a0",
-        "#70d9e8",
-        "#819cff",
-        "#bd82ed",
-        "#ff6bb5",
-        "#ff9d5c"
-    ];
+    "#ff3b9d",
+    "#ff7a24",
+    "#ffd21f",
+    "#39d353",
+    "#00d9ff",
+    "#3867ff",
+    "#a855f7"
+];
 
 
     /*
@@ -397,7 +395,7 @@ function drawRainbowShine(progress) {
     */
 
     const colorFlow =
-        progress * 9;
+    progress * 7;
 
 
     /*
@@ -443,10 +441,10 @@ function drawRainbowShine(progress) {
             */
 
             const localPosition =
-                (x / w) * 3;
+    (x - centerX) / radiusX;
 
-            const colorPosition =
-                colorFlow + localPosition;
+const colorPosition =
+    colorFlow + localPosition * 2.2;
 
 
             const colorIndex =
