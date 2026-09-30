@@ -359,63 +359,47 @@ function drawRainbowShine(progress) {
     shineCtx.clearRect(0, 0, w, h);
 
     /*
-       REFLEXIÓN DIAGONAL
-       IZQUIERDA → DERECHA
+       TRAYECTORIA DIAGONAL
+       ABAJO-IZQUIERDA → ARRIBA-DERECHA
     */
 
     const startX = -w * 0.25;
-    const endX = w * 1.25;
+    const startY = h * 1.15;
 
-    const x =
-        startX +
-        (endX - startX) * progress;
+    const endX = w * 1.25;
+    const endY = -h * 0.15;
+
+    const centerX =
+        startX + (endX - startX) * progress;
+
+    const centerY =
+        startY + (endY - startY) * progress;
 
 
     /*
-       SEGMENTOS PEQUEÑOS
-       Cada color aparece ligeramente
-       después del anterior.
+       PEQUEÑOS SEGMENTOS DE COLOR
     */
 
     for (let i = 0; i < shineColors.length; i++) {
 
-        const offset = i * 4;
+        const offset = i * 5;
 
-        const bandX = x - offset;
+        const x = centerX - offset;
+        const y = centerY + offset;
 
-        shineCtx.save();
-
-        shineCtx.translate(
-            bandX,
-            h / 2
-        );
-
-        shineCtx.rotate(
-            -Math.PI / 4
-        );
-
-        shineCtx.fillStyle =
-            shineColors[i];
-
-        /*
-           Ya NO atraviesa toda la fresa.
-           Es un pequeño fragmento.
-        */
+        shineCtx.fillStyle = shineColors[i];
 
         shineCtx.fillRect(
-            -1.5,
-            -7,
+            Math.round(x),
+            Math.round(y),
             3,
-            14
+            3
         );
-
-        shineCtx.restore();
     }
 
 
     /*
-       RECORTAR EXACTAMENTE
-       A LA SILUETA DEL PNG
+       RECORTAR A LA SILUETA DE LA FRESA
     */
 
     shineCtx.globalCompositeOperation =
