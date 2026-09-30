@@ -84,11 +84,15 @@ body {
 /* =========================================
    TEXTO UI TIPO CONSOLA (PRESS START)
    ========================================= */
-#intro::before {
-    content: "● 1P";
+.arcade-hud {
     position: absolute;
     top: 8%;
     left: 7%;
+    right: 7%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
     font-family: monospace;
     font-size: 11px;
@@ -99,6 +103,22 @@ body {
     text-shadow: 2px 2px 0 #3A102D;
 
     z-index: 20;
+    pointer-events: none;
+}
+
+.hud-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lives {
+    letter-spacing: 3px;
+}
+
+.hud-score {
+    font-size: 14px;
+    letter-spacing: 2px;
 }
 #intro::after {
     content: "PRESS START";
