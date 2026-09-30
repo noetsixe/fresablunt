@@ -27,7 +27,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #ff0303;
+    background: #07030a;
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ body {
 #intro-background {
     position: absolute;
     inset: 0;
-    background: #ff0303;
+    background: #07030a;
     z-index: 0;
 }
 
