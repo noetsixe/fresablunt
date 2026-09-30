@@ -13,6 +13,15 @@ const mainSite = document.getElementById("main-site");
 const strawberryImage = document.querySelector(".pixel-strawberry");
 const shineCanvas = document.getElementById("strawberry-shine");
 const shineCtx = shineCanvas.getContext("2d");
+const scoreValue = document.getElementById("score-value");
+
+let visits = Number(localStorage.getItem("fresaVisits") || 0);
+
+visits++;
+
+localStorage.setItem("fresaVisits", visits);
+
+scoreValue.textContent = String(visits).padStart(6, "0");
 
 const shineColors = [
     "#ff6bb5",
