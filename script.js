@@ -529,3 +529,87 @@ const colorIntensity =
     shineCtx.globalCompositeOperation =
         "source-over";
 }
+/* =========================================
+   GALAGA STYLE STARFIELD
+========================================= */
+
+const starCanvas = document.getElementById("starfield");
+const starCtx = starCanvas.getContext("2d");
+
+starCtx.imageSmoothingEnabled = false;
+
+const stars = [];
+
+function resizeStarfield() {
+
+    starCanvas.width = window.innerWidth;
+    starCanvas.height = window.innerHeight;
+
+    stars.length = 0;
+
+    const amount = Math.floor(
+        (starCanvas.width * starCanvas.height) / 9000
+    );
+
+    for (let i = 0; i < amount; i++) {
+
+        stars.push({
+            x: Math.floor(Math.random() * starCanvas.width),
+            y: Math.floor(Math.random() * starCanvas.height),
+
+            size: Math.random() < 0.88 ? 1 : 2,
+
+            speed:
+                Math.random() < 0.75
+                    ? 0.18 + Math.random() * 0.18
+                    : 0.4 + Math.random() * 0.3,
+
+            brightness:
+                Math.random() < 0.85
+                    ? 0.45 + Math.random() * 0.3
+                    : 0.8 + Math.random() * 0.2
+        });
+    }
+}
+
+function animateStarfield() {
+
+    starCtx.clearRect(
+        0,
+        0,
+        starCanvas.width,
+        starCanvas.height
+    );
+
+    for (const star of stars) {
+
+        star.y += star.speed;
+
+        if (star.y > starCanvas.height) {
+            star.y = -2;
+            star.x = Math.floor(
+                Math.random() * starCanvas.width
+            );
+        }
+
+        starCtx.globalAlpha = star.brightness;
+
+        starCtx.fillStyle = "#FFFFFF";
+
+        starCtx.fillRect(
+            Math.floor(star.x),
+            Math.floor(star.y),
+            star.size,
+            star.size
+        );
+    }
+
+    starCtx.globalAlpha = 1;
+
+    requestAnimationFrame(animateStarfield);
+}
+
+resizeStarfield();
+animateStarfield();
+
+window.addEventListener("resize", resizeStarfield);
