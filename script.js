@@ -324,8 +324,8 @@ function animateRainbowShine() {
 
     const now = performance.now();
 
-    const cycle = 15000;
-const duration = 650;
+    const cycle = 10000;
+const duration = 5000;
 
     const elapsed = (now - shineStart) % cycle;
 
@@ -469,10 +469,10 @@ const colorPhase =
     ((colorPosition % 1) + 1) % 1;
 
 const colorIntensity =
-    0.55 +
+    0.25 +
     Math.sin(
         colorPhase * Math.PI
-    ) * 0.45;
+    ) * 0.25;
 
 
             /*
@@ -480,11 +480,11 @@ const colorIntensity =
             */
 
             shineCtx.globalAlpha =
-                colorIntensity *
-                (
-                    0.06 +
-                    intensity * 0.34
-                );
+    colorIntensity *
+    (
+        0.04 +
+        intensity * 0.20
+    );
 
             shineCtx.fillStyle = color;
 
