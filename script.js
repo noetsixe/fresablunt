@@ -444,29 +444,35 @@ function drawRainbowShine(progress) {
     (x - centerX) / radiusX;
 
 const colorPosition =
-    colorFlow + localPosition * 2.2;
+    colorFlow + localPosition * 5.2;
 
 
-            const colorIndex =
-                Math.floor(colorPosition)
-                % colors.length;
+/*
+   ÍNDICE DEL COLOR
+   NORMALIZADO PARA EVITAR HUECOS
+*/
 
-            const color =
-                colors[colorIndex];
+const colorIndex =
+    ((Math.floor(colorPosition) % colors.length)
+    + colors.length) % colors.length;
+
+const color =
+    colors[colorIndex];
 
 
-            /*
-               CADA COLOR APARECE Y
-               DESAPARECE GRADUALMENTE.
-            */
+/*
+   TRANSICIÓN ENTRE COLORES
+   SIN LLEGAR A CERO
+*/
 
-            const colorPhase =
-                colorPosition % 1;
+const colorPhase =
+    ((colorPosition % 1) + 1) % 1;
 
-            const colorIntensity =
-                Math.sin(
-                    colorPhase * Math.PI
-                );
+const colorIntensity =
+    0.55 +
+    Math.sin(
+        colorPhase * Math.PI
+    ) * 0.45;
 
 
             /*
