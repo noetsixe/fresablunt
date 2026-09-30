@@ -494,27 +494,6 @@ function drawRainbowShine(progress) {
     }
 
 
-    /*
-       PEQUEÑO CENTRO BLANCO
-    */
-
-    const sparkle =
-        Math.sin(progress * Math.PI);
-
-    shineCtx.globalAlpha =
-        sparkle * 0.55;
-
-    shineCtx.fillStyle =
-        "#fff4fa";
-
-    shineCtx.fillRect(
-        Math.round(centerX - 3),
-        Math.round(centerY - 3),
-        6,
-        6
-    );
-
-
     shineCtx.globalAlpha = 1;
 
 
