@@ -120,6 +120,11 @@ body {
     font-size: 14px;
     letter-spacing: 2px;
 }
+.score-value {
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 3px;
+}
 #intro::after {
     content: "PRESS START";
     position: absolute;
