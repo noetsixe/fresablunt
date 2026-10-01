@@ -617,6 +617,11 @@ footer {
    PANTALLA APAGADA
 ========================================= */
 
+html.boot-first #intro,
+html.boot-repeat #intro {
+    background: #000;
+}
+
 html.boot-first #intro::before,
 html.boot-repeat #intro::before {
     content: "";
@@ -626,10 +631,12 @@ html.boot-repeat #intro::before {
 
     background: #000;
 
-    z-index: 90;
+    z-index: 999;
     pointer-events: none;
 
     transform-origin: center;
+
+    animation-fill-mode: both;
 }
 
 
@@ -638,16 +645,15 @@ html.boot-repeat #intro::before {
 ========================================= */
 
 html.boot-first #intro::before {
-    animation: crt-power-on 2.2s steps(1, end) forwards;
+    animation: crt-power-on 2.2s steps(1, end) both;
 }
-
 
 /* =========================================
    RECARGAS
 ========================================= */
 
 html.boot-repeat #intro::before {
-    animation: crt-power-repeat 0.45s steps(1, end) forwards;
+    animation: crt-power-repeat 0.45s steps(1, end) both;
 }
 
 
