@@ -645,3 +645,31 @@ window.addEventListener("resize", resizeStarfield);
 if (!localStorage.getItem("fresaBootSeen")) {
     localStorage.setItem("fresaBootSeen", "true");
 }
+
+/* =========================================
+   BARRIDO OCASIONAL DE COLORES
+========================================= */
+
+const colorWave = document.getElementById("color-wave");
+
+function triggerColorWave() {
+
+    colorWave.classList.remove("active");
+
+    void colorWave.offsetWidth;
+
+    colorWave.classList.add("active");
+}
+
+
+/* Primera aparición después de unos segundos */
+
+setTimeout(() => {
+
+    triggerColorWave();
+
+    setInterval(() => {
+        triggerColorWave();
+    }, 9000);
+
+}, 5000);
