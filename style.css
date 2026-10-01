@@ -1116,3 +1116,146 @@ html.boot-repeat #strawberry {
 .strawberry-hit {
     opacity: 1 !important;
 }
+
+/* =========================================
+   BARRIDO DE COLORES — TV ARCADE
+========================================= */
+
+#color-wave {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+#color-wave span {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 7vw;
+    min-width: 32px;
+    max-width: 75px;
+
+    left: -10vw;
+
+    opacity: 0;
+
+    transform: translateX(0);
+
+    animation:
+        color-wave-pass 7s linear infinite;
+
+    animation-play-state: paused;
+}
+
+
+/* COLORES */
+
+#color-wave span:nth-child(1) {
+    background: #FFE600;
+}
+
+#color-wave span:nth-child(2) {
+    background: #00B8E6;
+}
+
+#color-wave span:nth-child(3) {
+    background: #39D353;
+}
+
+#color-wave span:nth-child(4) {
+    background: #FF00C8;
+}
+
+#color-wave span:nth-child(5) {
+    background: #FF2020;
+}
+
+#color-wave span:nth-child(6) {
+    background: #1828FF;
+}
+
+#color-wave span:nth-child(7) {
+    background: #F2F2F2;
+}
+
+
+/* =========================================
+   MOVIMIENTO
+========================================= */
+
+@keyframes color-wave-pass {
+
+    0% {
+        left: -10vw;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0.85;
+    }
+
+    18% {
+        opacity: 0.85;
+    }
+
+    82% {
+        opacity: 0.85;
+    }
+
+    94% {
+        opacity: 0;
+    }
+
+    100% {
+        left: 110vw;
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   APARICIÓN TIPO PIANO
+========================================= */
+
+#color-wave span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+#color-wave span:nth-child(2) {
+    animation-delay: 0.16s;
+}
+
+#color-wave span:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+#color-wave span:nth-child(4) {
+    animation-delay: 0.48s;
+}
+
+#color-wave span:nth-child(5) {
+    animation-delay: 0.64s;
+}
+
+#color-wave span:nth-child(6) {
+    animation-delay: 0.80s;
+}
+
+#color-wave span:nth-child(7) {
+    animation-delay: 0.96s;
+}
+
+/* =========================================
+   ACTIVACIÓN OCASIONAL
+========================================= */
+
+#color-wave.active span {
+    animation-play-state: running;
+}
