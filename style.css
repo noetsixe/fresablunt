@@ -1146,7 +1146,7 @@ html.boot-repeat #strawberry {
 
     overflow: hidden;
 
-    animation: color-key-wave 4s linear infinite;
+    animation: color-key-wave 2s linear infinite;
     animation-play-state: paused;
 }
 
@@ -1360,35 +1360,35 @@ html.boot-repeat #strawberry {
 ========================================= */
 
 #color-wave span:nth-child(1)  { animation-delay: 0s; }
-#color-wave span:nth-child(2)  { animation-delay: 0.12s; }
-#color-wave span:nth-child(3)  { animation-delay: 0.24s; }
-#color-wave span:nth-child(4)  { animation-delay: 0.36s; }
-#color-wave span:nth-child(5)  { animation-delay: 0.48s; }
-#color-wave span:nth-child(6)  { animation-delay: 0.60s; }
-#color-wave span:nth-child(7)  { animation-delay: 0.72s; }
-#color-wave span:nth-child(8)  { animation-delay: 0.84s; }
-#color-wave span:nth-child(9)  { animation-delay: 0.96s; }
-#color-wave span:nth-child(10) { animation-delay: 1.08s; }
-#color-wave span:nth-child(11) { animation-delay: 1.20s; }
-#color-wave span:nth-child(12) { animation-delay: 1.32s; }
-#color-wave span:nth-child(13) { animation-delay: 1.44s; }
-#color-wave span:nth-child(14) { animation-delay: 1.56s; }
-#color-wave span:nth-child(15) { animation-delay: 1.68s; }
-#color-wave span:nth-child(16) { animation-delay: 1.80s; }
-#color-wave span:nth-child(17) { animation-delay: 1.92s; }
-#color-wave span:nth-child(18) { animation-delay: 2.04s; }
-#color-wave span:nth-child(19) { animation-delay: 2.16s; }
-#color-wave span:nth-child(20) { animation-delay: 2.28s; }
-#color-wave span:nth-child(21) { animation-delay: 2.40s; }
-#color-wave span:nth-child(22) { animation-delay: 2.52s; }
-#color-wave span:nth-child(23) { animation-delay: 2.64s; }
-#color-wave span:nth-child(24) { animation-delay: 2.76s; }
-#color-wave span:nth-child(25) { animation-delay: 2.88s; }
-#color-wave span:nth-child(26) { animation-delay: 3.00s; }
-#color-wave span:nth-child(27) { animation-delay: 3.12s; }
-#color-wave span:nth-child(28) { animation-delay: 3.24s; }
-#color-wave span:nth-child(29) { animation-delay: 3.36s; }
-#color-wave span:nth-child(30) { animation-delay: 3.48s; }
+#color-wave span:nth-child(2)  { animation-delay: 0.10s; }
+#color-wave span:nth-child(3)  { animation-delay: 0.20s; }
+#color-wave span:nth-child(4)  { animation-delay: 0.30s; }
+#color-wave span:nth-child(5)  { animation-delay: 0.40s; }
+#color-wave span:nth-child(6)  { animation-delay: 0.50s; }
+#color-wave span:nth-child(7)  { animation-delay: 0.60s; }
+#color-wave span:nth-child(8)  { animation-delay: 0.70s; }
+#color-wave span:nth-child(9)  { animation-delay: 0.80s; }
+#color-wave span:nth-child(10) { animation-delay: 0.90s; }
+#color-wave span:nth-child(11) { animation-delay: 1.00s; }
+#color-wave span:nth-child(12) { animation-delay: 1.10s; }
+#color-wave span:nth-child(13) { animation-delay: 1.20s; }
+#color-wave span:nth-child(14) { animation-delay: 1.30s; }
+#color-wave span:nth-child(15) { animation-delay: 1.40s; }
+#color-wave span:nth-child(16) { animation-delay: 1.50s; }
+#color-wave span:nth-child(17) { animation-delay: 1.60s; }
+#color-wave span:nth-child(18) { animation-delay: 1.70s; }
+#color-wave span:nth-child(19) { animation-delay: 1.80s; }
+#color-wave span:nth-child(20) { animation-delay: 1.90s; }
+#color-wave span:nth-child(21) { animation-delay: 2.00s; }
+#color-wave span:nth-child(22) { animation-delay: 2.10s; }
+#color-wave span:nth-child(23) { animation-delay: 2.20s; }
+#color-wave span:nth-child(24) { animation-delay: 2.30s; }
+#color-wave span:nth-child(25) { animation-delay: 2.40s; }
+#color-wave span:nth-child(26) { animation-delay: 2.50s; }
+#color-wave span:nth-child(27) { animation-delay: 2.60s; }
+#color-wave span:nth-child(28) { animation-delay: 2.70s; }
+#color-wave span:nth-child(29) { animation-delay: 2.80s; }
+#color-wave span:nth-child(30) { animation-delay: 2.90s; }
 
 
 /* =========================================
