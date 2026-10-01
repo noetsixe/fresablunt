@@ -659,3 +659,11 @@ resizeStarfield();
 animateStarfield();
 
 window.addEventListener("resize", resizeStarfield);
+
+/* =========================================
+   BOOT SEQUENCE MEMORY
+========================================= */
+
+if (!localStorage.getItem("fresaBootSeen")) {
+    localStorage.setItem("fresaBootSeen", "true");
+}
