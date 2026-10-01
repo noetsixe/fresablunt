@@ -659,10 +659,15 @@ function triggerColorWave() {
     void colorWave.offsetWidth;
 
     colorWave.classList.add("active");
+
+    // Quitar active cuando termine la animación
+    setTimeout(() => {
+        colorWave.classList.remove("active");
+    }, 2500);
 }
 
 
-/* Primera aparición después de unos segundos */
+/* Primera aparición después de 3 segundos */
 
 setTimeout(() => {
 
@@ -670,6 +675,6 @@ setTimeout(() => {
 
     setInterval(() => {
         triggerColorWave();
-    }, 3000);
+    }, 4500);
 
-}, 5000);
+}, 3000);
