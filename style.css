@@ -613,7 +613,9 @@ footer {
    ARCADE / CRT POWER ON
 ========================================= */
 
-/* Pantalla completamente apagada */
+/* =========================================
+   PANTALLA APAGADA
+========================================= */
 
 html.boot-first #intro::before,
 html.boot-repeat #intro::before {
@@ -636,16 +638,16 @@ html.boot-repeat #intro::before {
 ========================================= */
 
 html.boot-first #intro::before {
-    animation: crt-power-on 1.05s steps(1, end) forwards;
+    animation: crt-power-on 2.2s steps(1, end) forwards;
 }
 
 
 /* =========================================
-   RECARGA
+   RECARGAS
 ========================================= */
 
 html.boot-repeat #intro::before {
-    animation: crt-power-repeat 0.28s steps(1, end) forwards;
+    animation: crt-power-repeat 0.45s steps(1, end) forwards;
 }
 
 
@@ -657,14 +659,14 @@ html.boot-first #starfield {
     opacity: 0;
 
     animation:
-        stars-boot 0.75s steps(5, end) 0.32s forwards;
+        stars-boot 0.35s steps(3, end) 1.72s forwards;
 }
 
 html.boot-repeat #starfield {
     opacity: 0;
 
     animation:
-        stars-repeat 0.15s steps(2, end) forwards;
+        stars-repeat 0.12s steps(2, end) 0.34s forwards;
 }
 
 
@@ -676,28 +678,31 @@ html.boot-first #strawberry {
     opacity: 0;
 
     animation:
-        strawberry-boot-in 0.25s steps(3, end) 0.72s forwards,
-        strawberry-blink 0.9s ease-in-out 1s infinite,
-        strawberry-glitch 9s steps(1, end) 1s infinite;
+        strawberry-boot-in 0.28s steps(3, end) 1.94s forwards,
+        strawberry-blink 0.9s ease-in-out 2.22s infinite,
+        strawberry-glitch 9s steps(1, end) 2.22s infinite;
 }
 
 html.boot-repeat #strawberry {
     opacity: 0;
 
     animation:
-        strawberry-repeat-in 0.12s steps(2, end) 0.12s forwards,
-        strawberry-blink 0.9s ease-in-out 0.25s infinite,
-        strawberry-glitch 9s steps(1, end) 0.25s infinite;
+        strawberry-repeat-in 0.10s steps(2, end) 0.35s forwards,
+        strawberry-blink 0.9s ease-in-out 0.45s infinite,
+        strawberry-glitch 9s steps(1, end) 0.45s infinite;
 }
 
 
 /* =========================================
-   ENCENDIDO CRT
+   CRT POWER ON
 ========================================= */
 
 @keyframes crt-power-on {
 
-    /* NEGRO TOTAL */
+    /* -------------------------------------
+       0.00 - 0.45
+       NEGRO TOTAL
+    ------------------------------------- */
 
     0% {
         background: #000;
@@ -705,49 +710,133 @@ html.boot-repeat #strawberry {
         transform: scaleY(1);
     }
 
-    /* CHISPA */
-
-    34% {
-        background: #ffffff;
+    20% {
+        background: #000;
         opacity: 1;
-        transform: scaleY(0.015);
+        transform: scaleY(1);
     }
 
-    /* LÍNEA DE PANTALLA */
+
+    /* -------------------------------------
+       0.45
+       CHISPA
+    ------------------------------------- */
+
+    27% {
+        background: #ffffff;
+        opacity: 1;
+        transform: scaleY(0.018);
+    }
+
+
+    /* -------------------------------------
+       0.60
+       LÍNEA CRT
+    ------------------------------------- */
+
+    34% {
+        background: #f4f4ff;
+        opacity: 1;
+        transform: scaleY(0.018);
+    }
+
+
+    /* -------------------------------------
+       0.75
+       LA LÍNEA COMIENZA A ABRIRSE
+    ------------------------------------- */
 
     40% {
         background: #d8d8ff;
         opacity: 1;
-        transform: scaleY(0.015);
+        transform: scaleY(0.035);
     }
 
-    /* SE ABRE */
 
-    48% {
+    /* -------------------------------------
+       0.90
+    ------------------------------------- */
+
+    46% {
+        background: #77779a;
+        opacity: 1;
+        transform: scaleY(0.10);
+    }
+
+
+    /* -------------------------------------
+       1.10
+    ------------------------------------- */
+
+    55% {
+        background: #303047;
+        opacity: 1;
+        transform: scaleY(0.28);
+    }
+
+
+    /* -------------------------------------
+       1.30
+    ------------------------------------- */
+
+    64% {
+        background: #11111e;
+        opacity: 1;
+        transform: scaleY(0.52);
+    }
+
+
+    /* -------------------------------------
+       1.50
+    ------------------------------------- */
+
+    73% {
+        background: #080811;
+        opacity: 1;
+        transform: scaleY(0.76);
+    }
+
+
+    /* -------------------------------------
+       1.65
+       CASI ABIERTA
+    ------------------------------------- */
+
+    82% {
         background: #050510;
         opacity: 1;
-        transform: scaleY(0.08);
+        transform: scaleY(0.93);
     }
 
-    60% {
-        background: #050510;
-        opacity: 1;
-        transform: scaleY(0.40);
-    }
 
-    74% {
-        background: #050510;
-        opacity: 0.95;
-        transform: scaleY(0.78);
-    }
+    /* -------------------------------------
+       1.80
+       PANTALLA COMPLETA
+    ------------------------------------- */
 
     88% {
         background: #050510;
-        opacity: 0.55;
-        transform: scaleY(0.96);
+        opacity: 1;
+        transform: scaleY(1);
     }
 
-    /* PANTALLA ENCENDIDA */
+
+    /* -------------------------------------
+       1.95
+       PEQUEÑO BRILLO CRT
+    ------------------------------------- */
+
+    94% {
+        background: #101020;
+        opacity: 0.45;
+        transform: scaleY(1);
+    }
+
+
+    /* -------------------------------------
+       2.20
+       ENCENDIDA
+    ------------------------------------- */
 
     100% {
         background: #050510;
@@ -758,10 +847,12 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   ENCENDIDO RÁPIDO AL RECARGAR
+   CRT POWER ON - RECARGA
 ========================================= */
 
 @keyframes crt-power-repeat {
+
+    /* NEGRO */
 
     0% {
         background: #000;
@@ -769,24 +860,58 @@ html.boot-repeat #strawberry {
         transform: scaleY(1);
     }
 
+
     /* CHISPA */
 
-    25% {
+    18% {
         background: #ffffff;
         opacity: 1;
-        transform: scaleY(0.02);
+        transform: scaleY(0.025);
     }
 
-    /* ABRE RÁPIDO */
 
-    38% {
-        background: #050510;
+    /* LÍNEA */
+
+    30% {
+        background: #e8e8ff;
+        opacity: 1;
+        transform: scaleY(0.025);
+    }
+
+
+    /* EXPANSIÓN */
+
+    43% {
+        background: #77779a;
+        opacity: 1;
         transform: scaleY(0.12);
     }
 
-    65% {
+    58% {
+        background: #222233;
+        opacity: 1;
+        transform: scaleY(0.40);
+    }
+
+    72% {
+        background: #080811;
+        opacity: 1;
+        transform: scaleY(0.72);
+    }
+
+    86% {
         background: #050510;
-        transform: scaleY(0.80);
+        opacity: 1;
+        transform: scaleY(0.94);
+    }
+
+
+    /* PANTALLA */
+
+    94% {
+        background: #101020;
+        opacity: 0.45;
+        transform: scaleY(1);
     }
 
     100% {
@@ -798,7 +923,7 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   APARICIÓN DE ESTRELLAS
+   ESTRELLAS
 ========================================= */
 
 @keyframes stars-boot {
@@ -807,12 +932,8 @@ html.boot-repeat #strawberry {
         opacity: 0;
     }
 
-    45% {
+    50% {
         opacity: 0.35;
-    }
-
-    75% {
-        opacity: 0.75;
     }
 
     100% {
@@ -833,7 +954,7 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   APARICIÓN DE LA FRESA
+   FRESA
 ========================================= */
 
 @keyframes strawberry-boot-in {
