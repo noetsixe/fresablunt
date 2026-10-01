@@ -1118,7 +1118,7 @@ html.boot-repeat #strawberry {
 }
 
 /* =========================================
-   BARRIDO DE COLORES — TECLAS CRT
+   BARRIDO DE COLORES — TECLADO CRT
 ========================================= */
 
 #color-wave {
@@ -1141,127 +1141,102 @@ html.boot-repeat #strawberry {
     min-width: 32px;
     max-width: 75px;
 
-    left: -10vw;
-
     opacity: 0;
 
     animation:
-        color-keyboard-wave 3.2s linear infinite;
+        color-key-wave 4s linear infinite;
 
     animation-play-state: paused;
 }
 
 
 /* =========================================
-   COLORES
+   POSICIÓN DE CADA BARRA
 ========================================= */
 
-#color-wave span:nth-child(1) {
-    background: #FFE600;
-}
-
-#color-wave span:nth-child(2) {
-    background: #00B8E6;
-}
-
-#color-wave span:nth-child(3) {
-    background: #39D353;
-}
-
-#color-wave span:nth-child(4) {
-    background: #FF00C8;
-}
-
-#color-wave span:nth-child(5) {
-    background: #FF2020;
-}
-
-#color-wave span:nth-child(6) {
-    background: #1828FF;
-}
-
-#color-wave span:nth-child(7) {
-    background: #F2F2F2;
-}
+#color-wave span:nth-child(1)  { left: 0vw; }
+#color-wave span:nth-child(2)  { left: 7vw; }
+#color-wave span:nth-child(3)  { left: 14vw; }
+#color-wave span:nth-child(4)  { left: 21vw; }
+#color-wave span:nth-child(5)  { left: 28vw; }
+#color-wave span:nth-child(6)  { left: 35vw; }
+#color-wave span:nth-child(7)  { left: 42vw; }
+#color-wave span:nth-child(8)  { left: 49vw; }
+#color-wave span:nth-child(9)  { left: 56vw; }
+#color-wave span:nth-child(10) { left: 63vw; }
+#color-wave span:nth-child(11) { left: 70vw; }
+#color-wave span:nth-child(12) { left: 77vw; }
+#color-wave span:nth-child(13) { left: 84vw; }
+#color-wave span:nth-child(14) { left: 91vw; }
 
 
 /* =========================================
-   CADA BARRA ES UNA "TECLA"
+   COLORES
 ========================================= */
 
-@keyframes color-keyboard-wave {
+#color-wave span:nth-child(1)  { background: #FFE600; }
+#color-wave span:nth-child(2)  { background: #00B8E6; }
+#color-wave span:nth-child(3)  { background: #39D353; }
+#color-wave span:nth-child(4)  { background: #FF00C8; }
+#color-wave span:nth-child(5)  { background: #FF2020; }
+#color-wave span:nth-child(6)  { background: #1828FF; }
+#color-wave span:nth-child(7)  { background: #F2F2F2; }
 
-    /* FUERA DE LA PANTALLA */
+#color-wave span:nth-child(8)  { background: #FFE600; }
+#color-wave span:nth-child(9)  { background: #00B8E6; }
+#color-wave span:nth-child(10) { background: #39D353; }
+#color-wave span:nth-child(11) { background: #FF00C8; }
+#color-wave span:nth-child(12) { background: #FF2020; }
+#color-wave span:nth-child(13) { background: #1828FF; }
+#color-wave span:nth-child(14) { background: #F2F2F2; }
+
+
+/* =========================================
+   ONDA DE ENCENDIDO / APAGADO
+========================================= */
+
+@keyframes color-key-wave {
 
     0% {
-        left: -10vw;
         opacity: 0;
     }
-
-    /* APARECE */
 
     8% {
         opacity: 0.85;
     }
 
-    /* PERMANECE ENCENDIDA */
-
-    22% {
+    18% {
         opacity: 0.85;
     }
 
-    /* EMPIEZA A APAGARSE */
-
-    34% {
+    28% {
         opacity: 0;
     }
-
-    /* DESAPARECE */
-
-    40% {
-        opacity: 0;
-    }
-
-    /* CONTINÚA SU RECORRIDO */
 
     100% {
-        left: 110vw;
         opacity: 0;
     }
 }
 
 
 /* =========================================
-   RETRASO ENTRE CADA "TECLA"
+   RETRASO DE CADA TECLA
 ========================================= */
 
-#color-wave span:nth-child(1) {
-    animation-delay: 0s;
-}
-
-#color-wave span:nth-child(2) {
-    animation-delay: 0.18s;
-}
-
-#color-wave span:nth-child(3) {
-    animation-delay: 0.36s;
-}
-
-#color-wave span:nth-child(4) {
-    animation-delay: 0.54s;
-}
-
-#color-wave span:nth-child(5) {
-    animation-delay: 0.72s;
-}
-
-#color-wave span:nth-child(6) {
-    animation-delay: 0.90s;
-}
-
-#color-wave span:nth-child(7) {
-    animation-delay: 1.08s;
-}
+#color-wave span:nth-child(1)  { animation-delay: 0s; }
+#color-wave span:nth-child(2)  { animation-delay: 0.18s; }
+#color-wave span:nth-child(3)  { animation-delay: 0.36s; }
+#color-wave span:nth-child(4)  { animation-delay: 0.54s; }
+#color-wave span:nth-child(5)  { animation-delay: 0.72s; }
+#color-wave span:nth-child(6)  { animation-delay: 0.90s; }
+#color-wave span:nth-child(7)  { animation-delay: 1.08s; }
+#color-wave span:nth-child(8)  { animation-delay: 1.26s; }
+#color-wave span:nth-child(9)  { animation-delay: 1.44s; }
+#color-wave span:nth-child(10) { animation-delay: 1.62s; }
+#color-wave span:nth-child(11) { animation-delay: 1.80s; }
+#color-wave span:nth-child(12) { animation-delay: 1.98s; }
+#color-wave span:nth-child(13) { animation-delay: 2.16s; }
+#color-wave span:nth-child(14) { animation-delay: 2.34s; }
 
 
 /* =========================================
