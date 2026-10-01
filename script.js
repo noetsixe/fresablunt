@@ -18,7 +18,7 @@ const bgMusic = document.getElementById("bg-music");
 const soundToggle = document.getElementById("sound-toggle");
 const soundLabel = document.getElementById("sound-label");
 
-bgMusic.volume = 0.35;
+bgMusic.volume = 0.60;
 
 soundToggle.addEventListener("click", async () => {
 
