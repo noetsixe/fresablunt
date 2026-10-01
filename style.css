@@ -1146,7 +1146,7 @@ html.boot-repeat #strawberry {
 
     overflow: hidden;
 
-    animation: color-key-wave 1.2s linear infinite;
+    animation: color-key-wave 1.2s linear;
     animation-play-state: paused;
 }
 
