@@ -1133,23 +1133,19 @@ html.boot-repeat #strawberry {
 
 #color-wave span {
     position: absolute;
-
     top: 0;
     bottom: 0;
-
     width: 3.34vw;
-
     margin: 0;
     padding: 0;
-
     opacity: 0;
-
     overflow: hidden;
-
-    animation: color-key-wave 1.2s linear;
-    animation-play-state: paused;
+    animation: none;
 }
 
+#color-wave.active span {
+    animation: color-key-wave 1.2s linear;
+}
 
 /* =========================================
    TEXTURA DE TELEVISIÓN ANTIGUA
