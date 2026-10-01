@@ -15,15 +15,42 @@ const shineCanvas = document.getElementById("strawberry-shine");
 const shineCtx = shineCanvas.getContext("2d");
 const scoreValue = document.getElementById("score-value");
 const bgMusic = document.getElementById("bg-music");
+const soundToggle = document.getElementById("sound-toggle");
+const soundLabel = document.getElementById("sound-label");
 
 bgMusic.volume = 0.35;
-bgMusic.play()
-    .then(() => {
-        console.log("🎵 Música iniciada");
-    })
-    .catch((error) => {
-        console.log("❌ Autoplay bloqueado:", error);
-    });
+
+soundToggle.addEventListener("click", async () => {
+
+    if (bgMusic.paused) {
+
+        try {
+
+            await bgMusic.play();
+
+            soundToggle.classList.add("is-on");
+            soundToggle.setAttribute("aria-pressed", "true");
+            soundToggle.setAttribute("aria-label", "Apagar sonido");
+
+            soundLabel.textContent = "ON";
+
+        } catch (error) {
+
+            console.log("No se pudo iniciar el audio:", error);
+
+        }
+
+    } else {
+
+        bgMusic.pause();
+
+        soundToggle.classList.remove("is-on");
+        soundToggle.setAttribute("aria-pressed", "false");
+        soundToggle.setAttribute("aria-label", "Activar sonido");
+
+        soundLabel.textContent = "OFF";
+    }
+});
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
 
@@ -127,7 +154,13 @@ for (let i = 1; i <= 6; i++) {
 strawberry.addEventListener("click", () => {
 
     bgMusic.pause();
-    bgMusic.currentTime = 0;
+bgMusic.currentTime = 0;
+
+soundToggle.classList.remove("is-on");
+soundToggle.setAttribute("aria-pressed", "false");
+soundToggle.setAttribute("aria-label", "Activar sonido");
+
+soundLabel.textContent = "OFF";
 
     if (started) return;
 
