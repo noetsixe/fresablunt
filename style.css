@@ -1137,17 +1137,117 @@ html.boot-repeat #strawberry {
     top: 0;
     bottom: 0;
 
-    /* MÁS DELGADAS */
     width: 3.34vw;
 
-    /* SIN ESPACIOS */
     margin: 0;
     padding: 0;
 
     opacity: 0;
 
+    overflow: hidden;
+
     animation: color-key-wave 4s linear infinite;
     animation-play-state: paused;
+}
+
+
+/* =========================================
+   TEXTURA DE TELEVISIÓN ANTIGUA
+   SOLO DENTRO DE LAS BARRAS
+========================================= */
+
+#color-wave span::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.16) 0px,
+            rgba(255,255,255,0.16) 1px,
+            rgba(0,0,0,0.10) 2px,
+            transparent 3px,
+            transparent 5px
+        );
+
+    mix-blend-mode: overlay;
+
+    opacity: 0.75;
+
+    animation: tv-bar-flicker 0.13s steps(2, end) infinite;
+}
+
+
+/* Pequeña vibración de señal */
+
+#color-wave span::before {
+    content: "";
+
+    position: absolute;
+    inset: -2px;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,0.05) 4px,
+            transparent 5px
+        );
+
+    opacity: 0.5;
+
+    animation: tv-bar-noise 0.18s steps(3, end) infinite;
+}
+
+
+/* =========================================
+   PARPADEO DE LA TEXTURA
+========================================= */
+
+@keyframes tv-bar-flicker {
+
+    0% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.55;
+    }
+}
+
+
+/* =========================================
+   PEQUEÑA VARIACIÓN DE LA SEÑAL
+========================================= */
+
+@keyframes tv-bar-noise {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    33% {
+        transform: translateY(-1px);
+    }
+
+    66% {
+        transform: translateY(1px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 
