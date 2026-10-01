@@ -1113,3 +1113,6 @@ html.boot-repeat #strawberry {
         opacity: 1;
     }
 }
+.strawberry-hit {
+    opacity: 1 !important;
+}
