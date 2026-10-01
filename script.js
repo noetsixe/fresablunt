@@ -179,40 +179,35 @@ soundLabel.textContent = "OFF";
 
 function dropBlunt() {
 
+    /* =========================================
+       PREPARAR BLUNT
+    ========================================= */
+
     blunt.style.opacity = "1";
+    blunt.classList.remove("blunt-falling");
 
-    blunt.animate(
-        [
-            {
-                top: "-180px",
-                transform: "translateX(-50%) rotate(4deg)"
-            },
+    /* Reiniciar sprite */
+    blunt.style.backgroundImage = 'url("./B1.png")';
 
-            {
-                top: "calc(50% - 115px)",
-                transform: "translateX(-50%) rotate(4deg)"
-            },
+    /*
+       Forzar reinicio de la animación
+       por si se vuelve a ejecutar.
+    */
+    void blunt.offsetWidth;
 
-            {
-                top: "calc(50% - 20px)",
-                transform: "translateX(-50%) rotate(4deg)"
-            },
+    blunt.classList.add("blunt-falling");
 
-            {
-                top: "calc(50% + 60px)",
-                transform: "translateX(-50%) rotate(4deg)"
-            }
-        ],
-        {
-            duration: 850,
-            easing: "cubic-bezier(0.65, 0, 0.35, 1)",
-            fill: "forwards"
-        }
-    );
+
+    /* =========================================
+       GOLPE
+       La animación dura 1.65 s.
+       El blunt atraviesa la fresa
+       cerca del final de la caída.
+    ========================================= */
 
     setTimeout(() => {
         createImpact();
-    }, 650);
+    }, 1450);
 }
 
 
