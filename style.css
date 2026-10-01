@@ -1137,15 +1137,16 @@ html.boot-repeat #strawberry {
     top: 0;
     bottom: 0;
 
-    width: 7vw;
-    min-width: 32px;
-    max-width: 75px;
+    /* MÁS DELGADAS */
+    width: 3.34vw;
+
+    /* SIN ESPACIOS */
+    margin: 0;
+    padding: 0;
 
     opacity: 0;
 
-    animation:
-        color-key-wave 4s linear infinite;
-
+    animation: color-key-wave 4s linear infinite;
     animation-play-state: paused;
 }
 
@@ -1155,19 +1156,35 @@ html.boot-repeat #strawberry {
 ========================================= */
 
 #color-wave span:nth-child(1)  { left: 0vw; }
-#color-wave span:nth-child(2)  { left: 7vw; }
-#color-wave span:nth-child(3)  { left: 14vw; }
-#color-wave span:nth-child(4)  { left: 21vw; }
-#color-wave span:nth-child(5)  { left: 28vw; }
-#color-wave span:nth-child(6)  { left: 35vw; }
-#color-wave span:nth-child(7)  { left: 42vw; }
-#color-wave span:nth-child(8)  { left: 49vw; }
-#color-wave span:nth-child(9)  { left: 56vw; }
-#color-wave span:nth-child(10) { left: 63vw; }
-#color-wave span:nth-child(11) { left: 70vw; }
-#color-wave span:nth-child(12) { left: 77vw; }
-#color-wave span:nth-child(13) { left: 84vw; }
-#color-wave span:nth-child(14) { left: 91vw; }
+#color-wave span:nth-child(2)  { left: 3.34vw; }
+#color-wave span:nth-child(3)  { left: 6.68vw; }
+#color-wave span:nth-child(4)  { left: 10.02vw; }
+#color-wave span:nth-child(5)  { left: 13.36vw; }
+#color-wave span:nth-child(6)  { left: 16.70vw; }
+#color-wave span:nth-child(7)  { left: 20.04vw; }
+#color-wave span:nth-child(8)  { left: 23.38vw; }
+#color-wave span:nth-child(9)  { left: 26.72vw; }
+#color-wave span:nth-child(10) { left: 30.06vw; }
+#color-wave span:nth-child(11) { left: 33.40vw; }
+#color-wave span:nth-child(12) { left: 36.74vw; }
+#color-wave span:nth-child(13) { left: 40.08vw; }
+#color-wave span:nth-child(14) { left: 43.42vw; }
+#color-wave span:nth-child(15) { left: 46.76vw; }
+#color-wave span:nth-child(16) { left: 50.10vw; }
+#color-wave span:nth-child(17) { left: 53.44vw; }
+#color-wave span:nth-child(18) { left: 56.78vw; }
+#color-wave span:nth-child(19) { left: 60.12vw; }
+#color-wave span:nth-child(20) { left: 63.46vw; }
+#color-wave span:nth-child(21) { left: 66.80vw; }
+#color-wave span:nth-child(22) { left: 70.14vw; }
+#color-wave span:nth-child(23) { left: 73.48vw; }
+#color-wave span:nth-child(24) { left: 76.82vw; }
+#color-wave span:nth-child(25) { left: 80.16vw; }
+#color-wave span:nth-child(26) { left: 83.50vw; }
+#color-wave span:nth-child(27) { left: 86.84vw; }
+#color-wave span:nth-child(28) { left: 90.18vw; }
+#color-wave span:nth-child(29) { left: 93.52vw; }
+#color-wave span:nth-child(30) { left: 96.86vw; }
 
 
 /* =========================================
@@ -1189,6 +1206,25 @@ html.boot-repeat #strawberry {
 #color-wave span:nth-child(12) { background: #FF2020; }
 #color-wave span:nth-child(13) { background: #1828FF; }
 #color-wave span:nth-child(14) { background: #F2F2F2; }
+
+#color-wave span:nth-child(15) { background: #FFE600; }
+#color-wave span:nth-child(16) { background: #00B8E6; }
+#color-wave span:nth-child(17) { background: #39D353; }
+#color-wave span:nth-child(18) { background: #FF00C8; }
+#color-wave span:nth-child(19) { background: #FF2020; }
+#color-wave span:nth-child(20) { background: #1828FF; }
+#color-wave span:nth-child(21) { background: #F2F2F2; }
+
+#color-wave span:nth-child(22) { background: #FFE600; }
+#color-wave span:nth-child(23) { background: #00B8E6; }
+#color-wave span:nth-child(24) { background: #39D353; }
+#color-wave span:nth-child(25) { background: #FF00C8; }
+#color-wave span:nth-child(26) { background: #FF2020; }
+#color-wave span:nth-child(27) { background: #1828FF; }
+#color-wave span:nth-child(28) { background: #F2F2F2; }
+
+#color-wave span:nth-child(29) { background: #FFE600; }
+#color-wave span:nth-child(30) { background: #00B8E6; }
 
 
 /* =========================================
@@ -1224,19 +1260,35 @@ html.boot-repeat #strawberry {
 ========================================= */
 
 #color-wave span:nth-child(1)  { animation-delay: 0s; }
-#color-wave span:nth-child(2)  { animation-delay: 0.18s; }
-#color-wave span:nth-child(3)  { animation-delay: 0.36s; }
-#color-wave span:nth-child(4)  { animation-delay: 0.54s; }
-#color-wave span:nth-child(5)  { animation-delay: 0.72s; }
-#color-wave span:nth-child(6)  { animation-delay: 0.90s; }
-#color-wave span:nth-child(7)  { animation-delay: 1.08s; }
-#color-wave span:nth-child(8)  { animation-delay: 1.26s; }
-#color-wave span:nth-child(9)  { animation-delay: 1.44s; }
-#color-wave span:nth-child(10) { animation-delay: 1.62s; }
-#color-wave span:nth-child(11) { animation-delay: 1.80s; }
-#color-wave span:nth-child(12) { animation-delay: 1.98s; }
-#color-wave span:nth-child(13) { animation-delay: 2.16s; }
-#color-wave span:nth-child(14) { animation-delay: 2.34s; }
+#color-wave span:nth-child(2)  { animation-delay: 0.12s; }
+#color-wave span:nth-child(3)  { animation-delay: 0.24s; }
+#color-wave span:nth-child(4)  { animation-delay: 0.36s; }
+#color-wave span:nth-child(5)  { animation-delay: 0.48s; }
+#color-wave span:nth-child(6)  { animation-delay: 0.60s; }
+#color-wave span:nth-child(7)  { animation-delay: 0.72s; }
+#color-wave span:nth-child(8)  { animation-delay: 0.84s; }
+#color-wave span:nth-child(9)  { animation-delay: 0.96s; }
+#color-wave span:nth-child(10) { animation-delay: 1.08s; }
+#color-wave span:nth-child(11) { animation-delay: 1.20s; }
+#color-wave span:nth-child(12) { animation-delay: 1.32s; }
+#color-wave span:nth-child(13) { animation-delay: 1.44s; }
+#color-wave span:nth-child(14) { animation-delay: 1.56s; }
+#color-wave span:nth-child(15) { animation-delay: 1.68s; }
+#color-wave span:nth-child(16) { animation-delay: 1.80s; }
+#color-wave span:nth-child(17) { animation-delay: 1.92s; }
+#color-wave span:nth-child(18) { animation-delay: 2.04s; }
+#color-wave span:nth-child(19) { animation-delay: 2.16s; }
+#color-wave span:nth-child(20) { animation-delay: 2.28s; }
+#color-wave span:nth-child(21) { animation-delay: 2.40s; }
+#color-wave span:nth-child(22) { animation-delay: 2.52s; }
+#color-wave span:nth-child(23) { animation-delay: 2.64s; }
+#color-wave span:nth-child(24) { animation-delay: 2.76s; }
+#color-wave span:nth-child(25) { animation-delay: 2.88s; }
+#color-wave span:nth-child(26) { animation-delay: 3.00s; }
+#color-wave span:nth-child(27) { animation-delay: 3.12s; }
+#color-wave span:nth-child(28) { animation-delay: 3.24s; }
+#color-wave span:nth-child(29) { animation-delay: 3.36s; }
+#color-wave span:nth-child(30) { animation-delay: 3.48s; }
 
 
 /* =========================================
