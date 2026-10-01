@@ -11,6 +11,13 @@
         name="description"
         content="Fresa Blunt — música, visuales y universo artístico."
     >
+    <script>
+    if (localStorage.getItem("fresaBootSeen")) {
+        document.documentElement.classList.add("boot-repeat");
+    } else {
+        document.documentElement.classList.add("boot-first");
+    }
+</script>
 
     <link rel="stylesheet" href="style.css">
 </head>
