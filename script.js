@@ -167,7 +167,7 @@ soundLabel.textContent = "OFF";
     started = true;
 
     strawberry.style.pointerEvents = "none";
-    strawberry.style.animation = "none";
+strawberry.classList.add("strawberry-hit");
 
     dropBlunt();
 });
