@@ -610,10 +610,10 @@ footer {
     image-rendering: pixelated;
 }
 /* =========================================
-   ARCADE BOOT SEQUENCE
+   ARCADE / CRT POWER ON
 ========================================= */
 
-/* Pantalla de encendido */
+/* Pantalla completamente apagada */
 
 html.boot-first #intro::before,
 html.boot-repeat #intro::before {
@@ -622,50 +622,68 @@ html.boot-repeat #intro::before {
     position: absolute;
     inset: 0;
 
-    background: #050510;
+    background: #000;
 
-    z-index: 70;
+    z-index: 90;
     pointer-events: none;
 
     transform-origin: center;
 }
 
-/* Primera visita */
+
+/* =========================================
+   PRIMERA VISITA
+========================================= */
 
 html.boot-first #intro::before {
-    animation: arcade-power-on 1s steps(8, end) forwards;
+    animation: crt-power-on 1.05s steps(1, end) forwards;
 }
 
-/* Recargas */
+
+/* =========================================
+   RECARGA
+========================================= */
 
 html.boot-repeat #intro::before {
-    animation: arcade-power-repeat 0.22s steps(3, end) forwards;
+    animation: crt-power-repeat 0.28s steps(1, end) forwards;
 }
 
-/* Estrellas aparecen ligeramente después del encendido */
+
+/* =========================================
+   ESTRELLAS
+========================================= */
 
 html.boot-first #starfield {
     opacity: 0;
-    animation: stars-boot 0.8s steps(5, end) 0.25s forwards;
+
+    animation:
+        stars-boot 0.75s steps(5, end) 0.32s forwards;
 }
 
 html.boot-repeat #starfield {
     opacity: 0;
-    animation: stars-repeat 0.18s steps(2, end) forwards;
+
+    animation:
+        stars-repeat 0.15s steps(2, end) forwards;
 }
 
-/* Fresa entra apenas después de la pantalla */
+
+/* =========================================
+   FRESA
+========================================= */
 
 html.boot-first #strawberry {
     opacity: 0;
+
     animation:
-        strawberry-boot-in 0.35s steps(3, end) 0.65s forwards,
+        strawberry-boot-in 0.25s steps(3, end) 0.72s forwards,
         strawberry-blink 0.9s ease-in-out 1s infinite,
         strawberry-glitch 9s steps(1, end) 1s infinite;
 }
 
 html.boot-repeat #strawberry {
     opacity: 0;
+
     animation:
         strawberry-repeat-in 0.12s steps(2, end) 0.12s forwards,
         strawberry-blink 0.9s ease-in-out 0.25s infinite,
@@ -674,65 +692,131 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   KEYFRAMES
+   ENCENDIDO CRT
 ========================================= */
 
-@keyframes arcade-power-on {
+@keyframes crt-power-on {
+
+    /* NEGRO TOTAL */
 
     0% {
-        transform: scaleY(1);
+        background: #000;
         opacity: 1;
+        transform: scaleY(1);
+    }
+
+    /* CHISPA */
+
+    34% {
+        background: #ffffff;
+        opacity: 1;
+        transform: scaleY(0.015);
+    }
+
+    /* LÍNEA DE PANTALLA */
+
+    40% {
+        background: #d8d8ff;
+        opacity: 1;
+        transform: scaleY(0.015);
+    }
+
+    /* SE ABRE */
+
+    48% {
+        background: #050510;
+        opacity: 1;
+        transform: scaleY(0.08);
+    }
+
+    60% {
+        background: #050510;
+        opacity: 1;
+        transform: scaleY(0.40);
+    }
+
+    74% {
+        background: #050510;
+        opacity: 0.95;
+        transform: scaleY(0.78);
+    }
+
+    88% {
+        background: #050510;
+        opacity: 0.55;
+        transform: scaleY(0.96);
+    }
+
+    /* PANTALLA ENCENDIDA */
+
+    100% {
+        background: #050510;
+        opacity: 0;
+        transform: scaleY(1);
+    }
+}
+
+
+/* =========================================
+   ENCENDIDO RÁPIDO AL RECARGAR
+========================================= */
+
+@keyframes crt-power-repeat {
+
+    0% {
+        background: #000;
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    /* CHISPA */
+
+    25% {
+        background: #ffffff;
+        opacity: 1;
+        transform: scaleY(0.02);
+    }
+
+    /* ABRE RÁPIDO */
+
+    38% {
+        background: #050510;
+        transform: scaleY(0.12);
     }
 
     65% {
-        transform: scaleY(0.08);
-        opacity: 1;
-    }
-
-    78% {
-        transform: scaleY(0.08);
-        opacity: 0.8;
+        background: #050510;
+        transform: scaleY(0.80);
     }
 
     100% {
-        transform: scaleY(0);
+        background: #050510;
         opacity: 0;
-    }
-}
-
-@keyframes arcade-power-repeat {
-
-    0% {
         transform: scaleY(1);
-        opacity: 1;
-    }
-
-    45% {
-        transform: scaleY(0.08);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scaleY(0);
-        opacity: 0;
     }
 }
+
+
+/* =========================================
+   APARICIÓN DE ESTRELLAS
+========================================= */
 
 @keyframes stars-boot {
 
     0% {
         opacity: 0;
-        transform: scale(1.03);
     }
 
-    60% {
-        opacity: 0.5;
-        transform: scale(1.01);
+    45% {
+        opacity: 0.35;
+    }
+
+    75% {
+        opacity: 0.75;
     }
 
     100% {
         opacity: 1;
-        transform: scale(1);
     }
 }
 
@@ -747,16 +831,21 @@ html.boot-repeat #strawberry {
     }
 }
 
+
+/* =========================================
+   APARICIÓN DE LA FRESA
+========================================= */
+
 @keyframes strawberry-boot-in {
 
     0% {
         opacity: 0;
-        transform: scale(0.85);
+        transform: scale(0.88);
     }
 
     60% {
         opacity: 1;
-        transform: scale(1.04);
+        transform: scale(1.03);
     }
 
     100% {
