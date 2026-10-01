@@ -14,6 +14,12 @@ const strawberryImage = document.querySelector(".pixel-strawberry");
 const shineCanvas = document.getElementById("strawberry-shine");
 const shineCtx = shineCanvas.getContext("2d");
 const scoreValue = document.getElementById("score-value");
+const bgMusic = document.getElementById("bg-music");
+
+bgMusic.volume = 0.35;
+bgMusic.play().catch(() => {
+    // El navegador bloqueó el autoplay.
+});
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
 
@@ -115,6 +121,9 @@ for (let i = 1; i <= 6; i++) {
 ========================================= */
 
 strawberry.addEventListener("click", () => {
+
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
 
     if (started) return;
 
