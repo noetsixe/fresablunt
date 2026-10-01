@@ -179,31 +179,14 @@ soundLabel.textContent = "OFF";
 
 function dropBlunt() {
 
-    /* =========================================
-       PREPARAR BLUNT
-    ========================================= */
-
     blunt.style.opacity = "1";
     blunt.classList.remove("blunt-falling");
 
-    /* Reiniciar sprite */
     blunt.style.backgroundImage = 'url("./B1.png")';
 
-    /*
-       Forzar reinicio de la animación
-       por si se vuelve a ejecutar.
-    */
     void blunt.offsetWidth;
 
     blunt.classList.add("blunt-falling");
-
-
-    /* =========================================
-       GOLPE
-       La animación dura 1.65 s.
-       El blunt atraviesa la fresa
-       cerca del final de la caída.
-    ========================================= */
 
     setTimeout(() => {
         createImpact();
