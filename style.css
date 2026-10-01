@@ -1118,7 +1118,7 @@ html.boot-repeat #strawberry {
 }
 
 /* =========================================
-   BARRIDO DE COLORES — TV ARCADE
+   BARRIDO DE COLORES — TECLAS CRT
 ========================================= */
 
 #color-wave {
@@ -1126,7 +1126,6 @@ html.boot-repeat #strawberry {
     inset: 0;
 
     overflow: hidden;
-
     pointer-events: none;
 
     z-index: 1;
@@ -1146,16 +1145,16 @@ html.boot-repeat #strawberry {
 
     opacity: 0;
 
-    transform: translateX(0);
-
     animation:
-        color-wave-pass 7s linear infinite;
+        color-keyboard-wave 3.2s linear infinite;
 
     animation-play-state: paused;
 }
 
 
-/* COLORES */
+/* =========================================
+   COLORES
+========================================= */
 
 #color-wave span:nth-child(1) {
     background: #FFE600;
@@ -1187,31 +1186,43 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   MOVIMIENTO
+   CADA BARRA ES UNA "TECLA"
 ========================================= */
 
-@keyframes color-wave-pass {
+@keyframes color-keyboard-wave {
+
+    /* FUERA DE LA PANTALLA */
 
     0% {
         left: -10vw;
         opacity: 0;
     }
 
+    /* APARECE */
+
     8% {
         opacity: 0.85;
     }
 
-    18% {
+    /* PERMANECE ENCENDIDA */
+
+    22% {
         opacity: 0.85;
     }
 
-    82% {
-        opacity: 0.85;
-    }
+    /* EMPIEZA A APAGARSE */
 
-    94% {
+    34% {
         opacity: 0;
     }
+
+    /* DESAPARECE */
+
+    40% {
+        opacity: 0;
+    }
+
+    /* CONTINÚA SU RECORRIDO */
 
     100% {
         left: 110vw;
@@ -1221,7 +1232,7 @@ html.boot-repeat #strawberry {
 
 
 /* =========================================
-   APARICIÓN TIPO PIANO
+   RETRASO ENTRE CADA "TECLA"
 ========================================= */
 
 #color-wave span:nth-child(1) {
@@ -1229,31 +1240,32 @@ html.boot-repeat #strawberry {
 }
 
 #color-wave span:nth-child(2) {
-    animation-delay: 0.16s;
+    animation-delay: 0.18s;
 }
 
 #color-wave span:nth-child(3) {
-    animation-delay: 0.32s;
+    animation-delay: 0.36s;
 }
 
 #color-wave span:nth-child(4) {
-    animation-delay: 0.48s;
+    animation-delay: 0.54s;
 }
 
 #color-wave span:nth-child(5) {
-    animation-delay: 0.64s;
+    animation-delay: 0.72s;
 }
 
 #color-wave span:nth-child(6) {
-    animation-delay: 0.80s;
+    animation-delay: 0.90s;
 }
 
 #color-wave span:nth-child(7) {
-    animation-delay: 0.96s;
+    animation-delay: 1.08s;
 }
 
+
 /* =========================================
-   ACTIVACIÓN OCASIONAL
+   ACTIVACIÓN
 ========================================= */
 
 #color-wave.active span {
