@@ -400,6 +400,125 @@ footer {
     font-size: 10px;
 }
 
+/* =========================================
+   GAME BOY SOUND BUTTON
+========================================= */
+
+#sound-toggle {
+    position: absolute;
+    right: 7%;
+    bottom: 7%;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 5px 8px;
+
+    background: #050510;
+    border: 2px solid #04026b;
+
+    color: #04026b;
+
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    z-index: 85;
+
+    image-rendering: pixelated;
+
+    box-shadow:
+        2px 2px 0 #01002A;
+
+    transition: none;
+}
+
+#sound-toggle:hover {
+    background: #08081c;
+}
+
+#sound-toggle:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+#sound-toggle.is-on {
+    color: #e672b1;
+    border-color: #e672b1;
+
+    box-shadow:
+        2px 2px 0 #8C3567;
+}
+
+/* PIXEL SPEAKER */
+
+.sound-icon {
+    position: relative;
+
+    display: block;
+
+    width: 15px;
+    height: 12px;
+}
+
+/* speaker body */
+
+.speaker-box {
+    position: absolute;
+    left: 0;
+    top: 4px;
+
+    width: 4px;
+    height: 5px;
+
+    background: currentColor;
+}
+
+/* speaker cone */
+
+.speaker-cone {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+
+    width: 7px;
+    height: 9px;
+
+    background: currentColor;
+
+    clip-path: polygon(
+        0 50%,
+        100% 0,
+        100% 100%
+    );
+}
+
+/* OFF slash */
+
+.sound-slash {
+    position: absolute;
+
+    left: 7px;
+    top: 5px;
+
+    width: 11px;
+    height: 2px;
+
+    background: currentColor;
+
+    transform: rotate(-45deg);
+}
+
+/* remove slash when ON */
+
+#sound-toggle.is-on .sound-slash {
+    display: none;
+}
+
 @media (max-width: 600px) {
 
     #strawberry {
@@ -437,6 +556,12 @@ footer {
     nav {
         display: none;
     }
+   #sound-toggle {
+    right: 6%;
+    bottom: 6%;
+    font-size: 9px;
+    padding: 4px 6px;
+}
 }
 
 
