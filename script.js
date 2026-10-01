@@ -17,9 +17,13 @@ const scoreValue = document.getElementById("score-value");
 const bgMusic = document.getElementById("bg-music");
 
 bgMusic.volume = 0.35;
-bgMusic.play().catch(() => {
-    // El navegador bloqueó el autoplay.
-});
+bgMusic.play()
+    .then(() => {
+        console.log("🎵 Música iniciada");
+    })
+    .catch((error) => {
+        console.log("❌ Autoplay bloqueado:", error);
+    });
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
 
