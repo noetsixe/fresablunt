@@ -670,6 +670,6 @@ setTimeout(() => {
 
     setInterval(() => {
         triggerColorWave();
-    }, 9000);
+    }, 3000);
 
 }, 5000);
