@@ -609,3 +609,169 @@ footer {
     z-index: 5;
     image-rendering: pixelated;
 }
+/* =========================================
+   ARCADE BOOT SEQUENCE
+========================================= */
+
+/* Pantalla de encendido */
+
+html.boot-first #intro::before,
+html.boot-repeat #intro::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #050510;
+
+    z-index: 70;
+    pointer-events: none;
+
+    transform-origin: center;
+}
+
+/* Primera visita */
+
+html.boot-first #intro::before {
+    animation: arcade-power-on 1s steps(8, end) forwards;
+}
+
+/* Recargas */
+
+html.boot-repeat #intro::before {
+    animation: arcade-power-repeat 0.22s steps(3, end) forwards;
+}
+
+/* Estrellas aparecen ligeramente después del encendido */
+
+html.boot-first #starfield {
+    opacity: 0;
+    animation: stars-boot 0.8s steps(5, end) 0.25s forwards;
+}
+
+html.boot-repeat #starfield {
+    opacity: 0;
+    animation: stars-repeat 0.18s steps(2, end) forwards;
+}
+
+/* Fresa entra apenas después de la pantalla */
+
+html.boot-first #strawberry {
+    opacity: 0;
+    animation:
+        strawberry-boot-in 0.35s steps(3, end) 0.65s forwards,
+        strawberry-blink 0.9s ease-in-out 1s infinite,
+        strawberry-glitch 9s steps(1, end) 1s infinite;
+}
+
+html.boot-repeat #strawberry {
+    opacity: 0;
+    animation:
+        strawberry-repeat-in 0.12s steps(2, end) 0.12s forwards,
+        strawberry-blink 0.9s ease-in-out 0.25s infinite,
+        strawberry-glitch 9s steps(1, end) 0.25s infinite;
+}
+
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes arcade-power-on {
+
+    0% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    65% {
+        transform: scaleY(0.08);
+        opacity: 1;
+    }
+
+    78% {
+        transform: scaleY(0.08);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+}
+
+@keyframes arcade-power-repeat {
+
+    0% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    45% {
+        transform: scaleY(0.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+}
+
+@keyframes stars-boot {
+
+    0% {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+
+    60% {
+        opacity: 0.5;
+        transform: scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes stars-repeat {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes strawberry-boot-in {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes strawberry-repeat-in {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
