@@ -20,38 +20,129 @@ const soundLabel = document.getElementById("sound-label");
 
 bgMusic.volume = 0.60;
 
+let audioStartTime = performance.now();
+let audioMuted = true;
+let audioUnlocked = false;
+
+
+/* =========================================
+   AUDIO: EMPEZAR DESDE LA ENTRADA
+========================================= */
+
+bgMusic.muted = true;
+
+bgMusic.play()
+    .then(() => {
+
+        /*
+           El navegador permitió el autoplay.
+           La canción avanza desde 0:00,
+           pero está silenciosa.
+        */
+
+        audioUnlocked = true;
+
+    })
+    .catch(() => {
+
+        /*
+           El navegador bloqueó el autoplay.
+           El tiempo seguirá contando desde que
+           entró la página.
+        */
+
+        audioUnlocked = false;
+
+    });
+
+
+/* =========================================
+   CONTROL DE SONIDO
+========================================= */
+
 soundToggle.addEventListener("click", async () => {
 
-    if (bgMusic.paused) {
+    if (audioMuted) {
+
+        /*
+           Si el autoplay fue bloqueado,
+           calculamos en qué segundo debería estar.
+        */
+
+        if (!audioUnlocked) {
+
+            const elapsed =
+                (performance.now() - audioStartTime) / 1000;
+
+            if (Number.isFinite(bgMusic.duration) && bgMusic.duration > 0) {
+
+                bgMusic.currentTime =
+                    elapsed % bgMusic.duration;
+
+            } else {
+
+                bgMusic.currentTime = elapsed;
+            }
+        }
+
+        bgMusic.muted = false;
 
         try {
 
             await bgMusic.play();
 
+            audioUnlocked = true;
+            audioMuted = false;
+
             soundToggle.classList.add("is-on");
-            soundToggle.setAttribute("aria-pressed", "true");
-            soundToggle.setAttribute("aria-label", "Apagar sonido");
+
+            soundToggle.setAttribute(
+                "aria-pressed",
+                "true"
+            );
+
+            soundToggle.setAttribute(
+                "aria-label",
+                "Apagar sonido"
+            );
 
             soundLabel.textContent = "ON";
 
         } catch (error) {
 
-            console.log("No se pudo iniciar el audio:", error);
+            console.log(
+                "No se pudo iniciar el audio:",
+                error
+            );
 
         }
 
     } else {
 
-        bgMusic.pause();
+        /*
+           No detenemos la canción.
+           Solo quitamos el sonido.
+        */
+
+        bgMusic.muted = true;
+
+        audioMuted = true;
 
         soundToggle.classList.remove("is-on");
-        soundToggle.setAttribute("aria-pressed", "false");
-        soundToggle.setAttribute("aria-label", "Activar sonido");
+
+        soundToggle.setAttribute(
+            "aria-pressed",
+            "false"
+        );
+
+        soundToggle.setAttribute(
+            "aria-label",
+            "Activar sonido"
+        );
 
         soundLabel.textContent = "OFF";
     }
 });
-
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
 
 visits++;
@@ -162,6 +253,7 @@ intro.classList.add("press-start-hide");
 
     bgMusic.pause();
 bgMusic.currentTime = 0;
+   bgMusic.muted = true;
 
 soundToggle.classList.remove("is-on");
 soundToggle.setAttribute("aria-pressed", "false");
