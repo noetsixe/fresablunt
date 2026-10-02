@@ -901,9 +901,20 @@ html.boot-repeat #sound-toggle {
     animation: hud-repeat-in 0.08s steps(1, end) 0.45s forwards;
 }
 
-html.boot-first #intro::after,
+/* PRESS START: aparición + parpadeo independiente */
+
+html.boot-first #intro::after {
+    opacity: 0;
+    animation:
+        hud-boot-in 0.15s steps(1, end) 2.2s forwards,
+        press-start 1s steps(2, start) 2.35s infinite;
+}
+
 html.boot-repeat #intro::after {
     opacity: 0;
+    animation:
+        hud-repeat-in 0.08s steps(1, end) 0.45s forwards,
+        press-start 1s steps(2, start) 0.53s infinite;
 }
 
 @keyframes hud-boot-in {
