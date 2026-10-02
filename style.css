@@ -883,144 +883,112 @@ html.boot-repeat #intro::after {
 
 @keyframes crt-power-on {
 
-    /* -------------------------------------
-       0.00 - 0.45
-       NEGRO TOTAL
-    ------------------------------------- */
-
+    /* NEGRO TOTAL */
     0% {
         background: #000;
         opacity: 1;
         transform: scaleY(1);
     }
 
-    20% {
+    25% {
         background: #000;
         opacity: 1;
         transform: scaleY(1);
     }
 
+    /* DESTELLO DE LA LÍNEA CRT */
+    29% {
+        background: #ffffff;
+        opacity: 1;
+        transform: scaleY(0.012);
+    }
 
-    /* -------------------------------------
-       0.45
-       CHISPA
-    ------------------------------------- */
-
-    27% {
+    31% {
         background: #ffffff;
         opacity: 1;
         transform: scaleY(0.018);
     }
 
-
-    /* -------------------------------------
-       0.60
-       LÍNEA CRT
-    ------------------------------------- */
-
+    /* LA LÍNEA COMIENZA A ABRIRSE */
     34% {
-        background: #f4f4ff;
-        opacity: 1;
-        transform: scaleY(0.018);
-    }
-
-
-    /* -------------------------------------
-       0.75
-       LA LÍNEA COMIENZA A ABRIRSE
-    ------------------------------------- */
-
-    40% {
-        background: #d8d8ff;
+        background: #e8e8ff;
         opacity: 1;
         transform: scaleY(0.035);
     }
 
-
-    /* -------------------------------------
-       0.90
-    ------------------------------------- */
-
-    46% {
-        background: #77779a;
+    39% {
+        background: #aaaac4;
         opacity: 1;
-        transform: scaleY(0.10);
+        transform: scaleY(0.075);
     }
 
-
-    /* -------------------------------------
-       1.10
-    ------------------------------------- */
-
-    55% {
-        background: #303047;
+    45% {
+        background: #66667e;
         opacity: 1;
-        transform: scaleY(0.28);
+        transform: scaleY(0.16);
     }
 
-
-    /* -------------------------------------
-       1.30
-    ------------------------------------- */
-
-    64% {
-        background: #11111e;
+    /* PEQUEÑO SALTO DE ENERGÍA */
+    49% {
+        background: #252538;
         opacity: 1;
-        transform: scaleY(0.52);
+        transform: scaleY(0.12);
     }
 
-
-    /* -------------------------------------
-       1.50
-    ------------------------------------- */
-
-    73% {
-        background: #080811;
+    53% {
+        background: #38384c;
         opacity: 1;
-        transform: scaleY(0.76);
+        transform: scaleY(0.25);
     }
 
+    61% {
+        background: #151524;
+        opacity: 1;
+        transform: scaleY(0.48);
+    }
 
-    /* -------------------------------------
-       1.65
-       CASI ABIERTA
-    ------------------------------------- */
+    69% {
+        background: #0b0b16;
+        opacity: 1;
+        transform: scaleY(0.68);
+    }
 
-    82% {
+    77% {
         background: #050510;
         opacity: 1;
-        transform: scaleY(0.93);
+        transform: scaleY(0.84);
     }
 
+    84% {
+        background: #050510;
+        opacity: 1;
+        transform: scaleY(0.95);
+    }
 
-    /* -------------------------------------
-       1.80
-       PANTALLA COMPLETA
-    ------------------------------------- */
-
-    88% {
+    /* ESTABILIZACIÓN */
+    89% {
         background: #050510;
         opacity: 1;
         transform: scaleY(1);
     }
 
-
-    /* -------------------------------------
-       1.95
-       PEQUEÑO BRILLO CRT
-    ------------------------------------- */
-
-    94% {
-        background: #101020;
-        opacity: 0.45;
+    92% {
+        background: #151528;
+        opacity: 0.7;
         transform: scaleY(1);
     }
 
+    95% {
+        background: #050510;
+        opacity: 0.35;
+        transform: scaleY(1);
+    }
 
-    /* -------------------------------------
-       2.20
-       ENCENDIDA
-    ------------------------------------- */
+    97% {
+        background: #202038;
+        opacity: 0.18;
+        transform: scaleY(1);
+    }
 
     100% {
         background: #050510;
