@@ -416,7 +416,7 @@ html.boot-repeat #intro-scanlines::before {
 ========================================= */
 
 #blunt.blunt-falling {
-    animation: blunt-defeat-fall 1.65s steps(1, end) forwards;
+    animation: blunt-defeat-fall 1.45s linear forwards;
 }
 
 
@@ -425,117 +425,17 @@ html.boot-repeat #intro-scanlines::before {
     0% {
         opacity: 1;
         top: -90px;
-        left: 47%;
-        transform: rotate(0deg);
-        background-image: url("./B1.png");
-    }
-
-    8% {
-        top: -70px;
         left: 50%;
-        transform: rotate(55deg);
-        background-image: url("./B2.png");
-    }
-
-    16% {
-        top: -35px;
-        left: 48%;
-        transform: rotate(125deg);
-        background-image: url("./B3.png");
-    }
-
-    24% {
-        top: 10px;
-        left: 52%;
-        transform: rotate(195deg);
-        background-image: url("./B4.png");
-    }
-
-    32% {
-        top: 55px;
-        left: 47%;
-        transform: rotate(265deg);
-        background-image: url("./B5.png");
-    }
-
-    40% {
-        top: 105px;
-        left: 53%;
-        transform: rotate(335deg);
-        background-image: url("./B6.png");
-    }
-
-    48% {
-        top: 160px;
-        left: 48%;
-        transform: rotate(405deg);
-        background-image: url("./B1.png");
-    }
-
-    56% {
-        top: 215px;
-        left: 52%;
-        transform: rotate(475deg);
-        background-image: url("./B2.png");
-    }
-
-    64% {
-        top: 270px;
-        left: 47%;
-        transform: rotate(545deg);
-        background-image: url("./B3.png");
-    }
-
-    72% {
-        top: calc(50% - 180px);
-        left: 53%;
-        transform: rotate(615deg);
-        background-image: url("./B4.png");
-    }
-
-    79% {
-        top: calc(50% - 120px);
-        left: 48%;
-        transform: rotate(685deg);
-        background-image: url("./B5.png");
-    }
-
-    85% {
-        top: calc(50% - 75px);
-        left: 52%;
-        transform: rotate(755deg);
-        background-image: url("./B6.png");
-    }
-
-    90% {
-        top: calc(50% - 40px);
-        left: 49%;
-        transform: rotate(825deg);
-        background-image: url("./B1.png");
-    }
-
-    94% {
-        top: calc(50% - 5px);
-        left: 51%;
-        transform: rotate(895deg);
-        background-image: url("./B2.png");
-    }
-
-    97% {
-        top: calc(50% + 35px);
-        left: 50%;
-        transform: rotate(940deg);
-        background-image: url("./B3.png");
+        transform: translateX(-50%);
     }
 
     100% {
+        opacity: 1;
         top: calc(50% + 150px);
         left: 50%;
-        transform: rotate(990deg);
-        background-image: url("./B4.png");
+        transform: translateX(-50%);
     }
 }
-
 #impact {
     position: absolute;
     inset: 0;
