@@ -1446,60 +1446,14 @@ html.boot-repeat #intro::after {
     animation-play-state: running;
 }
 
- /* =========================================
-    DESAPARICIÓN DE HUD AL PRESIONAR FRESA
- ========================================= */
+/* =========================================
+   DESAPARICIÓN DEL HUD AL PRESIONAR FRESA
+========================================= */
 
- .hud-vanish {
-     animation: hud-pink-vanish 0.16s steps(2, end) forwards !important;
- }
+.hud-vanish {
+    display: none !important;
+}
 
- #intro.press-start-hide::after {
-     animation: press-start-vanish 0.16s steps(2, end) forwards !important;
- }
-
- @keyframes hud-pink-vanish {
-
-     0% {
-         opacity: 1;
-         filter:
-             brightness(1)
-             drop-shadow(0 0 0 transparent);
-     }
-
-     45% {
-         opacity: 1;
-         filter:
-             brightness(1.8)
-             drop-shadow(0 0 3px #e672b1)
-             drop-shadow(0 0 8px rgba(230,114,177,0.9));
-     }
-
-     70% {
-         opacity: 1;
-         filter:
-             brightness(2)
-             drop-shadow(0 0 5px #e672b1)
-             drop-shadow(0 0 12px rgba(230,114,177,0.7));
-     }
-
-     100% {
-         opacity: 0;
-         filter: none;
-     }
- }
-
- @keyframes press-start-vanish {
-
-     0% {
-         opacity: 1;
-     }
-
-     50% {
-         opacity: 0.45;
-     }
-
-     100% {
-         opacity: 0;
-     }
- }
+#intro.press-start-hide::after {
+    display: none;
+}
