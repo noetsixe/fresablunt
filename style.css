@@ -877,7 +877,101 @@ html.boot-repeat #intro::after {
     100% { opacity: 1; }
 }
 
+/* =========================================
+   APERTURA REAL DE LA PANTALLA CRT
+========================================= */
 
+html.boot-first #intro-background {
+    clip-path: inset(50% 0 50% 0);
+    animation: screen-crt-open 2.2s steps(1, end) forwards;
+}
+
+html.boot-repeat #intro-background {
+    clip-path: inset(50% 0 50% 0);
+    animation: screen-crt-open-repeat 0.45s steps(1, end) forwards;
+}
+
+
+@keyframes screen-crt-open {
+
+    /* NEGRO */
+    0% {
+        clip-path: inset(50% 0 50% 0);
+    }
+
+    25% {
+        clip-path: inset(50% 0 50% 0);
+    }
+
+    /* LÍNEA */
+    29% {
+        clip-path: inset(49.5% 0 49.5% 0);
+    }
+
+    /* PRIMERA APERTURA */
+    35% {
+        clip-path: inset(47% 0 47% 0);
+    }
+
+    42% {
+        clip-path: inset(40% 0 40% 0);
+    }
+
+    /* SALTO */
+    48% {
+        clip-path: inset(44% 0 44% 0);
+    }
+
+    53% {
+        clip-path: inset(32% 0 32% 0);
+    }
+
+    /* APERTURA */
+    62% {
+        clip-path: inset(20% 0 20% 0);
+    }
+
+    72% {
+        clip-path: inset(10% 0 10% 0);
+    }
+
+    82% {
+        clip-path: inset(3% 0 3% 0);
+    }
+
+    /* PANTALLA COMPLETA */
+    89% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+
+@keyframes screen-crt-open-repeat {
+
+    0% {
+        clip-path: inset(50% 0 50% 0);
+    }
+
+    30% {
+        clip-path: inset(49% 0 49% 0);
+    }
+
+    50% {
+        clip-path: inset(25% 0 25% 0);
+    }
+
+    70% {
+        clip-path: inset(8% 0 8% 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
 /* =========================================
    ENCENDIDO CRT
 ========================================= */
