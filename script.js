@@ -152,6 +152,13 @@ for (let i = 1; i <= 6; i++) {
 ========================================= */
 
 strawberry.addEventListener("click", () => {
+   const hud = document.querySelector(".arcade-hud");
+const soundToggle = document.getElementById("sound-toggle");
+
+hud.classList.add("hud-vanish");
+soundToggle.classList.add("hud-vanish");
+
+intro.classList.add("press-start-hide");
 
     bgMusic.pause();
 bgMusic.currentTime = 0;
