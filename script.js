@@ -208,7 +208,7 @@ function dropBlunt() {
         clearInterval(bluntAnimation);
         createImpact();
 
-    }, 3000);
+    }, 5000);
 }
 
 
