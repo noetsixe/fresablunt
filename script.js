@@ -182,14 +182,32 @@ function dropBlunt() {
     blunt.style.opacity = "1";
     blunt.classList.remove("blunt-falling");
 
-    blunt.style.backgroundImage = 'url("./B1.png")';
-
     void blunt.offsetWidth;
+
+    blunt.style.backgroundImage = 'url("./B1.png")';
 
     blunt.classList.add("blunt-falling");
 
+    let bluntFrame = 1;
+
+    const bluntAnimation = setInterval(() => {
+
+        bluntFrame++;
+
+        if (bluntFrame > 6) {
+            bluntFrame = 1;
+        }
+
+        blunt.style.backgroundImage =
+            `url("./B${bluntFrame}.png")`;
+
+    }, 100);
+
     setTimeout(() => {
+
+        clearInterval(bluntAnimation);
         createImpact();
+
     }, 1450);
 }
 
