@@ -890,17 +890,20 @@ html.boot-repeat #strawberry {
 ========================================= */
 
 html.boot-first .arcade-hud,
-html.boot-first #sound-toggle,
-html.boot-first #intro::after {
+html.boot-first #sound-toggle {
     opacity: 0;
     animation: hud-boot-in 0.15s steps(1, end) 2.2s forwards;
 }
 
 html.boot-repeat .arcade-hud,
-html.boot-repeat #sound-toggle,
-html.boot-repeat #intro::after {
+html.boot-repeat #sound-toggle {
     opacity: 0;
     animation: hud-repeat-in 0.08s steps(1, end) 0.45s forwards;
+}
+
+html.boot-first #intro::after,
+html.boot-repeat #intro::after {
+    opacity: 0;
 }
 
 @keyframes hud-boot-in {
