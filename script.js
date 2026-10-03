@@ -205,8 +205,6 @@ function animateStrawberry() {
 }
 
 animateStrawberry();
-strawberry.style.opacity = "1";
-strawberry.style.visibility = "visible";
 
 /* =========================================
    PREPARAR DESTELLO
