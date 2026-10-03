@@ -243,6 +243,7 @@ for (let i = 1; i <= 6; i++) {
 ========================================= */
 
 strawberry.addEventListener("click", () => {
+   starfieldPaused = true;
    const hud = document.querySelector(".arcade-hud");
 const soundToggle = document.getElementById("sound-toggle");
 
@@ -740,7 +741,14 @@ function resizeStarfield() {
     }
 }
 
+let starfieldPaused = false;
+
 function animateStarfield() {
+
+    if (starfieldPaused) {
+        requestAnimationFrame(animateStarfield);
+        return;
+    }
 
     starCtx.clearRect(
         0,
