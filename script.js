@@ -183,12 +183,14 @@ strawberryPaused = true;
 
   setTimeout(() => {
     // Primer parpadeo
-    strawberry.style.visibility = "hidden";
+    vibrateDevice([25]);
+strawberry.style.visibility = "hidden";
     setTimeout(() => {
       strawberry.style.visibility = "visible";
       // Segundo parpadeo
       setTimeout(() => {
-        strawberry.style.visibility = "hidden";
+        vibrateDevice([25]);
+strawberry.style.visibility = "hidden";
         setTimeout(() => {
   strawberry.style.visibility = "visible";
 
