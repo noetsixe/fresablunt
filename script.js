@@ -265,10 +265,22 @@ soundLabel.textContent = "OFF";
 
     started = true;
 
-    strawberry.style.pointerEvents = "none";
+strawberry.style.pointerEvents = "none";
 strawberry.classList.add("strawberry-hit");
 
-    dropBlunt();
+setTimeout(() => {
+
+    intro.classList.add("pacman-flash");
+
+    setTimeout(() => {
+
+        intro.classList.remove("pacman-flash");
+
+        dropBlunt();
+
+    }, 240);
+
+}, 150);
 });
 
 
