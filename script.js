@@ -339,7 +339,8 @@ function startA1Sequence() {
       `url("${a1Frames[a1Frame].src}")`;
      
      if (a1Frame === 1) {
-  createImpact();
+    focusVignette.classList.remove("focus-active");
+    createImpact();
 }
 
   }, a1FrameDuration);
