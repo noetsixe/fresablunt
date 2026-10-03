@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO ARCADE - OJO
+   FOCO ARCADE - VIÑETA
 ========================================= */
 
 #focus-vignette {
@@ -1522,8 +1522,7 @@ html.boot-repeat #intro::after {
 
 
 /* =========================================
-   CADA CAPA ES UNA PANTALLA NEGRA
-   CON UNA ABERTURA OVALADA EN EL CENTRO
+   VIÑETA SUAVE
 ========================================= */
 
 .focus-layer {
@@ -1531,20 +1530,12 @@ html.boot-repeat #intro::after {
     inset: 0;
     pointer-events: none;
 
-    background: #000;
-
-    -webkit-mask-image: radial-gradient(
-        ellipse 75% 52% at center,
-        transparent 0%,
-        transparent 52%,
-        #000 72%
-    );
-
-    mask-image: radial-gradient(
-        ellipse 75% 52% at center,
-        transparent 0%,
-        transparent 52%,
-        #000 72%
+    background: radial-gradient(
+        ellipse 80% 75% at center,
+        transparent 40%,
+        rgba(0, 0, 0, 0.08) 58%,
+        rgba(0, 0, 0, 0.20) 78%,
+        rgba(0, 0, 0, 0.38) 100%
     );
 
     opacity: 0;
@@ -1556,86 +1547,62 @@ html.boot-repeat #intro::after {
 ========================================= */
 
 #focus-vignette.focus-active .focus-layer-1 {
-    animation: focus-layer-1 1.4s steps(10, end) forwards;
+    animation: focus-layer-1 1.2s steps(8, end) forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-2 {
-    animation: focus-layer-2 1.4s steps(10, end) 0.30s forwards;
+    animation: focus-layer-2 1.2s steps(8, end) 0.30s forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-3 {
-    animation: focus-layer-3 1.4s steps(10, end) 0.60s forwards;
+    animation: focus-layer-3 1.2s steps(8, end) 0.60s forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-4 {
-    animation: focus-layer-4 1.4s steps(10, end) 0.90s forwards;
+    animation: focus-layer-4 1.2s steps(8, end) 0.90s forwards;
 }
 
 
 /* =========================================
-   APERTURA DEL OJO
+   OSCURECIMIENTO PROGRESIVO
 ========================================= */
 
 @keyframes focus-layer-1 {
-    0% {
+    from {
         opacity: 0;
-        -webkit-mask-image: radial-gradient(
-            ellipse 95% 45% at center,
-            transparent 0%,
-            transparent 70%,
-            #000 85%
-        );
-        mask-image: radial-gradient(
-            ellipse 95% 45% at center,
-            transparent 0%,
-            transparent 70%,
-            #000 85%
-        );
     }
 
-    100% {
-        opacity: 1;
-        -webkit-mask-image: radial-gradient(
-            ellipse 75% 32% at center,
-            transparent 0%,
-            transparent 55%,
-            #000 72%
-        );
-        mask-image: radial-gradient(
-            ellipse 75% 32% at center,
-            transparent 0%,
-            transparent 55%,
-            #000 72%
-        );
+    to {
+        opacity: 0.20;
     }
 }
 
 @keyframes focus-layer-2 {
-    0% {
+    from {
         opacity: 0;
     }
 
-    100% {
-        opacity: 0.35;
+    to {
+        opacity: 0.12;
     }
 }
 
 @keyframes focus-layer-3 {
-    0% {
+    from {
         opacity: 0;
     }
 
-    100% {
-        opacity: 0.45;
+    to {
+        opacity: 0.08;
     }
 }
 
 @keyframes focus-layer-4 {
-    0% {
+    from {
         opacity: 0;
     }
 
-    100% {
-        opacity: 0.55;
+    to {
+        opacity: 0.06;
     }
 }
