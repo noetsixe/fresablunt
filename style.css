@@ -430,11 +430,11 @@ html.boot-repeat #intro-scanlines::before {
     }
 
     100% {
-        opacity: 1;
-        top: calc(50% + 150px);
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    opacity: 1;
+    top: calc(50% - 60px);
+    left: 50%;
+    transform: translateX(-50%);
+}
 }
 #impact {
     position: absolute;
