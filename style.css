@@ -1607,26 +1607,3 @@ html.boot-repeat #intro::after {
         opacity: 0.06;
     }
 }
-
-/* =========================================
-   FRESA PAR 2 — PARPADEO
-========================================= */
-
-.fresapar-parpadeo {
-    animation: fresapar-parpadeo 0.7s steps(1, end) infinite;
-}
-
-@keyframes fresapar-parpadeo {
-
-    0% {
-        visibility: visible;
-    }
-
-    50% {
-        visibility: hidden;
-    }
-
-    100% {
-        visibility: visible;
-    }
-}
