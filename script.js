@@ -244,10 +244,7 @@ for (let i = 1; i <= 6; i++) {
 
 strawberry.addEventListener("click", () => {
 
-    console.log("VIBRACIÓN:", navigator.vibrate);
-    console.log("SOPORTADA:", "vibrate" in navigator);
-
-    navigator.vibrate([100, 50, 150]);
+    console.log("CLICK FRESA");
 
     starfieldPaused = true;
    
