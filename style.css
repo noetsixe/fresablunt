@@ -1607,3 +1607,17 @@ html.boot-repeat #intro::after {
         opacity: 0.06;
     }
 }
+
+/* =========================================
+   A1 — MISMO TAMAÑO VISUAL QUE LA FRESA
+========================================= */
+
+#blunt.a1-sequence {
+    background-size: 90px 90px;
+}
+
+@media (max-width: 600px) {
+    #blunt.a1-sequence {
+        background-size: 70px 70px;
+    }
+}
