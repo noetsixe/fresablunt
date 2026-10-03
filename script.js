@@ -316,8 +316,17 @@ function dropBlunt() {
 
      blunt.classList.add("a1-sequence");
 
-    blunt.style.backgroundImage =
-      `url("${a1Frames[0].src}")`;
+    const strawberrySize =
+  parseFloat(getComputedStyle(strawberry).width);
+
+const a1Size =
+  strawberrySize * (96 / 64);
+
+blunt.style.backgroundSize =
+  `${a1Size}px ${a1Size}px`;
+
+blunt.style.backgroundImage =
+  `url("${a1Frames[0].src}")`;
 
     function animateA1(now) {
       if (now - lastA1FrameTime >= a1FrameDuration) {
