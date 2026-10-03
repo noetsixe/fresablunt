@@ -314,8 +314,6 @@ function dropBlunt() {
     strawberry.style.visibility = "hidden";
     shineCanvas.style.visibility = "hidden";
 
-     blunt.classList.add("a1-mobile");
-
     blunt.style.backgroundImage =
       `url("${a1Frames[0].src}")`;
 
