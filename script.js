@@ -807,13 +807,15 @@ function animateStarfield() {
 
     for (const star of stars) {
 
-    star.y += star.speed;
+    if (!starfieldPaused) {
+        star.y += star.speed;
 
-    if (star.y > starCanvas.height) {
-        star.y = -2;
-        star.x = Math.floor(
-            Math.random() * starCanvas.width
-        );
+        if (star.y > starCanvas.height) {
+            star.y = -2;
+            star.x = Math.floor(
+                Math.random() * starCanvas.width
+            );
+        }
     }
 
     let alpha = star.brightness;
