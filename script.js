@@ -270,15 +270,30 @@ strawberry.classList.add("strawberry-hit");
 
 setTimeout(() => {
 
-    strawberry.classList.add("pacman-eat");
+    // Primer parpadeo
+    strawberry.style.visibility = "hidden";
 
     setTimeout(() => {
 
-        strawberry.classList.remove("pacman-eat");
+        strawberry.style.visibility = "visible";
 
-        dropBlunt();
+        // Segundo parpadeo
+        setTimeout(() => {
 
-    }, 280);
+            strawberry.style.visibility = "hidden";
+
+            setTimeout(() => {
+
+                strawberry.style.visibility = "visible";
+
+                // Ahora recién cae el blunt
+                dropBlunt();
+
+            }, 70);
+
+        }, 70);
+
+    }, 70);
 
 }, 150);
 });
