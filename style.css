@@ -1513,6 +1513,15 @@ html.boot-repeat #intro::after {
     inset: 0;
     z-index: 75;
     pointer-events: none;
+    visibility: hidden;
+}
+#focus-vignette.focus-active {
+    visibility: visible;
+}
+
+#focus-vignette.focus-active .focus-top,
+#focus-vignette.focus-active .focus-bottom {
+    visibility: visible;
 }
 
 .focus-layer {
@@ -1529,6 +1538,7 @@ html.boot-repeat #intro::after {
     height: 50%;
 
     background: #000;
+   visibility: hidden;
 }
 
 
