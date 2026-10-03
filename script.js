@@ -284,7 +284,6 @@ soundLabel.textContent = "OFF";
 
     started = true;
 clearTimeout(strawberryAnimationTimeout);
-   strawberryImage.style.backgroundImage = 'none';
 
 strawberry.style.pointerEvents = "none";
 strawberry.classList.add("strawberry-hit");
@@ -297,37 +296,34 @@ setTimeout(() => {
 setTimeout(() => {
 
     // PRIMER PARPADEO
-    strawberryImage.style.backgroundImage = 'url("./fresapar1.png")';
-    strawberry.style.visibility = "visible";
+    strawberry.style.visibility = "hidden";
 
     setTimeout(() => {
 
-        // SEGUNDO PARPADEO
-        strawberry.style.visibility = "hidden";
+        strawberry.style.visibility = "visible";
 
         setTimeout(() => {
 
-            strawberryImage.style.backgroundImage =
-    'url("./fresapar2.png")';
-
-strawberry.style.visibility = "visible";
-           strawberry.classList.add("fresapar-parpadeo");
-
-// Aquí se queda fresapar2.png
-// y luego empieza la desaparición de las estrellas
-startStarfieldFadeOut();
-
-            focusVignette.classList.add("focus-active");
+            // SEGUNDO PARPADEO
+            strawberry.style.visibility = "hidden";
 
             setTimeout(() => {
-                dropBlunt();
-            }, 1200);
+
+                strawberry.style.visibility = "visible";
+
+                startStarfieldFadeOut();
+
+                focusVignette.classList.add("focus-active");
+
+                setTimeout(() => {
+                    dropBlunt();
+                }, 1200);
+
+            }, 180);
 
         }, 180);
 
     }, 180);
-
-}, 180);
 
 }, 600);
 });
