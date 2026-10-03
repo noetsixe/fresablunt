@@ -323,23 +323,34 @@ function dropBlunt() {
     blunt.classList.add("blunt-falling");
 
     let bluntFrame = 0;
+    let bluntAnimation;
 
-    const bluntAnimation = setInterval(() => {
+    let lastFrameTime = performance.now();
 
-        bluntFrame++;
+    function animateBlunt(now) {
 
-        if (bluntFrame > 11) {
-            bluntFrame = 0;
+        if (now - lastFrameTime >= 100) {
+
+            bluntFrame++;
+
+            if (bluntFrame > 11) {
+                bluntFrame = 0;
+            }
+
+            blunt.style.backgroundImage =
+                `url("${bluntFrames[bluntFrame].src}")`;
+
+            lastFrameTime = now;
         }
 
-        blunt.style.backgroundImage =
-            `url("${bluntFrames[bluntFrame].src}")`;
+        bluntAnimation = requestAnimationFrame(animateBlunt);
+    }
 
-    }, 100);
+    bluntAnimation = requestAnimationFrame(animateBlunt);
 
     setTimeout(() => {
 
-        clearInterval(bluntAnimation);
+        cancelAnimationFrame(bluntAnimation);
         createImpact();
 
     }, 10000);
