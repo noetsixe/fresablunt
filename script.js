@@ -16,6 +16,7 @@ const shineCtx = shineCanvas.getContext("2d");
 const scoreValue = document.getElementById("score-value");
 const bgMusic = document.getElementById("bg-music");
 const soundToggle = document.getElementById("sound-toggle");
+const focusVignette = document.getElementById("focus-vignette");
 const soundLabel = document.getElementById("sound-label");
 
 bgMusic.volume = 0.60;
@@ -255,6 +256,7 @@ function vibrateDevice(pattern = 100) {
 }
 
 strawberry.addEventListener("click", () => {
+   focusVignette.classList.add("focus-active");
 
    vibrateDevice([80, 40, 140]);
    
