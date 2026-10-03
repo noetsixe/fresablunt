@@ -783,7 +783,7 @@ function resizeStarfield() {
 let starfieldPaused = false;
 let starfieldFading = false;
 let starfieldFadeStart = 0;
-const starfieldFadeDuration = 3000;
+const starfieldFadeDuration = 2000;
 
 function startStarfieldFadeOut() {
     starfieldFading = true;
