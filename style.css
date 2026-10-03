@@ -416,7 +416,7 @@ html.boot-repeat #intro-scanlines::before {
 ========================================= */
 
 #blunt.blunt-falling {
-    animation: blunt-defeat-fall 5s linear forwards;
+    animation: blunt-defeat-fall 10s linear forwards;
 }
 
 
