@@ -289,11 +289,11 @@ setTimeout(() => {
                 // Ahora recién cae el blunt
                 dropBlunt();
 
-            }, 70);
+            }, 140);
 
-        }, 70);
+        }, 140);
 
-    }, 70);
+    }, 140);
 
 }, 150);
 });
