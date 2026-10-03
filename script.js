@@ -311,24 +311,24 @@ function dropBlunt() {
 
     void blunt.offsetWidth;
 
-    blunt.style.backgroundImage = 'url("./B1.png")';
+    blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
 
     blunt.classList.add("blunt-falling");
 
-    let bluntFrame = 1;
+    let bluntFrame = 0;
 
-    const bluntAnimation = setInterval(() => {
+const bluntAnimation = setInterval(() => {
 
-        bluntFrame++;
+    bluntFrame++;
 
-        if (bluntFrame > 6) {
-            bluntFrame = 1;
-        }
+    if (bluntFrame > 11) {
+        bluntFrame = 0;
+    }
 
-        blunt.style.backgroundImage =
-            `url("./B${bluntFrame}.png")`;
+    blunt.style.backgroundImage =
+        `url("./pixil-frame-${bluntFrame}.png")`;
 
-    }, 100);
+}, 100);
 
     setTimeout(() => {
 
