@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO ARCADE - CIERRE DESDE ARRIBA Y ABAJO
+   FOCO ARCADE - OJO PIXELADO
 ========================================= */
 
 #focus-vignette {
@@ -1514,15 +1514,17 @@ html.boot-repeat #intro::after {
     z-index: 75;
     pointer-events: none;
     visibility: hidden;
+    overflow: hidden;
 }
+
 #focus-vignette.focus-active {
     visibility: visible;
 }
 
-#focus-vignette.focus-active .focus-top,
-#focus-vignette.focus-active .focus-bottom {
-    visibility: visible;
-}
+
+/* =========================================
+   CAPAS DEL OJO
+========================================= */
 
 .focus-layer {
     position: absolute;
@@ -1530,6 +1532,8 @@ html.boot-repeat #intro::after {
     pointer-events: none;
 }
 
+
+/* Cada capa empieza completamente fuera */
 .focus-top,
 .focus-bottom {
     position: absolute;
@@ -1538,120 +1542,84 @@ html.boot-repeat #intro::after {
     height: 50%;
 
     background: #000;
-   visibility: hidden;
+
+    visibility: hidden;
 }
 
 
 /* =========================================
-   CAPA 1
+   FORMA OVALADA
 ========================================= */
 
-.focus-layer-1 .focus-top {
+.focus-top {
     top: 0;
+
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+
     transform: translateY(-100%);
 }
 
-.focus-layer-1 .focus-bottom {
+.focus-bottom {
     bottom: 0;
+
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+
     transform: translateY(100%);
 }
 
 
 /* =========================================
-   CAPA 2
+   ACTIVACIÓN
 ========================================= */
 
-.focus-layer-2 .focus-top {
-    top: 0;
-    transform: translateY(-100%);
-}
-
-.focus-layer-2 .focus-bottom {
-    bottom: 0;
-    transform: translateY(100%);
+#focus-vignette.focus-active .focus-top,
+#focus-vignette.focus-active .focus-bottom {
+    visibility: visible;
 }
 
 
 /* =========================================
-   CAPA 3
+   ENTRADA CAPA POR CAPA
 ========================================= */
 
-.focus-layer-3 .focus-top {
-    top: 0;
-    transform: translateY(-100%);
+#focus-vignette.focus-active .focus-layer-1 .focus-top,
+#focus-vignette.focus-active .focus-layer-1 .focus-bottom {
+    animation: eye-close-1 1.2s steps(10, end) forwards;
 }
 
-.focus-layer-3 .focus-bottom {
-    bottom: 0;
-    transform: translateY(100%);
+#focus-vignette.focus-active .focus-layer-2 .focus-top,
+#focus-vignette.focus-active .focus-layer-2 .focus-bottom {
+    animation: eye-close-2 1.2s steps(10, end) 0.35s forwards;
+}
+
+#focus-vignette.focus-active .focus-layer-3 .focus-top,
+#focus-vignette.focus-active .focus-layer-3 .focus-bottom {
+    animation: eye-close-3 1.2s steps(10, end) 0.70s forwards;
+}
+
+#focus-vignette.focus-active .focus-layer-4 .focus-top,
+#focus-vignette.focus-active .focus-layer-4 .focus-bottom {
+    animation: eye-close-4 1.2s steps(10, end) 1.05s forwards;
 }
 
 
 /* =========================================
-   CAPA 4
-========================================= */
-
-.focus-layer-4 .focus-top {
-    top: 0;
-    transform: translateY(-100%);
-}
-
-.focus-layer-4 .focus-bottom {
-    bottom: 0;
-    transform: translateY(100%);
-}
-
-
-/* =========================================
-   ENTRADA ESCALONADA
-========================================= */
-
-.focus-layer-1 .focus-top,
-.focus-layer-1 .focus-bottom {
-    animation: eye-close-1 0.8s steps(8, end) forwards;
-}
-
-.focus-layer-2 .focus-top,
-.focus-layer-2 .focus-bottom {
-    animation: eye-close-2 0.8s steps(8, end) 0.35s forwards;
-}
-
-.focus-layer-3 .focus-top,
-.focus-layer-3 .focus-bottom {
-    animation: eye-close-3 0.8s steps(8, end) 0.70s forwards;
-}
-
-.focus-layer-4 .focus-top,
-.focus-layer-4 .focus-bottom {
-    animation: eye-close-4 0.8s steps(8, end) 1.05s forwards;
-}
-
-
-/* =========================================
-   CIERRE
+   CIERRE OJO
 ========================================= */
 
 @keyframes eye-close-1 {
+
     from {
         transform: translateY(-100%);
     }
 
     to {
-        transform: translateY(82%);
+        transform: translateY(55%);
     }
 }
 
 @keyframes eye-close-2 {
-    from {
-        transform: translateY(-100%);
-    }
 
-    to {
-        transform: translateY(72%);
-    }
-}
-
-@keyframes eye-close-3 {
     from {
         transform: translateY(-100%);
     }
@@ -1661,12 +1629,24 @@ html.boot-repeat #intro::after {
     }
 }
 
-@keyframes eye-close-4 {
+@keyframes eye-close-3 {
+
     from {
         transform: translateY(-100%);
     }
 
     to {
-        transform: translateY(52%);
+        transform: translateY(69%);
+    }
+}
+
+@keyframes eye-close-4 {
+
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(76%);
     }
 }
