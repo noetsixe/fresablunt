@@ -244,8 +244,11 @@ for (let i = 1; i <= 6; i++) {
 
 strawberry.addEventListener("click", () => {
 
-    console.log("CLICK FRESA");
-
+    try {
+    if (navigator.vibrate) {
+        navigator.vibrate(100);
+    }
+} catch (e) {}
     starfieldPaused = true;
    
    const hud = document.querySelector(".arcade-hud");
