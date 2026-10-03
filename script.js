@@ -270,15 +270,15 @@ strawberry.classList.add("strawberry-hit");
 
 setTimeout(() => {
 
-    intro.classList.add("pacman-flash");
+    strawberry.classList.add("pacman-eat");
 
     setTimeout(() => {
 
-        intro.classList.remove("pacman-flash");
+        strawberry.classList.remove("pacman-eat");
 
         dropBlunt();
 
-    }, 240);
+    }, 280);
 
 }, 150);
 });
