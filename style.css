@@ -404,7 +404,7 @@ html.boot-repeat #intro-scanlines::before {
     background-image: url("./pixil-frame-0.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 120px 120px;
+    background-size: contain;
 
     image-rendering: pixelated;
     image-rendering: crisp-edges;
