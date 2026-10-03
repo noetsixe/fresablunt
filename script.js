@@ -340,6 +340,7 @@ function startA1Sequence() {
      
      if (a1Frame === 1) {
     focusVignette.classList.remove("focus-active");
+    vibrateDevice([120, 50, 180, 50, 220]);
     createImpact();
 }
 
