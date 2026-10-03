@@ -1613,6 +1613,6 @@ html.boot-repeat #intro::after {
 ========================================= */
 
 #intro-background.stars-fade-out #starfield {
-    opacity: 0;
+    opacity: 0 !important;
     transition: opacity 0.85s ease-out;
 }
