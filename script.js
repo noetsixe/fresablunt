@@ -307,52 +307,40 @@ function dropBlunt() {
     let bbAnimation = requestAnimationFrame(animateBB);
   }
 
-  function startA1Sequence() {
-    let a1Frame = 0;
-    let lastA1FrameTime = performance.now();
+function startA1Sequence() {
+  let a1Frame = 0;
 
-    strawberry.style.visibility = "hidden";
-    shineCanvas.style.visibility = "hidden";
+  strawberry.style.visibility = "hidden";
+  shineCanvas.style.visibility = "hidden";
 
-     blunt.classList.add("a1-sequence");
+  blunt.classList.add("a1-sequence");
 
-    const strawberrySize =
-  parseFloat(getComputedStyle(strawberry).width);
+  const strawberrySize =
+    parseFloat(getComputedStyle(strawberry).width);
 
-const a1Size =
-  strawberrySize * (96 / 64);
+  const a1Size =
+    strawberrySize * (96 / 64);
 
-blunt.style.backgroundSize =
-  `${a1Size}px ${a1Size}px`;
+  blunt.style.backgroundSize =
+    `${a1Size}px ${a1Size}px`;
 
-blunt.style.backgroundImage =
-  `url("${a1Frames[0].src}")`;
+  blunt.style.backgroundImage =
+    `url("${a1Frames[0].src}")`;
 
-    function animateA1(now) {
-      if (now - lastA1FrameTime >= a1FrameDuration) {
-        a1Frame++;
+  const a1Interval = setInterval(() => {
+    a1Frame++;
 
-        if (a1Frame >= a1Frames.length) {
-          a1Frame = a1Frames.length - 1;
-        }
-
-        blunt.style.backgroundImage =
-          `url("${a1Frames[a1Frame].src}")`;
-
-        lastA1FrameTime = now;
-
-        if (a1Frame === a1Frames.length - 1) {
-          cancelAnimationFrame(a1Animation);
-          createImpact();
-          return;
-        }
-      }
-
-      a1Animation = requestAnimationFrame(animateA1);
+    if (a1Frame >= a1Frames.length) {
+      clearInterval(a1Interval);
+      createImpact();
+      return;
     }
 
-    let a1Animation = requestAnimationFrame(animateA1);
-  }
+    blunt.style.backgroundImage =
+      `url("${a1Frames[a1Frame].src}")`;
+
+  }, a1FrameDuration);
+}
 
   function animateBlunt(now) {
     if (now - lastFrameTime >= 100) {
