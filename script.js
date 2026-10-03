@@ -99,7 +99,6 @@ let direction = 1;
    ANIMACIÓN IDLE DE LA FRESA
    ========================================= */
 function animateStrawberry() {
-  if (started) return;
   const sprite = `url("./Fresa${frame}.png")`;
   strawberryImage.style.backgroundImage = sprite;
   strawberryImage.style.setProperty("--strawberry-mask", sprite);
@@ -189,14 +188,20 @@ strawberry.addEventListener("click", () => {
       setTimeout(() => {
         strawberry.style.visibility = "hidden";
         setTimeout(() => {
-          strawberry.style.visibility = "visible";
-          const introBackground = document.getElementById("intro-background");
-          introBackground.classList.add("stars-fade-out");
-          focusVignette.classList.add("focus-active");
-          setTimeout(() => {
-            dropBlunt();
-          }, 2200);
-        }, 180);
+  strawberry.style.visibility = "visible";
+
+  setTimeout(() => {
+    animateStrawberry();
+  }, 150);
+
+  const introBackground = document.getElementById("intro-background");
+  introBackground.classList.add("stars-fade-out");
+  focusVignette.classList.add("focus-active");
+
+  setTimeout(() => {
+    dropBlunt();
+  }, 2200);
+}, 180);
       }, 180);
     }, 180);
   }, 600);
