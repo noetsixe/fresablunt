@@ -213,6 +213,7 @@ setTimeout(() => {
 /* =========================================
    CAÍDA DEL BLUNT
    ========================================= */
+/* CAÍDA DEL BLUNT */
 const bluntFrames = [];
 for (let i = 0; i < 12; i++) {
   const img = new Image();
@@ -220,10 +221,27 @@ for (let i = 0; i < 12; i++) {
   bluntFrames.push(img);
 }
 
+/* FRAMES BB 14 → 21 */
+const bbFrames = [];
+for (let i = 14; i <= 21; i++) {
+  const img = new Image();
+  img.src = `./BB (${i}).png`;
+  bbFrames.push(img);
+}
+
+/* FRAMES A1 1 → 31 */
+const a1Frames = [];
+for (let i = 1; i <= 31; i++) {
+  const img = new Image();
+  img.src = `./A1 (${i}).png`;
+  a1Frames.push(img);
+}
+
 function dropBlunt() {
   blunt.style.opacity = "1";
   blunt.classList.remove("blunt-falling");
   void blunt.offsetWidth;
+
   blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
   blunt.classList.add("blunt-falling");
 
@@ -231,24 +249,138 @@ function dropBlunt() {
   let bluntAnimation;
   let lastFrameTime = performance.now();
 
+  const bbFrameDuration = 100;
+  const a1FrameDuration = 100;
+
+  let bbStarted = false;
+
+  function startBBSequence() {
+    if (bbStarted) return;
+    bbStarted = true;
+
+    /* Guardamos EXACTAMENTE la posición actual */
+    const currentTop = blunt.getBoundingClientRect().top;
+
+    /* Quitamos la animación CSS sin mover el blunt */
+    blunt.classList.remove("blunt-falling");
+    blunt.style.top = `${currentTop}px`;
+
+    const targetTop = window.innerHeight / 2 - 60;
+    const startTop = currentTop;
+
+    let bbFrame = 0;
+    let lastBBFrameTime = performance.now();
+
+     blunt.style.backgroundImage =
+  `url("${bbFrames[0].src}")`;
+
+    function animateBB(now) {
+      if (now - lastBBFrameTime >= bbFrameDuration) {
+        bbFrame++;
+
+        if (bbFrame >= bbFrames.length) {
+          bbFrame = bbFrames.length - 1;
+        }
+
+        blunt.style.backgroundImage =
+          `url("${bbFrames[bbFrame].src}")`;
+
+        const progress = bbFrame / (bbFrames.length - 1);
+
+        const top =
+          startTop + (targetTop - startTop) * progress;
+
+        blunt.style.top = `${top}px`;
+
+        lastBBFrameTime = now;
+
+        if (bbFrame === bbFrames.length - 1) {
+          cancelAnimationFrame(bbAnimation);
+          startA1Sequence();
+          return;
+        }
+      }
+
+      bbAnimation = requestAnimationFrame(animateBB);
+    }
+
+    let bbAnimation = requestAnimationFrame(animateBB);
+  }
+
+  function startA1Sequence() {
+    let a1Frame = 0;
+    let lastA1FrameTime = performance.now();
+
+    strawberry.style.visibility = "hidden";
+    shineCanvas.style.visibility = "hidden";
+
+    blunt.style.backgroundImage =
+      `url("${a1Frames[0].src}")`;
+
+    function animateA1(now) {
+      if (now - lastA1FrameTime >= a1FrameDuration) {
+        a1Frame++;
+
+        if (a1Frame >= a1Frames.length) {
+          a1Frame = a1Frames.length - 1;
+        }
+
+        blunt.style.backgroundImage =
+          `url("${a1Frames[a1Frame].src}")`;
+
+        lastA1FrameTime = now;
+
+        if (a1Frame === a1Frames.length - 1) {
+          cancelAnimationFrame(a1Animation);
+          createImpact();
+          return;
+        }
+      }
+
+      a1Animation = requestAnimationFrame(animateA1);
+    }
+
+    let a1Animation = requestAnimationFrame(animateA1);
+  }
+
   function animateBlunt(now) {
     if (now - lastFrameTime >= 100) {
       bluntFrame++;
+
       if (bluntFrame > 11) {
         bluntFrame = 0;
       }
-      blunt.style.backgroundImage = `url("${bluntFrames[bluntFrame].src}")`;
+
+      /*
+       * Cuando llegamos al momento elegido de la caída,
+       * mostramos pixil-frame-1 y pasamos inmediatamente
+       * a BB14 desde esa misma posición.
+       */
+      if (bluntFrame === 1 && now - fallStartTime >= transitionTime) {
+        blunt.style.backgroundImage =
+          'url("./pixil-frame-1.png")';
+
+        startBBSequence();
+        return;
+      }
+
+      blunt.style.backgroundImage =
+        `url("${bluntFrames[bluntFrame].src}")`;
+
       lastFrameTime = now;
     }
+
     bluntAnimation = requestAnimationFrame(animateBlunt);
   }
 
-  bluntAnimation = requestAnimationFrame(animateBlunt);
+  /*
+   * La caída CSS dura 10 segundos.
+   * Entramos a BB aproximadamente a la mitad del recorrido.
+   */
+  const fallStartTime = performance.now();
+  const transitionTime = 5000;
 
-  setTimeout(() => {
-    cancelAnimationFrame(bluntAnimation);
-    createImpact();
-  }, 10000);
+  bluntAnimation = requestAnimationFrame(animateBlunt);
 }
 
 /* =========================================
