@@ -306,14 +306,14 @@ setTimeout(() => {
 
         setTimeout(() => {
 
-            strawberryImage.style.backgroundImage = 'url("./fresapar2.png")';
-            strawberry.style.visibility = "visible";
-           strawberryImage.classList.add("fresapar-tiritando");
+            strawberryImage.style.backgroundImage =
+    'url("./fresapar2.png")';
 
+strawberry.style.visibility = "visible";
 
-            // Aquí se queda fresapar2.png
-            // y luego empieza la desaparición de las estrellas
-            startStarfieldFadeOut();
+// Aquí se queda fresapar2.png
+// y luego empieza la desaparición de las estrellas
+startStarfieldFadeOut();
 
             focusVignette.classList.add("focus-active");
 
