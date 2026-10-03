@@ -1534,14 +1534,14 @@ html.boot-repeat #intro::after {
     background: #000;
 
     -webkit-mask-image: radial-gradient(
-        ellipse 75% 32% at center,
+    ellipse 75% 45% at center,
         transparent 0%,
         transparent 55%,
         #000 72%
     );
 
     mask-image: radial-gradient(
-        ellipse 75% 32% at center,
+    ellipse 75% 45% at center,
         transparent 0%,
         transparent 55%,
         #000 72%
