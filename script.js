@@ -303,6 +303,13 @@ setTimeout(() => {
 /* =========================================
    CAÍDA DEL BLUNT
 ========================================= */
+const bluntFrames = [];
+
+for (let i = 0; i < 12; i++) {
+    const img = new Image();
+    img.src = `./pixil-frame-${i}.png`;
+    bluntFrames.push(img);
+}
 
 function dropBlunt() {
 
@@ -311,8 +318,8 @@ function dropBlunt() {
 
     void blunt.offsetWidth;
 
-    blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
-
+    blunt.style.backgroundImage =
+    `url("${bluntFrames[bluntFrame].src}")`;
     blunt.classList.add("blunt-falling");
 
     let bluntFrame = 0;
