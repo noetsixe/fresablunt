@@ -447,7 +447,7 @@ html.boot-repeat #intro-scanlines::before {
 .impact-flash {
     position: absolute;
     inset: 0;
-    background: #FF3366;
+    background: #e8020a;
     opacity: 0;
 }
 
