@@ -392,8 +392,8 @@ html.boot-repeat #intro-scanlines::before {
     left: 50%;
     top: -100px;
 
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
 
     transform: translateX(-50%);
     opacity: 0;
@@ -401,10 +401,10 @@ html.boot-repeat #intro-scanlines::before {
     z-index: 30;
     pointer-events: none;
 
-    background-image: url("./B1.png");
+    background-image: url("./pixil-frame-0.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 64px 64px;
+    background-size: 96px 96px;
 
     image-rendering: pixelated;
     image-rendering: crisp-edges;
