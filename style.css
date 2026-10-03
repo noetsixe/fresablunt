@@ -1612,10 +1612,7 @@ html.boot-repeat #intro::after {
    DESAPARICIÓN DE ESTRELLAS AL FINAL
 ========================================= */
 
-#starfield {
-    transition: opacity 0.85s ease-out;
-}
-
-#starfield.starfield-fade-out {
+#intro-background.stars-fade-out #starfield {
     opacity: 0;
+    transition: opacity 0.85s ease-out;
 }
