@@ -309,7 +309,7 @@ focusVignette.classList.add("focus-active");
 
 setTimeout(() => {
     dropBlunt();
-}, 2200);
+}, 1200);
 
 }, 180);
 
