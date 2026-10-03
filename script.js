@@ -249,7 +249,7 @@ function dropBlunt() {
   let bluntAnimation;
   let lastFrameTime = performance.now();
 
-  const bbFrameDuration = 100;
+  const bbFrameDuration = 60;
   const a1FrameDuration = 100;
 
   let bbStarted = false;
