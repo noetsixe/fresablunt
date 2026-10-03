@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO ARCADE - OJO DESDE BORDES
+   FOCO ARCADE - CIERRE DESDE ARRIBA Y ABAJO
 ========================================= */
 
 #focus-vignette {
@@ -1513,23 +1513,22 @@ html.boot-repeat #intro::after {
     inset: 0;
     z-index: 75;
     pointer-events: none;
-    opacity: 0;
 }
 
 .focus-layer {
     position: absolute;
     inset: 0;
     pointer-events: none;
+}
+
+.focus-top,
+.focus-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
 
     background: #000;
-
-    opacity: 0;
-
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-
-    -webkit-mask-position: center;
-    mask-position: center;
 }
 
 
@@ -1537,22 +1536,14 @@ html.boot-repeat #intro::after {
    CAPA 1
 ========================================= */
 
-.focus-layer-1 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 78% 52% at center,
-        transparent 0%,
-        transparent 88%,
-        #000 100%
-    );
+.focus-layer-1 .focus-top {
+    top: 0;
+    transform: translateY(-100%);
+}
 
-    mask-image: radial-gradient(
-        ellipse 78% 52% at center,
-        transparent 0%,
-        transparent 88%,
-        #000 100%
-    );
-
-    animation: eye-layer-1 0.7s steps(7, end) forwards;
+.focus-layer-1 .focus-bottom {
+    bottom: 0;
+    transform: translateY(100%);
 }
 
 
@@ -1560,22 +1551,14 @@ html.boot-repeat #intro::after {
    CAPA 2
 ========================================= */
 
-.focus-layer-2 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 72% 47% at center,
-        transparent 0%,
-        transparent 86%,
-        #000 100%
-    );
+.focus-layer-2 .focus-top {
+    top: 0;
+    transform: translateY(-100%);
+}
 
-    mask-image: radial-gradient(
-        ellipse 72% 47% at center,
-        transparent 0%,
-        transparent 86%,
-        #000 100%
-    );
-
-    animation: eye-layer-2 0.7s steps(7, end) 0.65s forwards;
+.focus-layer-2 .focus-bottom {
+    bottom: 0;
+    transform: translateY(100%);
 }
 
 
@@ -1583,22 +1566,14 @@ html.boot-repeat #intro::after {
    CAPA 3
 ========================================= */
 
-.focus-layer-3 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 66% 42% at center,
-        transparent 0%,
-        transparent 84%,
-        #000 100%
-    );
+.focus-layer-3 .focus-top {
+    top: 0;
+    transform: translateY(-100%);
+}
 
-    mask-image: radial-gradient(
-        ellipse 66% 42% at center,
-        transparent 0%,
-        transparent 84%,
-        #000 100%
-    );
-
-    animation: eye-layer-3 0.7s steps(7, end) 1.30s forwards;
+.focus-layer-3 .focus-bottom {
+    bottom: 0;
+    transform: translateY(100%);
 }
 
 
@@ -1606,73 +1581,82 @@ html.boot-repeat #intro::after {
    CAPA 4
 ========================================= */
 
-.focus-layer-4 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 60% 37% at center,
-        transparent 0%,
-        transparent 82%,
-        #000 100%
-    );
+.focus-layer-4 .focus-top {
+    top: 0;
+    transform: translateY(-100%);
+}
 
-    mask-image: radial-gradient(
-        ellipse 60% 37% at center,
-        transparent 0%,
-        transparent 82%,
-        #000 100%
-    );
-
-    animation: eye-layer-4 0.7s steps(7, end) 1.95s forwards;
+.focus-layer-4 .focus-bottom {
+    bottom: 0;
+    transform: translateY(100%);
 }
 
 
 /* =========================================
-   ENTRADA LENTA Y ESCALONADA
+   ENTRADA ESCALONADA
 ========================================= */
 
-@keyframes eye-layer-1 {
+.focus-layer-1 .focus-top,
+.focus-layer-1 .focus-bottom {
+    animation: eye-close-1 0.8s steps(8, end) forwards;
+}
 
-    0% {
-        opacity: 0;
+.focus-layer-2 .focus-top,
+.focus-layer-2 .focus-bottom {
+    animation: eye-close-2 0.8s steps(8, end) 0.35s forwards;
+}
+
+.focus-layer-3 .focus-top,
+.focus-layer-3 .focus-bottom {
+    animation: eye-close-3 0.8s steps(8, end) 0.70s forwards;
+}
+
+.focus-layer-4 .focus-top,
+.focus-layer-4 .focus-bottom {
+    animation: eye-close-4 0.8s steps(8, end) 1.05s forwards;
+}
+
+
+/* =========================================
+   CIERRE
+========================================= */
+
+@keyframes eye-close-1 {
+    from {
+        transform: translateY(-100%);
     }
 
-    100% {
-        opacity: 0.32;
+    to {
+        transform: translateY(82%);
     }
 }
 
-@keyframes eye-layer-2 {
-
-    0% {
-        opacity: 0;
+@keyframes eye-close-2 {
+    from {
+        transform: translateY(-100%);
     }
 
-    100% {
-        opacity: 0.48;
-    }
-}
-
-@keyframes eye-layer-3 {
-
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0.65;
+    to {
+        transform: translateY(72%);
     }
 }
 
-@keyframes eye-layer-4 {
-
-    0% {
-        opacity: 0;
+@keyframes eye-close-3 {
+    from {
+        transform: translateY(-100%);
     }
 
-    100% {
-        opacity: 0.82;
+    to {
+        transform: translateY(62%);
     }
 }
 
-#focus-vignette.focus-active {
-    opacity: 1;
+@keyframes eye-close-4 {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(52%);
+    }
 }
