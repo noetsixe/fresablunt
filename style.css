@@ -451,16 +451,6 @@ html.boot-repeat #intro-scanlines::before {
     opacity: 0;
 }
 
-.juice {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #FF3366;
-    opacity: 0;
-    left: 50%;
-    top: 50%;
-}
-
 #transition {
     position: absolute;
     inset: 0;
