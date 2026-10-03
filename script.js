@@ -331,13 +331,16 @@ function startA1Sequence() {
     a1Frame++;
 
     if (a1Frame >= a1Frames.length) {
-      clearInterval(a1Interval);
-      createImpact();
-      return;
-    }
+  clearInterval(a1Interval);
+  return;
+}
 
     blunt.style.backgroundImage =
       `url("${a1Frames[a1Frame].src}")`;
+     
+     if (a1Frame === 1) {
+  createImpact();
+}
 
   }, a1FrameDuration);
 }
