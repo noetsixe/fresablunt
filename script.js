@@ -195,7 +195,7 @@ strawberryPaused = true;
 setTimeout(() => {
   strawberryPaused = false;
   animateStrawberry();
-}, 150);
+}, 250);
 
   const introBackground = document.getElementById("intro-background");
   introBackground.classList.add("stars-fade-out");
