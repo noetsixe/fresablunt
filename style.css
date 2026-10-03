@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO CENTRAL AL PRESIONAR LA FRESA
+   FOCO ARCADE - CIERRE DE OJO
 ========================================= */
 
 #focus-vignette {
@@ -1515,20 +1515,134 @@ html.boot-repeat #intro::after {
 
     pointer-events: none;
 
-    background: radial-gradient(
-        circle at center,
+    opacity: 0;
+}
+
+.focus-layer {
+    position: absolute;
+    inset: 0;
+
+    background: #000;
+
+    /*
+       El centro transparente funciona como
+       el "ojo" que todavía permanece abierto.
+    */
+    -webkit-mask-image: radial-gradient(
+        ellipse 58% 30% at center,
         transparent 0%,
-        transparent 35%,
-        rgba(0, 0, 0, 0.25) 55%,
-        rgba(0, 0, 0, 0.65) 75%,
-        rgba(0, 0, 0, 0.95) 100%
+        transparent 96%,
+        #000 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 58% 30% at center,
+        transparent 0%,
+        transparent 96%,
+        #000 100%
     );
 
     opacity: 0;
-
-    transition: opacity 0.25s ease;
 }
 
 #focus-vignette.focus-active {
     opacity: 1;
+}
+
+.focus-layer-1 {
+    animation: focus-close-1 0.55s steps(5, end) forwards;
+}
+
+.focus-layer-2 {
+    animation: focus-close-2 0.55s steps(5, end) 0.06s forwards;
+}
+
+.focus-layer-3 {
+    animation: focus-close-3 0.55s steps(5, end) 0.12s forwards;
+}
+
+.focus-layer-4 {
+    animation: focus-close-4 0.55s steps(5, end) 0.18s forwards;
+}
+
+
+/* =========================================
+   CIERRE ESCALONADO
+========================================= */
+
+@keyframes focus-close-1 {
+
+    0% {
+        opacity: 0;
+        -webkit-mask-image: radial-gradient(
+            ellipse 78% 48% at center,
+            transparent 0%,
+            transparent 96%,
+            #000 100%
+        );
+        mask-image: radial-gradient(
+            ellipse 78% 48% at center,
+            transparent 0%,
+            transparent 96%,
+            #000 100%
+        );
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-mask-image: radial-gradient(
+            ellipse 58% 30% at center,
+            transparent 0%,
+            transparent 96%,
+            #000 100%
+        );
+        mask-image: radial-gradient(
+            ellipse 58% 30% at center,
+            transparent 0%,
+            transparent 96%,
+            #000 100%
+        );
+    }
+}
+
+
+@keyframes focus-close-2 {
+
+    0% {
+        opacity: 0;
+        transform: translate(3px, -2px);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: translate(-2px, 2px);
+    }
+}
+
+
+@keyframes focus-close-3 {
+
+    0% {
+        opacity: 0;
+        transform: translate(-3px, 2px);
+    }
+
+    100% {
+        opacity: 0.65;
+        transform: translate(2px, -1px);
+    }
+}
+
+
+@keyframes focus-close-4 {
+
+    0% {
+        opacity: 0;
+        transform: translate(2px, 2px);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: translate(-1px, -2px);
+    }
 }
