@@ -1473,33 +1473,33 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FLASH PAC-MAN
+   PARPADEO DE LA FRESA
 ========================================= */
 
-#intro.pacman-flash #intro-scanlines {
-    animation: pacman-flash 0.24s steps(1, end);
+#strawberry.pacman-eat {
+    animation: pacman-eat 0.28s steps(1, end);
 }
 
-@keyframes pacman-flash {
+@keyframes pacman-eat {
 
     0% {
-        background-color: transparent;
+        opacity: 1;
     }
 
-    12% {
-        background-color: #ffffff;
+    20% {
+        opacity: 0;
     }
 
-    25% {
-        background-color: transparent;
+    40% {
+        opacity: 1;
     }
 
-    37% {
-        background-color: #ffffff;
+    60% {
+        opacity: 0;
     }
 
-    50%,
+    80%,
     100% {
-        background-color: transparent;
+        opacity: 1;
     }
 }
