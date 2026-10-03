@@ -1608,3 +1608,8 @@ html.boot-repeat #intro::after {
     }
 }
 
+@media (max-width: 600px) {
+    #blunt.a1-mobile {
+        background-size: 90px 90px;
+    }
+}
