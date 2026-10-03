@@ -1,7 +1,6 @@
 /* =========================================
    FRESA BLUNT — INTRO GAME
-========================================= */
-
+   ========================================= */
 const strawberry = document.getElementById("strawberry");
 const blunt = document.getElementById("blunt");
 const intro = document.getElementById("intro");
@@ -20,591 +19,365 @@ const focusVignette = document.getElementById("focus-vignette");
 const soundLabel = document.getElementById("sound-label");
 
 bgMusic.volume = 0.60;
-
 let audioStartTime = performance.now();
 let audioMuted = true;
 let audioUnlocked = false;
 
-
 /* =========================================
    AUDIO: EMPEZAR DESDE LA ENTRADA
-========================================= */
-
+   ========================================= */
 bgMusic.muted = true;
-
 bgMusic.play()
-    .then(() => {
-
-        /*
-           El navegador permitió el autoplay.
-           La canción avanza desde 0:00,
-           pero está silenciosa.
-        */
-
-        audioUnlocked = true;
-
-    })
-    .catch(() => {
-
-        /*
-           El navegador bloqueó el autoplay.
-           El tiempo seguirá contando desde que
-           entró la página.
-        */
-
-        audioUnlocked = false;
-
-    });
-
+  .then(() => {
+    /* El navegador permitió el autoplay. La canción avanza desde 0:00, pero está silenciosa. */
+    audioUnlocked = true;
+  })
+  .catch(() => {
+    /* El navegador bloqueó el autoplay. El tiempo seguirá contando desde que entró la página. */
+    audioUnlocked = false;
+  });
 
 /* =========================================
    CONTROL DE SONIDO
-========================================= */
-
+   ========================================= */
 soundToggle.addEventListener("click", async () => {
-
-    if (audioMuted) {
-
-        /*
-           Si el autoplay fue bloqueado,
-           calculamos en qué segundo debería estar.
-        */
-
-        if (!audioUnlocked) {
-
-            const elapsed =
-                (performance.now() - audioStartTime) / 1000;
-
-            if (Number.isFinite(bgMusic.duration) && bgMusic.duration > 0) {
-
-                bgMusic.currentTime =
-                    elapsed % bgMusic.duration;
-
-            } else {
-
-                bgMusic.currentTime = elapsed;
-            }
-        }
-
-        bgMusic.muted = false;
-
-        try {
-
-            await bgMusic.play();
-
-            audioUnlocked = true;
-            audioMuted = false;
-
-            soundToggle.classList.add("is-on");
-
-            soundToggle.setAttribute(
-                "aria-pressed",
-                "true"
-            );
-
-            soundToggle.setAttribute(
-                "aria-label",
-                "Apagar sonido"
-            );
-
-            soundLabel.textContent = "ON";
-
-        } catch (error) {
-
-            console.log(
-                "No se pudo iniciar el audio:",
-                error
-            );
-
-        }
-
-    } else {
-
-        /*
-           No detenemos la canción.
-           Solo quitamos el sonido.
-        */
-
-        bgMusic.muted = true;
-
-        audioMuted = true;
-
-        soundToggle.classList.remove("is-on");
-
-        soundToggle.setAttribute(
-            "aria-pressed",
-            "false"
-        );
-
-        soundToggle.setAttribute(
-            "aria-label",
-            "Activar sonido"
-        );
-
-        soundLabel.textContent = "OFF";
+  if (audioMuted) {
+    /* Si el autoplay fue bloqueado, calculamos en qué segundo debería estar. */
+    if (!audioUnlocked) {
+      const elapsed = (performance.now() - audioStartTime) / 1000;
+      if (Number.isFinite(bgMusic.duration) && bgMusic.duration > 0) {
+        bgMusic.currentTime = elapsed % bgMusic.duration;
+      } else {
+        bgMusic.currentTime = elapsed;
+      }
     }
+    bgMusic.muted = false;
+    try {
+      await bgMusic.play();
+      audioUnlocked = true;
+      audioMuted = false;
+      soundToggle.classList.add("is-on");
+      soundToggle.setAttribute("aria-pressed", "true");
+      soundToggle.setAttribute("aria-label", "Apagar sonido");
+      soundLabel.textContent = "ON";
+    } catch (error) {
+      console.log("No se pudo iniciar el audio:", error);
+    }
+  } else {
+    /* No detenemos la canción. Solo quitamos el sonido. */
+    bgMusic.muted = true;
+    audioMuted = true;
+    soundToggle.classList.remove("is-on");
+    soundToggle.setAttribute("aria-pressed", "false");
+    soundToggle.setAttribute("aria-label", "Activar sonido");
+    soundLabel.textContent = "OFF";
+  }
 });
+
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
-
 visits++;
-
 localStorage.setItem("fresaVisits", visits);
-
 scoreValue.textContent = String(visits).padStart(6, "0");
 
 const shineColors = [
-    "#ff6bb5",
-    "#ff9d5c",
-    "#ffe66d",
-    "#8ee6a0",
-    "#70d9e8",
-    "#819cff",
-    "#bd82ed"
+  "#ff6bb5",
+  "#ff9d5c",
+  "#ffe66d",
+  "#8ee6a0",
+  "#70d9e8",
+  "#819cff",
+  "#bd82ed"
 ];
-
 const shineImages = [];
-
 let shineReady = false;
 let shineStart = performance.now();
-
 let started = false;
 let frame = 1;
 let direction = 1;
-let strawberryAnimationTimeout;
-
 
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
-========================================= */
-
+   ========================================= */
 function animateStrawberry() {
-
-    if (started) return;
-
-    const sprite = `url("./Fresa${frame}.png")`;
-
-    strawberryImage.style.backgroundImage = sprite;
-    strawberryImage.style.setProperty(
-        "--strawberry-mask",
-        sprite
-    );
-
-    frame += direction;
-
-    if (frame >= 6) {
-        frame = 6;
-        direction = -1;
-    }
-
-    if (frame <= 1) {
-        frame = 1;
-        direction = 1;
-    }
-
-    strawberryAnimationTimeout = setTimeout(animateStrawberry, 110);
+  if (started) return;
+  const sprite = `url("./Fresa${frame}.png")`;
+  strawberryImage.style.backgroundImage = sprite;
+  strawberryImage.style.setProperty("--strawberry-mask", sprite);
+  frame += direction;
+  if (frame >= 6) {
+    frame = 6;
+    direction = -1;
+  }
+  if (frame <= 1) {
+    frame = 1;
+    direction = 1;
+  }
+  setTimeout(animateStrawberry, 110);
 }
-
 animateStrawberry();
 
 /* =========================================
    PREPARAR DESTELLO
-========================================= */
-
+   ========================================= */
 for (let i = 1; i <= 6; i++) {
-
-    const img = new Image();
-
-    img.onload = () => {
-
-        shineImages[i] = img;
-
-        if (i === 6) {
-            shineReady = true;
-
-            shineCanvas.width = img.naturalWidth;
-            shineCanvas.height = img.naturalHeight;
-
-            shineCtx.imageSmoothingEnabled = false;
-
-            animateRainbowShine();
-        }
-    };
-
-    img.src = `./Fresa${i}.png`;
+  const img = new Image();
+  img.onload = () => {
+    shineImages[i] = img;
+    if (i === 6) {
+      shineReady = true;
+      shineCanvas.width = img.naturalWidth;
+      shineCanvas.height = img.naturalHeight;
+      shineCtx.imageSmoothingEnabled = false;
+      animateRainbowShine();
+    }
+  };
+  img.src = `./Fresa${i}.png`;
 }
+
 /* =========================================
    PRECARGAR FRAMES DE LA FRESA
-========================================= */
-
+   ========================================= */
 for (let i = 1; i <= 6; i++) {
-    const img = new Image();
-    img.src = `./Fresa${i}.png`;
+  const img = new Image();
+  img.src = `./Fresa${i}.png`;
 }
+
 /* =========================================
    CLICK / TOUCH EN LA FRESA
-========================================= */
+   ========================================= */
 function vibrateDevice(pattern = 100) {
-    try {
-        if (
-            typeof navigator !== "undefined" &&
-            typeof navigator.vibrate === "function"
-        ) {
-            navigator.vibrate(pattern);
-        }
-    } catch (e) {
-        // El dispositivo simplemente no soporta vibración
+  try {
+    if (
+      typeof navigator !== "undefined" &&
+      typeof navigator.vibrate === "function"
+    ) {
+      navigator.vibrate(pattern);
     }
+  } catch (e) {
+    // El dispositivo simplemente no soporta vibración
+  }
 }
 
 strawberry.addEventListener("click", () => {
+  vibrateDevice([80, 40, 140]);
+  starfieldPaused = true;
+  const hud = document.querySelector(".arcade-hud");
+  const soundToggle = document.getElementById("sound-toggle");
+  hud.classList.add("hud-vanish");
+  soundToggle.classList.add("hud-vanish");
+  intro.classList.add("press-start-hide");
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+  bgMusic.muted = true;
+  soundToggle.classList.remove("is-on");
+  soundToggle.setAttribute("aria-pressed", "false");
+  soundToggle.setAttribute("aria-label", "Activar sonido");
+  soundLabel.textContent = "OFF";
 
-   vibrateDevice([80, 40, 140]);
-   
-    starfieldPaused = true;
-   
-   const hud = document.querySelector(".arcade-hud");
-const soundToggle = document.getElementById("sound-toggle");
+  if (started) return;
+  started = true;
 
-hud.classList.add("hud-vanish");
-soundToggle.classList.add("hud-vanish");
+  strawberry.style.pointerEvents = "none";
+  strawberry.classList.add("strawberry-hit");
 
-intro.classList.add("press-start-hide");
-
-    bgMusic.pause();
-bgMusic.currentTime = 0;
-   bgMusic.muted = true;
-
-soundToggle.classList.remove("is-on");
-soundToggle.setAttribute("aria-pressed", "false");
-soundToggle.setAttribute("aria-label", "Activar sonido");
-
-soundLabel.textContent = "OFF";
-
-    if (started) return;
-
-    started = true;
-clearTimeout(strawberryAnimationTimeout);
-
-strawberry.style.pointerEvents = "none";
-strawberry.classList.add("strawberry-hit");
-
-setTimeout(() => {
-
+  setTimeout(() => {
     // Primer parpadeo
     strawberry.style.visibility = "hidden";
-
-setTimeout(() => {
-
-    // PRIMER PARPADEO
-    strawberry.style.visibility = "hidden";
-
     setTimeout(() => {
-
-        strawberry.style.visibility = "visible";
-
+      strawberry.style.visibility = "visible";
+      // Segundo parpadeo
+      setTimeout(() => {
+        strawberry.style.visibility = "hidden";
         setTimeout(() => {
-
-            // SEGUNDO PARPADEO
-            strawberry.style.visibility = "hidden";
-
-            setTimeout(() => {
-
-                strawberry.style.visibility = "visible";
-
-                startStarfieldFadeOut();
-
-                focusVignette.classList.add("focus-active");
-
-                setTimeout(() => {
-                    dropBlunt();
-                }, 1200);
-
-            }, 180);
-
+          strawberry.style.visibility = "visible";
+          const introBackground = document.getElementById("intro-background");
+          introBackground.classList.add("stars-fade-out");
+          focusVignette.classList.add("focus-active");
+          setTimeout(() => {
+            dropBlunt();
+          }, 2200);
         }, 180);
-
+      }, 180);
     }, 180);
-
-}, 600);
+  }, 600);
 });
-
 
 /* =========================================
    CAÍDA DEL BLUNT
-========================================= */
+   ========================================= */
 const bluntFrames = [];
-
 for (let i = 0; i < 12; i++) {
-    const img = new Image();
-    img.src = `./pixil-frame-${i}.png`;
-    bluntFrames.push(img);
+  const img = new Image();
+  img.src = `./pixil-frame-${i}.png`;
+  bluntFrames.push(img);
 }
 
 function dropBlunt() {
+  blunt.style.opacity = "1";
+  blunt.classList.remove("blunt-falling");
+  void blunt.offsetWidth;
+  blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
+  blunt.classList.add("blunt-falling");
 
-    blunt.style.opacity = "1";
-    blunt.classList.remove("blunt-falling");
+  let bluntFrame = 0;
+  let bluntAnimation;
+  let lastFrameTime = performance.now();
 
-    void blunt.offsetWidth;
-
-    blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
-
-    blunt.classList.add("blunt-falling");
-
-    let bluntFrame = 0;
-    let bluntAnimation;
-
-    let lastFrameTime = performance.now();
-
-    function animateBlunt(now) {
-
-        if (now - lastFrameTime >= 100) {
-
-            bluntFrame++;
-
-            if (bluntFrame > 11) {
-                bluntFrame = 0;
-            }
-
-            blunt.style.backgroundImage =
-                `url("${bluntFrames[bluntFrame].src}")`;
-
-            lastFrameTime = now;
-        }
-
-        bluntAnimation = requestAnimationFrame(animateBlunt);
+  function animateBlunt(now) {
+    if (now - lastFrameTime >= 100) {
+      bluntFrame++;
+      if (bluntFrame > 11) {
+        bluntFrame = 0;
+      }
+      blunt.style.backgroundImage = `url("${bluntFrames[bluntFrame].src}")`;
+      lastFrameTime = now;
     }
-
     bluntAnimation = requestAnimationFrame(animateBlunt);
+  }
 
-    setTimeout(() => {
+  bluntAnimation = requestAnimationFrame(animateBlunt);
 
-        cancelAnimationFrame(bluntAnimation);
-        createImpact();
-
-    }, 10000);
+  setTimeout(() => {
+    cancelAnimationFrame(bluntAnimation);
+    createImpact();
+  }, 10000);
 }
-
 
 /* =========================================
    IMPACTO
-========================================= */
-
+   ========================================= */
 function createImpact() {
-
-    impact.style.opacity = "1";
-
-    impactFlash.animate(
-        [
-            { opacity: 0 },
-            { opacity: 0.9 },
-            { opacity: 0 }
-        ],
-        {
-            duration: 280,
-            easing: "ease-out"
-        }
-    );
-
-
-    intro.animate(
-        [
-            { transform: "translate(0, 0)" },
-            { transform: "translate(-10px, 5px)" },
-            { transform: "translate(10px, -6px)" },
-            { transform: "translate(-8px, -5px)" },
-            { transform: "translate(7px, 6px)" },
-            { transform: "translate(-5px, -3px)" },
-            { transform: "translate(4px, 2px)" },
-            { transform: "translate(0, 0)" }
-        ],
-        {
-            duration: 450,
-            easing: "linear"
-        }
-    );
-
-
-    introBackground.animate(
-        [
-            { background: "#000" },
-            { background: "#ff1744" },
-            { background: "#8b001f" },
-            { background: "#450010" }
-        ],
-        {
-            duration: 500,
-            fill: "forwards",
-            easing: "ease-out"
-        }
-    );
-
-
-    createJuice();
-
-
-    setTimeout(() => {
-        enterMainSite();
-    }, 3000);
+  impact.style.opacity = "1";
+  impactFlash.animate(
+    [
+      { opacity: 0 },
+      { opacity: 0.9 },
+      { opacity: 0 }
+    ],
+    { duration: 280, easing: "ease-out" }
+  );
+  intro.animate(
+    [
+      { transform: "translate(0, 0)" },
+      { transform: "translate(-10px, 5px)" },
+      { transform: "translate(10px, -6px)" },
+      { transform: "translate(-8px, -5px)" },
+      { transform: "translate(7px, 6px)" },
+      { transform: "translate(-5px, -3px)" },
+      { transform: "translate(4px, 2px)" },
+      { transform: "translate(0, 0)" }
+    ],
+    { duration: 450, easing: "linear" }
+  );
+  introBackground.animate(
+    [
+      { background: "#000" },
+      { background: "#ff1744" },
+      { background: "#8b001f" },
+      { background: "#450010" }
+    ],
+    { duration: 500, fill: "forwards", easing: "ease-out" }
+  );
+  createJuice();
+  setTimeout(() => {
+    enterMainSite();
+  }, 3000);
 }
-
 
 /* =========================================
    JUGO / PARTÍCULAS
-========================================= */
-
+   ========================================= */
 function createJuice() {
-
-    const juices = document.querySelectorAll(".juice");
-
-    juices.forEach((juice, index) => {
-
-        const directions = [
-            [-55, -35],
-            [55, -25],
-            [-70, 35],
-            [65, 45],
-            [15, -65]
-        ];
-
-        const [x, y] = directions[index];
-
-        juice.animate(
-            [
-                {
-                    opacity: 0,
-                    transform: "translate(-50%, -50%) scale(0.3)"
-                },
-                {
-                    opacity: 1,
-                    transform: "translate(-50%, -50%) scale(1.3)"
-                },
-                {
-                    opacity: 0.9,
-                    transform:
-                        `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0.65)`
-                }
-            ],
-            {
-                duration: 850 + index * 80,
-                easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
-                fill: "forwards"
-            }
-        );
-
-    });
+  const juices = document.querySelectorAll(".juice");
+  juices.forEach((juice, index) => {
+    const directions = [
+      [-55, -35],
+      [55, -25],
+      [-70, 35],
+      [65, 45],
+      [15, -65]
+    ];
+    const [x, y] = directions[index];
+    juice.animate(
+      [
+        { opacity: 0, transform: "translate(-50%, -50%) scale(0.3)" },
+        { opacity: 1, transform: "translate(-50%, -50%) scale(1.3)" },
+        {
+          opacity: 0.9,
+          transform: `translate(calc(-50% + \({x}px), calc(-50% +\){y}px)) scale(0.65)`
+        }
+      ],
+      {
+        duration: 850 + index * 80,
+        easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+        fill: "forwards"
+      }
+    );
+  });
 }
-
 
 /* =========================================
    ENTRADA AL SITIO
-========================================= */
-
+   ========================================= */
 function enterMainSite() {
-
-    transition.animate(
-        [
-            { opacity: 0 },
-            { opacity: 1 }
-        ],
-        {
-            duration: 700,
-            easing: "ease-in-out",
-            fill: "forwards"
-        }
+  transition.animate(
+    [
+      { opacity: 0 },
+      { opacity: 1 }
+    ],
+    { duration: 700, easing: "ease-in-out", fill: "forwards" }
+  );
+  setTimeout(() => {
+    intro.style.display = "none";
+    mainSite.style.visibility = "visible";
+    mainSite.animate(
+      [
+        { opacity: 0 },
+        { opacity: 1 }
+      ],
+      { duration: 1000, easing: "ease-out", fill: "forwards" }
     );
-
-
-    setTimeout(() => {
-
-        intro.style.display = "none";
-
-        mainSite.style.visibility = "visible";
-
-        mainSite.animate(
-            [
-                { opacity: 0 },
-                { opacity: 1 }
-            ],
-            {
-                duration: 1000,
-                easing: "ease-out",
-                fill: "forwards"
-            }
-        );
-
-        mainSite.style.opacity = "1";
-
-        document.body.style.overflow = "auto";
-
-    }, 750);
+    mainSite.style.opacity = "1";
+    document.body.style.overflow = "auto";
+  }, 750);
 }
+
 /* =========================================
    DESTELLO ARCOÍRIS PIXELADO
-========================================= */
-
+   ========================================= */
 function animateRainbowShine() {
+  if (!shineReady) return;
+  const now = performance.now();
+  const cycle = 10000;
+  const duration = 1700;
+  const elapsed = (now - shineStart) % cycle;
 
-    if (!shineReady) return;
+  shineCtx.clearRect(0, 0, shineCanvas.width, shineCanvas.height);
 
-    const now = performance.now();
-
-    const cycle = 10000;
-const duration = 1700;
-
-    const elapsed = (now - shineStart) % cycle;
-
-    shineCtx.clearRect(
-        0,
-        0,
-        shineCanvas.width,
-        shineCanvas.height
-    );
-
-    if (elapsed < duration) {
-
-        const progress = elapsed / duration;
-
-        drawRainbowShine(progress);
-    }
-
-    requestAnimationFrame(animateRainbowShine);
+  if (elapsed < duration) {
+    const progress = elapsed / duration;
+    drawRainbowShine(progress);
+  }
+  requestAnimationFrame(animateRainbowShine);
 }
 
-
 function drawRainbowShine(progress) {
+  const img = shineImages[frame];
+  if (!img) return;
 
-    const img = shineImages[frame];
+  const w = shineCanvas.width;
+  const h = shineCanvas.height;
+  shineCtx.clearRect(0, 0, w, h);
 
-    if (!img) return;
+  /* POSICIÓN DEL BAÑO DE LUZ IZQUIERDA → DERECHA */
+  const centerX = -w * 0.35 + (w * 1.7) * progress;
+  const centerY = h * 0.5;
+  const radiusX = w * 0.28;
+  const radiusY = h * 0.75;
+  const pixel = 3;
 
-    const w = shineCanvas.width;
-    const h = shineCanvas.height;
-
-    shineCtx.clearRect(0, 0, w, h);
-
-    /*
-       POSICIÓN DEL BAÑO DE LUZ
-       IZQUIERDA → DERECHA
-    */
-
-    const centerX =
-        -w * 0.35 +
-        (w * 1.7) * progress;
-
-    const centerY = h * 0.5;
-
-    const radiusX = w * 0.28;
-    const radiusY = h * 0.75;
-
-    const pixel = 3;
-
-
-    /*
-       COLORES QUE VAN APARECIENDO
-    */
-
-    const colors = [
+  /* COLORES QUE VAN APARECIENDO */
+  const colors = [
     "#ff3b9d",
     "#ff7a24",
     "#ffd21f",
@@ -612,309 +385,146 @@ function drawRainbowShine(progress) {
     "#00d9ff",
     "#3867ff",
     "#a855f7"
-];
+  ];
 
+  /* POSICIÓN DEL CICLO DE COLOR */
+  const colorFlow = progress * 7;
 
-    /*
-       POSICIÓN DEL CICLO DE COLOR
-    */
+  /* DIBUJAR EL BAÑO DE LUZ */
+  for (let y = 0; y < h; y += pixel) {
+    for (let x = 0; x < w; x += pixel) {
+      const dx = (x - centerX) / radiusX;
+      const dy = (y - centerY) / radiusY;
+      const distance = dx * dx + dy * dy;
 
-    const colorFlow =
-    progress * 7;
+      if (distance > 1) continue;
 
+      /* INTENSIDAD DEL HALO */
+      const intensity = 1 - distance;
 
-    /*
-       DIBUJAR EL BAÑO DE LUZ
-    */
+      /* CADA ZONA DE LA LUZ TIENE UN MOMENTO DIFERENTE DEL CICLO DE COLOR. */
+      const localPosition = (x - centerX) / radiusX;
+      const colorPosition = colorFlow + localPosition * 5.2;
 
-    for (
-        let y = 0;
-        y < h;
-        y += pixel
-    ) {
+      /* ÍNDICE DEL COLOR NORMALIZADO PARA EVITAR HUECOS */
+      const colorIndex =
+        ((Math.floor(colorPosition) % colors.length) + colors.length) %
+        colors.length;
+      const color = colors[colorIndex];
 
-        for (
-            let x = 0;
-            x < w;
-            x += pixel
-        ) {
+      /* TRANSICIÓN ENTRE COLORES SIN LLEGAR A CERO */
+      const colorPhase = ((colorPosition % 1) + 1) % 1;
+      const colorIntensity = 0.25 + Math.sin(colorPhase * Math.PI) * 0.25;
 
-            const dx =
-                (x - centerX) / radiusX;
-
-            const dy =
-                (y - centerY) / radiusY;
-
-            const distance =
-                dx * dx + dy * dy;
-
-            if (distance > 1) continue;
-
-
-            /*
-               INTENSIDAD DEL HALO
-            */
-
-            const intensity =
-                1 - distance;
-
-
-            /*
-               CADA ZONA DE LA LUZ
-               TIENE UN MOMENTO DIFERENTE
-               DEL CICLO DE COLOR.
-            */
-
-            const localPosition =
-    (x - centerX) / radiusX;
-
-const colorPosition =
-    colorFlow + localPosition * 5.2;
-
-
-/*
-   ÍNDICE DEL COLOR
-   NORMALIZADO PARA EVITAR HUECOS
-*/
-
-const colorIndex =
-    ((Math.floor(colorPosition) % colors.length)
-    + colors.length) % colors.length;
-
-const color =
-    colors[colorIndex];
-
-
-/*
-   TRANSICIÓN ENTRE COLORES
-   SIN LLEGAR A CERO
-*/
-
-const colorPhase =
-    ((colorPosition % 1) + 1) % 1;
-
-const colorIntensity =
-    0.25 +
-    Math.sin(
-        colorPhase * Math.PI
-    ) * 0.25;
-
-
-            /*
-               INTENSIDAD FINAL
-            */
-
-            shineCtx.globalAlpha =
-    colorIntensity *
-    (
-        0.04 +
-        intensity * 0.14
-    );
-
-            shineCtx.fillStyle = color;
-
-            shineCtx.fillRect(
-    x,
-    y,
-    pixel + 1,
-    pixel + 1
-);
-        }
+      /* INTENSIDAD FINAL */
+      shineCtx.globalAlpha = colorIntensity * (0.04 + intensity * 0.14);
+      shineCtx.fillStyle = color;
+      shineCtx.fillRect(x, y, pixel + 1, pixel + 1);
     }
+  }
 
+  shineCtx.globalAlpha = 1;
 
-    shineCtx.globalAlpha = 1;
-
-
-    /*
-       RECORTAR A LA SILUETA
-       DE LA FRESA
-    */
-
-    shineCtx.globalCompositeOperation =
-        "destination-in";
-
-    shineCtx.drawImage(
-        img,
-        0,
-        0,
-        w,
-        h
-    );
-
-    shineCtx.globalCompositeOperation =
-        "source-over";
+  /* RECORTAR A LA SILUETA DE LA FRESA */
+  shineCtx.globalCompositeOperation = "destination-in";
+  shineCtx.drawImage(img, 0, 0, w, h);
+  shineCtx.globalCompositeOperation = "source-over";
 }
+
 /* =========================================
    GALAGA STYLE STARFIELD
-========================================= */
-
+   ========================================= */
 const starCanvas = document.getElementById("starfield");
 const starCtx = starCanvas.getContext("2d");
-
 starCtx.imageSmoothingEnabled = false;
 
 const stars = [];
 
 function resizeStarfield() {
+  starCanvas.width = window.innerWidth;
+  starCanvas.height = window.innerHeight;
+  stars.length = 0;
 
-    starCanvas.width = window.innerWidth;
-    starCanvas.height = window.innerHeight;
+  const amount = Math.floor((starCanvas.width * starCanvas.height) / 9000);
 
-    stars.length = 0;
-
-    const amount = Math.floor(
-        (starCanvas.width * starCanvas.height) / 9000
-    );
-
-    for (let i = 0; i < amount; i++) {
-
-        stars.push({
-            x: Math.floor(Math.random() * starCanvas.width),
-            y: Math.floor(Math.random() * starCanvas.height),
-
-            size: Math.random() < 0.88 ? 1 : 2,
-
-            speed:
-                Math.random() < 0.75
-                    ? 0.18 + Math.random() * 0.18
-                    : 0.4 + Math.random() * 0.3,
-
-            brightness:
-                Math.random() < 0.85
-                    ? 0.45 + Math.random() * 0.3
-                    : 0.8 + Math.random() * 0.2
-        });
-    }
+  for (let i = 0; i < amount; i++) {
+    stars.push({
+      x: Math.floor(Math.random() * starCanvas.width),
+      y: Math.floor(Math.random() * starCanvas.height),
+      size: Math.random() < 0.88 ? 1 : 2,
+      speed:
+        Math.random() < 0.75
+          ? 0.18 + Math.random() * 0.18
+          : 0.4 + Math.random() * 0.3,
+      brightness:
+        Math.random() < 0.85
+          ? 0.45 + Math.random() * 0.3
+          : 0.8 + Math.random() * 0.2
+    });
+  }
 }
 
 let starfieldPaused = false;
-let starfieldFading = false;
-let starfieldFadeStart = 0;
-const starfieldFadeDuration = 2000;
-
-function startStarfieldFadeOut() {
-    starfieldFading = true;
-    starfieldFadeStart = performance.now();
-}
-
 
 function animateStarfield() {
-
-    if (starfieldPaused && !starfieldFading) {
+  if (starfieldPaused) {
     requestAnimationFrame(animateStarfield);
     return;
-}
+  }
 
-    starCtx.clearRect(
-        0,
-        0,
-        starCanvas.width,
-        starCanvas.height
-    );
+  starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
 
-    for (const star of stars) {
-
-    if (!starfieldPaused) {
-        star.y += star.speed;
-
-        if (star.y > starCanvas.height) {
-            star.y = -2;
-            star.x = Math.floor(
-                Math.random() * starCanvas.width
-            );
-        }
+  for (const star of stars) {
+    star.y += star.speed;
+    if (star.y > starCanvas.height) {
+      star.y = -2;
+      star.x = Math.floor(Math.random() * starCanvas.width);
     }
-
-    let alpha = star.brightness;
-
-    if (starfieldFading) {
-
-        const elapsed =
-            performance.now() - starfieldFadeStart;
-
-        const progress =
-            Math.min(
-                elapsed / starfieldFadeDuration,
-                1
-            );
-
-        const starDelay =
-            (star.x * 0.37 + star.y * 0.19) % 0.35;
-
-        const localProgress =
-            Math.max(
-                0,
-                Math.min(
-                    1,
-                    (progress - starDelay) / 0.65
-                )
-            );
-
-        alpha =
-            star.brightness *
-            (1 - localProgress);
-    }
-
-    starCtx.globalAlpha = alpha;
-
+    starCtx.globalAlpha = star.brightness;
     starCtx.fillStyle = "#FFFFFF";
-
     starCtx.fillRect(
-        Math.floor(star.x),
-        Math.floor(star.y),
-        star.size,
-        star.size
+      Math.floor(star.x),
+      Math.floor(star.y),
+      star.size,
+      star.size
     );
-}
+  }
 
-    starCtx.globalAlpha = 1;
-
-    requestAnimationFrame(animateStarfield);
+  starCtx.globalAlpha = 1;
+  requestAnimationFrame(animateStarfield);
 }
 
 resizeStarfield();
 animateStarfield();
-
 window.addEventListener("resize", resizeStarfield);
 
 /* =========================================
    BOOT SEQUENCE MEMORY
-========================================= */
-
+   ========================================= */
 if (!localStorage.getItem("fresaBootSeen")) {
-    localStorage.setItem("fresaBootSeen", "true");
+  localStorage.setItem("fresaBootSeen", "true");
 }
 
 /* =========================================
    BARRIDO OCASIONAL DE COLORES
-========================================= */
-
+   ========================================= */
 const colorWave = document.getElementById("color-wave");
 
 function triggerColorWave() {
+  colorWave.classList.remove("active");
+  void colorWave.offsetWidth;
+  colorWave.classList.add("active");
 
+  // Quitar active cuando termine la animación
+  setTimeout(() => {
     colorWave.classList.remove("active");
-
-    void colorWave.offsetWidth;
-
-    colorWave.classList.add("active");
-
-    // Quitar active cuando termine la animación
-    setTimeout(() => {
-        colorWave.classList.remove("active");
-    }, 2500);
+  }, 2500);
 }
 
-
 /* Primera aparición después de 3 segundos */
-
 setTimeout(() => {
-
+  triggerColorWave();
+  setInterval(() => {
     triggerColorWave();
-
-    setInterval(() => {
-        triggerColorWave();
-    }, 70000);
-
+  }, 70000);
 }, 60000);
