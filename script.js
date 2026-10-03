@@ -423,8 +423,8 @@ function createImpact() {
   { duration: 500, fill: "forwards", easing: "ease-out" }
 );
   setTimeout(() => {
-    enterMainSite();
-  }, 3000);
+    window.location.href = "./main.html";
+}, 3000);
 }
 
 /* =========================================
