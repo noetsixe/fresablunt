@@ -1503,3 +1503,32 @@ html.boot-repeat #intro::after {
         opacity: 1;
     }
 }
+
+/* =========================================
+   FOCO CENTRAL AL PRESIONAR LA FRESA
+========================================= */
+
+#focus-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 75;
+
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        transparent 35%,
+        rgba(0, 0, 0, 0.25) 55%,
+        rgba(0, 0, 0, 0.65) 75%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+
+    opacity: 0;
+
+    transition: opacity 0.25s ease;
+}
+
+#focus-vignette.focus-active {
+    opacity: 1;
+}
