@@ -256,7 +256,6 @@ function vibrateDevice(pattern = 100) {
 }
 
 strawberry.addEventListener("click", () => {
-   focusVignette.classList.add("focus-active");
 
    vibrateDevice([80, 40, 140]);
    
@@ -302,13 +301,15 @@ setTimeout(() => {
             strawberry.style.visibility = "hidden";
 
             setTimeout(() => {
+    strawberry.style.visibility = "visible";
 
-                strawberry.style.visibility = "visible";
+    focusVignette.classList.add("focus-active");
 
-                // Ahora recién cae el blunt
-                dropBlunt();
+    setTimeout(() => {
+        dropBlunt();
+    }, 2200);
 
-            }, 180);
+}, 180);
 
         }, 180);
 
