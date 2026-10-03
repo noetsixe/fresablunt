@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO ARCADE - OJO ABIERTO
+   FOCO ARCADE - OJO DESDE BORDES
 ========================================= */
 
 #focus-vignette {
@@ -1518,8 +1518,7 @@ html.boot-repeat #intro::after {
 
 .focus-layer {
     position: absolute;
-    inset: -10px;
-
+    inset: 0;
     pointer-events: none;
 
     background: #000;
@@ -1534,135 +1533,143 @@ html.boot-repeat #intro::after {
 }
 
 
-/* CAPA 1 */
+/* =========================================
+   CAPA 1
+========================================= */
+
 .focus-layer-1 {
     -webkit-mask-image: radial-gradient(
-        ellipse 72% 43% at center,
+        ellipse 78% 52% at center,
         transparent 0%,
-        transparent 86%,
+        transparent 88%,
         #000 100%
     );
 
     mask-image: radial-gradient(
-        ellipse 72% 43% at center,
+        ellipse 78% 52% at center,
         transparent 0%,
-        transparent 86%,
+        transparent 88%,
         #000 100%
     );
 
-    animation: eye-layer-1 0.9s steps(8, end) forwards;
-}
-
-
-/* CAPA 2 */
-.focus-layer-2 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 67% 39% at center,
-        transparent 0%,
-        transparent 82%,
-        #000 100%
-    );
-
-    mask-image: radial-gradient(
-        ellipse 67% 39% at center,
-        transparent 0%,
-        transparent 82%,
-        #000 100%
-    );
-
-    animation: eye-layer-2 0.9s steps(8, end) 0.08s forwards;
-}
-
-
-/* CAPA 3 */
-.focus-layer-3 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 62% 35% at center,
-        transparent 0%,
-        transparent 78%,
-        #000 100%
-    );
-
-    mask-image: radial-gradient(
-        ellipse 62% 35% at center,
-        transparent 0%,
-        transparent 78%,
-        #000 100%
-    );
-
-    animation: eye-layer-3 0.9s steps(8, end) 0.16s forwards;
-}
-
-
-/* CAPA 4 */
-.focus-layer-4 {
-    -webkit-mask-image: radial-gradient(
-        ellipse 57% 31% at center,
-        transparent 0%,
-        transparent 74%,
-        #000 100%
-    );
-
-    mask-image: radial-gradient(
-        ellipse 57% 31% at center,
-        transparent 0%,
-        transparent 74%,
-        #000 100%
-    );
-
-    animation: eye-layer-4 0.9s steps(8, end) 0.24s forwards;
+    animation: eye-layer-1 0.7s steps(7, end) forwards;
 }
 
 
 /* =========================================
-   ENTRADA ESCALONADA
+   CAPA 2
+========================================= */
+
+.focus-layer-2 {
+    -webkit-mask-image: radial-gradient(
+        ellipse 72% 47% at center,
+        transparent 0%,
+        transparent 86%,
+        #000 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 72% 47% at center,
+        transparent 0%,
+        transparent 86%,
+        #000 100%
+    );
+
+    animation: eye-layer-2 0.7s steps(7, end) 0.65s forwards;
+}
+
+
+/* =========================================
+   CAPA 3
+========================================= */
+
+.focus-layer-3 {
+    -webkit-mask-image: radial-gradient(
+        ellipse 66% 42% at center,
+        transparent 0%,
+        transparent 84%,
+        #000 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 66% 42% at center,
+        transparent 0%,
+        transparent 84%,
+        #000 100%
+    );
+
+    animation: eye-layer-3 0.7s steps(7, end) 1.30s forwards;
+}
+
+
+/* =========================================
+   CAPA 4
+========================================= */
+
+.focus-layer-4 {
+    -webkit-mask-image: radial-gradient(
+        ellipse 60% 37% at center,
+        transparent 0%,
+        transparent 82%,
+        #000 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 60% 37% at center,
+        transparent 0%,
+        transparent 82%,
+        #000 100%
+    );
+
+    animation: eye-layer-4 0.7s steps(7, end) 1.95s forwards;
+}
+
+
+/* =========================================
+   ENTRADA LENTA Y ESCALONADA
 ========================================= */
 
 @keyframes eye-layer-1 {
+
     0% {
         opacity: 0;
-        transform: translate(0, 0);
     }
 
     100% {
-        opacity: 0.35;
-        transform: translate(1px, 0);
+        opacity: 0.32;
     }
 }
 
 @keyframes eye-layer-2 {
+
     0% {
         opacity: 0;
-        transform: translate(-1px, 1px);
     }
 
     100% {
         opacity: 0.48;
-        transform: translate(1px, -1px);
     }
 }
 
 @keyframes eye-layer-3 {
+
     0% {
         opacity: 0;
-        transform: translate(1px, -1px);
     }
 
     100% {
-        opacity: 0.62;
-        transform: translate(-1px, 1px);
+        opacity: 0.65;
     }
 }
 
 @keyframes eye-layer-4 {
+
     0% {
         opacity: 0;
-        transform: translate(-1px, 0);
     }
 
     100% {
-        opacity: 0.78;
-        transform: translate(1px, 0);
+        opacity: 0.82;
     }
 }
 
