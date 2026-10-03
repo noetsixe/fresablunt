@@ -284,6 +284,7 @@ soundLabel.textContent = "OFF";
 
     started = true;
 clearTimeout(strawberryAnimationTimeout);
+   strawberryImage.style.backgroundImage = 'none';
 
 strawberry.style.pointerEvents = "none";
 strawberry.classList.add("strawberry-hit");
