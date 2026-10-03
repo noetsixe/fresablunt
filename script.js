@@ -303,11 +303,14 @@ setTimeout(() => {
             setTimeout(() => {
     strawberry.style.visibility = "visible";
 
-    focusVignette.classList.add("focus-active");
+const starfield = document.getElementById("starfield");
+starfield.classList.add("starfield-fade-out");
 
-    setTimeout(() => {
-        dropBlunt();
-    }, 2200);
+focusVignette.classList.add("focus-active");
+
+setTimeout(() => {
+    dropBlunt();
+}, 2200);
 
 }, 180);
 
