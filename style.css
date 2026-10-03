@@ -1532,11 +1532,11 @@ html.boot-repeat #intro::after {
 
     background: radial-gradient(
     ellipse 75% 70% at center,
-    transparent 35%,
-    rgba(0, 0, 0, 0.08) 50%,
-    rgba(0, 0, 0, 0.22) 68%,
-    rgba(0, 0, 0, 0.42) 82%,
-    rgba(0, 0, 0, 0.65) 100%
+    transparent 32%,
+    rgba(0, 0, 0, 0.10) 46%,
+    rgba(0, 0, 0, 0.28) 63%,
+    rgba(0, 0, 0, 0.50) 80%,
+    rgba(0, 0, 0, 0.78) 100%
 );
 
     opacity: 0;
@@ -1548,19 +1548,19 @@ html.boot-repeat #intro::after {
 ========================================= */
 
 #focus-vignette.focus-active .focus-layer-1 {
-    animation: focus-layer-1 1.2s steps(8, end) forwards;
+    animation: focus-layer-1 1.2s steps(12, end) forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-2 {
-    animation: focus-layer-2 1.2s steps(8, end) 0.30s forwards;
+    animation: focus-layer-2 1.2s steps(12, end) 0.30s forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-3 {
-    animation: focus-layer-3 1.2s steps(8, end) 0.60s forwards;
+    animation: focus-layer-3 1.2s steps(12, end) 0.60s forwards;
 }
 
 #focus-vignette.focus-active .focus-layer-4 {
-    animation: focus-layer-4 1.2s steps(8, end) 0.90s forwards;
+    animation: focus-layer-4 1.2s steps(12, end) 0.90s forwards;
 }
 
 
