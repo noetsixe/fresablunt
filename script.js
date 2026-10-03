@@ -314,6 +314,8 @@ function dropBlunt() {
     strawberry.style.visibility = "hidden";
     shineCanvas.style.visibility = "hidden";
 
+     blunt.classList.add("a1-sequence");
+
     blunt.style.backgroundImage =
       `url("${a1Frames[0].src}")`;
 
