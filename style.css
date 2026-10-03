@@ -1609,32 +1609,24 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FRESA PAR 2 — TEMBLOR
+   FRESA PAR 2 — PARPADEO
 ========================================= */
 
-.fresapar-tiritando {
-    animation: fresapar-tiritando 0.12s steps(2, end) infinite;
+.fresapar-parpadeo {
+    animation: fresapar-parpadeo 0.7s steps(1, end) infinite;
 }
 
-@keyframes fresapar-tiritando {
+@keyframes fresapar-parpadeo {
 
     0% {
-        transform: translate(0, 0);
-    }
-
-    25% {
-        transform: translate(-1px, 1px);
+        visibility: visible;
     }
 
     50% {
-        transform: translate(1px, -1px);
-    }
-
-    75% {
-        transform: translate(-1px, -1px);
+        visibility: hidden;
     }
 
     100% {
-        transform: translate(0, 0);
+        visibility: visible;
     }
 }
