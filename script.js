@@ -412,14 +412,14 @@ function createImpact() {
     { duration: 450, easing: "linear" }
   );
   introBackground.animate(
-    [
-      { background: "#000" },
-      { background: "#ff1744" },
-      { background: "#8b001f" },
-      { background: "#450010" }
-    ],
-    { duration: 500, fill: "forwards", easing: "ease-out" }
-  );
+  [
+    { background: "#000" },
+    { background: "#FFFFFF" },
+    { background: "#FFFFFF" },
+    { background: "#FFFFFF" }
+  ],
+  { duration: 500, fill: "forwards", easing: "ease-out" }
+);
   createJuice();
   setTimeout(() => {
     enterMainSite();
