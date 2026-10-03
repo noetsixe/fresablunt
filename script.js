@@ -310,6 +310,7 @@ setTimeout(() => {
     'url("./fresapar2.png")';
 
 strawberry.style.visibility = "visible";
+           strawberry.classList.add("fresapar-parpadeo");
 
 // Aquí se queda fresapar2.png
 // y luego empieza la desaparición de las estrellas
