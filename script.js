@@ -781,13 +781,22 @@ function resizeStarfield() {
 }
 
 let starfieldPaused = false;
+let starfieldFading = false;
+let starfieldFadeStart = 0;
+const starfieldFadeDuration = 900;
+
+function startStarfieldFadeOut() {
+    starfieldFading = true;
+    starfieldFadeStart = performance.now();
+}
+
 
 function animateStarfield() {
 
-    if (starfieldPaused) {
-        requestAnimationFrame(animateStarfield);
-        return;
-    }
+    if (starfieldPaused && !starfieldFading) {
+    requestAnimationFrame(animateStarfield);
+    return;
+}
 
     starCtx.clearRect(
         0,
@@ -798,26 +807,56 @@ function animateStarfield() {
 
     for (const star of stars) {
 
-        star.y += star.speed;
+    star.y += star.speed;
 
-        if (star.y > starCanvas.height) {
-            star.y = -2;
-            star.x = Math.floor(
-                Math.random() * starCanvas.width
-            );
-        }
-
-        starCtx.globalAlpha = star.brightness;
-
-        starCtx.fillStyle = "#FFFFFF";
-
-        starCtx.fillRect(
-            Math.floor(star.x),
-            Math.floor(star.y),
-            star.size,
-            star.size
+    if (star.y > starCanvas.height) {
+        star.y = -2;
+        star.x = Math.floor(
+            Math.random() * starCanvas.width
         );
     }
+
+    let alpha = star.brightness;
+
+    if (starfieldFading) {
+
+        const elapsed =
+            performance.now() - starfieldFadeStart;
+
+        const progress =
+            Math.min(
+                elapsed / starfieldFadeDuration,
+                1
+            );
+
+        const starDelay =
+            (star.x * 0.37 + star.y * 0.19) % 0.35;
+
+        const localProgress =
+            Math.max(
+                0,
+                Math.min(
+                    1,
+                    (progress - starDelay) / 0.65
+                )
+            );
+
+        alpha =
+            star.brightness *
+            (1 - localProgress);
+    }
+
+    starCtx.globalAlpha = alpha;
+
+    starCtx.fillStyle = "#FFFFFF";
+
+    starCtx.fillRect(
+        Math.floor(star.x),
+        Math.floor(star.y),
+        star.size,
+        star.size
+    );
+}
 
     starCtx.globalAlpha = 1;
 
