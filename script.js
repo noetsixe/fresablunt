@@ -303,8 +303,7 @@ setTimeout(() => {
             setTimeout(() => {
     strawberry.style.visibility = "visible";
 
-const introBackground = document.getElementById("intro-background");
-introBackground.classList.add("stars-fade-out");
+startStarfieldFadeOut();
 
 focusVignette.classList.add("focus-active");
 
