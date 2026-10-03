@@ -420,7 +420,6 @@ function createImpact() {
   ],
   { duration: 500, fill: "forwards", easing: "ease-out" }
 );
-  createJuice();
   setTimeout(() => {
     enterMainSite();
   }, 3000);
