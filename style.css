@@ -1473,46 +1473,33 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FLASH ARCADE TIPO PAC-MAN
+   FLASH PAC-MAN
 ========================================= */
 
-#intro.pacman-flash::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: #fff;
-
-    z-index: 100;
-
-    pointer-events: none;
-
+#intro.pacman-flash #intro-scanlines {
     animation: pacman-flash 0.24s steps(1, end);
 }
 
 @keyframes pacman-flash {
 
     0% {
-        opacity: 0;
+        background-color: transparent;
     }
 
     12% {
-        opacity: 0.85;
+        background-color: #ffffff;
     }
 
     25% {
-        opacity: 0;
+        background-color: transparent;
     }
 
     37% {
-        opacity: 0.85;
+        background-color: #ffffff;
     }
 
-    50% {
-        opacity: 0;
-    }
-
+    50%,
     100% {
-        opacity: 0;
+        background-color: transparent;
     }
 }
