@@ -170,6 +170,7 @@ let shineStart = performance.now();
 let started = false;
 let frame = 1;
 let direction = 1;
+let strawberryAnimationTimeout;
 
 
 /* =========================================
@@ -200,7 +201,7 @@ function animateStrawberry() {
         direction = 1;
     }
 
-    setTimeout(animateStrawberry, 110);
+    strawberryAnimationTimeout = setTimeout(animateStrawberry, 110);
 }
 
 animateStrawberry();
@@ -282,6 +283,7 @@ soundLabel.textContent = "OFF";
     if (started) return;
 
     started = true;
+clearTimeout(strawberryAnimationTimeout);
 
 strawberry.style.pointerEvents = "none";
 strawberry.classList.add("strawberry-hit");
