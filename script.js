@@ -241,14 +241,23 @@ for (let i = 1; i <= 6; i++) {
 /* =========================================
    CLICK / TOUCH EN LA FRESA
 ========================================= */
+function vibrateDevice(pattern = 100) {
+    try {
+        if (
+            typeof navigator !== "undefined" &&
+            typeof navigator.vibrate === "function"
+        ) {
+            navigator.vibrate(pattern);
+        }
+    } catch (e) {
+        // El dispositivo simplemente no soporta vibración
+    }
+}
 
 strawberry.addEventListener("click", () => {
 
-    try {
-    if (navigator.vibrate) {
-        navigator.vibrate(100);
-    }
-} catch (e) {}
+   vibrateDevice(100);
+   
     starfieldPaused = true;
    
    const hud = document.querySelector(".arcade-hud");
