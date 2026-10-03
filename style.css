@@ -1607,3 +1607,8 @@ html.boot-repeat #intro::after {
         opacity: 0.06;
     }
 }
+
+#strawberry {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
