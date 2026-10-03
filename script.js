@@ -291,31 +291,39 @@ setTimeout(() => {
     // Primer parpadeo
     strawberry.style.visibility = "hidden";
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        strawberry.style.visibility = "visible";
-
-        // Segundo parpadeo
-        setTimeout(() => {
-
-            strawberry.style.visibility = "hidden";
-
-            setTimeout(() => {
+    // PRIMER PARPADEO
+    strawberryImage.style.backgroundImage = 'url("./fresapar1.png")';
     strawberry.style.visibility = "visible";
 
-startStarfieldFadeOut();
+    setTimeout(() => {
 
-focusVignette.classList.add("focus-active");
+        // SEGUNDO PARPADEO
+        strawberry.style.visibility = "hidden";
 
-setTimeout(() => {
-    dropBlunt();
-}, 1200);
+        setTimeout(() => {
 
-}, 180);
+            strawberryImage.style.backgroundImage = 'url("./fresapar2.png")';
+            strawberry.style.visibility = "visible";
+           strawberryImage.classList.add("fresapar-tiritando");
+
+
+            // Aquí se queda fresapar2.png
+            // y luego empieza la desaparición de las estrellas
+            startStarfieldFadeOut();
+
+            focusVignette.classList.add("focus-active");
+
+            setTimeout(() => {
+                dropBlunt();
+            }, 1200);
 
         }, 180);
 
     }, 180);
+
+}, 180);
 
 }, 600);
 });
