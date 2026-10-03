@@ -256,7 +256,7 @@ function vibrateDevice(pattern = 100) {
 
 strawberry.addEventListener("click", () => {
 
-   vibrateDevice(100);
+   vibrateDevice([80, 40, 140]);
    
     starfieldPaused = true;
    
