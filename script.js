@@ -92,6 +92,7 @@ const shineImages = [];
 let shineReady = false;
 let shineStart = performance.now();
 let started = false;
+let strawberryPaused = false;
 let frame = 1;
 let direction = 1;
 
@@ -99,6 +100,7 @@ let direction = 1;
    ANIMACIÓN IDLE DE LA FRESA
    ========================================= */
 function animateStrawberry() {
+   if (strawberryPaused) return;
   const sprite = `url("./Fresa${frame}.png")`;
   strawberryImage.style.backgroundImage = sprite;
   strawberryImage.style.setProperty("--strawberry-mask", sprite);
@@ -175,7 +177,7 @@ strawberry.addEventListener("click", () => {
 
   if (started) return;
   started = true;
-
+strawberryPaused = true;
   strawberry.style.pointerEvents = "none";
   strawberry.classList.add("strawberry-hit");
 
@@ -190,9 +192,10 @@ strawberry.addEventListener("click", () => {
         setTimeout(() => {
   strawberry.style.visibility = "visible";
 
-  setTimeout(() => {
-    animateStrawberry();
-  }, 150);
+setTimeout(() => {
+  strawberryPaused = false;
+  animateStrawberry();
+}, 150);
 
   const introBackground = document.getElementById("intro-background");
   introBackground.classList.add("stars-fade-out");
