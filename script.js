@@ -243,6 +243,9 @@ for (let i = 1; i <= 6; i++) {
 ========================================= */
 
 strawberry.addEventListener("click", () => {
+   if ("vibrate" in navigator) {
+    navigator.vibrate(100);
+}
    starfieldPaused = true;
    const hud = document.querySelector(".arcade-hud");
 const soundToggle = document.getElementById("sound-toggle");
