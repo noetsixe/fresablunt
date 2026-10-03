@@ -1505,7 +1505,7 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   FOCO ARCADE - OJO PIXELADO
+   FOCO ARCADE - OJO
 ========================================= */
 
 #focus-vignette {
@@ -1514,7 +1514,6 @@ html.boot-repeat #intro::after {
     z-index: 75;
     pointer-events: none;
     visibility: hidden;
-    overflow: hidden;
 }
 
 #focus-vignette.focus-active {
@@ -1523,58 +1522,32 @@ html.boot-repeat #intro::after {
 
 
 /* =========================================
-   CAPAS DEL OJO
+   CADA CAPA ES UNA PANTALLA NEGRA
+   CON UNA ABERTURA OVALADA EN EL CENTRO
 ========================================= */
 
 .focus-layer {
     position: absolute;
     inset: 0;
     pointer-events: none;
-}
-
-
-/* Cada capa empieza completamente fuera */
-.focus-top,
-.focus-bottom {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 50%;
 
     background: #000;
 
-    visibility: hidden;
-}
+    -webkit-mask-image: radial-gradient(
+        ellipse 75% 32% at center,
+        transparent 0%,
+        transparent 55%,
+        #000 72%
+    );
 
+    mask-image: radial-gradient(
+        ellipse 75% 32% at center,
+        transparent 0%,
+        transparent 55%,
+        #000 72%
+    );
 
-/* =========================================
-   FORMA OVALADA
-========================================= */
-
-.focus-top {
-    top: 0;
-
-    border-radius: 0 0 50% 50% / 0 0 100% 100%;
-
-    transform: translateY(-100%);
-}
-
-.focus-bottom {
-    bottom: 0;
-
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-
-    transform: translateY(100%);
-}
-
-
-/* =========================================
-   ACTIVACIÓN
-========================================= */
-
-#focus-vignette.focus-active .focus-top,
-#focus-vignette.focus-active .focus-bottom {
-    visibility: visible;
+    opacity: 0;
 }
 
 
@@ -1582,71 +1555,87 @@ html.boot-repeat #intro::after {
    ENTRADA CAPA POR CAPA
 ========================================= */
 
-#focus-vignette.focus-active .focus-layer-1 .focus-top,
-#focus-vignette.focus-active .focus-layer-1 .focus-bottom {
-    animation: eye-close-1 1.2s steps(10, end) forwards;
+#focus-vignette.focus-active .focus-layer-1 {
+    animation: focus-layer-1 1.4s steps(10, end) forwards;
 }
 
-#focus-vignette.focus-active .focus-layer-2 .focus-top,
-#focus-vignette.focus-active .focus-layer-2 .focus-bottom {
-    animation: eye-close-2 1.2s steps(10, end) 0.35s forwards;
+#focus-vignette.focus-active .focus-layer-2 {
+    animation: focus-layer-2 1.4s steps(10, end) 0.30s forwards;
 }
 
-#focus-vignette.focus-active .focus-layer-3 .focus-top,
-#focus-vignette.focus-active .focus-layer-3 .focus-bottom {
-    animation: eye-close-3 1.2s steps(10, end) 0.70s forwards;
+#focus-vignette.focus-active .focus-layer-3 {
+    animation: focus-layer-3 1.4s steps(10, end) 0.60s forwards;
 }
 
-#focus-vignette.focus-active .focus-layer-4 .focus-top,
-#focus-vignette.focus-active .focus-layer-4 .focus-bottom {
-    animation: eye-close-4 1.2s steps(10, end) 1.05s forwards;
+#focus-vignette.focus-active .focus-layer-4 {
+    animation: focus-layer-4 1.4s steps(10, end) 0.90s forwards;
 }
 
 
 /* =========================================
-   CIERRE OJO
+   APERTURA DEL OJO
 ========================================= */
 
-@keyframes eye-close-1 {
-
-    from {
-        transform: translateY(-100%);
+@keyframes focus-layer-1 {
+    0% {
+        opacity: 0;
+        -webkit-mask-image: radial-gradient(
+            ellipse 95% 45% at center,
+            transparent 0%,
+            transparent 70%,
+            #000 85%
+        );
+        mask-image: radial-gradient(
+            ellipse 95% 45% at center,
+            transparent 0%,
+            transparent 70%,
+            #000 85%
+        );
     }
 
-    to {
-        transform: translateY(55%);
+    100% {
+        opacity: 1;
+        -webkit-mask-image: radial-gradient(
+            ellipse 75% 32% at center,
+            transparent 0%,
+            transparent 55%,
+            #000 72%
+        );
+        mask-image: radial-gradient(
+            ellipse 75% 32% at center,
+            transparent 0%,
+            transparent 55%,
+            #000 72%
+        );
     }
 }
 
-@keyframes eye-close-2 {
-
-    from {
-        transform: translateY(-100%);
+@keyframes focus-layer-2 {
+    0% {
+        opacity: 0;
     }
 
-    to {
-        transform: translateY(62%);
-    }
-}
-
-@keyframes eye-close-3 {
-
-    from {
-        transform: translateY(-100%);
-    }
-
-    to {
-        transform: translateY(69%);
+    100% {
+        opacity: 0.35;
     }
 }
 
-@keyframes eye-close-4 {
-
-    from {
-        transform: translateY(-100%);
+@keyframes focus-layer-3 {
+    0% {
+        opacity: 0;
     }
 
-    to {
-        transform: translateY(76%);
+    100% {
+        opacity: 0.45;
+    }
+}
+
+@keyframes focus-layer-4 {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.55;
     }
 }
