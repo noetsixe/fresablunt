@@ -1607,12 +1607,3 @@ html.boot-repeat #intro::after {
         opacity: 0.06;
     }
 }
-
-/* =========================================
-   DESAPARICIÓN DE ESTRELLAS AL FINAL
-========================================= */
-
-#intro-background.stars-fade-out #starfield {
-    opacity: 0 !important;
-    transition: opacity 0.85s ease-out;
-}
