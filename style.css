@@ -1642,18 +1642,33 @@ html.boot-repeat #intro::after {
     opacity: 0;
 }
 
+
+
+
 #intro.intro-fade-out {
     animation: intro-fade-to-black 400ms ease forwards;
 }
 
+#intro.intro-fade-out #splash-brand {
+    animation: splash-content-fade 400ms ease forwards;
+}
+
 @keyframes intro-fade-to-black {
     from {
-        opacity: 1;
         background: #FFFFFF;
     }
 
     to {
-        opacity: 1;
         background: #000000;
+    }
+}
+
+@keyframes splash-content-fade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
