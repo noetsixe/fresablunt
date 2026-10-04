@@ -22,6 +22,7 @@ const soundLabel = document.getElementById("sound-label");
 const splashBrand = document.getElementById("splash-brand");
 const splashName = document.getElementById("splash-name");
 const splashYear = document.getElementById("splash-year");
+const hAnimation = document.getElementById("h-animation");
 
 bgMusic.volume = 0.60;
 let audioStartTime = performance.now();
@@ -250,6 +251,14 @@ for (let i = 1; i <= 31; i++) {
   a1Frames.push(img);
 }
 
+const hFrames = [];
+
+for (let i = 1; i <= 4; i++) {
+  const img = new Image();
+  img.src = `./H (${i}).png`;
+  hFrames.push(img);
+}
+
 function dropBlunt() {
   blunt.style.opacity = "1";
   blunt.classList.remove("blunt-falling");
@@ -324,6 +333,8 @@ function startA1Sequence() {
   let a1Frame = 0;
   let loopMode = false;
   let loopFrame = 25;
+   let hStarted = false;
+let hFrame = 0;
 
   strawberry.style.visibility = "hidden";
   shineCanvas.style.visibility = "hidden";
@@ -354,6 +365,42 @@ function startA1Sequence() {
 
       blunt.style.backgroundImage =
         `url("${a1Frames[a1Frame].src}")`;
+
+       if (a1Frame === 13 && !hStarted) {
+  hStarted = true;
+
+  const bluntRect = blunt.getBoundingClientRect();
+
+  hAnimation.style.left =
+    `${bluntRect.left}px`;
+
+  hAnimation.style.top =
+    `${bluntRect.top}px`;
+
+  hAnimation.style.width =
+    `${bluntRect.width}px`;
+
+  hAnimation.style.height =
+    `${bluntRect.height}px`;
+
+  hAnimation.style.backgroundImage =
+    `url("${hFrames[0].src}")`;
+
+  hAnimation.style.opacity = "1";
+
+  hFrame = 0;
+
+  setInterval(() => {
+    hFrame++;
+
+    if (hFrame >= hFrames.length) {
+      hFrame = 0;
+    }
+
+    hAnimation.style.backgroundImage =
+      `url("${hFrames[hFrame].src}")`;
+  }, 100);
+}
 
       if (a1Frame === 1) {
         focusVignette.classList.remove("focus-active");
