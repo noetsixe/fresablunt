@@ -363,14 +363,18 @@ function startA1Sequence() {
 
       // A1 (31) → comenzar bucle A1 (26 → 31)
       if (a1Frame === 30) {
-        loopMode = true;
-        loopFrame = 25;
+    loopMode = true;
+    loopFrame = 25;
+
+    setTimeout(() => {
+        intro.classList.add("intro-fade-out");
 
         setTimeout(() => {
-          clearInterval(a1Interval);
-          window.location.href = "./main.html";
-        }, 4000);
-      }
+            clearInterval(a1Interval);
+            window.location.href = "./main.html";
+        }, 400);
+    }, 4000);
+}
 
       return;
     }
