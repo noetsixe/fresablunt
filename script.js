@@ -371,7 +371,12 @@ function startA1Sequence() {
 
     setTimeout(() => {
         clearInterval(a1Interval);
-        window.location.href = "./main.html";
+
+        intro.style.display = "none";
+
+        const mainSite = document.getElementById("main-site");
+        mainSite.style.visibility = "visible";
+        mainSite.style.opacity = "1";
     }, 600);
 }, 4000);
 }
