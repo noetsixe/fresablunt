@@ -1643,15 +1643,17 @@ html.boot-repeat #intro::after {
 }
 
 #intro.intro-fade-out {
-    animation: intro-fade-out 400ms ease forwards;
+    animation: intro-fade-to-black 400ms ease forwards;
 }
 
-@keyframes intro-fade-out {
+@keyframes intro-fade-to-black {
     from {
         opacity: 1;
+        background: #FFFFFF;
     }
 
     to {
-        opacity: 0;
+        opacity: 1;
+        background: #000000;
     }
 }
