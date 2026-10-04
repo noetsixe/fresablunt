@@ -1641,3 +1641,17 @@ html.boot-repeat #intro::after {
 
     opacity: 0;
 }
+
+#intro.intro-fade-out {
+    animation: intro-fade-out 400ms ease forwards;
+}
+
+@keyframes intro-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
