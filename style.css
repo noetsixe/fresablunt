@@ -1618,12 +1618,9 @@ html.boot-repeat #intro::after {
 }
 
 #splash-name {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 180px;
-
-    transform: translate(-50%, 105px);
+    margin-top: 230px;
+    width: max-content;
+    align-self: center;
 
     display: flex;
     flex-direction: column;
