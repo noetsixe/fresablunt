@@ -367,13 +367,13 @@ function startA1Sequence() {
     loopFrame = 25;
 
     setTimeout(() => {
-        intro.classList.add("intro-fade-out");
+    intro.classList.add("intro-fade-out");
 
-        setTimeout(() => {
-            clearInterval(a1Interval);
-            window.location.href = "./main.html";
-        }, 400);
-    }, 4000);
+    setTimeout(() => {
+        clearInterval(a1Interval);
+        window.location.href = "./main.html";
+    }, 600);
+}, 4000);
 }
 
       return;
