@@ -1641,38 +1641,3 @@ html.boot-repeat #intro::after {
 
     opacity: 0;
 }
-
-
-
-
-#intro.intro-fade-out {
-    background: #000000;
-}
-
-#intro.intro-fade-out #intro-background {
-    animation: splash-background-fade 600ms ease forwards;
-}
-
-#intro.intro-fade-out #splash-brand {
-    animation: splash-content-fade 600ms ease forwards;
-}
-
-@keyframes splash-background-fade {
-    from {
-        background: #FFFFFF;
-    }
-
-    to {
-        background: #000000;
-    }
-}
-
-@keyframes splash-content-fade {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
