@@ -414,9 +414,12 @@ if (a1Frame === 30) {
     loopFrame = 25;
 
     setTimeout(() => {
+    enterMainSite();
+
+    setTimeout(() => {
         clearInterval(a1Interval);
-        enterMainSite();
-    }, 4000);
+    }, 500);
+}, 4000);
 }
 
       return;
