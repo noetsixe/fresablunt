@@ -362,7 +362,7 @@ function startA1Sequence() {
       }
 
       // A1 (31) → comenzar bucle A1 (26 → 31)
-      if (a1Frame === 30) {
+if (a1Frame === 30) {
     loopMode = true;
     loopFrame = 25;
 
@@ -370,7 +370,6 @@ function startA1Sequence() {
         clearInterval(a1Interval);
         enterMainSite();
     }, 4000);
-}
 }
 
       return;
