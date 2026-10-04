@@ -1648,3 +1648,22 @@ html.boot-repeat #intro::after {
 
     opacity: 0;
 }
+
+
+#h-animation {
+    position: absolute;
+    z-index: 35;
+    pointer-events: none;
+
+    width: 96px;
+    height: 96px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    opacity: 0;
+}
