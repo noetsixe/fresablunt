@@ -372,10 +372,10 @@ let hFrame = 0;
   const bluntRect = blunt.getBoundingClientRect();
 
   hAnimation.style.left =
-  `${bluntRect.left + bluntRect.width * 0.12}px`;
+  `${bluntRect.left + bluntRect.width * -0.30}px`;
 
 hAnimation.style.top =
-  `${bluntRect.top + bluntRect.height * 0.05}px`;
+  `${bluntRect.top + bluntRect.height * -0.30}px`;
 
 hAnimation.style.width =
   `${bluntRect.width * 0.55}px`;
