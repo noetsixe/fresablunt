@@ -19,6 +19,9 @@ gameMortal.preload = "auto";
 const soundToggle = document.getElementById("sound-toggle");
 const focusVignette = document.getElementById("focus-vignette");
 const soundLabel = document.getElementById("sound-label");
+const splashBrand = document.getElementById("splash-brand");
+const splashName = document.getElementById("splash-name");
+const splashYear = document.getElementById("splash-year");
 
 bgMusic.volume = 0.60;
 let audioStartTime = performance.now();
