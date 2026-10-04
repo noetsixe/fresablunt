@@ -372,16 +372,16 @@ let hFrame = 0;
   const bluntRect = blunt.getBoundingClientRect();
 
   hAnimation.style.left =
-    `${bluntRect.left}px`;
+  `${bluntRect.left + bluntRect.width * 0.12}px`;
 
-  hAnimation.style.top =
-    `${bluntRect.top}px`;
+hAnimation.style.top =
+  `${bluntRect.top + bluntRect.height * 0.05}px`;
 
-  hAnimation.style.width =
-    `${bluntRect.width}px`;
+hAnimation.style.width =
+  `${bluntRect.width * 0.55}px`;
 
-  hAnimation.style.height =
-    `${bluntRect.height}px`;
+hAnimation.style.height =
+  `${bluntRect.height * 0.55}px`;
 
   hAnimation.style.backgroundImage =
     `url("${hFrames[0].src}")`;
