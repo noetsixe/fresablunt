@@ -367,18 +367,10 @@ function startA1Sequence() {
     loopFrame = 25;
 
     setTimeout(() => {
-    intro.classList.add("intro-fade-out");
-
-    setTimeout(() => {
         clearInterval(a1Interval);
-
-        intro.style.display = "none";
-
-        const mainSite = document.getElementById("main-site");
-        mainSite.style.visibility = "visible";
-        mainSite.style.opacity = "1";
-    }, 600);
-}, 4000);
+        enterMainSite();
+    }, 4000);
+}
 }
 
       return;
