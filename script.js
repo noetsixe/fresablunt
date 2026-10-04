@@ -416,7 +416,7 @@ if (a1Frame === 30) {
     setTimeout(() => {
         clearInterval(a1Interval);
         enterMainSite();
-    }, 4000);
+    }, 3500);
 }
 
       return;
