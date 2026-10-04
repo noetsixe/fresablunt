@@ -319,8 +319,8 @@ function dropBlunt() {
 
 function startA1Sequence() {
   let a1Frame = 0;
-   let loopMode = false;
-let loopFrame = 25;
+  let loopMode = false;
+  let loopFrame = 25;
 
   strawberry.style.visibility = "hidden";
   shineCanvas.style.visibility = "hidden";
@@ -341,48 +341,49 @@ let loopFrame = 25;
 
   const a1Interval = setInterval(() => {
 
-  if (!loopMode) {
+    if (!loopMode) {
 
-    a1Frame++;
+      a1Frame++;
 
-    if (a1Frame >= a1Frames.length) {
+      if (a1Frame >= a1Frames.length) {
+        return;
+      }
+
+      blunt.style.backgroundImage =
+        `url("${a1Frames[a1Frame].src}")`;
+
+      if (a1Frame === 1) {
+        focusVignette.classList.remove("focus-active");
+        vibrateDevice([120, 50, 180, 50, 220]);
+        createImpact();
+      }
+
+      // A1 (31) → comenzar bucle A1 (26 → 31)
+      if (a1Frame === 30) {
+        loopMode = true;
+        loopFrame = 25;
+
+        setTimeout(() => {
+          clearInterval(a1Interval);
+          window.location.href = "./main.html";
+        }, 4000);
+      }
+
       return;
     }
 
+    // Bucle A1 (26 → 31)
     blunt.style.backgroundImage =
-      `url("${a1Frames[a1Frame].src}")`;
+      `url("${a1Frames[loopFrame].src}")`;
 
-    if (a1Frame === 1) {
-      focusVignette.classList.remove("focus-active");
-      vibrateDevice([120, 50, 180, 50, 220]);
-      createImpact();
-    }
+    loopFrame++;
 
-    // A1 (31) → comenzar bucle A1 (26 → 31)
-    if (a1Frame === 30) {
-      loopMode = true;
+    if (loopFrame > 30) {
       loopFrame = 25;
-
-      setTimeout(() => {
-        clearInterval(a1Interval);
-        window.location.href = "./main.html";
-      }, 4000);
     }
 
-    return;
-  }
-
-  // Bucle A1 (26 → 31)
-  blunt.style.backgroundImage =
-    `url("${a1Frames[loopFrame].src}")`;
-
-  loopFrame++;
-
-  if (loopFrame > 30) {
-    loopFrame = 25;
-  }
-
-}, a1FrameDuration);
+  }, a1FrameDuration);
+}
 
   function animateBlunt(now) {
     if (now - lastFrameTime >= 100) {
