@@ -1619,7 +1619,7 @@ html.boot-repeat #intro::after {
 
 #splash-name {
     margin-top: 230px;
-    margin-left: -180px;
+    width: 180px;
 
     display: flex;
     flex-direction: column;
