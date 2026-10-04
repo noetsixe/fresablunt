@@ -416,7 +416,7 @@ if (a1Frame === 30) {
     setTimeout(() => {
         clearInterval(a1Interval);
         enterMainSite();
-    }, 3500);
+    }, 4000);
 }
 
       return;
@@ -578,7 +578,7 @@ function enterMainSite() {
     );
     mainSite.style.opacity = "1";
     document.body.style.overflow = "auto";
-  }, 750);
+  }, 500);
 }
 
 /* =========================================
