@@ -1614,7 +1614,6 @@ html.boot-repeat #intro::after {
     align-items: center;
     justify-content: center;
 
-    opacity: 0;
     visibility: hidden;
 }
 
@@ -1627,6 +1626,8 @@ html.boot-repeat #intro::after {
     letter-spacing: 3px;
 
     color: #000;
+
+    opacity: 0;
 }
 
 #splash-year {
@@ -1637,4 +1638,6 @@ html.boot-repeat #intro::after {
     letter-spacing: 2px;
 
     color: #000;
+
+    opacity: 0;
 }
