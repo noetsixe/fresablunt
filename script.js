@@ -473,10 +473,6 @@ setTimeout(() => {
 setTimeout(() => {
     splashYear.style.opacity = "1";
 }, 2500);
-
-setTimeout(() => {
-    splashYear.style.opacity = "0";
-}, 3200);
    
 }
 
