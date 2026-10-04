@@ -1621,6 +1621,7 @@ html.boot-repeat #intro::after {
     margin-top: 165px;
     width: max-content;
     align-self: center;
+    transform: translateX(20px);
 
     display: flex;
     flex-direction: column;
