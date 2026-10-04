@@ -14,6 +14,8 @@ const shineCanvas = document.getElementById("strawberry-shine");
 const shineCtx = shineCanvas.getContext("2d");
 const scoreValue = document.getElementById("score-value");
 const bgMusic = document.getElementById("bg-music");
+const gameMortal = new Audio("./GAMEMORTAL.mp3");
+gameMortal.preload = "auto";
 const soundToggle = document.getElementById("sound-toggle");
 const focusVignette = document.getElementById("focus-vignette");
 const soundLabel = document.getElementById("sound-label");
@@ -161,7 +163,13 @@ function vibrateDevice(pattern = 100) {
 
 strawberry.addEventListener("click", () => {
   vibrateDevice([80, 40, 140]);
+
+  gameMortal.currentTime = 0;
+  gameMortal.muted = false;
+  gameMortal.play().catch(() => {});
+   
   starfieldPaused = true;
+   
   const hud = document.querySelector(".arcade-hud");
   const soundToggle = document.getElementById("sound-toggle");
   hud.classList.add("hud-vanish");
