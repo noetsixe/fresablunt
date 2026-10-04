@@ -463,6 +463,21 @@ function createImpact() {
   ],
   { duration: 500, fill: "forwards", easing: "ease-out" }
 );
+
+   splashBrand.style.visibility = "visible";
+
+setTimeout(() => {
+    splashName.style.opacity = "1";
+}, 1500);
+
+setTimeout(() => {
+    splashYear.style.opacity = "1";
+}, 2500);
+
+setTimeout(() => {
+    splashYear.style.opacity = "0";
+}, 3200);
+   
 }
 
 /* =========================================
