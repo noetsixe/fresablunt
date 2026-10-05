@@ -88,13 +88,12 @@ soundToggle.addEventListener("click", async () => {
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 
-  const element = document.getElementById("spotify-player");
+  const element = document.getElementById("spotify-embed");
 
   if (!element) return;
 
   /* Sacamos el reproductor de #main-site
      para que quede directamente sobre el viewport */
-  document.body.appendChild(element);
 
   const options = {
     width: "100%",
