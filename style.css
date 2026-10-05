@@ -1712,11 +1712,7 @@ html.boot-repeat #intro::after {
 @media (max-width: 600px) {
 
     #spotify-player {
-        right: 12px !important;
-        bottom: 12px !important;
-
-        width: calc(100% - 24px) !important;
-        max-width: 320px !important;
+        display: none !important;
     }
 
 }
