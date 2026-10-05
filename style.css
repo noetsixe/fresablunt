@@ -1674,6 +1674,9 @@ html.boot-repeat #intro::after {
 
 #spotify-player {
     position: fixed !important;
+
+    top: auto !important;
+    left: auto !important;
     right: 24px !important;
     bottom: 24px !important;
 
@@ -1683,21 +1686,29 @@ html.boot-repeat #intro::after {
     margin: 0 !important;
     padding: 0 !important;
 
-    z-index: 99999 !important;
+    z-index: 999999 !important;
 
+    border: 0 !important;
     border-radius: 12px !important;
     overflow: hidden !important;
 
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    display: block !important;
 }
 
 #spotify-player iframe {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
     display: block !important;
-    width: 100% !important;
+
+    width: 320px !important;
     height: 152px !important;
 
     margin: 0 !important;
     padding: 0 !important;
+
     border: 0 !important;
 }
 
@@ -1706,8 +1717,12 @@ html.boot-repeat #intro::after {
     #spotify-player {
         right: 12px !important;
         bottom: 12px !important;
+
         width: calc(100% - 24px) !important;
         max-width: 320px !important;
     }
 
+    #spotify-player iframe {
+        width: 100% !important;
+    }
 }
