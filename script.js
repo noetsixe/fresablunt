@@ -609,6 +609,10 @@ function enterMainSite() {
     );
     mainSite.style.opacity = "1";
     document.body.style.overflow = "auto";
+
+     if (spotifyController) {
+  spotifyController.play().catch(() => {});
+}
   }, 500);
 }
 
