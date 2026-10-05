@@ -86,19 +86,30 @@ soundToggle.addEventListener("click", async () => {
    SPOTIFY — REPRODUCTOR FLOTANTE
    ========================================= */
 
+const spotifyTracks = [
+  "spotify:track:3XgR6CA7gghYrM9ZFUpCBK",
+  "spotify:track:1ejJyWZOjC9AZO2Wv1HZLL",
+  "spotify:track:60xN73uTz54lILTWBZaAhI",
+  "spotify:track:7dQg6e8dmmpZU28HqCfJiK",
+  "spotify:track:4q6s1oqB68PswxnHmhQCbW",
+  "spotify:track:1c9ctQwhp2sbbjbDFXUlEM",
+  "spotify:track:4aTqkr4ZjoNJM9K847zm3I",
+  "spotify:track:5Ac9mSRyePzLXM0UUE3POm"
+];
+
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 
   const element = document.getElementById("spotify-embed");
 
   if (!element) return;
 
-  /* Sacamos el reproductor de #main-site
-     para que quede directamente sobre el viewport */
+  const randomTrack =
+    spotifyTracks[Math.floor(Math.random() * spotifyTracks.length)];
 
   const options = {
     width: "100%",
     height: "152",
-    uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
+    uri: randomTrack
   };
 
   IFrameAPI.createController(
