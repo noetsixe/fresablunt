@@ -1673,6 +1673,18 @@ html.boot-repeat #intro::after {
 ========================================= */
 
 #spotify-player {
+    position: static !important;
+
+    width: 0 !important;
+    height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+}
+
+#spotify-player iframe {
     position: fixed !important;
 
     top: auto !important;
@@ -1686,43 +1698,21 @@ html.boot-repeat #intro::after {
     margin: 0 !important;
     padding: 0 !important;
 
+    border: 0 !important;
+
     z-index: 999999 !important;
 
-    border: 0 !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-
     display: block !important;
-}
-
-#spotify-player iframe {
-    position: absolute !important;
-
-    top: 0 !important;
-    left: 0 !important;
-
-    display: block !important;
-
-    width: 320px !important;
-    height: 152px !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
 }
 
 @media (max-width: 600px) {
 
-    #spotify-player {
+    #spotify-player iframe {
         right: 12px !important;
         bottom: 12px !important;
 
         width: calc(100% - 24px) !important;
-        max-width: 320px !important;
+        height: 152px !important;
     }
 
-    #spotify-player iframe {
-        width: 100% !important;
-    }
 }
