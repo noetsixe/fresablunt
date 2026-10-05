@@ -24,6 +24,8 @@ const splashName = document.getElementById("splash-name");
 const splashYear = document.getElementById("splash-year");
 const hAnimation = document.getElementById("h-animation");
 
+let spotifyController = null;
+
 bgMusic.volume = 0.60;
 let audioStartTime = performance.now();
 let audioMuted = true;
@@ -79,6 +81,32 @@ soundToggle.addEventListener("click", async () => {
     soundLabel.textContent = "OFF";
   }
 });
+
+/* =========================================
+   SPOTIFY — REPRODUCTOR FLOTANTE
+   ========================================= */
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+
+  const element = document.getElementById("spotify-player");
+
+  if (!element) return;
+
+  const options = {
+    width: "100%",
+    height: "152",
+    uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
+  };
+
+  IFrameAPI.createController(
+    element,
+    options,
+    (EmbedController) => {
+      spotifyController = EmbedController;
+    }
+  );
+};
+
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
 visits++;
