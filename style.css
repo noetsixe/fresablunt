@@ -464,8 +464,8 @@ html.boot-repeat #intro-scanlines::before {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: #0000AA;
-    color: #00FF00;
+    background: #020812;
+    color: #fc0a1e;
     opacity: 0;
     visibility: hidden;
     overflow-y: auto;
