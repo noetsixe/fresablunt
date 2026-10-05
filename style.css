@@ -1673,22 +1673,8 @@ html.boot-repeat #intro::after {
 ========================================= */
 
 #spotify-player {
-    position: static !important;
-
-    width: 0 !important;
-    height: 0 !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: visible !important;
-}
-
-#spotify-player iframe {
     position: fixed !important;
 
-    top: auto !important;
-    left: auto !important;
     right: 24px !important;
     bottom: 24px !important;
 
@@ -1698,21 +1684,39 @@ html.boot-repeat #intro::after {
     margin: 0 !important;
     padding: 0 !important;
 
-    border: 0 !important;
-
     z-index: 999999 !important;
 
+    border-radius: 12px !important;
+    overflow: hidden !important;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+#spotify-embed {
+    width: 100% !important;
+    height: 152px !important;
+}
+
+#spotify-embed iframe {
     display: block !important;
+
+    width: 100% !important;
+    height: 152px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
 }
 
 @media (max-width: 600px) {
 
-    #spotify-player iframe {
+    #spotify-player {
         right: 12px !important;
         bottom: 12px !important;
 
         width: calc(100% - 24px) !important;
-        height: 152px !important;
+        max-width: 320px !important;
     }
 
 }
