@@ -14,8 +14,17 @@
     <script>
     if (localStorage.getItem("fresaBootSeen")) {
         document.documentElement.classList.add("boot-repeat");
+
+        setTimeout(() => {
+            document.documentElement.classList.remove("boot-repeat");
+        }, 600);
+
     } else {
         document.documentElement.classList.add("boot-first");
+
+        setTimeout(() => {
+            document.documentElement.classList.remove("boot-first");
+        }, 2400);
     }
 </script>
 
