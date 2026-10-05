@@ -92,6 +92,10 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 
   if (!element) return;
 
+  /* Sacamos el reproductor de #main-site
+     para que quede directamente sobre el viewport */
+  document.body.appendChild(element);
+
   const options = {
     width: "100%",
     height: "152",
