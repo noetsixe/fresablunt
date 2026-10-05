@@ -1669,55 +1669,45 @@ html.boot-repeat #intro::after {
 }
 
 /* =========================================
-   SPOTIFY — REPRODUCTOR FLOTANTE
+   SPOTIFY — VENTANA FLOTANTE
 ========================================= */
 
 #spotify-player {
     position: fixed !important;
+    right: 24px !important;
+    bottom: 24px !important;
 
-    right: 24px;
-    bottom: 24px;
-    top: auto;
-    left: auto;
+    width: 320px !important;
+    height: 152px !important;
 
-    width: 320px;
-    height: 152px;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    z-index: 9999;
+    z-index: 99999 !important;
 
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 12px !important;
+    overflow: hidden !important;
 
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 #spotify-player iframe {
-    display: block;
-
+    display: block !important;
     width: 100% !important;
     height: 152px !important;
 
-    border: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
 }
-
-
-/* =========================================
-   SPOTIFY — MÓVIL
-========================================= */
 
 @media (max-width: 600px) {
 
     #spotify-player {
-        right: 12px;
-        bottom: 12px;
-        top: auto;
-        left: auto;
-
-        width: calc(100% - 24px);
-        max-width: 320px;
-
-        height: 152px;
+        right: 12px !important;
+        bottom: 12px !important;
+        width: calc(100% - 24px) !important;
+        max-width: 320px !important;
     }
 
 }
