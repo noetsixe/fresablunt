@@ -1967,7 +1967,7 @@ flex-shrink: 0;
 }
 
 .social-links a:hover {
-    color: #35459b;
+    color: #10328c;
     opacity: 1;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
