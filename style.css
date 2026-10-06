@@ -1751,3 +1751,9 @@ html.boot-repeat #intro::after {
     opacity: 0.17;
     mix-blend-mode: overlay;
 }
+
+/* TRATAMIENTO CINEMATOGRÁFICO SUTIL */
+
+#main-video video {
+    filter: contrast(0.97) brightness(1.01);
+}
