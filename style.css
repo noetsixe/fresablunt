@@ -1729,12 +1729,9 @@ html.boot-repeat #intro::after {
 }
 
 #main-video video {
-    position: absolute;
-    top: -15vh;
-    left: 0;
     width: 100%;
-    height: calc(100vh + 15vh);
-    object-fit: cover;
-    object-position: center bottom;
+    height: 115%;
+    object-fit: fill;
+    transform: translateY(-15%);
     display: block;
 }
