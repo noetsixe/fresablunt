@@ -1967,9 +1967,8 @@ flex-shrink: 0;
 }
 
 .social-links a:hover {
-color: #FE316D;
-opacity: 1;
-transform: translateY(-2px);
-filter: drop-shadow(0 0 7px rgba(254, 49, 109, 0.55));
+    color: #050b39;
+    opacity: 1;
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 7px #153890);
 }
-
