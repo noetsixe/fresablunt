@@ -1739,13 +1739,8 @@ html.boot-repeat #intro::after {
 
 
 /* =========================================
-   LOOK CINEMATOGRÁFICO — VIDEO PRINCIPAL
+   COLOR GRADING — 70s CINEMATIC
 ========================================= */
-
-#main-video {
-    position: relative;
-    overflow: hidden;
-}
 
 #main-video::after {
     content: "";
@@ -1757,19 +1752,19 @@ html.boot-repeat #intro::after {
     background:
         linear-gradient(
             135deg,
-            rgba(35, 80, 150, 0.10),
-            rgba(255, 80, 170, 0.10)
+            rgba(20, 45, 70, 0.16),
+            rgba(170, 55, 45, 0.10)
         );
 
-    mix-blend-mode: color;
+    mix-blend-mode: soft-light;
     opacity: 0.8;
 }
 
 #main-video video {
     filter:
-        saturate(1.12)
-        contrast(1.04)
-        hue-rotate(-5deg);
+        contrast(1.08)
+        saturate(0.92)
+        sepia(0.08);
 }
 
 /* GRANO SUTIL */
@@ -1783,6 +1778,6 @@ html.boot-repeat #intro::after {
 
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
 
-    opacity: 0.12;
+    opacity: 0.17;
     mix-blend-mode: overlay;
 }
