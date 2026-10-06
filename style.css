@@ -736,21 +736,6 @@ footer {
         font-size: 12px;
         line-height: 1.55;
     }
-
-    #main-video {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-}
-
-#main-video video {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: auto;
-    top: 0;
-}
 }
 
 
@@ -1857,4 +1842,24 @@ body {
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+@media (max-width: 600px) {
+
+    #main-video {
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    #main-video video {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        display: block;
+    }
+
 }
