@@ -1806,7 +1806,7 @@ html.boot-repeat #intro::after {
 /* TRATAMIENTO CINEMATOGRÁFICO SUTIL */
 
 #main-video video {
-    filter: contrast(0.96) brightness(1.01);
+    filter: contrast(0.96) brightness(0.80);
 }
 
 /* GRANO SUTIL */
@@ -1824,23 +1824,6 @@ html.boot-repeat #intro::after {
     mix-blend-mode: overlay;
 }
 
-/* OSCURECIMIENTO PARA EL TEXTO */
-
-#main-video::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    pointer-events: none;
-
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.65) 0%,
-        rgba(0, 0, 0, 0.42) 30%,
-        rgba(0, 0, 0, 0.12) 55%,
-        rgba(0, 0, 0, 0) 75%
-    );
-}
 
 /* Ocultar barra de scroll, mantener el desplazamiento */
 html {
