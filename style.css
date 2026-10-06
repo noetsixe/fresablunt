@@ -1877,10 +1877,22 @@ body::-webkit-scrollbar {
     }
 
     #artist-intro h1 {
-        font-size: 42px;
-        letter-spacing: -2px;
-        margin-bottom: 22px;
-    }
+    position: relative;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 20;
+
+    margin: 0 0 22px 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -2px;
+
+    color: #ffffff !important;
+}
 
     .artist-description {
         width: auto;
