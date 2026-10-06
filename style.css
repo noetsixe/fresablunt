@@ -1730,8 +1730,8 @@ html.boot-repeat #intro::after {
 
 #main-video video {
     width: 100%;
-    height: 100%;
+    height: 110%;
     object-fit: cover;
-   object-position: center 60%;
+    object-position: center bottom;
     display: block;
 }
