@@ -613,7 +613,7 @@ function enterMainSite() {
      if (spotifyController) {
   spotifyController.play().catch(() => {});
 }
-  }, 500);
+  }, 700);
 }
 
 /* =========================================
