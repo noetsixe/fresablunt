@@ -1737,36 +1737,6 @@ html.boot-repeat #intro::after {
     display: block;
 }
 
-
-/* =========================================
-   COLOR GRADING — 70s CINEMATIC
-========================================= */
-
-#main-video::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20, 45, 70, 0.16),
-            rgba(170, 55, 45, 0.10)
-        );
-
-    mix-blend-mode: soft-light;
-    opacity: 0.8;
-}
-
-#main-video video {
-    filter:
-        contrast(1.08)
-        saturate(0.92)
-        sepia(0.08);
-}
-
 /* GRANO SUTIL */
 
 #main-video::before {
