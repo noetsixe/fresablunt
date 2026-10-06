@@ -1756,7 +1756,7 @@ html.boot-repeat #intro::after {
     top: 50%;
     transform: translateY(-50%);
 
-    width: min(550px, 38vw);
+    width: min(430px, 38vw);
 
     z-index: 5;
 
@@ -1776,7 +1776,7 @@ html.boot-repeat #intro::after {
 }
 
 .artist-description {
-    max-width: 410px;
+    max-width: 600px;
 
     font-family: Arial, sans-serif;
     font-size: 14px;
