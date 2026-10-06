@@ -1868,31 +1868,23 @@ body::-webkit-scrollbar {
 
     #artist-intro {
         position: absolute;
-        top: 50%;
+        top: 20px;
         left: 7%;
         right: 7%;
         width: auto;
-        transform: translateY(-50%);
+        transform: none;
         z-index: 5;
     }
 
     #artist-intro h1 {
-    position: relative;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 20;
-
-    margin: 0 0 22px 0;
-
-    font-family: Arial, sans-serif;
-    font-size: 42px;
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -2px;
-
-    color: #ffffff !important;
-}
+        margin: 0 0 22px 0;
+        font-family: Arial, sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -2px;
+        color: #ffffff;
+    }
 
     .artist-description {
         width: auto;
@@ -1901,11 +1893,4 @@ body::-webkit-scrollbar {
         line-height: 1.55;
     }
 
-}
-
-@media (max-width: 600px) {
-    #artist-intro {
-        top: 20px;
-        transform: none;
-    }
 }
