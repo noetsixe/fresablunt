@@ -1758,3 +1758,20 @@ html.boot-repeat #intro::after {
     mix-blend-mode: overlay;
 }
 
+
+/* Ocultar barra de scroll, mantener el desplazamiento */
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
