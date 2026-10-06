@@ -1863,3 +1863,30 @@ body::-webkit-scrollbar {
     }
 
 }
+
+@media (max-width: 600px) {
+
+    #artist-intro {
+        position: absolute;
+        top: 50%;
+        left: 7%;
+        right: 7%;
+        width: auto;
+        transform: translateY(-50%);
+        z-index: 5;
+    }
+
+    #artist-intro h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+        margin-bottom: 22px;
+    }
+
+    .artist-description {
+        width: auto;
+        max-width: 100%;
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+}
