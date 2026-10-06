@@ -464,7 +464,7 @@ html.boot-repeat #intro-scanlines::before {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: #04050f;
+    background: #070610;
     color: #fc0a1e;
     opacity: 0;
     visibility: hidden;
@@ -1776,8 +1776,8 @@ html.boot-repeat #intro::after {
 }
 
 .artist-description {
-    width: 500px;
-    max-width: 500px;
+    width: 470px;
+    max-width: 470px;
 
     font-family: Arial, sans-serif;
     font-size: 14px;
