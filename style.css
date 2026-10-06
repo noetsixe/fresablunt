@@ -738,8 +738,13 @@ footer {
     }
 
     #main-video video {
-        top: 0;
-    }
+    width: auto;
+    height: 100%;
+    max-width: none;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 }
 
 
