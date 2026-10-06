@@ -717,6 +717,29 @@ footer {
    #blunt.a1-sequence {
     transform: translate(-50%, 40px);
 }
+
+       #artist-intro {
+        left: 7%;
+        right: 7%;
+        width: auto;
+    }
+
+    #artist-intro h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+        margin-bottom: 22px;
+    }
+
+    .artist-description {
+        width: auto;
+        max-width: 100%;
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    #main-video video {
+        top: 0;
+    }
 }
 
 
@@ -1717,24 +1740,6 @@ html.boot-repeat #intro::after {
 
 }
 
-#artist-intro {
-    left: 7%;
-    right: 7%;
-    top: 52%;
-    width: auto;
-}
-
-#artist-intro h1 {
-    font-size: 42px;
-    letter-spacing: -2px;
-    margin-bottom: 22px;
-}
-
-.artist-description {
-    max-width: 100%;
-    font-size: 12px;
-    line-height: 1.55;
-}
 /* =========================================
    VIDEO PRINCIPAL — MAIN SITE
 ========================================= */
