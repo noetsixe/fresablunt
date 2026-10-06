@@ -1740,7 +1740,7 @@ html.boot-repeat #intro::after {
 /* TRATAMIENTO CINEMATOGRÁFICO SUTIL */
 
 #main-video video {
-    filter: contrast(0.97) brightness(1.01);
+    filter: contrast(0.96) brightness(1.01);
 }
 
 /* GRANO SUTIL */
