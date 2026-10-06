@@ -1927,7 +1927,7 @@ REDES SOCIALES - ARTIST INTRO
     width: 100vw;
     margin-left: -5vw;
 
-    transform: translateY(40px);
+    transform: translateY(50px);
 }
 
 .social-links a {
@@ -1967,8 +1967,7 @@ flex-shrink: 0;
 }
 
 .social-links a:hover {
-    color: #050b39;
+    color: #35459b;
     opacity: 1;
     transform: translateY(-2px);
-    filter: drop-shadow(0 0 7px #153890);
 }
