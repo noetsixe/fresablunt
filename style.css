@@ -1756,7 +1756,7 @@ html.boot-repeat #intro::after {
     top: 50%;
     transform: translateY(-50%);
 
-    width: min(430px, 38vw);
+    width: min(550px, 38vw);
 
     z-index: 5;
 
