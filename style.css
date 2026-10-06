@@ -1912,49 +1912,49 @@ REDES SOCIALES - ARTIST INTRO
 ========================================= */
 
 .social-links {
-position: relative;
+    position: relative;
 
-```
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-gap: 28px;
-margin-top: 30px;
+    justify-content: center;
+    align-items: center;
 
-width: 100vw;
-margin-left: -5vw;
-```
+    gap: 28px;
+    margin-top: 30px;
 
+    width: 100vw;
+    margin-left: -5vw;
 }
 
 .social-links a {
-display: flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-```
-width: auto;
-height: 30px;
+    width: auto;
+    height: 30px;
 
-gap: 8px;
+    gap: 8px;
 
-color: #ffffff;
-opacity: 0.9;
+    color: #ffffff;
+    opacity: 0.9;
 
-text-decoration: none;
+    text-decoration: none;
 
-font-family: Arial, sans-serif;
-font-size: 15px;
-font-weight: 500;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
 
-transition:
-    transform 0.2s ease,
-    color 0.2s ease,
-    opacity 0.2s ease,
-    filter 0.2s ease;
-```
+    white-space: nowrap;
 
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease,
+        filter 0.2s ease;
 }
 
 .social-links svg {
