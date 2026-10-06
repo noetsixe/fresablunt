@@ -1717,6 +1717,24 @@ html.boot-repeat #intro::after {
 
 }
 
+#artist-intro {
+    left: 7%;
+    right: 7%;
+    top: 52%;
+    width: auto;
+}
+
+#artist-intro h1 {
+    font-size: 42px;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.artist-description {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.55;
+}
 /* =========================================
    VIDEO PRINCIPAL — MAIN SITE
 ========================================= */
@@ -1726,6 +1744,54 @@ html.boot-repeat #intro::after {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+}
+
+/* =========================================
+   PRESENTACIÓN FRESA BLUNT
+========================================= */
+
+#artist-intro {
+    position: absolute;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: min(430px, 38vw);
+
+    z-index: 5;
+
+    text-align: left;
+}
+
+#artist-intro h1 {
+    margin: 0 0 28px 0;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(42px, 5vw, 78px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -3px;
+
+    color: #ffffff;
+}
+
+.artist-description {
+    max-width: 410px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    font-weight: 400;
+
+    color: #ffffff;
+}
+
+.artist-description p {
+    margin: 0 0 18px 0;
+}
+
+.artist-description p:last-child {
+    margin-bottom: 0;
 }
 
 #main-video video {
