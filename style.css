@@ -1776,7 +1776,8 @@ html.boot-repeat #intro::after {
 }
 
 .artist-description {
-    max-width: 600px;
+    width: 550px;
+    max-width: 550px;
 
     font-family: Arial, sans-serif;
     font-size: 14px;
