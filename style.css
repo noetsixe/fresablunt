@@ -1902,3 +1902,24 @@ body::-webkit-scrollbar {
     }
 
 }
+
+@media (max-width: 600px) {
+
+    #artist-intro h1 {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+
+        color: red !important;
+        background: yellow !important;
+
+        font-size: 50px !important;
+        line-height: 1 !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 99999 !important;
+    }
+
+}
