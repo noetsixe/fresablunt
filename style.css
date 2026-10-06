@@ -1910,11 +1910,17 @@ body::-webkit-scrollbar {
 ========================================= */
 
 .social-links {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     gap: 24px;
     margin-top: 30px;
+    width: 100vw;
 }
 
 .social-links a {
