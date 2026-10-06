@@ -738,19 +738,18 @@ footer {
     }
 
     #main-video {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #main-video video {
-    position: relative;
-    display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-    transform: none;
+    height: 100%;
+    object-fit: contain;
 }
 }
 
