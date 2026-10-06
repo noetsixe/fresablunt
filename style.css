@@ -454,7 +454,7 @@ html.boot-repeat #intro-scanlines::before {
 #transition {
     position: absolute;
     inset: 0;
-    background: #0000AA;
+    background: transparent;
     opacity: 0;
     z-index: 90;
     pointer-events: none;
