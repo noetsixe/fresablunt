@@ -441,13 +441,21 @@ if (a1Frame === 30) {
     loopMode = true;
     loopFrame = 25;
 
-    setTimeout(() => {
-    enterMainSite();
+    /* =========================================
+       TRANSICIÓN SUAVE DENTRO DE LOS 4 SEGUNDOS
+       ========================================= */
 
     setTimeout(() => {
-        clearInterval(a1Interval);
-    }, 500);
-}, 4000);
+        startMainFade();
+    }, 3000);
+
+    setTimeout(() => {
+        enterMainSite();
+
+        setTimeout(() => {
+            clearInterval(a1Interval);
+        }, 500);
+    }, 4000);
 }
 
       return;
@@ -589,31 +597,50 @@ function createJuice() {
 /* =========================================
    ENTRADA AL SITIO
    ========================================= */
-function enterMainSite() {
-  transition.animate(
+function startMainFade() {
+  /* El main ya empieza a existir debajo del intro */
+  mainSite.style.visibility = "visible";
+  mainSite.style.opacity = "0";
+
+  /* El sitio principal aparece durante el último segundo */
+  mainSite.animate(
     [
       { opacity: 0 },
       { opacity: 1 }
     ],
-    { duration: 700, easing: "ease-in-out", fill: "forwards" }
+    {
+      duration: 1000,
+      easing: "ease-in-out",
+      fill: "forwards"
+    }
   );
-  setTimeout(() => {
-    intro.style.display = "none";
-    mainSite.style.visibility = "visible";
-    mainSite.animate(
-      [
-        { opacity: 0 },
-        { opacity: 1 }
-      ],
-      { duration: 1000, easing: "ease-out", fill: "forwards" }
-    );
-    mainSite.style.opacity = "1";
-    document.body.style.overflow = "auto";
 
-     if (spotifyController) {
-  spotifyController.play().catch(() => {});
+  /* El intro desaparece exactamente durante ese mismo segundo */
+  intro.animate(
+    [
+      { opacity: 1 },
+      { opacity: 0 }
+    ],
+    {
+      duration: 1000,
+      easing: "ease-in-out",
+      fill: "forwards"
+    }
+  );
 }
-  }, 700);
+
+function enterMainSite() {
+  /* Aquí ya terminó el segundo de transición */
+  intro.style.display = "none";
+
+  mainSite.style.visibility = "visible";
+  mainSite.style.opacity = "1";
+
+  document.body.style.overflow = "auto";
+
+  if (spotifyController) {
+    spotifyController.play().catch(() => {});
+  }
 }
 
 /* =========================================
