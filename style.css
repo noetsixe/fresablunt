@@ -1752,7 +1752,7 @@ html.boot-repeat #intro::after {
 
 #artist-intro {
     position: absolute;
-    left: 7%;
+    left: 5%;
     top: 50%;
     transform: translateY(-50%);
 
