@@ -1922,7 +1922,7 @@ body::-webkit-scrollbar {
     margin-top: 30px;
 
     width: 100vw;
-    margin-left: calc((100vw - 430px) / -2);
+    margin-left: -5vw;
 }
 
 .social-links a {
@@ -1957,4 +1957,3 @@ body::-webkit-scrollbar {
     transform: translateY(-2px) scale(1.12);
     filter: drop-shadow(0 0 7px rgba(254, 49, 109, 0.55));
 }
-
