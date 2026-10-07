@@ -468,7 +468,7 @@ html.boot-repeat #intro-scanlines::before {
     color: #060838;
     opacity: 0;
     visibility: hidden;
-    overflow-y: auto;
+    overflow: auto;
     scroll-snap-type: y mandatory;
     z-index: 1;
 }
