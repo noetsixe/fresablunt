@@ -774,6 +774,24 @@ if (returningVisitor) {
 }
 
 /* =========================================
+   REPLAY — VOLVER AL INTRO
+   ========================================= */
+
+const replayButton = document.getElementById("replay-button");
+
+if (replayButton) {
+  replayButton.addEventListener("click", () => {
+    mainSite.style.visibility = "hidden";
+    mainSite.style.opacity = "0";
+
+    intro.style.display = "block";
+    intro.style.visibility = "visible";
+    intro.style.opacity = "1";
+
+    document.body.style.overflow = "hidden";
+  });
+}
+/* =========================================
    DESTELLO ARCOÍRIS PIXELADO
    ========================================= */
 function animateRainbowShine() {
