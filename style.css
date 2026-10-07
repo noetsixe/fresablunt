@@ -2090,3 +2090,64 @@ flex-shrink: 0;
         letter-spacing: 1px;
     }
 }
+
+/* =========================================
+   CHAKANA
+========================================= */
+
+#chakana-button {
+    position: fixed;
+    top: 28px;
+    right: 28px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chakana-shape {
+    position: relative;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: #7778b8;
+    clip-path: polygon(
+        35% 0%,
+        65% 0%,
+        65% 20%,
+        80% 20%,
+        80% 35%,
+        100% 35%,
+        100% 65%,
+        80% 65%,
+        80% 80%,
+        65% 80%,
+        65% 100%,
+        35% 100%,
+        35% 80%,
+        20% 80%,
+        20% 65%,
+        0% 65%,
+        0% 35%,
+        20% 35%,
+        20% 20%,
+        35% 20%
+    );
+}
+
+.chakana-shape::after {
+    content: "";
+    position: absolute;
+    width: 34%;
+    height: 34%;
+    left: 33%;
+    top: 33%;
+    background: #070610;
+    border-radius: 50%;
+}
