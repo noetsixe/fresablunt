@@ -26,6 +26,22 @@ const hAnimation = document.getElementById("h-animation");
 
 let spotifyController = null;
 
+/* =========================================
+   MEMORIA DE ENTRADA — 24 HORAS
+   ========================================= */
+
+const ENTRY_MEMORY_KEY = "fresaEnteredAt";
+const ENTRY_MEMORY_TIME = 24 * 60 * 60 * 1000;
+
+const savedEntryTime = Number(
+  localStorage.getItem(ENTRY_MEMORY_KEY)
+);
+
+const returningVisitor =
+  Number.isFinite(savedEntryTime) &&
+  Date.now() - savedEntryTime < ENTRY_MEMORY_TIME;
+
+
 bgMusic.volume = 0.60;
 let audioStartTime = performance.now();
 let audioMuted = true;
@@ -727,6 +743,11 @@ function startMainFade() {
 
 function enterMainSite() {
   /* Aquí ya terminó el segundo de transición */
+     localStorage.setItem(
+    ENTRY_MEMORY_KEY,
+    String(Date.now())
+  );
+   
   intro.style.display = "none";
 
   mainSite.style.visibility = "visible";
@@ -737,6 +758,19 @@ function enterMainSite() {
   if (spotifyController) {
     spotifyController.play().catch(() => {});
   }
+}
+
+/* =========================================
+   ENTRADA DIRECTA SI YA ENTRÓ HACE MENOS DE 24 H
+   ========================================= */
+
+if (returningVisitor) {
+  intro.style.display = "none";
+
+  mainSite.style.visibility = "visible";
+  mainSite.style.opacity = "1";
+
+  document.body.style.overflow = "auto";
 }
 
 /* =========================================
