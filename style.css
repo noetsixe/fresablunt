@@ -2209,78 +2209,58 @@ flex-shrink: 0;
 }
 
 
-/* CONTACTO desaparece primero */
-
+/* CONTACTO */
 #chakana-menu.closing button:nth-child(7) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
     transition-delay: 0ms;
 }
 
-
 /* CALLOU RECORDS */
-
 #chakana-menu.closing button:nth-child(6) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 220ms;
+    transition-delay: 130ms;
 }
 
-
 /* ABOUT */
-
 #chakana-menu.closing button:nth-child(5) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 440ms;
+    transition-delay: 260ms;
 }
 
-
 /* VISUALES */
-
 #chakana-menu.closing button:nth-child(4) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 660ms;
+    transition-delay: 390ms;
 }
 
-
 /* MÚSICA */
-
 #chakana-menu.closing button:nth-child(3) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 880ms;
+    transition-delay: 520ms;
 }
 
-
 /* ESTRENO */
-
 #chakana-menu.closing button:nth-child(2) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 1100ms;
+    transition-delay: 650ms;
 }
 
-
 /* PRESENTACIÓN */
-
 #chakana-menu.closing button:nth-child(1) {
     opacity: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
-
-    transition-delay: 1320ms;
+    transition-delay: 780ms;
 }
