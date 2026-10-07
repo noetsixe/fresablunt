@@ -25,6 +25,7 @@ const splashYear = document.getElementById("splash-year");
 const hAnimation = document.getElementById("h-animation");
 
 let spotifyController = null;
+let spotifyReplayBlocked = false;
 
 /* =========================================
    MEMORIA DE ENTRADA — 24 HORAS
@@ -120,9 +121,9 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     (EmbedController) => {
   spotifyController = EmbedController;
 
-  if (returningVisitor) {
-    spotifyController.play().catch(() => {});
-  }
+  if (returningVisitor && !spotifyReplayBlocked) {
+  spotifyController.play().catch(() => {});
+}
 }
   );
 };
@@ -785,6 +786,8 @@ const replayButton = document.getElementById("replay-button");
 
 if (replayButton) {
   replayButton.addEventListener("click", () => {
+
+     spotifyReplayBlocked = true;
 
      if (spotifyController) {
   spotifyController.pause();
