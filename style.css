@@ -2304,3 +2304,17 @@ flex-shrink: 0;
     color: #7778b8;
     text-shadow: 0 0 8px #7778b8;
 }
+
+@media (max-width: 600px) {
+    #chakana-button {
+        width: 38px;
+        height: 38px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .chakana-shape {
+        width: 34px;
+        height: 34px;
+    }
+}
