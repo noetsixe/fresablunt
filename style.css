@@ -2154,10 +2154,6 @@ flex-shrink: 0;
     animation: chakana-menu-in 350ms ease forwards;
 }
 
-#chakana-menu:not(.open) button {
-    animation: chakana-menu-out 220ms ease forwards;
-}
-
 #chakana-menu.open button:nth-child(1) {
     animation-delay: 0ms;
 }
@@ -2186,37 +2182,37 @@ flex-shrink: 0;
     animation-delay: 420ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(1) {
+#chakana-menu.closing button:nth-child(1) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 0ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(2) {
+#chakana-menu.closing button:nth-child(2) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 70ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(3) {
+#chakana-menu.closing button:nth-child(3) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 140ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(4) {
+#chakana-menu.closing button:nth-child(4) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 210ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(5) {
+#chakana-menu.closing button:nth-child(5) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 280ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(6) {
+#chakana-menu.closing button:nth-child(6) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 350ms;
 }
 
-#chakana-menu.menu-ready:not(.open) button:nth-child(7) {
+#chakana-menu.closing button:nth-child(7) {
     animation: chakana-menu-out 350ms ease forwards;
     animation-delay: 420ms;
 }
