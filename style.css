@@ -2141,16 +2141,4 @@ flex-shrink: 0;
     20% 20%
 );
 
-    -webkit-mask-image: radial-gradient(
-    circle 18% at center,
-    transparent 0,
-    transparent 99%,
-    black 100%
-);
-
-mask-image: radial-gradient(
-    circle 18% at center,
-    transparent 0,
-    transparent 99%,
-    black 100%
-);
+}
