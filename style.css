@@ -2093,8 +2093,8 @@ flex-shrink: 0;
     #chakana-button {
         width: 38px;
         height: 38px;
-        top: 16px;
-        right: 16px;
+        top: 8px;
+        right: 8px;
     }
 
     .chakana-shape {
