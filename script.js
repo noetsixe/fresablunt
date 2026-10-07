@@ -174,7 +174,7 @@ const introMessages = [
   "¿ESTE ES UN VIDEOJUEGO O QUÉ?",
   "¡QUE VIVA EL ROCK!",
   "ME SIENTO SOLO. ¿TE QUEDAS CONMIGO?",
-  "PUM PUM... PUM PUM PUM... PUM PUM.",
+  "PUM PUM..pum pum... PUM PUM..pum pum...",
   "HMMM... CANCACHO"
 ];
 
