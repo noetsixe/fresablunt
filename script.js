@@ -118,8 +118,12 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     element,
     options,
     (EmbedController) => {
-      spotifyController = EmbedController;
-    }
+  spotifyController = EmbedController;
+
+  if (returningVisitor) {
+    spotifyController.play().catch(() => {});
+  }
+}
   );
 };
 
@@ -781,6 +785,11 @@ const replayButton = document.getElementById("replay-button");
 
 if (replayButton) {
   replayButton.addEventListener("click", () => {
+
+     if (spotifyController) {
+  spotifyController.pause();
+}
+     
     mainSite.style.visibility = "hidden";
     mainSite.style.opacity = "0";
 
