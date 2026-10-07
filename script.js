@@ -130,6 +130,81 @@ let strawberryPaused = false;
 let frame = 1;
 let direction = 1;
 
+
+/* =========================================
+   MENSAJES ALEATORIOS DEL INTRO
+   ========================================= */
+
+const introMessages = [
+  "¿QUIERES PROBARLO?",
+  "QUÉDATE Y DISFRUTEMOS EL ESPACIO.",
+  "NO TODO LO DULCE ES SUAVE.",
+  "RECUERDA PRESIONAR LA FRESA.",
+  "NO TE VAYAS.",
+  "NO PARPADEES. EN SERIO.",
+  "¿YA HAS ESTADO AQUÍ ANTES?",
+  "NADA ES CASUALIDAD.",
+  "SOLO EN TU MIRAR...",
+  "...FANTASÍA LUNAR.",
+  "BUENA SUERTE. LA VAS A NECESITAR.",
+  "¿CÓMO LLEGASTE TAN LEJOS?",
+  "DEMASIADO TARDE PARA IRTE.",
+  "TOO SWEET.",
+  "CUIDADO CON LA FRESA.",
+  "NO TOQUES LA FRESA.",
+  "¿TE GUSTAN LOS VIDEOJUEGOS?",
+  "SÉ LO QUE ESTÁS PENSANDO.",
+  "¿FB?",
+  "PUEDES IGNORAR ESTE MENSAJE."
+];
+
+const introMessage = document.getElementById("intro-message");
+
+let messageTimer = null;
+let lastMessageIndex = -1;
+let messagesStopped = false;
+
+function showRandomMessage() {
+  if (messagesStopped || !introMessage) return;
+
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * introMessages.length);
+  } while (index === lastMessageIndex && introMessages.length > 1);
+
+  lastMessageIndex = index;
+
+  introMessage.textContent = introMessages[index];
+  introMessage.classList.add("message-visible");
+
+  messageTimer = setTimeout(() => {
+    introMessage.classList.remove("message-visible");
+
+    messageTimer = setTimeout(() => {
+      showRandomMessage();
+    }, 2800);
+
+  }, 4200);
+}
+
+function stopIntroMessages() {
+  messagesStopped = true;
+
+  if (messageTimer) {
+    clearTimeout(messageTimer);
+    messageTimer = null;
+  }
+
+  if (introMessage) {
+    introMessage.classList.remove("message-visible");
+  }
+}
+
+setTimeout(() => {
+  showRandomMessage();
+}, 2500);
+
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
    ========================================= */
@@ -194,6 +269,7 @@ function vibrateDevice(pattern = 100) {
 }
 
 strawberry.addEventListener("click", () => {
+  stopIntroMessages();
   vibrateDevice([80, 40, 140]);
 
   gameMortal.currentTime = 0;
