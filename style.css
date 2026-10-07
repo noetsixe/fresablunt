@@ -2119,3 +2119,28 @@ flex-shrink: 0;
     fill: #050939;
 
 }
+
+#chakana-menu {
+    position: fixed;
+    top: 88px;
+    right: 28px;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#chakana-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#chakana-menu button {
+    background: transparent;
+    border: none;
+    color: #7778b8;
+    font-family: "Lucida Console", monospace;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
