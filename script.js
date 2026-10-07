@@ -1,4 +1,4 @@
-/* =========================================
+fdhteh/* =========================================
    FRESA BLUNT — INTRO GAME
    ========================================= */
 const strawberry = document.getElementById("strawberry");
