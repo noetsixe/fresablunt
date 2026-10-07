@@ -1889,6 +1889,7 @@ body::-webkit-scrollbar {
     line-height: 0.9;
     letter-spacing: -2px;
     color: #ffffff;
+       width: 250px;
 }
 
 .artist-description {
@@ -1989,7 +1990,7 @@ flex-shrink: 0;
 
         gap: 18px 24px;
 
-        transform: translateY(90px);
+        transform: translateY(85px);
     }
 
     .social-links a {
