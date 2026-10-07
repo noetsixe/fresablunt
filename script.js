@@ -26,7 +26,7 @@ const hAnimation = document.getElementById("h-animation");
 
 let spotifyController = null;
 let spotifyReplayBlocked = false;
-
+let spotifyPlayRequest = 0;
 /* =========================================
    MEMORIA DE ENTRADA — 24 HORAS
    ========================================= */
@@ -119,16 +119,42 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     element,
     options,
     (EmbedController) => {
-  spotifyController = EmbedController;
+        spotifyController = EmbedController;
 
-  spotifyController = EmbedController;
+      /* Si el usuario ya pulsó REPLAY mientras Spotify cargaba,
+         no permitimos que empiece a sonar */
+      if (spotifyReplayBlocked) {
+        spotifyController.pause();
 
-if (returningVisitor && !spotifyReplayBlocked) {
-  spotifyController.play().catch(() => {});
-}
-}
-  );
-};
+        const spotifyBlockCheck = setInterval(() => {
+          if (spotifyReplayBlocked && spotifyController) {
+            spotifyController.pause();
+          } else {
+            clearInterval(spotifyBlockCheck);
+          }
+        }, 100);
+
+        setTimeout(() => {
+          clearInterval(spotifyBlockCheck);
+        }, 3000);
+
+        return;
+      }
+
+      if (returningVisitor) {
+        const requestId = ++spotifyPlayRequest;
+
+        spotifyController.play()
+          .then(() => {
+            if (
+              spotifyReplayBlocked ||
+              requestId !== spotifyPlayRequest
+            ) {
+              spotifyController.pause();
+            }
+          })
+          .catch(() => {});
+      }
 
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
@@ -790,19 +816,9 @@ if (replayButton) {
   replayButton.addEventListener("click", () => {
 
      spotifyReplayBlocked = true;
+spotifyPlayRequest++;
 
 if (spotifyController) {
-  spotifyController.pause();
-}
-
-setTimeout(() => {
-  if (spotifyReplayBlocked && spotifyController) {
-    spotifyController.pause();
-  }
-}, 1000);
-
-     
-     if (spotifyController) {
   spotifyController.pause();
 }
      
