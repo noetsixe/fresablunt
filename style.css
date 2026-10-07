@@ -2125,10 +2125,11 @@ flex-shrink: 0;
     top: 88px;
     right: 28px;
     z-index: 99;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 10px;
+
     pointer-events: none;
 }
 
@@ -2140,102 +2141,146 @@ flex-shrink: 0;
     background: transparent;
     border: none;
     padding: 0;
+    margin: 0 0 10px 0;
+
     color: #7778b8;
+
     font-family: "Lucida Console", monospace;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
+
     cursor: pointer;
+
     opacity: 0;
     transform: translateY(-8px);
+
+    transition:
+        opacity 350ms ease,
+        transform 350ms ease,
+        margin 350ms ease;
 }
 
+
+/* =========================================
+   APERTURA
+========================================= */
+
 #chakana-menu.open button {
-    animation: chakana-menu-in 350ms ease forwards;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #chakana-menu.open button:nth-child(1) {
-    animation-delay: 0ms;
+    transition-delay: 0ms;
 }
 
 #chakana-menu.open button:nth-child(2) {
-    animation-delay: 70ms;
+    transition-delay: 70ms;
 }
 
 #chakana-menu.open button:nth-child(3) {
-    animation-delay: 140ms;
+    transition-delay: 140ms;
 }
 
 #chakana-menu.open button:nth-child(4) {
-    animation-delay: 210ms;
+    transition-delay: 210ms;
 }
 
 #chakana-menu.open button:nth-child(5) {
-    animation-delay: 280ms;
+    transition-delay: 280ms;
 }
 
 #chakana-menu.open button:nth-child(6) {
-    animation-delay: 350ms;
+    transition-delay: 350ms;
 }
 
 #chakana-menu.open button:nth-child(7) {
-    animation-delay: 420ms;
+    transition-delay: 420ms;
 }
 
-#chakana-menu.closing button:nth-child(1) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 0ms;
+
+/* =========================================
+   RECOGIDA EN CADENA
+========================================= */
+
+#chakana-menu.closing button {
+    transition-delay: 0ms;
 }
 
-#chakana-menu.closing button:nth-child(2) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 70ms;
-}
 
-#chakana-menu.closing button:nth-child(3) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 140ms;
-}
-
-#chakana-menu.closing button:nth-child(4) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 210ms;
-}
-
-#chakana-menu.closing button:nth-child(5) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 280ms;
-}
-
-#chakana-menu.closing button:nth-child(6) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 350ms;
-}
+/* CONTACTO desaparece primero */
 
 #chakana-menu.closing button:nth-child(7) {
-    animation: chakana-menu-out 350ms ease forwards;
-    animation-delay: 420ms;
-}
-@keyframes chakana-menu-in {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    transition-delay: 0ms;
 }
 
-@keyframes chakana-menu-out {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
 
-    to {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
+/* CALLOU RECORDS */
+
+#chakana-menu.closing button:nth-child(6) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 350ms;
+}
+
+
+/* ABOUT */
+
+#chakana-menu.closing button:nth-child(5) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 700ms;
+}
+
+
+/* VISUALES */
+
+#chakana-menu.closing button:nth-child(4) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 1050ms;
+}
+
+
+/* MÚSICA */
+
+#chakana-menu.closing button:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 1400ms;
+}
+
+
+/* ESTRENO */
+
+#chakana-menu.closing button:nth-child(2) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 1750ms;
+}
+
+
+/* PRESENTACIÓN */
+
+#chakana-menu.closing button:nth-child(1) {
+    opacity: 0;
+    transform: translateY(-8px);
+    margin-bottom: -1px;
+
+    transition-delay: 2100ms;
 }
