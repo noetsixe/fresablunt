@@ -122,7 +122,13 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
   spotifyController = EmbedController;
 
   if (returningVisitor && !spotifyReplayBlocked) {
-  spotifyController.play().catch(() => {});
+  spotifyController.play()
+    .then(() => {
+      if (spotifyReplayBlocked) {
+        spotifyController.pause();
+      }
+    })
+    .catch(() => {});
 }
 }
   );
