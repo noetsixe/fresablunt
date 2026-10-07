@@ -13,8 +13,17 @@ const chakanaButton = document.getElementById("chakana-button");
 const chakanaMenu = document.getElementById("chakana-menu");
 const chakanaItems = chakanaMenu.querySelectorAll("button");
 
-chakanaButton.addEventListener("click", () => {
+function closeChakanaMenu() {
+    chakanaMenu.classList.remove("open");
+}
+
+chakanaButton.addEventListener("click", (event) => {
+    event.stopPropagation();
     chakanaMenu.classList.toggle("open");
+});
+
+chakanaMenu.addEventListener("click", (event) => {
+    event.stopPropagation();
 });
 
 chakanaItems.forEach((item) => {
@@ -29,8 +38,18 @@ chakanaItems.forEach((item) => {
             block: "start"
         });
 
-        chakanaMenu.classList.remove("open");
+        closeChakanaMenu();
     });
+});
+
+document.addEventListener("click", () => {
+    closeChakanaMenu();
+});
+
+mainSite.addEventListener("scroll", () => {
+    if (chakanaMenu.classList.contains("open")) {
+        closeChakanaMenu();
+    }
 });
 const strawberryImage = document.querySelector(".pixel-strawberry");
 const shineCanvas = document.getElementById("strawberry-shine");
