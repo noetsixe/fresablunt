@@ -119,27 +119,26 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     element,
     options,
     (EmbedController) => {
-        spotifyController = EmbedController;
+       spotifyController = EmbedController;
 
-      /* Si el usuario ya pulsó REPLAY mientras Spotify cargaba,
-         no permitimos que empiece a sonar */
-      if (spotifyReplayBlocked) {
-        spotifyController.pause();
+/* Si REPLAY fue pulsado antes o durante la carga,
+   cualquier intento posterior de reproducción queda bloqueado */
+spotifyController.addListener("playback_started", () => {
+  if (spotifyReplayBlocked) {
+    spotifyController.pause();
+  }
+});
 
-        const spotifyBlockCheck = setInterval(() => {
-          if (spotifyReplayBlocked && spotifyController) {
-            spotifyController.pause();
-          } else {
-            clearInterval(spotifyBlockCheck);
-          }
-        }, 100);
+spotifyController.addListener("playback_update", (event) => {
+  if (spotifyReplayBlocked && !event.data.isPaused) {
+    spotifyController.pause();
+  }
+});
 
-        setTimeout(() => {
-          clearInterval(spotifyBlockCheck);
-        }, 3000);
-
-        return;
-      }
+if (spotifyReplayBlocked) {
+  spotifyController.pause();
+  return;
+}
 
       if (returningVisitor) {
         const requestId = ++spotifyPlayRequest;
