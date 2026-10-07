@@ -836,6 +836,19 @@ if (spotifyController) {
     if (mainSite.getAnimations) {
       mainSite.getAnimations().forEach(animation => animation.cancel());
     }
+
+    started = false;
+    strawberryPaused = false;
+    starfieldPaused = false;
+
+    strawberry.classList.remove("strawberry-hit");
+    strawberry.style.visibility = "visible";
+    strawberry.style.opacity = "1";
+    strawberry.style.pointerEvents = "auto";
+
+    intro.classList.remove("press-start-hide");
+    introBackground.classList.remove("stars-fade-out");
+    focusVignette.classList.remove("focus-active");
      
     mainSite.style.visibility = "hidden";
     mainSite.style.opacity = "0";
