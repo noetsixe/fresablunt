@@ -121,14 +121,10 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     (EmbedController) => {
   spotifyController = EmbedController;
 
-  if (returningVisitor && !spotifyReplayBlocked) {
-  spotifyController.play()
-    .then(() => {
-      if (spotifyReplayBlocked) {
-        spotifyController.pause();
-      }
-    })
-    .catch(() => {});
+  spotifyController = EmbedController;
+
+if (returningVisitor && !spotifyReplayBlocked) {
+  spotifyController.play().catch(() => {});
 }
 }
   );
@@ -795,6 +791,17 @@ if (replayButton) {
 
      spotifyReplayBlocked = true;
 
+if (spotifyController) {
+  spotifyController.pause();
+}
+
+setTimeout(() => {
+  if (spotifyReplayBlocked && spotifyController) {
+    spotifyController.pause();
+  }
+}, 1000);
+
+     
      if (spotifyController) {
   spotifyController.pause();
 }
