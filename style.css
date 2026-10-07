@@ -2129,12 +2129,10 @@ flex-shrink: 0;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
-    opacity: 0;
     pointer-events: none;
 }
 
 #chakana-menu.open {
-    opacity: 1;
     pointer-events: auto;
 }
 
