@@ -153,42 +153,70 @@
     <main id="main-site">
 
         <button id="chakana-button" type="button" aria-label="Abrir menú">
-            <svg
+           <svg
     class="chakana-shape"
-    viewBox="0 0 100 100"
+    viewBox="0 0 500 500"
     aria-hidden="true"
 >
-    <path
-        fill="#7778b8"
-        fill-rule="evenodd"
-        d="
-    M22 0
-    H78
-    V15
-    H94
-    V30
-    H110
-    V70
-    H94
-    V85
-    H78
-    V100
-    H22
-    V85
-    H6
-    V70
-    H-10
-    V30
-    H6
-    V15
-    H22
-    Z
+    <defs>
+        <mask id="cutout-mask">
+            <rect
+                width="500"
+                height="500"
+                fill="#ffffff"
+            />
 
-    M50 31
-    A19 19 0 1 0 50 69
-    A19 19 0 1 0 50 31
-    Z
-"
+            <rect
+                x="0"
+                y="238"
+                width="500"
+                height="24"
+                fill="#000000"
+            />
+
+            <circle
+                cx="250"
+                cy="250"
+                r="55"
+                fill="#000000"
+            />
+
+            <ellipse
+                cx="250"
+                cy="250"
+                rx="18"
+                ry="38"
+                fill="#ffffff"
+            />
+        </mask>
+    </defs>
+
+    <path
+        d="
+            M 205,35
+            H 295
+            V 95
+            H 385
+            V 155
+            H 465
+            V 345
+            H 385
+            V 405
+            H 295
+            V 465
+            H 205
+            V 405
+            H 115
+            V 345
+            H 35
+            V 155
+            H 115
+            V 95
+            H 205
+            Z
+        "
+        fill="#7778b8"
+        mask="url(#cutout-mask)"
     />
 </svg>
 </button>
