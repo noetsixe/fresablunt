@@ -1971,3 +1971,36 @@ flex-shrink: 0;
     opacity: 1;
     transform: translateY(-1px);
 }
+
+
+@media (max-width: 600px) {
+
+    .social-links {
+        width: 100%;
+        margin-left: 0;
+
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        gap: 18px 24px;
+
+        transform: translateY(70px);
+    }
+
+    .social-links a {
+        width: auto;
+        height: 28px;
+
+        font-size: 14px;
+    }
+
+    .social-links svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .social-links a:nth-child(2) svg {
+        width: 23px;
+        height: 23px;
+    }
+}
