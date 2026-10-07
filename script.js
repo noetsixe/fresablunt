@@ -21,7 +21,7 @@ function closeChakanaMenu() {
 
     setTimeout(() => {
         chakanaMenu.classList.remove("closing");
-    }, 800);
+    }, 1600);
 }
 
 chakanaButton.addEventListener("click", (event) => {
