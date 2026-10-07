@@ -1,4 +1,4 @@
-fdhteh/* =========================================
+/* =========================================
    FRESA BLUNT — INTRO GAME
    ========================================= */
 const strawberry = document.getElementById("strawberry");
@@ -828,6 +828,14 @@ spotifyPlayRequest++;
 if (spotifyController) {
   spotifyController.pause();
 }
+
+         if (intro.getAnimations) {
+      intro.getAnimations().forEach(animation => animation.cancel());
+    }
+
+    if (mainSite.getAnimations) {
+      mainSite.getAnimations().forEach(animation => animation.cancel());
+    }
      
     mainSite.style.visibility = "hidden";
     mainSite.style.opacity = "0";
