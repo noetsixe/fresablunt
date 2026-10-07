@@ -1854,8 +1854,8 @@ body::-webkit-scrollbar {
     #main-video {
         position: relative;
         width: 100%;
-        height: auto;
-        overflow: visible;
+        height: 100vh;
+        overflow: hidden;
     }
 
     #main-video video {
@@ -2090,17 +2090,6 @@ flex-shrink: 0;
         letter-spacing: 1px;
     }
 
-    #chakana-button {
-        width: 38px;
-        height: 38px;
-        top: 8px;
-        right: 8px;
-    }
-
-    .chakana-shape {
-        width: 34px;
-        height: 34px;
-    }
 }
 
 /* =========================================
