@@ -155,6 +155,10 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
           })
           .catch(() => {});
       }
+    }
+  );
+};
+
 
 
 let visits = Number(localStorage.getItem("fresaVisits") || 0);
