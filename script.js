@@ -19,6 +19,8 @@ function closeChakanaMenu() {
 
 chakanaButton.addEventListener("click", (event) => {
     event.stopPropagation();
+
+    chakanaMenu.classList.add("menu-ready");
     chakanaMenu.classList.toggle("open");
 });
 
