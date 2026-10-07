@@ -1860,7 +1860,7 @@ body::-webkit-scrollbar {
 
     #main-video video {
     position: relative;
-    width: 140%;
+    width: 180%;
     height: auto;
     top: 0;
     left: -20%;
