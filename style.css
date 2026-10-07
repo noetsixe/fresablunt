@@ -1859,13 +1859,13 @@ body::-webkit-scrollbar {
     }
 
     #main-video video {
-        position: relative;
-        width: 100%;
-        height: auto;
-        top: 0;
-        left: 0;
-        display: block;
-    }
+    position: relative;
+    width: 140%;
+    height: auto;
+    top: 0;
+    left: -20%;
+    display: block;
+}
 
 }
 
