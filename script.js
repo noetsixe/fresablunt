@@ -183,7 +183,7 @@ function showRandomMessage() {
 
     messageTimer = setTimeout(() => {
       showRandomMessage();
-    }, 5000);
+    }, 2500);
 
   }, 8000);
 }
