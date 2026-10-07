@@ -2118,6 +2118,16 @@ flex-shrink: 0;
     height: 48px;
     fill: #050939;
 
+    opacity: 0.65;
+
+    transition:
+        opacity 300ms ease,
+        filter 300ms ease;
+}
+
+#chakana-button:hover .chakana-shape {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #7778b8);
 }
 
 #chakana-menu {
@@ -2263,4 +2273,22 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
     transition-delay: 780ms;
+}
+
+/* =========================================
+   HOVER DE LOS APARTADOS
+========================================= */
+
+#chakana-menu button {
+    transition:
+        opacity 220ms ease,
+        transform 220ms ease,
+        margin 220ms ease,
+        text-shadow 300ms ease,
+        color 300ms ease;
+}
+
+#chakana-menu.open button:hover {
+    color: #7778b8;
+    text-shadow: 0 0 8px #7778b8;
 }
