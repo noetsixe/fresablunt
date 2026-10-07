@@ -9,6 +9,12 @@ const impact = document.getElementById("impact");
 const impactFlash = document.querySelector(".impact-flash");
 const transition = document.getElementById("transition");
 const mainSite = document.getElementById("main-site");
+const chakanaButton = document.getElementById("chakana-button");
+const chakanaMenu = document.getElementById("chakana-menu");
+
+chakanaButton.addEventListener("click", () => {
+    chakanaMenu.classList.toggle("open");
+});
 const strawberryImage = document.querySelector(".pixel-strawberry");
 const shineCanvas = document.getElementById("strawberry-shine");
 const shineCtx = shineCanvas.getContext("2d");
