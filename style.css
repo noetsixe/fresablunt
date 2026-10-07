@@ -469,6 +469,7 @@ html.boot-repeat #intro-scanlines::before {
     opacity: 0;
     visibility: hidden;
     overflow-y: auto;
+   scroll-snap-type: y mandatory;
     z-index: 1;
 }
 
@@ -517,6 +518,16 @@ nav a {
     min-height: 100vh;
     padding: 120px 7%;
     position: relative;
+}
+
+#main-video,
+#estreno,
+#music,
+#visuals,
+#about,
+#callou-records,
+#contact {
+    scroll-snap-align: start;
 }
 
 #estreno h2,
