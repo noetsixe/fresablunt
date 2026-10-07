@@ -784,7 +784,7 @@ if (replayButton) {
     mainSite.style.visibility = "hidden";
     mainSite.style.opacity = "0";
 
-    intro.style.display = "block";
+    intro.style.display = "flex";
     intro.style.visibility = "visible";
     intro.style.opacity = "1";
 
