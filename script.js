@@ -11,9 +11,26 @@ const transition = document.getElementById("transition");
 const mainSite = document.getElementById("main-site");
 const chakanaButton = document.getElementById("chakana-button");
 const chakanaMenu = document.getElementById("chakana-menu");
+const chakanaItems = chakanaMenu.querySelectorAll("button");
 
 chakanaButton.addEventListener("click", () => {
     chakanaMenu.classList.toggle("open");
+});
+
+chakanaItems.forEach((item) => {
+    item.addEventListener("click", () => {
+        const sectionId = item.dataset.section;
+        const section = document.getElementById(sectionId);
+
+        if (!section) return;
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        chakanaMenu.classList.remove("open");
+    });
 });
 const strawberryImage = document.querySelector(".pixel-strawberry");
 const shineCanvas = document.getElementById("strawberry-shine");
