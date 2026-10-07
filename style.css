@@ -2156,9 +2156,9 @@ flex-shrink: 0;
     transform: translateY(-8px);
 
     transition:
-        opacity 350ms ease,
-        transform 350ms ease,
-        margin 350ms ease;
+        opacity 220ms ease,
+        transform 220ms ease,
+        margin 220ms ease;
 }
 
 
@@ -2227,7 +2227,7 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 350ms;
+    transition-delay: 220ms;
 }
 
 
@@ -2238,7 +2238,7 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 700ms;
+    transition-delay: 440ms;
 }
 
 
@@ -2249,7 +2249,7 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 1050ms;
+    transition-delay: 660ms;
 }
 
 
@@ -2260,7 +2260,7 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 1400ms;
+    transition-delay: 880ms;
 }
 
 
@@ -2271,7 +2271,7 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 1750ms;
+    transition-delay: 1100ms;
 }
 
 
@@ -2282,5 +2282,5 @@ flex-shrink: 0;
     transform: translateY(-8px);
     margin-bottom: -1px;
 
-    transition-delay: 2100ms;
+    transition-delay: 1320ms;
 }
