@@ -469,8 +469,14 @@ html.boot-repeat #intro-scanlines::before {
     opacity: 0;
     visibility: hidden;
     overflow: auto;
+   scrollbar-width: none;
+-ms-overflow-style: none;
     scroll-snap-type: y mandatory;
     z-index: 1;
+}
+
+#main-site::-webkit-scrollbar {
+    display: none;
 }
 
 header {
