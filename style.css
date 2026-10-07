@@ -2086,9 +2086,19 @@ flex-shrink: 0;
     #replay-button {
         top: 16px;
         left: 16px;
-        font-size: 9px;
+        font-size: 12px;
         letter-spacing: 1px;
     }
+
+   #chakana-button {
+    width: 44px;
+    height: 44px;
+}
+
+.chakana-shape {
+    width: 40px;
+    height: 40px;
+}
 }
 
 /* =========================================
