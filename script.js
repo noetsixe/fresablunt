@@ -341,6 +341,10 @@ function vibrateDevice(pattern = 100) {
 }
 
 strawberry.addEventListener("click", () => {
+   
+   spotifyReplayBlocked = false;
+  spotifyPlayRequest++;
+   
   stopIntroMessages();
   vibrateDevice([80, 40, 140]);
 
