@@ -2011,7 +2011,7 @@ flex-shrink: 0;
 
 #intro-message {
     position: absolute;
-    top: 22%;
+    top: 14%;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
