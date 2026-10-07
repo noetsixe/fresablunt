@@ -38,7 +38,15 @@ const savedEntryTime = Number(
   localStorage.getItem(ENTRY_MEMORY_KEY)
 );
 
+const replayIntro =
+  sessionStorage.getItem("fresaReplayIntro") === "true";
+
+if (replayIntro) {
+  sessionStorage.removeItem("fresaReplayIntro");
+}
+
 const returningVisitor =
+  !replayIntro &&
   Number.isFinite(savedEntryTime) &&
   Date.now() - savedEntryTime < ENTRY_MEMORY_TIME;
 
@@ -822,42 +830,16 @@ const replayButton = document.getElementById("replay-button");
 if (replayButton) {
   replayButton.addEventListener("click", () => {
 
-     spotifyReplayBlocked = true;
-spotifyPlayRequest++;
+    spotifyReplayBlocked = true;
+    spotifyPlayRequest++;
 
-if (spotifyController) {
-  spotifyController.pause();
-}
-
-         if (intro.getAnimations) {
-      intro.getAnimations().forEach(animation => animation.cancel());
+    if (spotifyController) {
+      spotifyController.pause();
     }
 
-    if (mainSite.getAnimations) {
-      mainSite.getAnimations().forEach(animation => animation.cancel());
-    }
+    sessionStorage.setItem("fresaReplayIntro", "true");
 
-    started = false;
-    strawberryPaused = false;
-    starfieldPaused = false;
-
-    strawberry.classList.remove("strawberry-hit");
-    strawberry.style.visibility = "visible";
-    strawberry.style.opacity = "1";
-    strawberry.style.pointerEvents = "auto";
-
-    intro.classList.remove("press-start-hide");
-    introBackground.classList.remove("stars-fade-out");
-    focusVignette.classList.remove("focus-active");
-     
-    mainSite.style.visibility = "hidden";
-    mainSite.style.opacity = "0";
-
-    intro.style.display = "flex";
-    intro.style.visibility = "visible";
-    intro.style.opacity = "1";
-
-    document.body.style.overflow = "hidden";
+    window.location.reload();
   });
 }
 /* =========================================
