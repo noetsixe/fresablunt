@@ -2156,6 +2156,10 @@ flex-shrink: 0;
     animation: chakana-menu-in 350ms ease forwards;
 }
 
+#chakana-menu:not(.open) button {
+    animation: chakana-menu-out 220ms ease forwards;
+}
+
 #chakana-menu.open button:nth-child(1) {
     animation-delay: 0ms;
 }
@@ -2184,6 +2188,34 @@ flex-shrink: 0;
     animation-delay: 420ms;
 }
 
+#chakana-menu:not(.open) button:nth-child(7) {
+    animation-delay: 0ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(6) {
+    animation-delay: 35ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(5) {
+    animation-delay: 70ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(4) {
+    animation-delay: 105ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(3) {
+    animation-delay: 140ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(2) {
+    animation-delay: 175ms;
+}
+
+#chakana-menu:not(.open) button:nth-child(1) {
+    animation-delay: 210ms;
+}
+
 @keyframes chakana-menu-in {
     from {
         opacity: 0;
@@ -2193,5 +2225,17 @@ flex-shrink: 0;
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes chakana-menu-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
     }
 }
