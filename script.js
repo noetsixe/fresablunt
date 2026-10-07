@@ -14,14 +14,26 @@ const chakanaMenu = document.getElementById("chakana-menu");
 const chakanaItems = chakanaMenu.querySelectorAll("button");
 
 function closeChakanaMenu() {
+    if (!chakanaMenu.classList.contains("open")) return;
+
     chakanaMenu.classList.remove("open");
+    chakanaMenu.classList.add("closing");
+
+    setTimeout(() => {
+        chakanaMenu.classList.remove("closing");
+    }, 800);
 }
 
 chakanaButton.addEventListener("click", (event) => {
     event.stopPropagation();
 
-    chakanaMenu.classList.add("menu-ready");
-    chakanaMenu.classList.toggle("open");
+    if (chakanaMenu.classList.contains("open")) {
+        closeChakanaMenu();
+        return;
+    }
+
+    chakanaMenu.classList.remove("closing");
+    chakanaMenu.classList.add("open");
 });
 
 chakanaMenu.addEventListener("click", (event) => {
