@@ -2317,6 +2317,8 @@ flex-shrink: 0;
 
 #estreno {
     position: relative;
+    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -2342,7 +2344,7 @@ flex-shrink: 0;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 177.78vh;
+    width: 100vw;
     height: 100vh;
     transform: translate(-50%, -50%);
     border: 0;
