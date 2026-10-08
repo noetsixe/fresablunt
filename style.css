@@ -2427,7 +2427,7 @@ transform: none;
 }
 
 #estreno .release-links a svg:hover {
-    opacity: 0.55;
+    opacity: 0.20;
 }
 
 #estreno .release-links svg {
