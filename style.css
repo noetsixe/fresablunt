@@ -2513,6 +2513,7 @@ transform: none;
 
 
 
+
 /* =========================================
    CONTACTO
 ========================================= */
@@ -2521,29 +2522,117 @@ transform: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+}
+
+#contact h2 {
+    opacity: 0.65;
 }
 
 #contact .contact-info {
-    margin-top: 55px;
+    margin-top: 65px;
+    max-width: 760px;
 }
 
 #contact .contact-role {
-    margin: 0 0 14px 0;
+    margin: 0 0 24px 0;
     font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #ffffff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    line-height: 1.8;
+    color: #a6a5bb;
+    text-transform: uppercase;
 }
 
 #contact .contact-email {
+    display: inline-block;
+    max-width: 100%;
     font-family: Arial, sans-serif;
-    font-size: clamp(24px, 3vw, 42px);
+    font-size: clamp(22px, 3.2vw, 42px);
     font-weight: 500;
+    letter-spacing: -1.2px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
     color: #ffffff;
     text-decoration: none;
     transition: opacity 200ms ease;
 }
 
 #contact .contact-email:hover {
-    opacity: 0.45;
+    opacity: 0.6;
+}
+
+#contact .contact-divider {
+    width: 100%;
+    max-width: 760px;
+    height: 1px;
+    margin-top: 42px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+#contact .contact-socials {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+#contact .contact-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    opacity: 0.7;
+    text-decoration: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+#contact .contact-socials a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+#contact .contact-socials svg {
+    display: block;
+    width: 23px;
+    height: 23px;
+    fill: currentColor;
+}
+
+@media (max-width: 600px) {
+    #contact {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #contact .contact-info {
+        margin-top: 48px;
+    }
+
+    #contact .contact-role {
+        max-width: 290px;
+        font-size: 10px;
+        letter-spacing: 1.7px;
+        margin-bottom: 20px;
+    }
+
+    #contact .contact-email {
+        font-size: clamp(21px, 6vw, 30px);
+        letter-spacing: -0.8px;
+    }
+
+    #contact .contact-divider {
+        margin-top: 34px;
+    }
+
+    #contact .contact-socials {
+        gap: 23px;
+        margin-top: 22px;
+    }
+
+    #contact .contact-socials svg {
+        width: 22px;
+        height: 22px;
+    }
 }
