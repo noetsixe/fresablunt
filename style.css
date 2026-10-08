@@ -2636,3 +2636,54 @@ transform: none;
         height: 22px;
     }
 }
+
+
+
+/* CONTACTO: CORREO Y BOTÓN */
+
+#contact .contact-email-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+#contact .contact-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 0;
+    border: 0;
+    background: transparent;
+    color: #a6a5bb;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: color 200ms ease, opacity 200ms ease;
+}
+
+#contact .contact-copy:hover {
+    color: #ffffff;
+}
+
+#contact .contact-copy svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+    #contact .contact-email-row {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #contact .contact-copy {
+        margin-top: 3px;
+    }
+}
