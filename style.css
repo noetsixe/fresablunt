@@ -2321,7 +2321,7 @@ flex-shrink: 0;
 }
 
 #estreno .release-video {
-    width: min(1100px, 100%);
+    width: min(700px, 100%);
     aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
