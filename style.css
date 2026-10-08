@@ -2397,8 +2397,8 @@ flex-shrink: 0;
     justify-items: center;
     width: 358px;
     margin-top: 20px;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    margin-left: -69px;
+transform: none;
 }
 
 #estreno .release-links a {
