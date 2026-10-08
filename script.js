@@ -1108,6 +1108,23 @@ if (releaseYoutube) {
         `https://www.youtube.com/embed/${currentRelease.youtube}`;
 }
 
+const releaseSpotify = document.getElementById("release-spotify");
+const releaseApple = document.getElementById("release-apple");
+const releaseAmazon = document.getElementById("release-amazon");
+
+if (releaseSpotify) {
+    releaseSpotify.href = currentRelease.spotify;
+}
+
+if (releaseApple) {
+    releaseApple.href = currentRelease.appleMusic;
+}
+
+if (releaseAmazon) {
+    releaseAmazon.href = currentRelease.amazonMusic;
+}
+
+
 let releaseBackgroundStarted = false;
 
 function startReleaseBackground() {
