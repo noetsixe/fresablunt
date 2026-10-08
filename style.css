@@ -2389,14 +2389,16 @@ flex-shrink: 0;
 }
 
 #estreno .release-links {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 28px 28px 130px 100px;
+    column-gap: 24px;
+    row-gap: 6px;
     align-items: center;
-    gap: 18px 24px;
+    justify-items: center;
+    width: 358px;
     margin-top: 20px;
-    width: 500px;
-    margin-left: -140px;
-    flex-wrap: wrap;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 #estreno .release-links a {
@@ -2451,9 +2453,8 @@ flex-shrink: 0;
 }
 
 #estreno #release-deezer {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
+    grid-column: 1 / -1;
+    justify-self: center;
 }
 
 @media (max-width: 600px) {
