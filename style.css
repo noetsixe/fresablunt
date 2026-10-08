@@ -2518,11 +2518,18 @@ transform: none;
    CONTACTO
 ========================================= */
 
+
 #contact {
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+
+    background-color: #050510;
+    background-image: url("./fresa-blunt-contacto.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #contact h2 {
