@@ -1144,3 +1144,6 @@ if (releaseBackground) {
     });
 }
 }
+function onYouTubeIframeAPIReady() {
+    startReleaseBackground();
+}
