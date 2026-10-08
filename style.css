@@ -2413,8 +2413,8 @@ flex-shrink: 0;
     min-height: 100%;
     min-width: 177.78vh;
     transform: translate(-50%, -50%);
-    opacity: 0.18;
-    filter: brightness(0.35) saturate(0.75);
+    opacity: 0.28;
+    filter: brightness(0.55) saturate(0.85);
     pointer-events: none;
 }
 
