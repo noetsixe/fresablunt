@@ -2401,8 +2401,11 @@ flex-shrink: 0;
     text-decoration: none;
 }
 
-#estreno .release-icon {
-    font-size: 22px;
+#estreno .release-links svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    fill: currentColor;
 }
 
 @media (max-width: 600px) {
