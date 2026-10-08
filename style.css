@@ -2396,8 +2396,8 @@ flex-shrink: 0;
     align-items: center;
     justify-items: center;
     width: 358px;
-    margin-top: 20px;
-    margin-left: 30px;
+    margin-top: 0px;
+    margin-left: 40px;
 transform: none;
 }
 
@@ -2449,7 +2449,7 @@ transform: none;
 }
 
 #estreno #release-deezer {
-    transform: translateY(-15px);
+    transform: translateY(-30px);
 }
 
 #estreno #release-deezer {
