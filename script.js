@@ -1111,6 +1111,8 @@ if (releaseYoutube) {
 const releaseSpotify = document.getElementById("release-spotify");
 const releaseApple = document.getElementById("release-apple");
 const releaseAmazon = document.getElementById("release-amazon");
+const releaseYoutubeMusic = document.getElementById("release-youtube-music");
+const releaseDeezer = document.getElementById("release-deezer");
 
 if (releaseSpotify) {
     releaseSpotify.href = currentRelease.spotify;
@@ -1122,6 +1124,13 @@ if (releaseApple) {
 
 if (releaseAmazon) {
     releaseAmazon.href = currentRelease.amazonMusic;
+}
+if (releaseYoutubeMusic) {
+    releaseYoutubeMusic.href = currentRelease.youtubeMusic;
+}
+
+if (releaseDeezer) {
+    releaseDeezer.href = currentRelease.deezer;
 }
 
 const releaseCover = document.getElementById("release-cover");
