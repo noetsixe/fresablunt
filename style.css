@@ -2412,6 +2412,10 @@ flex-shrink: 0;
     width: 130px;
     height: auto;
 }
+#estreno .release-icon-youtube music svg {
+    width: 100px;
+    height: auto;
+}
 
 @media (max-width: 600px) {
 
