@@ -2392,8 +2392,10 @@ flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 22px;
+    gap: 24px;
     margin-top: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
 }
 
 #estreno .release-links a {
