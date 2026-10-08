@@ -2547,8 +2547,15 @@ transform: none;
     pointer-events: none;
 }
 
+
 #contact h2 {
-    opacity: 0.65;
+    font-family: Impact, "Arial Narrow", sans-serif;
+    font-size: clamp(42px, 7vw, 86px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    opacity: 1;
 }
 
 #contact .contact-info {
@@ -2571,10 +2578,10 @@ transform: none;
 #contact .contact-email {
     display: inline-block;
     max-width: 100%;
-    font-family: "Trebuchet MS", sans-serif;
+    font-family: "Arial Narrow", Impact, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.8px;
     font-size: clamp(22px, 3.2vw, 42px);
-    font-weight: 400;
-    letter-spacing: -1.5px;
     line-height: 1.25;
     overflow-wrap: anywhere;
     color: #ffffff;
