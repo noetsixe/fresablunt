@@ -2325,7 +2325,7 @@ flex-shrink: 0;
 #estreno .release-background {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     overflow: hidden;
     pointer-events: none;
     background: #000;
