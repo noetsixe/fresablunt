@@ -2394,7 +2394,8 @@ flex-shrink: 0;
     align-items: center;
     gap: 18px 24px;
     margin-top: 20px;
-    width: 100%;
+    width: 500px;
+    margin-left: -140px;
     flex-wrap: wrap;
 }
 
@@ -2451,6 +2452,8 @@ flex-shrink: 0;
 
 #estreno #release-deezer {
     flex-basis: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 600px) {
