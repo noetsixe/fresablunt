@@ -2510,3 +2510,40 @@ transform: none;
     }
 
 }
+
+
+
+/* =========================================
+   CONTACTO
+========================================= */
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact .contact-info {
+    margin-top: 55px;
+}
+
+#contact .contact-role {
+    margin: 0 0 14px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+#contact .contact-email {
+    font-family: Arial, sans-serif;
+    font-size: clamp(24px, 3vw, 42px);
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 200ms ease;
+}
+
+#contact .contact-email:hover {
+    opacity: 0.45;
+}
