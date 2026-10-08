@@ -2413,7 +2413,16 @@ transform: none;
 #estreno .release-links a {
     color: #fff;
     text-decoration: none;
-    display: contents;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    pointer-events: none;
+}
+
+#estreno .release-links a svg {
+    pointer-events: auto;
 }
 
 #estreno .release-links svg {
