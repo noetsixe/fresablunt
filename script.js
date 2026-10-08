@@ -84,8 +84,19 @@ let spotifyController = null;
 let spotifyReplayBlocked = false;
 let spotifyPlayRequest = 0;
 
+/* =========================================================
+   ⭐⭐⭐ ACTUALIZAR ESTRENO AQUÍ ⭐⭐⭐
+   Cambia SOLO estos enlaces cuando salga un nuevo estreno.
+   ========================================================= */
+
 const currentRelease = {
-    youtube: "M3rqFvkWcbE"
+    youtube: "M3rqFvkWcbE",
+
+    spotify: "https://open.spotify.com/intl-es/track/3XgR6CA7gghYrM9ZFUpCBK",
+
+    appleMusic: "https://music.apple.com/bo/song/el-amor-real/6813966440",
+
+    amazonMusic: "https://music.amazon.es/albums/B0HKDRDDL6?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES"
 };
 /* =========================================
    MEMORIA DE ENTRADA — 24 HORAS
