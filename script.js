@@ -1105,11 +1105,9 @@ function startReleaseBackground() {
 
     releaseBackgroundStarted = true;
 
-    const releaseBackground =
-        document.getElementById("release-background-youtube");
+    const releaseBackground = document.getElementById("release-background-youtube");
 
-    if (!releaseBackground) return;
-
+if (releaseBackground) {
     new YT.Player(releaseBackground, {
         videoId: currentRelease.youtube,
         playerVars: {
@@ -1125,14 +1123,23 @@ function startReleaseBackground() {
         events: {
             onReady: function(event) {
                 event.target.mute();
+
+                const duration = event.target.getDuration();
+                const startTime = duration * 0.25;
+
+                event.target.seekTo(startTime, true);
                 event.target.playVideo();
+            },
+
+            onStateChange: function(event) {
+                if (event.data === YT.PlayerState.ENDED) {
+                    const duration = event.target.getDuration();
+                    const startTime = duration * 0.25;
+
+                    event.target.seekTo(startTime, true);
+                    event.target.playVideo();
+                }
             }
         }
     });
-}
-
-window.onYouTubeIframeAPIReady = startReleaseBackground;
-
-if (window.YT) {
-    startReleaseBackground();
 }
