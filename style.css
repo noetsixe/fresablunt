@@ -2412,9 +2412,11 @@ transform: none;
 #estreno .release-links a {
     color: #fff;
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: fit-content;
+    height: fit-content;
 }
 
 #estreno .release-links svg {
