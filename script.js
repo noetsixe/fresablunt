@@ -1143,3 +1143,4 @@ if (releaseBackground) {
         }
     });
 }
+}
