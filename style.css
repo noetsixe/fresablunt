@@ -2408,6 +2408,11 @@ flex-shrink: 0;
     fill: currentColor;
 }
 
+#estreno .release-icon-amazon svg {
+    width: 55px;
+    height: auto;
+}
+
 @media (max-width: 600px) {
 
     #estreno .release {
