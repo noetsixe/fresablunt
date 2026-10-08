@@ -2409,6 +2409,10 @@ flex-shrink: 0;
 transform: none;
 }
 
+#estreno .release-links > a {
+    justify-self: center;
+}
+
 #estreno .release-links a {
     color: #fff;
     text-decoration: none;
