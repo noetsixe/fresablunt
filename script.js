@@ -85,9 +85,6 @@ let spotifyReplayBlocked = false;
 let spotifyPlayRequest = 0;
 
 const currentRelease = {
-    title: "EL AMOR REAL",
-    artist: "FRESA BLUNT",
-    year: "2026",
     youtube: "M3rqFvkWcbE"
 };
 /* =========================================
@@ -1093,14 +1090,7 @@ setTimeout(() => {
 }, 60000);
 
 
-const releaseTitle = document.getElementById("release-title");
-const releaseArtist = document.getElementById("release-artist");
-const releaseYear = document.getElementById("release-year");
 const releaseYoutube = document.getElementById("release-youtube");
-
-if (releaseTitle) releaseTitle.textContent = currentRelease.title;
-if (releaseArtist) releaseArtist.textContent = currentRelease.artist;
-if (releaseYear) releaseYear.textContent = currentRelease.year;
 
 if (releaseYoutube) {
     releaseYoutube.src =
