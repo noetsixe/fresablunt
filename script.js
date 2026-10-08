@@ -1147,3 +1147,10 @@ if (releaseBackground) {
 function onYouTubeIframeAPIReady() {
     startReleaseBackground();
 }
+
+const releaseBackgroundWait = setInterval(() => {
+    if (window.YT) {
+        clearInterval(releaseBackgroundWait);
+        startReleaseBackground();
+    }
+}, 500);
