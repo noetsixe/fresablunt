@@ -2423,6 +2423,11 @@ transform: none;
 
 #estreno .release-links a svg {
     pointer-events: auto;
+    transition: opacity 200ms ease;
+}
+
+#estreno .release-links a svg:hover {
+    opacity: 0.55;
 }
 
 #estreno .release-links svg {
