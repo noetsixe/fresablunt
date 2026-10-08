@@ -2427,6 +2427,28 @@ flex-shrink: 0;
     height: auto;
 }
 
+/* AJUSTE MANUAL DE LOGOS */
+
+#estreno #release-spotify {
+    transform: translateY(-3px);
+}
+
+#estreno #release-apple {
+    transform: translateY(0px);
+}
+
+#estreno #release-amazon {
+    transform: translateY(-5px);
+}
+
+#estreno #release-youtube-music {
+    transform: translateY(-5px);
+}
+
+#estreno #release-deezer {
+    transform: translateY(0px);
+}
+
 @media (max-width: 600px) {
 
     #estreno .release {
