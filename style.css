@@ -2384,3 +2384,41 @@ flex-shrink: 0;
     }
 
 }
+
+
+/* =========================================
+   FONDO VIDEO — ESTRENO
+========================================= */
+
+#estreno {
+    position: relative;
+    overflow: hidden;
+}
+
+#estreno .release-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #050510;
+}
+
+#release-background-youtube {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100%;
+    min-width: 177.78vh;
+    transform: translate(-50%, -50%);
+    opacity: 0.18;
+    filter: brightness(0.35) saturate(0.75);
+    pointer-events: none;
+}
+
+#estreno .release-content {
+    position: relative;
+    z-index: 2;
+}
