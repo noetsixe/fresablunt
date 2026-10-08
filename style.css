@@ -2361,7 +2361,7 @@ flex-shrink: 0;
     width: 100%;
     margin-top: 45px;
     display: flex;
-    align-items: center;
+        align-items: flex-start;
     gap: 50px;
 }
 
@@ -2386,6 +2386,7 @@ flex-shrink: 0;
     flex-direction: column;
     align-items: center;
     width: 220px;
+    margin-top: -35px;
 }
 
 #estreno .release-cover {
