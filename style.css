@@ -550,6 +550,10 @@ nav a {
     letter-spacing: -3px;
     color: #ffffff;
 }
+
+#estreno h2 {
+    opacity: 0.65;
+}
 footer {
     padding: 30px;
     font-size: 10px;
