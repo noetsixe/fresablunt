@@ -2345,9 +2345,7 @@ flex-shrink: 0;
     left: 50%;
     width: 100vw;
     height: 56.25vw;
-    min-width: 177.78vh;
-    min-height: 100vh;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.05);
     border: 0;
     pointer-events: none;
 }
