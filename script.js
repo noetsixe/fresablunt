@@ -1238,3 +1238,29 @@ const releaseBackgroundWait = setInterval(() => {
     }
 
 }, 500);
+
+
+
+/* =========================================
+   CONTACTO: COPIAR CORREO
+========================================= */
+
+const contactCopyButton = document.querySelector(".contact-copy");
+
+if (contactCopyButton) {
+    contactCopyButton.addEventListener("click", async () => {
+        const email = "callourecords@gmail.com";
+        const label = contactCopyButton.querySelector(".contact-copy-label");
+
+        try {
+            await navigator.clipboard.writeText(email);
+            label.textContent = "COPIADO";
+
+            setTimeout(() => {
+                label.textContent = "COPIAR";
+            }, 1800);
+        } catch (error) {
+            window.location.href = `mailto:${email}`;
+        }
+    });
+}
