@@ -2528,10 +2528,10 @@ transform: none;
 
 #contact h2 {
     font-family: "Courier New", monospace;
-    font-size: clamp(16px, 1.8vw, 22px);
+    font-size: 12px;
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #ffffff;
     opacity: 1;
 }
@@ -2553,11 +2553,11 @@ transform: none;
 #contact .contact-email {
     display: inline-block;
     max-width: 100%;
-    font-family: "Arial Narrow", Impact, sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.8px;
-    font-size: clamp(20px, 2.6vw, 32px);
-    line-height: 1.25;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.4;
     overflow-wrap: anywhere;
     color: #ffffff;
     text-decoration: none;
