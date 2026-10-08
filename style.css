@@ -2417,6 +2417,11 @@ flex-shrink: 0;
     height: auto;
 }
 
+#estreno .release-icon-deezer svg {
+    width: 100px;
+    height: auto;
+}
+
 @media (max-width: 600px) {
 
     #estreno .release {
