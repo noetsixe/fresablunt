@@ -94,8 +94,8 @@ const currentRelease = {
 
     spotify: "https://open.spotify.com/intl-es/track/3XgR6CA7gghYrM9ZFUpCBK",
     appleMusic: "https://music.apple.com/bo/song/el-amor-real/6813966440",
-    amazonMusic: "https://music.amazon.es/albums/B0HKDRDDL6?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES"
-    youtubeMusic: "https://music.youtube.com/watch?v=cRRpeuW9LTo&si=7o_wupyESzgsqDTH"
+    amazonMusic: "https://music.amazon.es/albums/B0HKDRDDL6?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES",
+    youtubeMusic: "https://music.youtube.com/watch?v=cRRpeuW9LTo&si=7o_wupyESzgsqDTH",
     deezer: "https://link.deezer.com/s/34Cu57hHrQNAgqAeUmsfC"
 };
 /* =========================================
