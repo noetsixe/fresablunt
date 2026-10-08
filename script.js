@@ -1141,61 +1141,9 @@ if (releaseCover && currentRelease.spotify) {
 }
 
 
-let releaseBackgroundStarted = false;
-
-function startReleaseBackground() {
-
-    if (releaseBackgroundStarted || !window.YT) return;
-
-    releaseBackgroundStarted = true;
-
-    const releaseBackground = document.getElementById("release-background-youtube");
+const releaseBackground = document.getElementById("release-background-youtube");
 
 if (releaseBackground) {
-    new YT.Player(releaseBackground, {
-        videoId: currentRelease.youtube,
-        playerVars: {
-    autoplay: 1,
-    mute: 1,
-    controls: 0,
-    loop: 1,
-    playlist: currentRelease.youtube,
-    modestbranding: 1,
-    rel: 0,
-    playsinline: 1,
-    iv_load_policy: 3
-},
-        events: {
-            onReady: function(event) {
-                event.target.mute();
-
-                const duration = event.target.getDuration();
-                const startTime = duration * 0.25;
-
-                event.target.seekTo(startTime, true);
-                event.target.playVideo();
-            },
-
-            onStateChange: function(event) {
-                if (event.data === YT.PlayerState.ENDED) {
-                    const duration = event.target.getDuration();
-                    const startTime = duration * 0.25;
-
-                    event.target.seekTo(startTime, true);
-                    event.target.playVideo();
-                }
-            }
-        }
-    });
+    releaseBackground.src =
+        `https://www.youtube.com/embed/${currentRelease.youtube}?autoplay=1&mute=1&controls=0&loop=1&playlist=${currentRelease.youtube}&rel=0&playsinline=1`;
 }
-}
-function onYouTubeIframeAPIReady() {
-    startReleaseBackground();
-}
-
-const releaseBackgroundWait = setInterval(() => {
-    if (window.YT) {
-        clearInterval(releaseBackgroundWait);
-        startReleaseBackground();
-    }
-}, 500);
