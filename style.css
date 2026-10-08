@@ -2340,7 +2340,10 @@ flex-shrink: 0;
     border: 0;
     overflow: hidden;
     pointer-events: none;
-   opacity: 0.70;
+}
+
+#release-background-youtube iframe {
+    opacity: 0.35 !important;
 }
 
 
