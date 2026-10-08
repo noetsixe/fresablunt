@@ -1124,6 +1124,22 @@ if (releaseAmazon) {
     releaseAmazon.href = currentRelease.amazonMusic;
 }
 
+const releaseCover = document.getElementById("release-cover");
+
+if (releaseCover && currentRelease.spotify) {
+
+    fetch(
+        `https://open.spotify.com/oembed?url=${encodeURIComponent(currentRelease.spotify)}`
+    )
+        .then(response => response.json())
+        .then(data => {
+            if (data.thumbnail_url) {
+                releaseCover.src = data.thumbnail_url;
+            }
+        })
+        .catch(() => {});
+}
+
 
 let releaseBackgroundStarted = false;
 
