@@ -2342,7 +2342,7 @@ flex-shrink: 0;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
+    width: 177.78vh;
     height: 100vh;
     transform: translate(-50%, -50%);
     border: 0;
