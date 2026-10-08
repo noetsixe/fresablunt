@@ -2308,3 +2308,79 @@ flex-shrink: 0;
         height: 34px;
     }
 }
+
+
+
+/* =========================================
+   ESTRENO — VIDECLIP PRINCIPAL
+========================================= */
+
+#estreno .release {
+    width: 100%;
+    margin-top: 45px;
+}
+
+#estreno .release-video {
+    width: min(1100px, 100%);
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+}
+
+#estreno .release-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+#estreno .release-info {
+    margin-top: 24px;
+}
+
+#estreno .release-info h3 {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    color: #ffffff;
+}
+
+#estreno .release-info p {
+    margin: 10px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+#estreno .release-info span {
+    display: block;
+    margin-top: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #7778b8;
+}
+
+@media (max-width: 600px) {
+
+    #estreno .release {
+        margin-top: 35px;
+    }
+
+    #estreno .release-video {
+        width: 100%;
+    }
+
+    #estreno .release-info {
+        margin-top: 18px;
+    }
+
+    #estreno .release-info h3 {
+        font-size: 34px;
+    }
+
+}
