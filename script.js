@@ -1141,9 +1141,91 @@ if (releaseCover && currentRelease.spotify) {
 }
 
 
-const releaseBackground = document.getElementById("release-background-youtube");
+let releaseBackgroundStarted = false;
 
-if (releaseBackground) {
-    releaseBackground.src =
-        `https://www.youtube.com/embed/${currentRelease.youtube}?autoplay=1&mute=1&controls=0&loop=1&playlist=${currentRelease.youtube}&rel=0&playsinline=1`;
+function startReleaseBackground() {
+
+    if (releaseBackgroundStarted || !window.YT) return;
+
+    releaseBackgroundStarted = true;
+
+    const releaseBackground =
+        document.getElementById("release-background-youtube");
+
+    if (releaseBackground) {
+
+        new YT.Player(releaseBackground, {
+
+            videoId: currentRelease.youtube,
+
+            playerVars: {
+                autoplay: 1,
+                mute: 1,
+                controls: 0,
+                loop: 1,
+                playlist: currentRelease.youtube,
+                modestbranding: 1,
+                rel: 0,
+                playsinline: 1
+            },
+
+            events: {
+
+                onReady: function(event) {
+
+                    event.target.mute();
+
+                    const duration =
+                        event.target.getDuration();
+
+                    const startTime =
+                        duration * 0.25;
+
+                    event.target.seekTo(
+                        startTime,
+                        true
+                    );
+
+                    event.target.playVideo();
+                },
+
+                onStateChange: function(event) {
+
+                    if (
+                        event.data ===
+                        YT.PlayerState.ENDED
+                    ) {
+
+                        const duration =
+                            event.target.getDuration();
+
+                        const startTime =
+                            duration * 0.25;
+
+                        event.target.seekTo(
+                            startTime,
+                            true
+                        );
+
+                        event.target.playVideo();
+                    }
+                }
+            }
+        });
+    }
 }
+
+function onYouTubeIframeAPIReady() {
+    startReleaseBackground();
+}
+
+const releaseBackgroundWait = setInterval(() => {
+
+    if (window.YT) {
+
+        clearInterval(releaseBackgroundWait);
+
+        startReleaseBackground();
+    }
+
+}, 500);
