@@ -1097,9 +1097,19 @@ if (releaseYoutube) {
         `https://www.youtube.com/embed/${currentRelease.youtube}`;
 }
 
-const releaseBackground = document.getElementById("release-background-youtube");
+let releaseBackgroundStarted = false;
 
-if (releaseBackground) {
+function startReleaseBackground() {
+
+    if (releaseBackgroundStarted || !window.YT) return;
+
+    releaseBackgroundStarted = true;
+
+    const releaseBackground =
+        document.getElementById("release-background-youtube");
+
+    if (!releaseBackground) return;
+
     new YT.Player(releaseBackground, {
         videoId: currentRelease.youtube,
         playerVars: {
@@ -1119,4 +1129,10 @@ if (releaseBackground) {
             }
         }
     });
+}
+
+window.onYouTubeIframeAPIReady = startReleaseBackground;
+
+if (window.YT) {
+    startReleaseBackground();
 }
