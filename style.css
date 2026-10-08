@@ -2409,18 +2409,11 @@ flex-shrink: 0;
 transform: none;
 }
 
-#estreno .release-links > a {
-    justify-self: center;
-}
 
 #estreno .release-links a {
     color: #fff;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: fit-content;
+    display: contents;
 }
 
 #estreno .release-links svg {
