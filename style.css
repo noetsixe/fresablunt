@@ -2430,7 +2430,7 @@ flex-shrink: 0;
 /* AJUSTE MANUAL DE LOGOS */
 
 #estreno #release-spotify {
-    transform: translateY(-3px);
+    transform: translateY(3px);
 }
 
 #estreno #release-apple {
@@ -2438,11 +2438,11 @@ flex-shrink: 0;
 }
 
 #estreno #release-amazon {
-    transform: translateY(-5px);
+    transform: translateY(5px);
 }
 
 #estreno #release-youtube-music {
-    transform: translateY(-5px);
+    transform: translateY(5px);
 }
 
 #estreno #release-deezer {
