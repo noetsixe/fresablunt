@@ -1096,3 +1096,27 @@ if (releaseYoutube) {
     releaseYoutube.src =
         `https://www.youtube.com/embed/${currentRelease.youtube}`;
 }
+
+const releaseBackground = document.getElementById("release-background-youtube");
+
+if (releaseBackground) {
+    new YT.Player(releaseBackground, {
+        videoId: currentRelease.youtube,
+        playerVars: {
+            autoplay: 1,
+            mute: 1,
+            controls: 0,
+            loop: 1,
+            playlist: currentRelease.youtube,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+        },
+        events: {
+            onReady: function(event) {
+                event.target.mute();
+                event.target.playVideo();
+            }
+        }
+    });
+}
