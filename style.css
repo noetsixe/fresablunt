@@ -2526,25 +2526,6 @@ transform: none;
     overflow: hidden;
 
     background-color: #050510;
-    background-image: url("./fresa-blunt-contacto.JPG");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-#contact {
-    position: relative;
-    isolation: isolate;
-}
-
-#contact::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: -1;
-    pointer-events: none;
 }
 
 
