@@ -2312,82 +2312,7 @@ flex-shrink: 0;
 
 
 /* =========================================
-   ESTRENO — VIDECLIP PRINCIPAL
-========================================= */
-
-#estreno .release {
-    width: 100%;
-    margin-top: 45px;
-}
-
-#estreno .release-video {
-    width: min(700px, 100%);
-    aspect-ratio: 16 / 9;
-    position: relative;
-    overflow: hidden;
-}
-
-#estreno .release-video iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-}
-
-#estreno .release-info {
-    margin-top: 24px;
-}
-
-#estreno .release-info h3 {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    font-size: clamp(28px, 4vw, 52px);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -2px;
-    color: #ffffff;
-}
-
-#estreno .release-info p {
-    margin: 10px 0 0;
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    color: #ffffff;
-}
-
-#estreno .release-info span {
-    display: block;
-    margin-top: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    color: #7778b8;
-}
-
-@media (max-width: 600px) {
-
-    #estreno .release {
-        margin-top: 35px;
-    }
-
-    #estreno .release-video {
-        width: 100%;
-    }
-
-    #estreno .release-info {
-        margin-top: 18px;
-    }
-
-    #estreno .release-info h3 {
-        font-size: 34px;
-    }
-
-}
-
-
-/* =========================================
-   FONDO VIDEO — ESTRENO
+   ESTRENO
 ========================================= */
 
 #estreno {
@@ -2401,24 +2326,117 @@ flex-shrink: 0;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    background: #000000;
+    background: #000;
 }
 
 #release-background-youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.45;
+    filter: brightness(0.8) saturate(0.85);
+    pointer-events: none;
+}
+
+#release-background-youtube iframe {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 56.25vw;
-    min-height: 100%;
     min-width: 177.78vh;
+    min-height: 100vh;
     transform: translate(-50%, -50%);
-    opacity: 0.45;
-    filter: brightness(0.95) saturate(0.90);
+    border: 0;
     pointer-events: none;
 }
 
 #estreno .release-content {
     position: relative;
     z-index: 2;
+}
+
+#estreno .release {
+    width: 100%;
+    margin-top: 45px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#estreno .release-video {
+    width: min(800px, 70vw);
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#estreno .release-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#estreno .release-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+}
+
+#estreno .release-cover {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+#estreno .release-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+#estreno .release-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#estreno .release-icon {
+    font-size: 22px;
+}
+
+@media (max-width: 600px) {
+
+    #estreno .release {
+        margin-top: 35px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    #estreno .release-video {
+        width: 100%;
+    }
+
+    #estreno .release-side {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    #estreno .release-cover {
+        width: 180px;
+        height: 180px;
+    }
+
+    #estreno .release-links {
+        justify-content: flex-start;
+    }
+
 }
