@@ -2690,3 +2690,35 @@ transform: none;
     0%, 80%, 100% { visibility: hidden; }
     82%, 90% { visibility: visible; }
 }
+
+/* CORRECCIÓN DE SCROLL EN CELULAR */
+@media (max-width: 600px) {
+
+    #main-site {
+        height: 100vh;
+        height: 100dvh;
+        scroll-snap-type: y mandatory;
+    }
+
+    #estreno,
+    #music,
+    #visuals,
+    #about,
+    #callou-records,
+    #contact {
+        min-height: 100vh;
+        min-height: 100dvh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+    }
+
+    #contact {
+        position: relative;
+    }
+
+    #contact footer {
+        left: 12px;
+        bottom: 12px;
+    }
+
+}
