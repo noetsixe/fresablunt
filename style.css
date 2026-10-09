@@ -2616,6 +2616,7 @@ transform: none;
     stroke-linejoin: round;
 }
 
+
 @media (max-width: 600px) {
     #contact {
         padding-top: 40px;
@@ -2627,8 +2628,8 @@ transform: none;
     }
 
     #contact .contact-email {
-        font-size: clamp(18px, 5vw, 25px);
-        letter-spacing: -0.5px;
+        font-size: 14px;
+        letter-spacing: 0;
     }
 
     #contact .contact-email-row {
@@ -2639,10 +2640,9 @@ transform: none;
         margin-top: 2px;
     }
 
-   
     #contact footer {
-        left: 5%;
-        bottom: 18px;
+        left: 2%;
+        bottom: 45px;
     }
 }
 
