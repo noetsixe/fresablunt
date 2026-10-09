@@ -2783,12 +2783,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
-/* ZOOM DEL VIDEO DE FONDO EN CELULAR */
+
+/* VIDEO DE FONDO: CUBRIR TODA LA PANTALLA EN CELULAR */
 @media (max-width: 600px) {
     #release-background-youtube {
-        width: 220%;
-        height: 220%;
-        top: -60%;
-        left: -60%;
+        width: 177.78%;
+        height: 177.78%;
+        top: -38.89%;
+        left: -38.89%;
     }
 }
