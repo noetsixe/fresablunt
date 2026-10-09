@@ -208,18 +208,18 @@ function startSpotifyOnMainEntry() {
   playRequest: spotifyPlayRequest
 });
    
-  spotifyController.play()
-    .then(() => {
-      console.log("[Spotify DEBUG] play() resuelto", {
-        requestId,
-        spotifyPlayRequest,
-        spotifyReplayBlocked
-      });
-    })
-    .catch((error) => {
-      console.error("[Spotify DEBUG] play() rechazado:", error);
-      spotifyPlayAttempted = false;
-    });
+  
+try {
+  spotifyController.play();
+
+  console.log("[Spotify DEBUG] Orden play() enviada", {
+    requestId,
+    spotifyPlayRequest,
+    spotifyReplayBlocked
+  });
+} catch (error) {
+  console.error("[Spotify DEBUG] Error al llamar a play():", error);
+  spotifyPlayAttempted = false;
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
