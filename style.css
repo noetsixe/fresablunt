@@ -2743,9 +2743,9 @@ transform: none;
         transparent 4px
     );
 
-    opacity: 0.65;
-    background-size: 100% 4px;
-    animation: contact-crt-scroll 1.4s linear infinite;
+    opacity: 0.9;
+background-size: 100% 8px;
+animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 /* Mantener el contenido por encima de la textura */
@@ -2778,6 +2778,6 @@ transform: none;
         background-position: 0 0;
     }
     to {
-        background-position: 0 4px;
-    }
+    background-position: 0 8px;
+}
 }
