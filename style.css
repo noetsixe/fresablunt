@@ -2526,9 +2526,11 @@ transform: none;
         height: 180px;
     }
 
-    #estreno .release-links {
-        justify-content: flex-start;
-    }
+#estreno .release-links {
+    justify-content: center;
+    margin-left: 0;
+    width: 100%;
+}
 
 }
 
