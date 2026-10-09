@@ -2784,12 +2784,28 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* VIDEO DE FONDO: CUBRIR TODA LA PANTALLA EN CELULAR */
+/* VIDEO DE FONDO: AJUSTE SOLO PARA CELULAR */
 @media (max-width: 600px) {
+    #estreno .release-background {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
     #release-background-youtube {
-        width: 177.78%;
-        height: 177.78%;
-        top: -38.89%;
-        left: -38.89%;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #release-background-youtube iframe {
+        position: absolute;
+        width: 177.78vw !important;
+        height: 100dvh !important;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0;
     }
 }
