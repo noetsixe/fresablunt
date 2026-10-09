@@ -203,16 +203,32 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 /* Si REPLAY fue pulsado antes o durante la carga,
    cualquier intento posterior de reproducción queda bloqueado */
 spotifyController.addListener("playback_started", () => {
+  console.log("[Spotify] Reproducción iniciada", {
+    replayBlocked: spotifyReplayBlocked
+  });
+
   if (spotifyReplayBlocked) {
     spotifyController.pause();
   }
 });
 
 spotifyController.addListener("playback_update", (event) => {
+  console.log("[Spotify] Estado:", {
+    paused: event.data.isPaused,
+    replayBlocked: spotifyReplayBlocked
+  });
+
   if (spotifyReplayBlocked && !event.data.isPaused) {
     spotifyController.pause();
   }
 });
+
+spotifyController.addListener("playback_error", (event) => {
+  console.error("[Spotify] Error de reproducción:", event);
+});
+
+
+       
 
 if (spotifyReplayBlocked) {
   spotifyController.pause();
