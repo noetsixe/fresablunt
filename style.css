@@ -2641,7 +2641,7 @@ transform: none;
 
 #contact .strawberry-wink {
     opacity: 0;
-    animation: strawberry-wink 3s infinite;
+    animation: strawberry-wink 3s steps(1, end) infinite;
 }
 
 @keyframes strawberry-wink {
