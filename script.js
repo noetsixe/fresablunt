@@ -222,6 +222,8 @@ try {
   spotifyPlayAttempted = false;
 }
 
+} // Cierra startSpotifyOnMainEntry()
+
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 const element = document.getElementById("spotify-embed");
 
