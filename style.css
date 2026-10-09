@@ -2700,14 +2700,16 @@ transform: none;
         scroll-snap-type: y mandatory;
     }
 
-    #estreno,
+        #estreno,
     #music,
     #visuals,
     #about,
     #callou-records,
     #contact {
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        box-sizing: border-box;
         scroll-snap-align: start;
         scroll-snap-stop: always;
     }
