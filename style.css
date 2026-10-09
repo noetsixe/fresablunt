@@ -559,10 +559,14 @@ footer {
     font-size: 10px;
 }
 
+
 #contact footer {
-    margin-top: 28px;
+    position: absolute;
+    left: 7%;
+    bottom: 24px;
+    margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
 }
 
 #contact footer p {
@@ -2633,6 +2637,12 @@ transform: none;
 
     #contact .contact-copy {
         margin-top: 2px;
+    }
+
+   
+    #contact footer {
+        left: 5%;
+        bottom: 18px;
     }
 }
 
