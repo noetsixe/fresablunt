@@ -84,6 +84,10 @@ let spotifyController = null;
 let spotifyReplayBlocked = false;
 let spotifyPlayRequest = 0;
 
+
+let mainSiteHasBeenEntered = false;
+let spotifyPlayAttempted = false;
+
 /* =========================================================
    ⭐⭐⭐ ACTUALIZAR ESTRENO AQUÍ ⭐⭐⭐
    Cambia SOLO estos enlaces cuando salga un nuevo estreno.
@@ -120,6 +124,8 @@ const returningVisitor =
   !replayIntro &&
   Number.isFinite(savedEntryTime) &&
   Date.now() - savedEntryTime < ENTRY_MEMORY_TIME;
+
+mainSiteHasBeenEntered = returningVisitor;
 
 
 bgMusic.volume = 0.60;
@@ -179,79 +185,93 @@ soundToggle.addEventListener("click", async () => {
 });
 
 /* =========================================
-   SPOTIFY — REPRODUCTOR FLOTANTE
-   ========================================= */
+SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
+========================================= */
 
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-
-  const element = document.getElementById("spotify-embed");
-
-  if (!element) return;
-
-  const options = {
-    width: "100%",
-    height: "152",
-    uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
-  };
-
-  IFrameAPI.createController(
-    element,
-    options,
-    (EmbedController) => {
-       spotifyController = EmbedController;
-
-/* Si REPLAY fue pulsado antes o durante la carga,
-   cualquier intento posterior de reproducción queda bloqueado */
-spotifyController.addListener("playback_started", () => {
-  console.log("[Spotify] Reproducción iniciada", {
-    replayBlocked: spotifyReplayBlocked
-  });
-
-  if (spotifyReplayBlocked) {
-    spotifyController.pause();
-  }
-});
-
-spotifyController.addListener("playback_update", (event) => {
-  console.log("[Spotify] Estado:", {
-    paused: event.data.isPaused,
-    replayBlocked: spotifyReplayBlocked
-  });
-
-  if (spotifyReplayBlocked && !event.data.isPaused) {
-    spotifyController.pause();
-  }
-});
-
-spotifyController.addListener("playback_error", (event) => {
-  console.error("[Spotify] Error de reproducción:", event);
-});
-
-
-       
-
-if (spotifyReplayBlocked) {
-  spotifyController.pause();
-  return;
+function startSpotifyOnMainEntry() {
+if (
+!spotifyController ||
+!mainSiteHasBeenEntered ||
+spotifyReplayBlocked ||
+spotifyPlayAttempted
+) {
+return;
 }
 
-      if (returningVisitor) {
-        const requestId = ++spotifyPlayRequest;
+spotifyPlayAttempted = true;
 
-        spotifyController.play()
-          .then(() => {
-            if (
-              spotifyReplayBlocked ||
-              requestId !== spotifyPlayRequest
-            ) {
-              spotifyController.pause();
-            }
-          })
-          .catch(() => {});
-      }
-    }
-  );
+const requestId = ++spotifyPlayRequest;
+
+spotifyController.play()
+.then(() => {
+if (
+spotifyReplayBlocked ||
+requestId !== spotifyPlayRequest
+) {
+spotifyController.pause();
+}
+})
+.catch((error) => {
+console.warn(
+"[Spotify] El navegador o Spotify bloqueó la reproducción automática:",
+error
+);
+});
+}
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+const element = document.getElementById("spotify-embed");
+
+if (!element) return;
+
+const options = {
+width: "100%",
+height: "152",
+uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
 };
+
+IFrameAPI.createController(
+element,
+options,
+(EmbedController) => {
+spotifyController = EmbedController;
+
+  spotifyController.addListener("playback_started", () => {
+    console.log("[Spotify] Reproducción iniciada", {
+      replayBlocked: spotifyReplayBlocked
+    });
+
+    if (spotifyReplayBlocked) {
+      spotifyController.pause();
+    }
+  });
+
+  spotifyController.addListener("playback_update", (event) => {
+    console.log("[Spotify] Estado:", {
+      paused: event.data.isPaused,
+      replayBlocked: spotifyReplayBlocked
+    });
+
+    if (spotifyReplayBlocked && !event.data.isPaused) {
+      spotifyController.pause();
+    }
+  });
+
+  spotifyController.addListener("playback_error", (event) => {
+    console.error("[Spotify] Error de reproducción:", event);
+  });
+
+  if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
+    spotifyController.pause();
+    return;
+  }
+
+  startSpotifyOnMainEntry();
+}
+
+);
+};
+
 
 
 
@@ -888,11 +908,10 @@ function enterMainSite() {
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
 
-  document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto";
 
-  if (spotifyController) {
-    spotifyController.play().catch(() => {});
-  }
+  mainSiteHasBeenEntered = true;
+  startSpotifyOnMainEntry();
 }
 
 /* =========================================
