@@ -2700,7 +2700,9 @@ transform: none;
         scroll-snap-type: y mandatory;
     }
 
-        #estreno,
+        
+    #main-video,
+    #estreno,
     #music,
     #visuals,
     #about,
