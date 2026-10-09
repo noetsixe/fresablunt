@@ -2790,7 +2790,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* VIDEO DE FONDO: AJUSTE SOLO EN CELULAR */
+/* VIDEO DE FONDO: ZOOM SOLO EN CELULAR */
 @media (max-width: 600px) {
 
     #estreno .release-background {
@@ -2811,12 +2811,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #release-background-youtube iframe {
         position: absolute !important;
-        top: 0 !important;
+        top: 50% !important;
         left: 50% !important;
         width: 177.78vh !important;
         height: 100% !important;
         max-width: none !important;
-        transform: translateX(-50%) !important;
+        transform: translate(-50%, -50%) scale(1.25) !important;
+        transform-origin: center center !important;
         border: 0 !important;
     }
 
