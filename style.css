@@ -2791,7 +2791,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* VIDEO DE FONDO: LLENAR PANTALLA 9:16 EN CELULAR */
+/* VIDEO DE FONDO: ZOOM VERTICAL EN CELULAR */
 @media (max-width: 600px) {
 
     #estreno .release-background {
@@ -2801,26 +2801,25 @@ animation: contact-crt-scroll 0.8s linear infinite;
         background: #000;
     }
 
-    #release-background-youtube {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    #release-background-youtube iframe {
+    #estreno #release-background-youtube {
         position: absolute !important;
         top: 50% !important;
         left: 50% !important;
-
         width: 177.78vh !important;
         height: 100vh !important;
-
-        min-width: 100vw !important;
+        min-width: 0 !important;
         max-width: none !important;
-
         transform: translate(-50%, -50%) !important;
+        border: 0 !important;
+    }
+
+    #estreno #release-background-youtube iframe {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
         border: 0 !important;
     }
 
