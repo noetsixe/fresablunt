@@ -2528,7 +2528,7 @@ transform: none;
 
 #estreno .release-links {
     justify-content: center;
-    margin-left: 0;
+    margin-left: -25px;
     width: 100%;
 }
 
