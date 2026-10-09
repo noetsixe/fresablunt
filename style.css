@@ -2511,12 +2511,14 @@ transform: none;
     }
 
     #estreno .release-video {
-        width: 100%;
-    }
+    width: 100%;
+    margin-top: 20px;
+}
 
     #estreno .release-side {
         width: 100%;
         align-items: flex-start;
+        margin-top: 50px;
     }
 
     #estreno .release-cover {
