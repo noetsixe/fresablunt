@@ -2722,3 +2722,50 @@ transform: none;
     }
 
 }
+
+
+
+/* =========================================
+   CRT SUTIL — SOLO CONTACTO
+========================================= */
+
+#contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.025) 0px,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+
+    opacity: 0.65;
+}
+
+/* Mantener el contenido por encima de la textura */
+
+#contact > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* El copyright conserva su posición actual */
+
+#contact footer {
+    position: absolute;
+    z-index: 3;
+    left: 2%;
+    bottom: 24px;
+}
+
+@media (max-width: 600px) {
+    #contact footer {
+        left: 12px;
+        bottom: 12px;
+    }
+}
