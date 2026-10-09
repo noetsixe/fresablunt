@@ -220,7 +220,8 @@ spotifyController.play()
   .catch((error) => {
     console.error("[Spotify DEBUG] play() rechazado:", error);
     spotifyPlayAttempted = false;
-  }); // Cierra startSpotifyOnMainEntry()
+  }); 
+   }// Cierra startSpotifyOnMainEntry()
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 const element = document.getElementById("spotify-embed");
