@@ -249,6 +249,14 @@ options,
 (EmbedController) => {
 spotifyController = EmbedController;
 
+   
+const originalPause = spotifyController.pause.bind(spotifyController);
+
+spotifyController.pause = function (...args) {
+  console.trace("[Spotify] Se llamó a pause(). Pila de llamadas:");
+  return originalPause(...args);
+};
+   
   spotifyController.addListener("playback_started", () => {
     console.log("[Spotify] Reproducción iniciada", {
       replayBlocked: spotifyReplayBlocked
