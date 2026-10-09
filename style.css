@@ -2527,7 +2527,7 @@ transform: none;
 }
 
 #contact h2 {
-    font-family: "Courier New", monospace;
+    font-family: "Lucida Console", monospace;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.2;
@@ -2553,7 +2553,7 @@ transform: none;
 #contact .contact-email {
     display: inline-block;
     max-width: 100%;
-    font-family: "Courier New", monospace;
+    font-family: "Lucida Console", monospace;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0;
@@ -2576,7 +2576,7 @@ transform: none;
     border: 0;
     background: transparent;
     color: #4c4470;
-    font-family: Arial, sans-serif;
+    font-family: "Lucida Console", monospace;
     font-size: 10px;
     letter-spacing: 1.2px;
     cursor: pointer;
