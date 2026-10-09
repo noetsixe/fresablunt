@@ -189,6 +189,7 @@ SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
 ========================================= */
 
 function startSpotifyOnMainEntry() {
+   console.log("[Spotify DEBUG] Entró en startSpotifyOnMainEntry");
   if (
     !spotifyController ||
     !mainSiteHasBeenEntered ||
