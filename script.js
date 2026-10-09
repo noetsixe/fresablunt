@@ -279,11 +279,13 @@ paused: event.data.isPaused,
 replayBlocked: spotifyReplayBlocked
 });
 
+
 if (event.data.isPaused) {
-console.warn("[Spotify] Spotify reporta PAUSA", {
-replayBlocked: spotifyReplayBlocked,
-playRequest: spotifyPlayRequest
-});
+  console.warn("[Spotify] Spotify reporta PAUSA", {
+    replayBlocked: spotifyReplayBlocked,
+    playRequest: spotifyPlayRequest,
+    pauseMethod: spotifyController.pause.toString()
+  });
 }
 
 if (spotifyReplayBlocked && !event.data.isPaused) {
