@@ -2724,9 +2724,8 @@ transform: none;
 }
 
 
-
 /* =========================================
-   CRT SUTIL — SOLO CONTACTO
+   CRT ANIMADO — SOLO CONTACTO
 ========================================= */
 
 #contact::before {
@@ -2745,6 +2744,8 @@ transform: none;
     );
 
     opacity: 0.65;
+    background-size: 100% 4px;
+    animation: contact-crt-scroll 1.4s linear infinite;
 }
 
 /* Mantener el contenido por encima de la textura */
@@ -2767,5 +2768,16 @@ transform: none;
     #contact footer {
         left: 12px;
         bottom: 12px;
+    }
+}
+
+/* Desplazamiento continuo de las líneas */
+
+@keyframes contact-crt-scroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 4px;
     }
 }
