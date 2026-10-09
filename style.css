@@ -2369,7 +2369,7 @@ flex-shrink: 0;
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.30);
+    background: rgba(0, 0, 0, 0.50);
     pointer-events: none;
     z-index: 2;
 }
