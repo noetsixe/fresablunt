@@ -1333,3 +1333,92 @@ if (contactCopyButton) {
         }
     });
 }
+
+
+
+/* =========================================
+   FRESA BLUNT: IMANTADO FUERTE DE SECCIONES
+   ========================================= */
+
+(() => {
+    const container = document.getElementById("main-site");
+
+    if (!container) return;
+
+    const sections = [
+        "main-video",
+        "estreno",
+        "music",
+        "visuals",
+        "about",
+        "callou-records",
+        "contact"
+    ]
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    let locked = false;
+    let unlockTimer;
+
+    function goToSection(index) {
+        if (locked) return;
+
+        const currentIndex = sections.findIndex(section => {
+            const top = section.getBoundingClientRect().top;
+            return Math.abs(top - container.getBoundingClientRect().top) < 8;
+        });
+
+        const baseIndex = currentIndex >= 0
+            ? currentIndex
+            : sections.reduce((closest, section, i) => {
+                const distance = Math.abs(
+                    section.getBoundingClientRect().top -
+                    container.getBoundingClientRect().top
+                );
+                return distance < Math.abs(
+                    sections[closest].getBoundingClientRect().top -
+                    container.getBoundingClientRect().top
+                ) ? i : closest;
+            }, 0);
+
+        const targetIndex = Math.max(
+            0,
+            Math.min(sections.length - 1, baseIndex + index)
+        );
+
+        if (targetIndex === baseIndex) return;
+
+        locked = true;
+
+        sections[targetIndex].scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        clearTimeout(unlockTimer);
+        unlockTimer = setTimeout(() => {
+            locked = false;
+        }, 850);
+    }
+
+    container.addEventListener("wheel", event => {
+        if (Math.abs(event.deltaY) < 2) return;
+
+        event.preventDefault();
+        goToSection(event.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
+
+    let touchStartY = 0;
+
+    container.addEventListener("touchstart", event => {
+        touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    container.addEventListener("touchend", event => {
+        const difference = touchStartY - event.changedTouches[0].clientY;
+
+        if (Math.abs(difference) < 45) return;
+
+        goToSection(difference > 0 ? 1 : -1);
+    }, { passive: true });
+})();
