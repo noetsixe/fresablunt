@@ -2617,32 +2617,40 @@ transform: none;
 }
 
 
+
 @media (max-width: 600px) {
     #contact {
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding: 20px 7% 65px;
+        justify-content: center;
     }
 
     #contact .contact-info {
-        margin-top: 30px;
+        margin-top: 18px;
     }
 
     #contact .contact-email {
-        font-size: 14px;
+        font-size: 11px;
         letter-spacing: 0;
+        line-height: 1.4;
     }
 
     #contact .contact-email-row {
-        gap: 10px;
+        gap: 8px;
     }
 
     #contact .contact-copy {
-        margin-top: 2px;
+        margin-top: 0;
+        padding: 5px 0;
+        font-size: 9px;
     }
 
     #contact footer {
-        left: 2%;
-        bottom: 45px;
+        left: 12px;
+        bottom: 12px;
+    }
+
+    #contact footer p {
+        font-size: 8px;
     }
 }
 
