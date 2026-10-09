@@ -203,13 +203,25 @@ function startSpotifyOnMainEntry() {
 
   spotifyController.play()
     .then(() => {
-      if (
-        spotifyReplayBlocked ||
-        requestId !== spotifyPlayRequest
-      ) {
-        spotifyController.pause();
-      }
-    })
+console.log("[Spotify] play() resuelto", {
+requestId,
+spotifyPlayRequest,
+spotifyReplayBlocked
+});
+
+if (
+spotifyReplayBlocked ||
+requestId !== spotifyPlayRequest
+) {
+console.warn("[Spotify] PAUSA desde .then()", {
+requestId,
+spotifyPlayRequest,
+spotifyReplayBlocked
+});
+spotifyController.pause();
+}
+})
+
     .catch((error) => {
       console.warn(
         "[Spotify] No se pudo iniciar automáticamente:",
@@ -242,21 +254,34 @@ spotifyController = EmbedController;
       replayBlocked: spotifyReplayBlocked
     });
 
+     console.log("[Spotify] ¿Quién inició la reproducción?", {
+  replayBlocked: spotifyReplayBlocked,
+  playRequest: spotifyPlayRequest
+});
+
     if (spotifyReplayBlocked) {
       spotifyController.pause();
     }
   });
 
   spotifyController.addListener("playback_update", (event) => {
-    console.log("[Spotify] Estado:", {
-      paused: event.data.isPaused,
-      replayBlocked: spotifyReplayBlocked
-    });
+console.log("[Spotify] Estado:", {
+paused: event.data.isPaused,
+replayBlocked: spotifyReplayBlocked
+});
 
-    if (spotifyReplayBlocked && !event.data.isPaused) {
-      spotifyController.pause();
-    }
-  });
+if (event.data.isPaused) {
+console.warn("[Spotify] Spotify reporta PAUSA", {
+replayBlocked: spotifyReplayBlocked,
+playRequest: spotifyPlayRequest
+});
+}
+
+if (spotifyReplayBlocked && !event.data.isPaused) {
+spotifyController.pause();
+}
+});
+
 
   spotifyController.addListener("playback_error", (event) => {
     console.error("[Spotify] Error de reproducción:", event);
