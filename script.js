@@ -260,8 +260,9 @@ spotifyController = EmbedController;
 });
 
     if (spotifyReplayBlocked) {
-      spotifyController.pause();
-    }
+  console.warn("[Spotify] PAUSA ordenada: playback_started");
+  spotifyController.pause();
+}
   });
 
   spotifyController.addListener("playback_update", (event) => {
@@ -278,7 +279,8 @@ playRequest: spotifyPlayRequest
 }
 
 if (spotifyReplayBlocked && !event.data.isPaused) {
-spotifyController.pause();
+  console.warn("[Spotify] PAUSA ordenada: playback_update");
+  spotifyController.pause();
 }
 });
 
@@ -288,9 +290,13 @@ spotifyController.pause();
   });
 
   if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
-    spotifyController.pause();
-    return;
-  }
+  console.warn("[Spotify] PAUSA ordenada: inicialización", {
+    replayBlocked: spotifyReplayBlocked,
+    mainSiteHasBeenEntered
+  });
+  spotifyController.pause();
+  return;
+}
 
   startSpotifyOnMainEntry();
 }
@@ -966,8 +972,9 @@ if (replayButton) {
     spotifyPlayRequest++;
 
     if (spotifyController) {
-      spotifyController.pause();
-    }
+  console.warn("[Spotify] PAUSA ordenada: REPLAY");
+  spotifyController.pause();
+}
 
     sessionStorage.setItem("fresaReplayIntro", "true");
 
