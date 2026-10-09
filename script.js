@@ -201,33 +201,22 @@ function startSpotifyOnMainEntry() {
 
   const requestId = ++spotifyPlayRequest;
 
+   console.log("[Spotify DEBUG] Antes de play()", {
+  replayBlocked: spotifyReplayBlocked,
+  mainSiteHasBeenEntered,
+  playRequest: spotifyPlayRequest
+});
+   
   spotifyController.play()
     .then(() => {
-console.log("[Spotify] play() resuelto", {
-requestId,
-spotifyPlayRequest,
-spotifyReplayBlocked
-});
-
-if (
-spotifyReplayBlocked ||
-requestId !== spotifyPlayRequest
-) {
-console.warn("[Spotify] PAUSA desde .then()", {
-requestId,
-spotifyPlayRequest,
-spotifyReplayBlocked
-});
-spotifyController.pause();
-}
-})
-
+      console.log("[Spotify DEBUG] play() resuelto", {
+        requestId,
+        spotifyPlayRequest,
+        spotifyReplayBlocked
+      });
+    })
     .catch((error) => {
-      console.warn(
-        "[Spotify] No se pudo iniciar automáticamente:",
-        error
-      );
-
+      console.error("[Spotify DEBUG] play() rechazado:", error);
       spotifyPlayAttempted = false;
     });
 }
