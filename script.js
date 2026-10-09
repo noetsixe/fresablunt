@@ -1398,7 +1398,7 @@ if (contactCopyButton) {
         clearTimeout(unlockTimer);
         unlockTimer = setTimeout(() => {
             locked = false;
-        }, 850);
+        }, 1300);
     }
 
     container.addEventListener("wheel", event => {
