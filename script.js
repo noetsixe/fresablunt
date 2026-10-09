@@ -209,20 +209,18 @@ function startSpotifyOnMainEntry() {
 });
    
   
-try {
-  spotifyController.play();
-
-  console.log("[Spotify DEBUG] Orden play() enviada", {
-    requestId,
-    spotifyPlayRequest,
-    spotifyReplayBlocked
-  });
-} catch (error) {
-  console.error("[Spotify DEBUG] Error al llamar a play():", error);
-  spotifyPlayAttempted = false;
-}
-
-} // Cierra startSpotifyOnMainEntry()
+spotifyController.play()
+  .then(() => {
+    console.log("[Spotify DEBUG] play() resuelto", {
+      requestId,
+      spotifyPlayRequest,
+      spotifyReplayBlocked
+    });
+  })
+  .catch((error) => {
+    console.error("[Spotify DEBUG] play() rechazado:", error);
+    spotifyPlayAttempted = false;
+  }); // Cierra startSpotifyOnMainEntry()
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 const element = document.getElementById("spotify-embed");
