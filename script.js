@@ -189,34 +189,35 @@ SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
 ========================================= */
 
 function startSpotifyOnMainEntry() {
-if (
-!spotifyController ||
-!mainSiteHasBeenEntered ||
-spotifyReplayBlocked ||
-spotifyPlayAttempted
-) {
-return;
-}
+  if (
+    !spotifyController ||
+    !mainSiteHasBeenEntered ||
+    spotifyReplayBlocked
+  ) {
+    return;
+  }
 
-spotifyPlayAttempted = true;
+  spotifyPlayAttempted = true;
 
-const requestId = ++spotifyPlayRequest;
+  const requestId = ++spotifyPlayRequest;
 
-spotifyController.play()
-.then(() => {
-if (
-spotifyReplayBlocked ||
-requestId !== spotifyPlayRequest
-) {
-spotifyController.pause();
-}
-})
-.catch((error) => {
-console.warn(
-"[Spotify] El navegador o Spotify bloqueó la reproducción automática:",
-error
-);
-});
+  spotifyController.play()
+    .then(() => {
+      if (
+        spotifyReplayBlocked ||
+        requestId !== spotifyPlayRequest
+      ) {
+        spotifyController.pause();
+      }
+    })
+    .catch((error) => {
+      console.warn(
+        "[Spotify] No se pudo iniciar automáticamente:",
+        error
+      );
+
+      spotifyPlayAttempted = false;
+    });
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
