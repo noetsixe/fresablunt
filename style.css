@@ -1807,6 +1807,37 @@ html.boot-repeat #intro::after {
     letter-spacing: -3px;
 
     color: #ffffff;
+
+    background: linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #ffffff 40%,
+        #ff3cac 45%,
+        #784bff 49%,
+        #00e5ff 52%,
+        #fff3a3 55%,
+        #ffffff 60%,
+        #ffffff 100%
+    );
+
+    background-size: 250% 100%;
+    background-position: 100% 0;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: fresa-title-shine 5s ease-in-out infinite;
+}
+
+@keyframes fresa-title-shine {
+    0%, 65% {
+        background-position: 100% 0;
+    }
+
+    85%, 100% {
+        background-position: 0% 0;
+    }
 }
 
 .artist-description {
