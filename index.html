@@ -732,7 +732,23 @@ c-1.6-1.9-1.6-4.7,0-6.6C428.9,141.6,431.7,141.6,433.6,143.2z"/>
     }
 
     resize();
-    draw();
+draw();
+
+const mainSite = document.getElementById('main-site');
+
+const observer = new MutationObserver(() => {
+    const visible =
+        getComputedStyle(mainSite).visibility !== 'hidden' &&
+        getComputedStyle(mainSite).opacity !== '0';
+
+    mainSite.classList.toggle('cosmic-active', visible);
+});
+
+observer.observe(mainSite, {
+    attributes: true,
+    attributeFilter: ['style', 'class']
+});
+    
 
     window.addEventListener('resize', resize);
 
