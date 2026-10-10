@@ -2949,3 +2949,33 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 }
 
+
+
+/* =========================================
+   GALAGA STARFIELD
+   Solo ARCHIVE, SHOWS y CONTACTO
+========================================= */
+
+#main-site {
+    position: relative;
+}
+
+#cosmic-starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+/* Las secciones dejan ver las estrellas */
+#archive,
+#callou-records,
+#contact {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
