@@ -152,6 +152,8 @@
 
     <main id="main-site">
 
+        <canvas id="cosmic-starfield" aria-hidden="true"></canvas>
+
         <button id="chakana-button" type="button" aria-label="Abrir menú">
            <svg
     class="chakana-shape"
@@ -675,32 +677,46 @@ c-1.6-1.9-1.6-4.7,0-6.6C428.9,141.6,431.7,141.6,433.6,143.2z"/>
 <script src="script.js"></script>
 
 
-<canvas id="cosmic-starfield" aria-hidden="true"></canvas>
+
 
 <script>
 (() => {
     const canvas = document.getElementById('cosmic-starfield');
+    const mainSite = document.getElementById('main-site');
+    const archive = document.getElementById('archive');
+
+    if (!canvas || !mainSite || !archive) return;
+
     const ctx = canvas.getContext('2d');
 
-    let w, h, stars = [];
-    let animationId;
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
+    let stars = [];
+    let animationId = null;
+    let lastTime = 0;
+    let regionTop = 0;
 
     function resize() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        w = window.innerWidth;
-        h = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
+        w = mainSite.clientWidth;
+        h = mainSite.scrollHeight;
+        regionTop = archive.offsetTop;
+
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
         canvas.style.width = w + 'px';
         canvas.style.height = h + 'px';
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        const count = Math.floor(w * h / 1800);
+        const spaceHeight = Math.max(0, h - regionTop);
+        const count = Math.floor(w * spaceHeight / 1800);
+
         stars = Array.from({ length: count }, () => ({
             x: Math.random() * w,
-            y: Math.random() * h,
+            y: regionTop + Math.random() * spaceHeight,
             size: Math.random() < 0.9 ? 1 : 2,
             speed: 12 + Math.random() * 42,
             color: Math.random() < 0.035
@@ -709,59 +725,74 @@ c-1.6-1.9-1.6-4.7,0-6.6C428.9,141.6,431.7,141.6,433.6,143.2z"/>
                     ? '#31FEC2'
                     : '#FFFFFF'
         }));
+
+        ctx.clearRect(0, 0, w, h);
     }
 
-    function draw() {
-        ctx.clearRect(0, 0, w, h);
+    function draw(time) {
+        animationId = null;
 
-        const dt = 1 / 60;
+        if (document.hidden) return;
+
+        const dt = lastTime
+            ? Math.min((time - lastTime) / 1000, 0.05)
+            : 0;
+
+        lastTime = time;
+
+        ctx.clearRect(0, 0, w, h);
 
         for (const s of stars) {
             s.y += s.speed * dt;
 
             if (s.y > h) {
-                s.y = 0;
+                s.y = regionTop;
                 s.x = Math.random() * w;
             }
 
             ctx.fillStyle = s.color;
-            ctx.fillRect(Math.round(s.x), Math.round(s.y), s.size, s.size);
+            ctx.fillRect(
+                Math.round(s.x),
+                Math.round(s.y),
+                s.size,
+                s.size
+            );
         }
 
         animationId = requestAnimationFrame(draw);
     }
 
-    resize();
-draw();
+    function startAnimation() {
+        if (!animationId && !document.hidden) {
+            animationId = requestAnimationFrame(draw);
+        }
+    }
 
-const mainSite = document.getElementById('main-site');
+    function refresh() {
+        resize();
+        lastTime = 0;
+        startAnimation();
+    }
 
-const observer = new MutationObserver(() => {
-    const visible =
-        getComputedStyle(mainSite).visibility !== 'hidden' &&
-        getComputedStyle(mainSite).opacity !== '0';
+    refresh();
 
-    mainSite.classList.toggle('cosmic-active', visible);
-});
-
-observer.observe(mainSite, {
-    attributes: true,
-    attributeFilter: ['style', 'class']
-});
-    
-
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', refresh);
+    window.addEventListener('load', refresh);
 
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            cancelAnimationFrame(animationId);
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            lastTime = 0;
         } else {
-            cancelAnimationFrame(animationId);
-            draw();
+            startAnimation();
         }
     });
 })();
 </script>
+
     
 </body>
     
