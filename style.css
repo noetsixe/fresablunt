@@ -2974,3 +2974,44 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #cosmic-starfield {
     z-index: -1;
 }
+
+
+
+/* =====================================
+   GALAGA: ESTRELLAS MÓVILES
+===================================== */
+
+#cosmic-starfield {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    image-rendering: pixelated;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar las estrellas únicamente al entrar
+   en la página principal, después de la intro */
+#main-site.cosmic-active ~ #cosmic-starfield {
+    opacity: 1;
+}
+
+/* Mantener el contenido por encima de las estrellas */
+#main-site > * {
+    position: relative;
+    z-index: 6;
+}
+
+/* El fondo oscuro no debe tapar el campo estelar */
+#main-site {
+    background: transparent;
+}
+
+#archive,
+#callou-records,
+#contact {
+    background-color: transparent;
+}
