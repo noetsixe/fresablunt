@@ -2949,28 +2949,3 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 }
 
-
-/* GALAGA STARFIELD */
-
-#cosmic-starfield {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    image-rendering: pixelated;
-}
-
-#archive,
-#callou-records,
-#contact {
-    background-color: transparent;
-}
-
-#main-site {
-    background: #070610;
-    isolation: isolate;
-}
-
-#cosmic-starfield {
-    z-index: -1;
-}
