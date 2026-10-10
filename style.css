@@ -1835,7 +1835,7 @@ html.boot-repeat #intro::after {
         background-position: 100% 0;
     }
 
-    85%, 100% {
+    95%, 100% {
         background-position: 0% 0;
     }
 }
