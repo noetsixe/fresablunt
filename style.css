@@ -1808,14 +1808,15 @@ html.boot-repeat #intro::after {
 
     color: #ffffff;
 
-    background: linear-gradient(
+background: linear-gradient(
     110deg,
     #ffffff 0%,
     #ffffff 40%,
-    #FF3D8D 44%,
-    #C44BFF 48%,
-    #FF713D 52%,
-    #FFC857 55%,
+    #2596be 44%,
+    #8e4e7e 48%,
+    #c85663 51%,
+    #f08a78 53%,
+    #c8c539 56%,
     #ffffff 60%,
     #ffffff 100%
 );
