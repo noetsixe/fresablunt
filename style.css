@@ -1809,16 +1809,16 @@ html.boot-repeat #intro::after {
     color: #ffffff;
 
     background: linear-gradient(
-        110deg,
-        #ffffff 0%,
-        #ffffff 40%,
-        #ff3cac 45%,
-        #784bff 49%,
-        #00e5ff 52%,
-        #fff3a3 55%,
-        #ffffff 60%,
-        #ffffff 100%
-    );
+    110deg,
+    #ffffff 0%,
+    #ffffff 40%,
+    #FF3D8D 44%,
+    #C44BFF 48%,
+    #FF713D 52%,
+    #FFC857 55%,
+    #ffffff 60%,
+    #ffffff 100%
+);
 
     background-size: 250% 100%;
     background-position: 100% 0;
