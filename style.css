@@ -521,10 +521,9 @@ nav a {
    SECCIONES PRINCIPALES
 ========================================= */
 
+
 #estreno,
-#music,
-#visuals,
-#about,
+#archive,
 #callou-records,
 #contact {
     min-height: 100vh;
@@ -532,11 +531,11 @@ nav a {
     position: relative;
 }
 
+
+
 #main-video,
 #estreno,
-#music,
-#visuals,
-#about,
+#archive,
 #callou-records,
 #contact {
     scroll-snap-align: start;
@@ -544,10 +543,9 @@ nav a {
     scroll-margin: 0;
 }
 
+
 #estreno h2,
-#music h2,
-#visuals h2,
-#about h2,
+#archive h2,
 #callou-records h2,
 #contact h2 {
     font-family: Arial, sans-serif;
@@ -2713,12 +2711,10 @@ transform: none;
 
         
     #main-video,
-    #estreno,
-    #music,
-    #visuals,
-    #about,
-    #callou-records,
-    #contact {
+#estreno,
+#archive,
+#callou-records,
+#contact {
         height: 100vh;
         height: 100dvh;
         min-height: 0;
