@@ -2948,32 +2948,3 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
 }
-
-/* =========================================
-   FRESA BLUNT · GALAGA STARFIELD
-========================================= */
-
-#archive,
-#callou-records,
-#contact {
-    background-color: #070610;
-    background-image:
-        radial-gradient(circle, #ffffff 1px, transparent 1.5px),
-        radial-gradient(circle, #a8a9ff 1px, transparent 1.5px),
-        radial-gradient(circle, #ffffff 1.5px, transparent 2px),
-        radial-gradient(circle, #FE316D 1px, transparent 1.5px);
-
-    background-size:
-        97px 113px,
-        157px 179px,
-        223px 197px,
-        307px 271px;
-
-    background-position:
-        0 0,
-        41px 67px,
-        89px 23px,
-        151px 109px;
-
-    background-repeat: repeat;
-}
