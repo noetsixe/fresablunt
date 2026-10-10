@@ -1812,11 +1812,11 @@ background: linear-gradient(
     110deg,
     #ffffff 0%,
     #ffffff 40%,
-    #2596be 43%,
-    #8e4e7e 47%,
-    #c85663 50%,
-    #f08a78 52%,
-    #e9b94b 55%,
+    #2596be 44%,
+    #8e4e7e 48%,
+    #c85663 51%,
+    #f08a78 53%,
+    #c8c539 56%,
     #ffffff 60%,
     #ffffff 100%
 );
@@ -1831,7 +1831,7 @@ background: linear-gradient(
     animation: fresa-title-shine 5s ease-in-out infinite;
 
    filter: drop-shadow(0 0 6px rgba(200, 86, 99, 0.22));
-text-shadow: 0 0 1px rgba(255, 190, 120, 0.35);
+text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
 }
 
 @keyframes fresa-title-shine {
