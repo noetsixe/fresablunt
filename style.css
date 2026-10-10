@@ -1828,14 +1828,14 @@ background: linear-gradient(
     background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: fresa-title-shine 5s ease-in-out infinite;
+    animation: fresa-title-shine 9s ease-in-out infinite;
 
    filter: drop-shadow(0 0 6px rgba(200, 86, 99, 0.22));
 text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
 }
 
 @keyframes fresa-title-shine {
-    0%, 35% {
+    0%, 25% {
         background-position: 100% 0;
     }
 
