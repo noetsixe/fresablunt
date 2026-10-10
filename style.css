@@ -2596,7 +2596,7 @@ transform: none;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 1px;
-    color: #4c4470;
+    color: #fe316d;
     opacity: 1;
 }
 
@@ -2623,7 +2623,7 @@ transform: none;
     letter-spacing: 0;
     line-height: 1.4;
     overflow-wrap: anywhere;
-    color: #4c4470;
+    color: #fe316d;
     text-decoration: none;
     transition: opacity 200ms ease;
 }
@@ -2639,7 +2639,7 @@ transform: none;
     padding: 9px 0;
     border: 0;
     background: transparent;
-    color: #4c4470;
+    color: #fe316d;
     font-family: "Lucida Console", monospace;
     font-size: 10px;
     letter-spacing: 1.2px;
@@ -2648,7 +2648,7 @@ transform: none;
 }
 
 #contact .contact-copy:hover {
-    color: #262238;
+    color: #941b3e;
 }
 
 #contact .contact-copy svg {
