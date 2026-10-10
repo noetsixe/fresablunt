@@ -2867,3 +2867,84 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
 }
+
+
+/* =========================================
+   SHOWS
+========================================= */
+
+#callou-records {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #070610;
+}
+
+#callou-records .shows-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+#callou-records .shows-kicker {
+    margin: 0 0 18px;
+    font-family: "Lucida Console", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #7778B8;
+}
+
+#callou-records h2 {
+    margin: 0 0 36px;
+}
+
+#callou-records .shows-message {
+    max-width: 620px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(119, 120, 184, 0.22);
+}
+
+#callou-records .shows-status {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: clamp(17px, 2vw, 24px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+}
+
+#callou-records .shows-subtitle {
+    margin: 12px 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #7778B8;
+}
+
+#callou-records .shows-promise {
+    margin: 30px 0 0;
+    font-family: "Lucida Console", monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #FE316D;
+}
+
+@media (max-width: 600px) {
+
+    #callou-records .shows-kicker {
+        font-size: 9px;
+    }
+
+    #callou-records h2 {
+        margin-bottom: 30px;
+    }
+
+    #callou-records .shows-message {
+        padding-top: 24px;
+    }
+
+    #callou-records .shows-promise {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+}
