@@ -13,10 +13,12 @@ const chakanaButton = document.getElementById("chakana-button");
 const chakanaMenu = document.getElementById("chakana-menu");
 const chakanaItems = chakanaMenu.querySelectorAll("button");
 
+
 function closeChakanaMenu() {
     if (!chakanaMenu.classList.contains("open")) return;
 
     chakanaMenu.classList.remove("open");
+    chakanaButton.classList.remove("menu-active");
     chakanaMenu.classList.add("closing");
 
     setTimeout(() => {
@@ -29,11 +31,13 @@ chakanaButton.addEventListener("click", (event) => {
 
     if (chakanaMenu.classList.contains("open")) {
         closeChakanaMenu();
+        chakanaButton.classList.remove("menu-active");
         return;
     }
 
     chakanaMenu.classList.remove("closing");
     chakanaMenu.classList.add("open");
+    chakanaButton.classList.add("menu-active");
 });
 
 chakanaMenu.addEventListener("click", (event) => {
