@@ -2192,9 +2192,17 @@ flex-shrink: 0;
 }
 
 #chakana-button:hover .chakana-shape {
+    fill: #8b507b;
     opacity: 1;
-    filter: drop-shadow(0 0 8px #7778b8);
+    filter: none;
 }
+
+#chakana-button.menu-active .chakana-shape {
+    fill: #8b507b;
+    opacity: 1;
+    filter: none;
+}
+
 
 #chakana-menu {
     position: fixed;
