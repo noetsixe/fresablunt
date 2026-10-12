@@ -2191,17 +2191,18 @@ flex-shrink: 0;
         filter 300ms ease;
 }
 
-#chakana-button:hover .chakana-shape {
-    fill: #8b507b;
+
+#chakana-button:hover .chakana-shape,
+#chakana-button.menu-active .chakana-shape {
     opacity: 1;
     filter: none;
 }
 
-#chakana-button.menu-active .chakana-shape {
-    fill: #8b507b;
-    opacity: 1;
-    filter: none;
+#chakana-button:hover .chakana-shape *,
+#chakana-button.menu-active .chakana-shape * {
+    fill: #8b507b !important;
 }
+
 
 
 #chakana-menu {
