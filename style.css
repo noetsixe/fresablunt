@@ -3260,10 +3260,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         bottom: 5%;
     }
 
-    #archive .archive-vertical-note {
+        #archive .archive-vertical-note {
         top: 67%;
         right: 1%;
         font-size: 7px;
+    }
+
+    #archive .archive-heading {
+        transform: translateY(35px);
+    }
+
+    #archive .archive-side-note {
+        transform: translateY(35px);
     }
 }
 
