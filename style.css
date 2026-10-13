@@ -2989,3 +2989,43 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 1;
 }
 
+
+/* FRESA BLUNT · TRANSICIÓN PIXELADA SUTIL */
+#main-site > section {
+  isolation: isolate;
+}
+
+#main-site > section.fb-pixel-out {
+  animation: fbPixelOut 400ms steps(7, end) both;
+  pointer-events: none;
+}
+
+@keyframes fbPixelOut {
+  0% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+  35% {
+    opacity: 0.9;
+    clip-path: polygon(
+      0 0, 100% 0, 100% 22%, 94% 22%,
+      94% 38%, 100% 38%, 100% 64%,
+      91% 64%, 91% 81%, 100% 81%,
+      100% 100%, 0 100%
+    );
+  }
+  70% {
+    opacity: 0.45;
+    clip-path: polygon(
+      0 0, 83% 0, 83% 14%, 68% 14%,
+      68% 29%, 100% 29%, 100% 45%,
+      79% 45%, 79% 63%, 56% 63%,
+      56% 80%, 100% 80%, 100% 100%, 0 100%
+    );
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(50% 50% 50% 50%);
+  }
+}
+
