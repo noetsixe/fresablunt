@@ -1343,13 +1343,13 @@ if (contactCopyButton) {
 
 
 /* =========================================
-   ARCHIVE · REPRODUCCIÓN ESTABLE
+   ARCHIVE · REPRODUCCIÓN FLUIDA
 ========================================= */
 
 function initArchiveVideos() {
-    const videos = [
-        ...document.querySelectorAll("#archive .archive-item video")
-    ];
+    const videos = document.querySelectorAll(
+        "#archive .archive-item video"
+    );
 
     if (!videos.length) return;
 
@@ -1359,106 +1359,91 @@ function initArchiveVideos() {
         video.loop = true;
         video.playsInline = true;
         video.playbackRate = 1;
-
-        video.dataset.archiveWanted = "false";
-        video.dataset.archiveLoaded = "false";
-        video.dataset.archiveReady = "false";
     });
 
     function loadVideo(video) {
-        if (video.dataset.archiveLoaded === "true") return;
-
         const source = video.querySelector("source[data-src]");
 
         if (source) {
             source.src = source.dataset.src;
             source.removeAttribute("data-src");
-            video.dataset.archiveLoaded = "true";
             video.load();
-        } else if (video.querySelector("source[src]")) {
-            video.dataset.archiveLoaded = "true";
         }
     }
 
     function playVideo(video) {
-        video.dataset.archiveWanted = "true";
         loadVideo(video);
 
-        if (video.dataset.archiveReady !== "true") {
-            if (video.dataset.archiveWaiting === "true") return;
-
-            video.dataset.archiveWaiting = "true";
-
-            const onReady = () => {
-                video.dataset.archiveWaiting = "false";
-                video.dataset.archiveReady = "true";
-
-                if (video.dataset.archiveWanted === "true") {
-                    startPlayback(video);
-                }
-            };
-
-            video.addEventListener("canplay", onReady, {
-                once: true
-            });
-
-            if (video.readyState >= 3) {
-                onReady();
+        if (video.dataset.archiveReady === "true") {
+            if (video.paused) {
+                video.play().catch(() => {});
             }
-
             return;
         }
 
-        startPlayback(video);
-    }
+        if (video.dataset.archiveLoading === "true") return;
 
-    function startPlayback(video) {
-        if (video.dataset.archiveWanted !== "true") return;
-        if (!video.paused && !video.ended) return;
+        video.dataset.archiveLoading = "true";
 
-        video.playbackRate = 1;
+        const onReady = () => {
+            video.dataset.archiveReady = "true";
+            video.dataset.archiveLoading = "false";
 
-        video.play().catch(() => {
-            video.dataset.archiveWanted = "false";
+            video.playbackRate = 1;
+            video.play().catch(() => {});
+        };
+
+        video.addEventListener("canplay", onReady, {
+            once: true
         });
+
+        if (video.readyState >= 3) {
+            onReady();
+        }
     }
 
     function pauseVideo(video) {
-        video.dataset.archiveWanted = "false";
         video.pause();
     }
 
     if ("IntersectionObserver" in window) {
-        const pauseTimers = new WeakMap();
+        const timers = new WeakMap();
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 const video = entry.target;
-                const oldTimer = pauseTimers.get(video);
+                const timer = timers.get(video);
 
                 if (entry.isIntersecting) {
-                    if (oldTimer) {
-                        clearTimeout(oldTimer);
-                        pauseTimers.delete(video);
+                    if (timer) {
+                        clearTimeout(timer);
+                        timers.delete(video);
                     }
 
                     playVideo(video);
                 } else {
-                    if (oldTimer) clearTimeout(oldTimer);
+                    if (timer) clearTimeout(timer);
 
-                    const timer = setTimeout(() => {
+                    timers.set(video, setTimeout(() => {
                         if (!video.isConnected) return;
 
-                        pauseVideo(video);
-                        pauseTimers.delete(video);
-                    }, 900);
+                        const rect = video.getBoundingClientRect();
 
-                    pauseTimers.set(video, timer);
+                        const outside =
+                            rect.bottom < -250 ||
+                            rect.top > window.innerHeight + 250;
+
+                        if (outside) {
+                            pauseVideo(video);
+                        }
+
+                        timers.delete(video);
+                    }, 1500));
                 }
             });
         }, {
-            rootMargin: "250px 0px",
-            threshold: 0.01
+            rootMargin: "100px 0px",
+            threshold: 0
         });
 
         videos.forEach((video) => observer.observe(video));
