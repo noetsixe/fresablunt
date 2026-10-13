@@ -485,7 +485,8 @@ z-index: 1;
     display: none;
 }
 
-header {
+
+header:not(.archive-masthead) {
     position: fixed;
     top: 0;
     left: 0;
@@ -496,6 +497,7 @@ header {
     align-items: center;
     z-index: 10;
 }
+
 
 .logo {
     color: #00FF00;
