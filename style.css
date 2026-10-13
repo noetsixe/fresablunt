@@ -3416,7 +3416,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-line-art > i {
     position: absolute;
     display: block;
-    height: 1px;
+    height: 0.5px;
     background: #f579bc;
 }
 
@@ -3424,7 +3424,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-line-art > .vertical-line {
     position: absolute;
     display: block;
-    width: 1px;
+    width: 0.5px;
     background: #f579bc;
 }
 
