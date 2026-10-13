@@ -3086,13 +3086,16 @@ animation: contact-crt-scroll 0.8s linear infinite;
     writing-mode: vertical-rl;
 }
 
+
 #archive .archive-collage {
     position: relative;
     display: grid;
-    grid-template-columns: 1.15fr .85fr 1fr;
-    grid-template-rows: 230px 100px 210px 170px;
-    gap: 12px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    grid-auto-rows: 55px;
+    gap: 10px;
     padding: 8px 0 35px;
+    align-items: stretch;
 }
 
 #archive .archive-item {
@@ -3101,7 +3104,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     min-height: 0;
     margin: 0;
     overflow: hidden;
-    background: #171421;
+    background: transparent;
 }
 
 #archive .archive-item img {
@@ -3114,47 +3117,34 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 #archive .archive-item:hover img {
-    transform: scale(1.035);
-}
-
-#archive .archive-item figcaption {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 8px;
-    background: rgba(7, 6, 16, .82);
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    transform: scale(1.025);
 }
 
 #archive .archive-item--hero {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-column: span 4;
+    grid-row: span 4;
 }
 
 #archive .archive-item--detail {
-    grid-column: 3;
-    grid-row: 1;
+    grid-column: span 2;
+    grid-row: span 3;
 }
 
 #archive .archive-item--small {
-    grid-column: 3;
-    grid-row: 2;
+    grid-column: span 2;
+    grid-row: span 2;
 }
 
 #archive .archive-item--wide {
-    grid-column: 1 / 3;
-    grid-row: 3 / 5;
+    grid-column: span 3;
+    grid-row: span 4;
 }
 
 #archive .archive-item--last {
-    grid-column: 3;
-    grid-row: 3 / 5;
+    grid-column: span 3;
+    grid-row: span 4;
 }
+
 
 #archive .archive-vertical-note {
     position: absolute;
@@ -3198,36 +3188,38 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: clamp(54px, 15vw, 90px);
     }
 
-    #archive .archive-collage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 230px 150px 200px 180px;
-        gap: 8px;
-    }
+    
+#archive .archive-collage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 45px;
+    gap: 8px;
+}
 
-    #archive .archive-item--hero {
-        grid-column: 1 / 3;
-        grid-row: 1;
-    }
+#archive .archive-item--hero {
+    grid-column: span 2;
+    grid-row: span 4;
+}
 
-    #archive .archive-item--detail {
-        grid-column: 1;
-        grid-row: 2;
-    }
+#archive .archive-item--detail {
+    grid-column: span 1;
+    grid-row: span 3;
+}
 
-    #archive .archive-item--small {
-        grid-column: 2;
-        grid-row: 2;
-    }
+#archive .archive-item--small {
+    grid-column: span 1;
+    grid-row: span 3;
+}
 
-    #archive .archive-item--wide {
-        grid-column: 1 / 3;
-        grid-row: 3;
-    }
+#archive .archive-item--wide {
+    grid-column: span 2;
+    grid-row: span 4;
+}
 
-    #archive .archive-item--last {
-        grid-column: 1 / 3;
-        grid-row: 4;
-    }
+#archive .archive-item--last {
+    grid-column: span 2;
+    grid-row: span 4;
+}
+
 
         #archive .archive-vertical-note {
         top: 67%;
