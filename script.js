@@ -1340,44 +1340,56 @@ if (contactCopyButton) {
 
 
 
-/* ARCHIVE · Carga progresiva de vídeos */
+
+/* ARCHIVE · Carga progresiva sin pausas */
 
 document.addEventListener("DOMContentLoaded", () => {
     const videos = document.querySelectorAll(
         "#archive .archive-item video"
     );
 
-    const loadVideo = (video) => {
+    function loadAndPlay(video) {
         const source = video.querySelector("source[data-src]");
 
-        if (!source) return;
+        if (source) {
+            source.src = source.dataset.src;
+            source.removeAttribute("data-src");
+            video.load();
+        }
 
-        source.src = source.dataset.src;
-        source.removeAttribute("data-src");
-        video.load();
-    };
+        if (video.dataset.playRequested === "true") return;
+
+        video.dataset.playRequested = "true";
+
+        const playWhenReady = () => {
+            video.play().catch(() => {
+                video.dataset.playRequested = "false";
+            });
+        };
+
+        if (video.readyState >= 2) {
+            playWhenReady();
+        } else {
+            video.addEventListener("canplay", playWhenReady, {
+                once: true
+            });
+        }
+    }
 
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                const video = entry.target;
-
                 if (entry.isIntersecting) {
-                    loadVideo(video);
-
-                    if (video.querySelector("source")?.src) {
-                        video.play().catch(() => {});
-                    }
-                } else {
-                    video.pause();
+                    loadAndPlay(entry.target);
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            rootMargin: "250px 0px"
+            rootMargin: "400px 0px"
         });
 
         videos.forEach((video) => observer.observe(video));
     } else {
-        videos.forEach(loadVideo);
+        videos.forEach(loadAndPlay);
     }
 });
