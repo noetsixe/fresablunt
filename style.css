@@ -3396,96 +3396,61 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
+
 /* =========================================
-   FRESA BLUNT · ARCHIVE MICROGRAPHICS
-   Marcas editoriales estáticas
+   ARCHIVE · LÍNEAS EDITORIALES ROSAS
 ========================================= */
 
 #archive.archive-editorial {
-    --micro-white: rgba(247, 242, 245, 0.72);
-    --micro-pink: rgba(254, 49, 109, 0.65);
+    --archive-line-pink: #f579bc;
 }
 
-/* Capa gráfica independiente, detrás de las imágenes */
-#archive.archive-editorial::before {
-    content: "";
+/* Capa independiente para las líneas */
+#archive .archive-line-art {
     position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-
-    background:
-        /* Cruces de registro */
-        linear-gradient(var(--micro-white), var(--micro-white))
-            8% 18% / 13px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            8% 18% / 1px 13px no-repeat,
-
-        linear-gradient(var(--micro-white), var(--micro-white))
-            91% 27% / 13px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            91% 27% / 1px 13px no-repeat,
-
-        linear-gradient(var(--micro-pink), var(--micro-pink))
-            12% 52% / 11px 1px no-repeat,
-        linear-gradient(var(--micro-pink), var(--micro-pink))
-            12% 52% / 1px 11px no-repeat,
-
-        linear-gradient(var(--micro-white), var(--micro-white))
-            88% 73% / 13px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            88% 73% / 1px 13px no-repeat,
-
-        /* Líneas técnicas finas */
-        linear-gradient(var(--micro-white), var(--micro-white))
-            4% 35% / 36px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            78% 44% / 25px 1px no-repeat,
-        linear-gradient(var(--micro-pink), var(--micro-pink))
-            7% 81% / 30px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            83% 91% / 40px 1px no-repeat;
+    overflow: hidden;
 }
 
-/* Marcas de encuadre y pequeñas líneas de impresión */
-#archive.archive-editorial::after {
-    content: "";
+/* Línea horizontal */
+#archive .archive-rule {
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        /* Esquinas superiores */
-        linear-gradient(var(--micro-white), var(--micro-white))
-            3% 14% / 18px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            3% 14% / 1px 18px no-repeat,
-
-        linear-gradient(var(--micro-white), var(--micro-white))
-            97% 14% / 18px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            97% 14% / 1px 18px no-repeat,
-
-        /* Esquinas inferiores */
-        linear-gradient(var(--micro-white), var(--micro-white))
-            4% 95% / 18px 1px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            4% 95% / 1px 18px no-repeat,
-
-        linear-gradient(var(--micro-pink), var(--micro-pink))
-            96% 95% / 18px 1px no-repeat,
-        linear-gradient(var(--micro-pink), var(--micro-pink))
-            96% 95% / 1px 18px no-repeat,
-
-        /* Marcas auxiliares */
-        linear-gradient(var(--micro-white), var(--micro-white))
-            16% 64% / 1px 24px no-repeat,
-        linear-gradient(var(--micro-white), var(--micro-white))
-            84% 60% / 1px 19px no-repeat;
+    left: 2%;
+    width: 96%;
+    height: 1px;
+    background: var(--archive-line-pink);
+    opacity: 0.75;
 }
 
-/* El collage queda por delante de los gráficos */
+/* Números pequeños en los extremos */
+#archive .archive-rule span {
+    position: absolute;
+    top: -11px;
+    color: var(--archive-line-pink);
+    font-family: monospace;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#archive .archive-rule span:first-child {
+    left: 0;
+}
+
+#archive .archive-rule span:last-child {
+    right: 0;
+}
+
+/* Altura de cada línea dentro de ARCHIVE */
+#archive .rule-1 { top: 19%; }
+#archive .rule-2 { top: 36%; }
+#archive .rule-3 { top: 54%; }
+#archive .rule-4 { top: 72%; }
+#archive .rule-5 { top: 89%; }
+
+/* Mantiene el contenido por delante de las líneas */
 #archive .archive-masthead,
 #archive .archive-heading,
 #archive .archive-collage,
@@ -3495,10 +3460,15 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 1;
 }
 
-/* En móvil, marcas más discretas */
+/* Ajustes para teléfonos */
 @media (max-width: 600px) {
-    #archive.archive-editorial::before,
-    #archive.archive-editorial::after {
-        opacity: 0.65;
+    #archive .archive-rule {
+        left: 3%;
+        width: 94%;
+        opacity: 0.55;
+    }
+
+    #archive .archive-rule span {
+        font-size: 7px;
     }
 }
