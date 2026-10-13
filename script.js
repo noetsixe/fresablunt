@@ -1343,7 +1343,7 @@ if (contactCopyButton) {
 
 
 /* =========================================
-   ARCHIVE · REPRODUCCIÓN SEGÚN VISIBILIDAD
+   ARCHIVE · REPRODUCCIÓN ESTABLE
 ========================================= */
 
 function initArchiveVideos() {
@@ -1359,7 +1359,10 @@ function initArchiveVideos() {
         video.loop = true;
         video.playsInline = true;
         video.playbackRate = 1;
-        video.preload = "none";
+
+        video.dataset.archiveWanted = "false";
+        video.dataset.archiveLoaded = "false";
+        video.dataset.archiveReady = "false";
     });
 
     function loadVideo(video) {
@@ -1378,49 +1381,83 @@ function initArchiveVideos() {
     }
 
     function playVideo(video) {
+        video.dataset.archiveWanted = "true";
         loadVideo(video);
 
-        if (video.dataset.archivePlaying === "true") return;
+        if (video.dataset.archiveReady !== "true") {
+            if (video.dataset.archiveWaiting === "true") return;
 
-        video.dataset.archivePlaying = "true";
+            video.dataset.archiveWaiting = "true";
 
-        const start = () => {
-            if (!video.isConnected) return;
+            const onReady = () => {
+                video.dataset.archiveWaiting = "false";
+                video.dataset.archiveReady = "true";
 
-            video.playbackRate = 1;
+                if (video.dataset.archiveWanted === "true") {
+                    startPlayback(video);
+                }
+            };
 
-            video.play().catch(() => {
-                video.dataset.archivePlaying = "false";
-            });
-        };
-
-        if (video.readyState >= 2) {
-            start();
-        } else {
-            video.addEventListener("canplay", start, {
+            video.addEventListener("canplay", onReady, {
                 once: true
             });
+
+            if (video.readyState >= 3) {
+                onReady();
+            }
+
+            return;
         }
+
+        startPlayback(video);
+    }
+
+    function startPlayback(video) {
+        if (video.dataset.archiveWanted !== "true") return;
+        if (!video.paused && !video.ended) return;
+
+        video.playbackRate = 1;
+
+        video.play().catch(() => {
+            video.dataset.archiveWanted = "false";
+        });
     }
 
     function pauseVideo(video) {
-        video.dataset.archivePlaying = "false";
+        video.dataset.archiveWanted = "false";
         video.pause();
     }
 
     if ("IntersectionObserver" in window) {
+        const pauseTimers = new WeakMap();
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 const video = entry.target;
+                const oldTimer = pauseTimers.get(video);
 
                 if (entry.isIntersecting) {
+                    if (oldTimer) {
+                        clearTimeout(oldTimer);
+                        pauseTimers.delete(video);
+                    }
+
                     playVideo(video);
                 } else {
-                    pauseVideo(video);
+                    if (oldTimer) clearTimeout(oldTimer);
+
+                    const timer = setTimeout(() => {
+                        if (!video.isConnected) return;
+
+                        pauseVideo(video);
+                        pauseTimers.delete(video);
+                    }, 900);
+
+                    pauseTimers.set(video, timer);
                 }
             });
         }, {
-            rootMargin: "100px",
+            rootMargin: "250px 0px",
             threshold: 0.01
         });
 
