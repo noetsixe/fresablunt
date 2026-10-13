@@ -3397,60 +3397,144 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* =========================================
-   ARCHIVE · LÍNEAS EDITORIALES ROSAS
-========================================= */
+
+/* ==========================================
+   FRESA BLUNT · DENSE EDITORIAL LINE WEAVE
+========================================== */
 
 #archive.archive-editorial {
-    --archive-line-pink: #f579bc;
+    --weave: #f579bc;
 }
 
-/* Capa independiente para las líneas */
 #archive .archive-line-art {
     position: absolute;
     inset: 0;
     z-index: 0;
-    pointer-events: none;
     overflow: hidden;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 22px,
+            var(--weave) 22px,
+            var(--weave) 22.7px,
+            transparent 22.7px,
+            transparent 29px
+        );
+    opacity: .72;
 }
 
-/* Línea horizontal */
+/* Verticales largas y tramos interrumpidos */
+#archive .archive-line-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        repeating-linear-gradient(
+            to right,
+            transparent 0,
+            transparent 31px,
+            var(--weave) 31px,
+            var(--weave) 31.7px,
+            transparent 31.7px,
+            transparent 43px
+        );
+
+    -webkit-mask-image: repeating-linear-gradient(
+        to bottom,
+        #000 0px,
+        #000 110px,
+        transparent 110px,
+        transparent 137px,
+        #000 137px,
+        #000 205px,
+        transparent 205px,
+        transparent 226px
+    );
+    mask-image: repeating-linear-gradient(
+        to bottom,
+        #000 0px,
+        #000 110px,
+        transparent 110px,
+        transparent 137px,
+        #000 137px,
+        #000 205px,
+        transparent 205px,
+        transparent 226px
+    );
+
+    opacity: .7;
+}
+
+/* Tramos horizontales de diferentes longitudes */
+#archive .archive-line-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave)),
+        linear-gradient(var(--weave),var(--weave));
+
+    background-repeat: no-repeat;
+    background-size:
+        27% 1px, 42% 1px, 19% 1px,
+        36% 1px, 24% 1px, 48% 1px,
+        31% 1px, 22% 1px, 40% 1px,
+        17% 1px, 35% 1px, 26% 1px;
+
+    background-position:
+        3% 7%, 45% 13%, 18% 19%,
+        60% 26%, 7% 32%, 42% 39%,
+        26% 46%, 71% 53%, 4% 61%,
+        53% 68%, 14% 77%, 58% 86%;
+
+    opacity: .9;
+}
+
+/* Números pequeños en ambos extremos de cada fila */
 #archive .archive-rule {
     position: absolute;
-    left: 2%;
-    width: 96%;
+    left: 1%;
+    width: 98%;
     height: 1px;
-    background: var(--archive-line-pink);
-    opacity: 0.75;
+    background: var(--weave);
+    opacity: .85;
 }
 
-/* Números pequeños en los extremos */
 #archive .archive-rule span {
     position: absolute;
-    top: -11px;
-    color: var(--archive-line-pink);
+    top: -10px;
+    color: var(--weave);
     font-family: monospace;
     font-size: 8px;
-    font-weight: 400;
     line-height: 1;
 }
 
-#archive .archive-rule span:first-child {
-    left: 0;
-}
+#archive .archive-rule span:first-child { left: 0; }
+#archive .archive-rule span:last-child { right: 0; }
 
-#archive .archive-rule span:last-child {
-    right: 0;
-}
+/* Distribución vertical de numeración */
+#archive .rule-1 { top: 8%; }
+#archive .rule-2 { top: 27%; }
+#archive .rule-3 { top: 46%; }
+#archive .rule-4 { top: 65%; }
+#archive .rule-5 { top: 84%; }
 
-/* Altura de cada línea dentro de ARCHIVE */
-#archive .rule-1 { top: 19%; }
-#archive .rule-2 { top: 36%; }
-#archive .rule-3 { top: 54%; }
-#archive .rule-4 { top: 72%; }
-#archive .rule-5 { top: 89%; }
-
-/* Mantiene el contenido por delante de las líneas */
+/* Mantener el collage por delante del tejido */
 #archive .archive-masthead,
 #archive .archive-heading,
 #archive .archive-collage,
@@ -3460,12 +3544,14 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 1;
 }
 
-/* Ajustes para teléfonos */
 @media (max-width: 600px) {
-    #archive .archive-rule {
-        left: 3%;
-        width: 94%;
-        opacity: 0.55;
+    #archive .archive-line-art {
+        opacity: .48;
+        background-size: auto;
+    }
+
+    #archive .archive-line-art::before {
+        opacity: .55;
     }
 
     #archive .archive-rule span {
