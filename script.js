@@ -1344,7 +1344,7 @@ if (contactCopyButton) {
 
 
 /* =========================================
-   ARCHIVE · REPRODUCCIÓN ESTABLE Y FLUIDA
+   ARCHIVE · CARGA CONTROLADA PARA MÓVILES
 ========================================= */
 
 function initArchiveVideos() {
@@ -1354,28 +1354,41 @@ function initArchiveVideos() {
 
     if (!videos.length) return;
 
-    let resumeTimer = null;
-    let pageIsActive = !document.hidden;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    const timers = new WeakMap();
+    // En celular: un solo vídeo reproduciéndose a la vez.
+    // En pantallas grandes: máximo dos.
+    const MAX_PLAYING = isMobile ? 1 : 2;
+
+    let pageIsActive = !document.hidden;
+    let updateTimer = null;
+    let observer = null;
+
+    const states = new WeakMap();
 
     videos.forEach((video) => {
         video.muted = true;
         video.defaultMuted = true;
         video.loop = true;
         video.playsInline = true;
-        video.playbackRate = 1;
+        video.setAttribute("playsinline", "");
+        video.setAttribute("muted", "");
+        video.preload = "none";
+
+        states.set(video, {
+            loading: false,
+            ready: false,
+            failed: false,
+            requested: false
+        });
+
+        video.addEventListener("error", () => {
+            const state = states.get(video);
+            state.failed = true;
+            state.loading = false;
+            video.dataset.archiveLoading = "false";
+        });
     });
-
-    function loadVideo(video) {
-        const source = video.querySelector("source[data-src]");
-
-        if (source) {
-            source.src = source.dataset.src;
-            source.removeAttribute("data-src");
-            video.load();
-        }
-    }
 
     function isVisible(video) {
         const rect = video.getBoundingClientRect();
@@ -1388,130 +1401,188 @@ function initArchiveVideos() {
         );
     }
 
-    function playVideo(video) {
-        if (!pageIsActive || document.hidden) return;
-        if (!isVisible(video)) return;
+    function visibilityScore(video) {
+        const rect = video.getBoundingClientRect();
+
+        const visibleHeight = Math.max(
+            0,
+            Math.min(rect.bottom, window.innerHeight) -
+            Math.max(rect.top, 0)
+        );
+
+        const visibleWidth = Math.max(
+            0,
+            Math.min(rect.right, window.innerWidth) -
+            Math.max(rect.left, 0)
+        );
+
+        return visibleHeight * visibleWidth;
+    }
+
+    function loadVideo(video) {
+        const state = states.get(video);
+
+        if (state.requested || state.failed) return;
+
+        const source = video.querySelector("source[data-src]");
+
+        if (source) {
+            source.src = source.dataset.src;
+            source.removeAttribute("data-src");
+            state.requested = true;
+            state.loading = true;
+            video.dataset.archiveLoading = "true";
+            video.load();
+        } else {
+            state.requested = true;
+        }
+    }
+
+    function prepareVideo(video) {
+        const state = states.get(video);
+
+        if (state.failed || state.ready || state.loading) return;
 
         loadVideo(video);
 
-        if (video.dataset.archiveReady === "true") {
-            if (video.paused) {
-                video.play().catch(() => {});
-            }
+        if (video.readyState >= 3) {
+            state.ready = true;
+            state.loading = false;
+            video.dataset.archiveReady = "true";
+            video.dataset.archiveLoading = "false";
+            scheduleUpdate();
             return;
         }
 
-        if (video.dataset.archiveLoading === "true") return;
-
+        state.loading = true;
         video.dataset.archiveLoading = "true";
 
         const onReady = () => {
+            state.ready = true;
+            state.loading = false;
+
             video.dataset.archiveReady = "true";
             video.dataset.archiveLoading = "false";
 
-            if (!pageIsActive || document.hidden) return;
-            if (!isVisible(video)) return;
+            video.removeEventListener("canplay", onReady);
+            video.removeEventListener("error", onError);
 
-            video.playbackRate = 1;
-            video.play().catch(() => {});
+            scheduleUpdate();
         };
 
-        video.addEventListener("canplay", onReady, {
-            once: true
-        });
+        const onError = () => {
+            state.failed = true;
+            state.loading = false;
 
-        if (video.readyState >= 3) {
-            onReady();
+            video.dataset.archiveLoading = "false";
+
+            video.removeEventListener("canplay", onReady);
+            video.removeEventListener("error", onError);
+        };
+
+        video.addEventListener("canplay", onReady);
+        video.addEventListener("error", onError);
+    }
+
+    function pauseVideo(video) {
+        if (!video.paused) {
+            video.pause();
         }
     }
 
-    function pauseAllVideos() {
-        videos.forEach((video) => video.pause());
-    }
-
-    function resumeVisibleVideos() {
-        if (!pageIsActive || document.hidden) return;
-
-        videos.forEach((video) => {
-            if (isVisible(video)) {
-                playVideo(video);
-            }
-        });
-    }
-
-    if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                const video = entry.target;
-                const oldTimer = timers.get(video);
-
-                if (oldTimer) {
-                    clearTimeout(oldTimer);
-                    timers.delete(video);
-                }
-
-                if (!pageIsActive || document.hidden) return;
-
-                if (entry.isIntersecting) {
-                    playVideo(video);
-                } else {
-                    const timer = setTimeout(() => {
-                        if (
-                            pageIsActive &&
-                            !document.hidden &&
-                            !isVisible(video)
-                        ) {
-                            video.pause();
-                        }
-
-                        timers.delete(video);
-                    }, 1500);
-
-                    timers.set(video, timer);
-                }
-            });
-        }, {
-            rootMargin: "100px 0px",
-            threshold: 0
-        });
-
-        videos.forEach((video) => observer.observe(video));
-    } else {
-        resumeVisibleVideos();
-    }
-
-    document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            pageIsActive = false;
-
-            if (resumeTimer) {
-                clearTimeout(resumeTimer);
-                resumeTimer = null;
-            }
-
-            videos.forEach((video) => {
-                const timer = timers.get(video);
-
-                if (timer) {
-                    clearTimeout(timer);
-                    timers.delete(video);
-                }
-            });
-
-            pauseAllVideos();
+    function updateVideos() {
+        if (!pageIsActive || document.hidden) {
+            videos.forEach(pauseVideo);
             return;
         }
 
-        pageIsActive = true;
+        const visibleVideos = videos
+            .filter(isVisible)
+            .sort((a, b) => visibilityScore(b) - visibilityScore(a));
 
-        if (resumeTimer) clearTimeout(resumeTimer);
+        const selectedVideos = visibleVideos.slice(0, MAX_PLAYING);
+        const selectedSet = new Set(selectedVideos);
 
-        // Espera a que la pestaña se estabilice antes de reanudar.
-        resumeTimer = setTimeout(() => {
-            resumeTimer = null;
-            resumeVisibleVideos();
-        }, 350);
+        // Pausar primero los vídeos que ya no tienen prioridad.
+        videos.forEach((video) => {
+            if (!selectedSet.has(video)) {
+                pauseVideo(video);
+            }
+        });
+
+        selectedVideos.forEach((video) => {
+            const state = states.get(video);
+
+            if (!state || state.failed) return;
+
+            if (!state.requested) {
+                prepareVideo(video);
+                return;
+            }
+
+            if (state.ready && video.paused) {
+                video.play().catch(() => {
+                    // El navegador puede bloquear temporalmente la reproducción.
+                });
+            }
+        });
+    }
+
+    function scheduleUpdate() {
+        if (updateTimer) return;
+
+        updateTimer = setTimeout(() => {
+            updateTimer = null;
+            updateVideos();
+        }, 150);
+    }
+
+    if ("IntersectionObserver" in window) {
+        observer = new IntersectionObserver(() => {
+            scheduleUpdate();
+        }, {
+            rootMargin: "0px",
+            threshold: 0.1
+        });
+
+        videos.forEach((video) => observer.observe(video));
+    }
+
+    // Responder al desplazamiento sin ejecutar cálculos en cada píxel.
+    const scrollContainer = document.getElementById("main-site");
+
+    if (scrollContainer) {
+        scrollContainer.addEventListener("scroll", scheduleUpdate, {
+            passive: true
+        });
+    }
+
+    window.addEventListener("scroll", scheduleUpdate, {
+        passive: true
     });
+
+    window.addEventListener("resize", scheduleUpdate, {
+        passive: true
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        pageIsActive = !document.hidden;
+
+        if (!pageIsActive) {
+            if (updateTimer) {
+                clearTimeout(updateTimer);
+                updateTimer = null;
+            }
+
+            videos.forEach(pauseVideo);
+            return;
+        }
+
+        scheduleUpdate();
+    });
+
+    // Carga únicamente los vídeos que entran en pantalla.
+    updateVideos();
 }
 
 if (document.readyState === "loading") {
