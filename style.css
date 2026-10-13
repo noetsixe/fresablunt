@@ -3032,6 +3032,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 #archive .archive-masthead {
+    width: 94%;
+    margin-inline: auto;
     padding-bottom: 12px;
     border-bottom: 1px solid currentColor;
 }
