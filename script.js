@@ -1343,7 +1343,7 @@ if (contactCopyButton) {
 
 
 /* =========================================
-   ARCHIVE · CARGA PROGRESIVA DE VÍDEOS
+   ARCHIVE · REPRODUCCIÓN SEGÚN VISIBILIDAD
 ========================================= */
 
 function initArchiveVideos() {
@@ -1359,6 +1359,7 @@ function initArchiveVideos() {
         video.loop = true;
         video.playsInline = true;
         video.playbackRate = 1;
+        video.preload = "none";
     });
 
     function loadVideo(video) {
@@ -1374,43 +1375,58 @@ function initArchiveVideos() {
         } else if (video.querySelector("source[src]")) {
             video.dataset.archiveLoaded = "true";
         }
+    }
 
-        if (video.dataset.archiveLoaded !== "true") return;
+    function playVideo(video) {
+        loadVideo(video);
 
-        if (video.dataset.archivePlayListener === "true") return;
-        video.dataset.archivePlayListener = "true";
+        if (video.dataset.archivePlaying === "true") return;
 
-        const startPlayback = () => {
+        video.dataset.archivePlaying = "true";
+
+        const start = () => {
+            if (!video.isConnected) return;
+
             video.playbackRate = 1;
+
             video.play().catch(() => {
-                video.dataset.archivePlayListener = "false";
+                video.dataset.archivePlaying = "false";
             });
         };
 
         if (video.readyState >= 2) {
-            startPlayback();
+            start();
         } else {
-            video.addEventListener("loadeddata", startPlayback, {
+            video.addEventListener("canplay", start, {
                 once: true
             });
         }
     }
 
+    function pauseVideo(video) {
+        video.dataset.archivePlaying = "false";
+        video.pause();
+    }
+
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
+                const video = entry.target;
 
-                loadVideo(entry.target);
-                observer.unobserve(entry.target);
+                if (entry.isIntersecting) {
+                    playVideo(video);
+                } else {
+                    pauseVideo(video);
+                }
             });
         }, {
-            rootMargin: "100px 0px"
+            rootMargin: "100px",
+            threshold: 0.01
         });
 
         videos.forEach((video) => observer.observe(video));
     } else {
-        videos.forEach(loadVideo);
+        videos.forEach(playVideo);
     }
 }
 
