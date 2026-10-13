@@ -3431,6 +3431,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     transform: scaleX(0.3);
     transform-origin: center;
     background: #f579bc;
+    clip-path: inset(24% 0 0 0);
 }
 
 /* Columna derecha: cada número comparte la altura de su línea */
