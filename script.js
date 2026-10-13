@@ -1338,3 +1338,154 @@ if (contactCopyButton) {
     });
 }
 
+
+
+/* FRESA BLUNT · PIXEL DISSOLVE */
+(() => {
+  const site = document.getElementById("main-site");
+  if (!site) return;
+
+  const sectionSelector =
+    "#main-video, #estreno, #archive, #callou-records, #contact";
+
+  let busy = false;
+  let unlockTimer;
+  let html2canvasPromise;
+
+  function loadCapture() {
+    if (window.html2canvas) return Promise.resolve(window.html2canvas);
+
+    if (!html2canvasPromise) {
+      html2canvasPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src =
+          "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+        script.onload = () => resolve(window.html2canvas);
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    return html2canvasPromise;
+  }
+
+  function dissolve(section, rect) {
+    if (!section || rect.width <= 0 || rect.height <= 0) return;
+
+    loadCapture()
+      .then(async (capture) => {
+        const shot = await capture(section, {
+          scale: 1,
+          backgroundColor: null,
+          useCORS: true,
+          logging: false,
+          width: section.clientWidth,
+          height: section.clientHeight
+        });
+
+        const pixelSize = 8;
+        const w = Math.ceil(innerWidth / pixelSize);
+        const h = Math.ceil(innerHeight / pixelSize);
+        const sourceY = Math.max(0, -rect.top);
+        const sourceX = Math.max(0, -rect.left);
+        const sourceW = Math.min(innerWidth, shot.width - sourceX);
+        const sourceH = Math.min(innerHeight, shot.height - sourceY);
+
+        if (sourceW <= 0 || sourceH <= 0) return;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+
+        Object.assign(canvas.style, {
+          position: "fixed",
+          inset: "0",
+          width: "100vw",
+          height: "100vh",
+          zIndex: "99999",
+          pointerEvents: "none",
+          imageRendering: "pixelated"
+        });
+
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext("2d", {
+          alpha: true,
+          willReadFrequently: true
+        });
+
+        ctx.drawImage(
+          shot,
+          sourceX, sourceY, sourceW, sourceH,
+          0, 0, w, h
+        );
+
+        const original = ctx.getImageData(0, 0, w, h);
+        const total = w * h;
+        const order = Array.from({ length: total }, (_, i) => i);
+
+        for (let i = total - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [order[i], order[j]] = [order[j], order[i]];
+        }
+
+        const start = performance.now();
+        const duration = 400;
+
+        function frame(now) {
+          const progress = Math.min(1, (now - start) / duration);
+          const image = new ImageData(
+            new Uint8ClampedArray(original.data),
+            w,
+            h
+          );
+
+          const gone = Math.floor(progress * total);
+
+          for (let i = 0; i < gone; i++) {
+            image.data[order[i] * 4 + 3] = 0;
+          }
+
+          ctx.putImageData(image, 0, 0);
+
+          if (progress < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            canvas.remove();
+          }
+        }
+
+        requestAnimationFrame(frame);
+      })
+      .catch(() => {
+        /* Si falla la captura, el scroll normal continúa. */
+      });
+  }
+
+  site.addEventListener("scroll", () => {
+    clearTimeout(unlockTimer);
+
+    if (!busy) {
+      const sections = [...site.querySelectorAll(sectionSelector)];
+      const outgoing = sections
+        .filter((section) => {
+          const r = section.getBoundingClientRect();
+          return r.bottom > 0 && r.top < innerHeight;
+        })
+        .sort((a, b) =>
+          Math.abs(a.getBoundingClientRect().top) -
+          Math.abs(b.getBoundingClientRect().top)
+        )[0];
+
+      if (outgoing) {
+        busy = true;
+        dissolve(outgoing, outgoing.getBoundingClientRect());
+      }
+    }
+
+    unlockTimer = setTimeout(() => {
+      busy = false;
+    }, 500);
+  }, { passive: true });
+})();
+
