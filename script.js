@@ -1337,3 +1337,47 @@ if (contactCopyButton) {
         }
     });
 }
+
+
+
+/* ARCHIVE · Carga progresiva de vídeos */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll(
+        "#archive .archive-item video"
+    );
+
+    const loadVideo = (video) => {
+        const source = video.querySelector("source[data-src]");
+
+        if (!source) return;
+
+        source.src = source.dataset.src;
+        source.removeAttribute("data-src");
+        video.load();
+    };
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const video = entry.target;
+
+                if (entry.isIntersecting) {
+                    loadVideo(video);
+
+                    if (video.querySelector("source")?.src) {
+                        video.play().catch(() => {});
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+        }, {
+            rootMargin: "250px 0px"
+        });
+
+        videos.forEach((video) => observer.observe(video));
+    } else {
+        videos.forEach(loadVideo);
+    }
+});
