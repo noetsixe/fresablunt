@@ -3412,6 +3412,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     opacity: .8;
 }
 
+
 /* Horizontales ultrafinas */
 #archive .archive-line-art > i {
     position: absolute;
@@ -3476,6 +3477,21 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 2;
 }
 
+/* ARCHIVE · ZONA SUPERIOR LIMPIA */
+#archive .archive-line-art > i,
+#archive .archive-line-art > .vertical-line,
+#archive .archive-line-art .numbers-right,
+#archive .archive-line-art .numbers-bottom {
+    visibility: hidden;
+}
+
+/* Las líneas y números aparecen debajo del encabezado */
+#archive .archive-line-art > i:nth-of-type(n+11),
+#archive .archive-line-art > .vertical-line,
+#archive .archive-line-art .numbers-right,
+#archive .archive-line-art .numbers-bottom {
+    visibility: visible;
+}
 /* Ajustes para móvil */
 @media (max-width: 600px) {
     #archive .archive-line-art {
