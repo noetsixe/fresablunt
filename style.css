@@ -3210,6 +3210,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
         letter-spacing: .8px;
     }
 
+   #archive .archive-masthead {
+    position: relative;
+    top: 35px;
+}
+
    #archive .archive-heading {
     padding: 80px 0 24px;
 }
