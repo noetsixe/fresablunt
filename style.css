@@ -3399,12 +3399,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 /* ==========================================
-   FRESA BLUNT · DENSE EDITORIAL LINE WEAVE
+   ARCHIVE · PINK EDITORIAL MICROGRAPHICS
 ========================================== */
-
-#archive.archive-editorial {
-    --weave: #f579bc;
-}
 
 #archive .archive-line-art {
     position: absolute;
@@ -3412,146 +3408,135 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-
-    background-image:
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0,
-            transparent 22px,
-            var(--weave) 22px,
-            var(--weave) 22.7px,
-            transparent 22.7px,
-            transparent 29px
-        );
-    opacity: .72;
+    opacity: .8;
 }
 
-/* Verticales largas y tramos interrumpidos */
+/* Líneas horizontales irregulares:
+   longitudes, alturas y espacios distintos */
 #archive .archive-line-art::before {
     content: "";
     position: absolute;
     inset: 0;
-
-    background-image:
-        repeating-linear-gradient(
-            to right,
-            transparent 0,
-            transparent 31px,
-            var(--weave) 31px,
-            var(--weave) 31.7px,
-            transparent 31.7px,
-            transparent 43px
-        );
-
-    -webkit-mask-image: repeating-linear-gradient(
-        to bottom,
-        #000 0px,
-        #000 110px,
-        transparent 110px,
-        transparent 137px,
-        #000 137px,
-        #000 205px,
-        transparent 205px,
-        transparent 226px
-    );
-    mask-image: repeating-linear-gradient(
-        to bottom,
-        #000 0px,
-        #000 110px,
-        transparent 110px,
-        transparent 137px,
-        #000 137px,
-        #000 205px,
-        transparent 205px,
-        transparent 226px
-    );
-
-    opacity: .7;
+    background:
+        linear-gradient(#f579bc,#f579bc) 2% 4% / 38% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 43% 5.2% / 52% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 11% 5.7% / 17% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 4% 12.4% / 69% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 78% 13.1% / 18% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 25% 14% / 47% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 3% 22.5% / 21% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 28% 21.8% / 66% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 8% 23.2% / 82% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 54% 29.5% / 42% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 2% 30.1% / 36% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 35% 31% / 20% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 13% 39.7% / 78% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 3% 40.4% / 26% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 61% 41.2% / 33% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 5% 49.1% / 51% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 58% 48.6% / 38% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 19% 50.2% / 75% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 2% 59.8% / 17% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 23% 60.4% / 70% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 4% 69.1% / 57% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 65% 68.5% / 30% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 17% 70.2% / 31% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 3% 79.4% / 88% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 47% 80.1% / 47% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 5% 89.7% / 29% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 38% 90.4% / 57% 1px no-repeat,
+        linear-gradient(#f579bc,#f579bc) 12% 97% / 76% 1px no-repeat;
 }
 
-/* Tramos horizontales de diferentes longitudes */
+/* Líneas verticales cortadas en segmentos independientes */
 #archive .archive-line-art::after {
     content: "";
     position: absolute;
     inset: 0;
+    background:
+        linear-gradient(#f579bc,#f579bc) 8% 0 / 1px 13% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 8.4% 18% / 1px 9% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 8% 33% / 1px 17% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 8.2% 62% / 1px 8% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 8% 77% / 1px 21% no-repeat,
 
-    background-image:
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave)),
-        linear-gradient(var(--weave),var(--weave));
+        linear-gradient(#f579bc,#f579bc) 19% 3% / 1px 28% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 19.4% 36% / 1px 7% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 19% 51% / 1px 23% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 19.2% 82% / 1px 16% no-repeat,
 
-    background-repeat: no-repeat;
-    background-size:
-        27% 1px, 42% 1px, 19% 1px,
-        36% 1px, 24% 1px, 48% 1px,
-        31% 1px, 22% 1px, 40% 1px,
-        17% 1px, 35% 1px, 26% 1px;
+        linear-gradient(#f579bc,#f579bc) 32% 0 / 1px 7% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 32.3% 12% / 1px 22% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 32% 39% / 1px 14% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 32.2% 59% / 1px 31% no-repeat,
 
-    background-position:
-        3% 7%, 45% 13%, 18% 19%,
-        60% 26%, 7% 32%, 42% 39%,
-        26% 46%, 71% 53%, 4% 61%,
-        53% 68%, 14% 77%, 58% 86%;
+        linear-gradient(#f579bc,#f579bc) 47% 7% / 1px 19% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 47.4% 31% / 1px 12% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 47% 49% / 1px 8% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 47.2% 63% / 1px 25% no-repeat,
 
-    opacity: .9;
+        linear-gradient(#f579bc,#f579bc) 63% 0 / 1px 17% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 63.3% 22% / 1px 34% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 63% 61% / 1px 11% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 63.2% 79% / 1px 19% no-repeat,
+
+        linear-gradient(#f579bc,#f579bc) 76% 9% / 1px 8% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 76.3% 23% / 1px 26% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 76% 55% / 1px 19% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 76.2% 80% / 1px 15% no-repeat,
+
+        linear-gradient(#f579bc,#f579bc) 91% 0 / 1px 24% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 91.3% 30% / 1px 11% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 91% 47% / 1px 29% no-repeat,
+        linear-gradient(#f579bc,#f579bc) 91.2% 82% / 1px 16% no-repeat;
 }
 
-/* Números pequeños en ambos extremos de cada fila */
+/* Numeración pequeña al final de cada línea */
 #archive .archive-rule {
     position: absolute;
-    left: 1%;
-    width: 98%;
     height: 1px;
-    background: var(--weave);
-    opacity: .85;
+    background: #f579bc;
+    z-index: 1;
 }
 
 #archive .archive-rule span {
     position: absolute;
-    top: -10px;
-    color: var(--weave);
-    font-family: monospace;
-    font-size: 8px;
-    line-height: 1;
+    top: -9px;
+    color: #f579bc;
+    font: 8px/1 monospace;
+    white-space: nowrap;
 }
 
-#archive .archive-rule span:first-child { left: 0; }
-#archive .archive-rule span:last-child { right: 0; }
+#archive .archive-rule span:first-child {
+    left: 100%;
+    margin-left: 4px;
+}
 
-/* Distribución vertical de numeración */
-#archive .rule-1 { top: 8%; }
-#archive .rule-2 { top: 27%; }
-#archive .rule-3 { top: 46%; }
-#archive .rule-4 { top: 65%; }
-#archive .rule-5 { top: 84%; }
+#archive .archive-rule span:last-child {
+    right: 100%;
+    margin-right: 4px;
+}
 
-/* Mantener el collage por delante del tejido */
+/* Filas con posiciones y longitudes asimétricas */
+#archive .rule-1 { top: 4%; left: 2%; width: 38%; }
+#archive .rule-2 { top: 12.4%; left: 4%; width: 69%; }
+#archive .rule-3 { top: 22.5%; left: 3%; width: 21%; }
+#archive .rule-4 { top: 30.1%; left: 2%; width: 36%; }
+#archive .rule-5 { top: 39.7%; left: 13%; width: 78%; }
+
+/* Las fotos y videos quedan intactos, por delante de las líneas */
 #archive .archive-masthead,
 #archive .archive-heading,
 #archive .archive-collage,
 #archive .archive-footer,
 #archive .archive-vertical-note {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 @media (max-width: 600px) {
     #archive .archive-line-art {
         opacity: .48;
-        background-size: auto;
-    }
-
-    #archive .archive-line-art::before {
-        opacity: .55;
     }
 
     #archive .archive-rule span {
