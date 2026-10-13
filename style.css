@@ -3395,3 +3395,110 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
+
+/* =========================================
+   FRESA BLUNT · ARCHIVE MICROGRAPHICS
+   Marcas editoriales estáticas
+========================================= */
+
+#archive.archive-editorial {
+    --micro-white: rgba(247, 242, 245, 0.72);
+    --micro-pink: rgba(254, 49, 109, 0.65);
+}
+
+/* Capa gráfica independiente, detrás de las imágenes */
+#archive.archive-editorial::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        /* Cruces de registro */
+        linear-gradient(var(--micro-white), var(--micro-white))
+            8% 18% / 13px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            8% 18% / 1px 13px no-repeat,
+
+        linear-gradient(var(--micro-white), var(--micro-white))
+            91% 27% / 13px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            91% 27% / 1px 13px no-repeat,
+
+        linear-gradient(var(--micro-pink), var(--micro-pink))
+            12% 52% / 11px 1px no-repeat,
+        linear-gradient(var(--micro-pink), var(--micro-pink))
+            12% 52% / 1px 11px no-repeat,
+
+        linear-gradient(var(--micro-white), var(--micro-white))
+            88% 73% / 13px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            88% 73% / 1px 13px no-repeat,
+
+        /* Líneas técnicas finas */
+        linear-gradient(var(--micro-white), var(--micro-white))
+            4% 35% / 36px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            78% 44% / 25px 1px no-repeat,
+        linear-gradient(var(--micro-pink), var(--micro-pink))
+            7% 81% / 30px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            83% 91% / 40px 1px no-repeat;
+}
+
+/* Marcas de encuadre y pequeñas líneas de impresión */
+#archive.archive-editorial::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        /* Esquinas superiores */
+        linear-gradient(var(--micro-white), var(--micro-white))
+            3% 14% / 18px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            3% 14% / 1px 18px no-repeat,
+
+        linear-gradient(var(--micro-white), var(--micro-white))
+            97% 14% / 18px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            97% 14% / 1px 18px no-repeat,
+
+        /* Esquinas inferiores */
+        linear-gradient(var(--micro-white), var(--micro-white))
+            4% 95% / 18px 1px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            4% 95% / 1px 18px no-repeat,
+
+        linear-gradient(var(--micro-pink), var(--micro-pink))
+            96% 95% / 18px 1px no-repeat,
+        linear-gradient(var(--micro-pink), var(--micro-pink))
+            96% 95% / 1px 18px no-repeat,
+
+        /* Marcas auxiliares */
+        linear-gradient(var(--micro-white), var(--micro-white))
+            16% 64% / 1px 24px no-repeat,
+        linear-gradient(var(--micro-white), var(--micro-white))
+            84% 60% / 1px 19px no-repeat;
+}
+
+/* El collage queda por delante de los gráficos */
+#archive .archive-masthead,
+#archive .archive-heading,
+#archive .archive-collage,
+#archive .archive-footer,
+#archive .archive-vertical-note {
+    position: relative;
+    z-index: 1;
+}
+
+/* En móvil, marcas más discretas */
+@media (max-width: 600px) {
+    #archive.archive-editorial::before,
+    #archive.archive-editorial::after {
+        opacity: 0.65;
+    }
+}
