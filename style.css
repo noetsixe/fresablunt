@@ -3006,7 +3006,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     height: auto;
     padding: 35px 5% 24px;
     overflow: hidden;
-    background: #070610;
+    background: transparent;
     color: #f7f2f5;
     scroll-snap-align: start;
     scroll-snap-stop: always;
