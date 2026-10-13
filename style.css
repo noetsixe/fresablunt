@@ -3155,32 +3155,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
     grid-row: 3 / 5;
 }
 
-#archive .archive-sticker {
-    position: absolute;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    padding: 12px;
-    background: #fe316d;
-    color: #070610;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: -.5px;
-    transform: rotate(-8deg);
-}
-
-#archive .archive-sticker--one {
-    top: 40%;
-    left: 54%;
-}
-
-#archive .archive-sticker--two {
-    right: 26%;
-    bottom: 5%;
-    background: #31fec2;
-    transform: rotate(6deg);
-}
-
 #archive .archive-vertical-note {
     position: absolute;
     z-index: 3;
@@ -3252,17 +3226,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
     #archive .archive-item--last {
         grid-column: 1 / 3;
         grid-row: 4;
-    }
-
-    #archive .archive-sticker--one {
-        top: 32%;
-        left: auto;
-        right: 8%;
-    }
-
-    #archive .archive-sticker--two {
-        right: 8%;
-        bottom: 5%;
     }
 
         #archive .archive-vertical-note {
