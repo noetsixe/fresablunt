@@ -3273,3 +3273,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     color: #fe316d;
     border-color: #fe316d;
 }
+
+#archive .archive-side-note {
+    left: 3%;
+}
