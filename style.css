@@ -3412,19 +3412,24 @@ animation: contact-crt-scroll 0.8s linear infinite;
     opacity: .8;
 }
 
-/* Líneas horizontales */
+/* Horizontales ultrafinas */
 #archive .archive-line-art > i {
     position: absolute;
     display: block;
     height: 1px;
-    background: rgba(245, 121, 188, 0.55);
+    transform: scaleY(0.3);
+    transform-origin: center;
+    background: #f579bc;
 }
-/* Líneas verticales */
+
+/* Verticales ultrafinas */
 #archive .archive-line-art > .vertical-line {
     position: absolute;
     display: block;
     width: 1px;
-    background: rgba(245, 121, 188, 0.55);
+    transform: scaleX(0.3);
+    transform-origin: center;
+    background: #f579bc;
 }
 
 /* Columna derecha: cada número comparte la altura de su línea */
