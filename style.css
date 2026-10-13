@@ -3002,7 +3002,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    min-height: 180vh;
+   min-height: 220vh;
     height: auto;
     padding: 35px 5% 24px;
     overflow: hidden;
@@ -3097,10 +3097,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
     position: relative;
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-rows: 110px;
+    grid-auto-rows: 145px;
     grid-auto-flow: row;
-    gap: 12px;
-    padding: 8px 0 35px;
+    column-gap: 3%;
+    row-gap: 65px;
+    padding: 35px 0 90px;
     align-items: stretch;
 }
 
@@ -3257,7 +3258,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 @media (max-width: 600px) {
 
     #archive.archive-editorial {
-        min-height: 180vh;
+        min-height: 220vh;
         padding: 25px 4% 20px;
     }
 
@@ -3281,12 +3282,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #archive .archive-collage {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 105px;
-        grid-auto-flow: row;
-        gap: 8px;
-        padding: 8px 0 28px;
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 115px;
+    grid-auto-flow: row;
+    column-gap: 12px;
+    row-gap: 35px;
+    padding: 20px 0 55px;
+}
 
     /* PRIMERAS PIEZAS */
 
