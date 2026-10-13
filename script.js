@@ -1341,36 +1341,56 @@ if (contactCopyButton) {
 
 
 
-/* ARCHIVE · Carga progresiva sin pausas */
 
-document.addEventListener("DOMContentLoaded", () => {
-    const videos = document.querySelectorAll(
-        "#archive .archive-item video"
-    );
+/* =========================================
+   ARCHIVE · CARGA PROGRESIVA DE VÍDEOS
+========================================= */
 
-    function loadAndPlay(video) {
+function initArchiveVideos() {
+    const videos = [
+        ...document.querySelectorAll("#archive .archive-item video")
+    ];
+
+    if (!videos.length) return;
+
+    videos.forEach((video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.playbackRate = 1;
+    });
+
+    function loadVideo(video) {
+        if (video.dataset.archiveLoaded === "true") return;
+
         const source = video.querySelector("source[data-src]");
 
         if (source) {
             source.src = source.dataset.src;
             source.removeAttribute("data-src");
+            video.dataset.archiveLoaded = "true";
             video.load();
+        } else if (video.querySelector("source[src]")) {
+            video.dataset.archiveLoaded = "true";
         }
 
-        if (video.dataset.playRequested === "true") return;
+        if (video.dataset.archiveLoaded !== "true") return;
 
-        video.dataset.playRequested = "true";
+        if (video.dataset.archivePlayListener === "true") return;
+        video.dataset.archivePlayListener = "true";
 
-        const playWhenReady = () => {
+        const startPlayback = () => {
+            video.playbackRate = 1;
             video.play().catch(() => {
-                video.dataset.playRequested = "false";
+                video.dataset.archivePlayListener = "false";
             });
         };
 
         if (video.readyState >= 2) {
-            playWhenReady();
+            startPlayback();
         } else {
-            video.addEventListener("canplay", playWhenReady, {
+            video.addEventListener("loadeddata", startPlayback, {
                 once: true
             });
         }
@@ -1379,17 +1399,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    loadAndPlay(entry.target);
-                    observer.unobserve(entry.target);
-                }
+                if (!entry.isIntersecting) return;
+
+                loadVideo(entry.target);
+                observer.unobserve(entry.target);
             });
         }, {
-            rootMargin: "400px 0px"
+            rootMargin: "100px 0px"
         });
 
         videos.forEach((video) => observer.observe(video));
     } else {
-        videos.forEach(loadAndPlay);
+        videos.forEach(loadVideo);
     }
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initArchiveVideos, {
+        once: true
+    });
+} else {
+    initArchiveVideos();
+}
