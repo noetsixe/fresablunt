@@ -3572,7 +3572,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 }
 
-/* Cada línea horizontal lleva su propio 666 */
+/* ==========================================
+   NUMERACIÓN FIJA EN LOS EXTREMOS
+========================================== */
+
+/* Líneas horizontales: 666 siempre a la derecha */
 #archive .archive-line-art > i {
     position: absolute;
     display: block;
@@ -3584,8 +3588,27 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-line-art > i::after {
     content: "666";
     position: absolute;
-    left: calc(100% + 5px);
+    left: calc(100vw - 5vw - 100%);
     top: -4px;
+    color: #f579bc;
+    font: 8px/1 monospace;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* Líneas verticales: 666 siempre abajo */
+#archive .archive-line-art .vertical-line {
+    position: absolute;
+    display: block;
+    width: 1px;
+    background: #f579bc;
+}
+
+#archive .archive-line-art .vertical-line::after {
+    content: "666";
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 3px;
     color: #f579bc;
     font: 8px/1 monospace;
     letter-spacing: 1px;
