@@ -3247,3 +3247,19 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-side-note {
     left: 3%;
 }
+
+#archive .archive-video {
+    grid-row: span 4;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    align-self: start;
+}
+
+#archive .archive-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+}
