@@ -3117,6 +3117,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
     transition: transform .35s ease;
 }
 
+#archive .archive-item video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+}
+
 #archive .archive-item:hover img,
 #archive .archive-item:hover video {
     transform: scale(1.025);
