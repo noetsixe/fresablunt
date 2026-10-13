@@ -3210,8 +3210,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         letter-spacing: .8px;
     }
 
-    #archive .archive-heading {
-    padding: 48px 0 24px;
+   #archive .archive-heading {
+    padding: 80px 0 24px;
 }
 
     #archive .archive-heading h2 {
@@ -3264,14 +3264,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
         top: 67%;
         right: 1%;
         font-size: 7px;
-    }
-
-    #archive .archive-heading {
-        transform: translateY(35px);
-    }
-
-    #archive .archive-side-note {
-        transform: translateY(35px);
     }
 }
 
