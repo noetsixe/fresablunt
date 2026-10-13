@@ -1342,16 +1342,22 @@ if (contactCopyButton) {
 
 
 
+
 /* =========================================
-   ARCHIVE · REPRODUCCIÓN FLUIDA
+   ARCHIVE · REPRODUCCIÓN ESTABLE Y FLUIDA
 ========================================= */
 
 function initArchiveVideos() {
-    const videos = document.querySelectorAll(
-        "#archive .archive-item video"
-    );
+    const videos = [
+        ...document.querySelectorAll("#archive .archive-item video")
+    ];
 
     if (!videos.length) return;
+
+    let resumeTimer = null;
+    let pageIsActive = !document.hidden;
+
+    const timers = new WeakMap();
 
     videos.forEach((video) => {
         video.muted = true;
@@ -1371,7 +1377,21 @@ function initArchiveVideos() {
         }
     }
 
+    function isVisible(video) {
+        const rect = video.getBoundingClientRect();
+
+        return (
+            rect.bottom > 0 &&
+            rect.top < window.innerHeight &&
+            rect.right > 0 &&
+            rect.left < window.innerWidth
+        );
+    }
+
     function playVideo(video) {
+        if (!pageIsActive || document.hidden) return;
+        if (!isVisible(video)) return;
+
         loadVideo(video);
 
         if (video.dataset.archiveReady === "true") {
@@ -1389,6 +1409,9 @@ function initArchiveVideos() {
             video.dataset.archiveReady = "true";
             video.dataset.archiveLoading = "false";
 
+            if (!pageIsActive || document.hidden) return;
+            if (!isVisible(video)) return;
+
             video.playbackRate = 1;
             video.play().catch(() => {});
         };
@@ -1402,43 +1425,49 @@ function initArchiveVideos() {
         }
     }
 
-    function pauseVideo(video) {
-        video.pause();
+    function pauseAllVideos() {
+        videos.forEach((video) => video.pause());
+    }
+
+    function resumeVisibleVideos() {
+        if (!pageIsActive || document.hidden) return;
+
+        videos.forEach((video) => {
+            if (isVisible(video)) {
+                playVideo(video);
+            }
+        });
     }
 
     if ("IntersectionObserver" in window) {
-        const timers = new WeakMap();
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 const video = entry.target;
-                const timer = timers.get(video);
+                const oldTimer = timers.get(video);
+
+                if (oldTimer) {
+                    clearTimeout(oldTimer);
+                    timers.delete(video);
+                }
+
+                if (!pageIsActive || document.hidden) return;
 
                 if (entry.isIntersecting) {
-                    if (timer) {
-                        clearTimeout(timer);
-                        timers.delete(video);
-                    }
-
                     playVideo(video);
                 } else {
-                    if (timer) clearTimeout(timer);
-
-                    timers.set(video, setTimeout(() => {
-                        if (!video.isConnected) return;
-
-                        const rect = video.getBoundingClientRect();
-
-                        const outside =
-                            rect.bottom < -250 ||
-                            rect.top > window.innerHeight + 250;
-
-                        if (outside) {
-                            pauseVideo(video);
+                    const timer = setTimeout(() => {
+                        if (
+                            pageIsActive &&
+                            !document.hidden &&
+                            !isVisible(video)
+                        ) {
+                            video.pause();
                         }
 
                         timers.delete(video);
-                    }, 1500));
+                    }, 1500);
+
+                    timers.set(video, timer);
                 }
             });
         }, {
@@ -1448,8 +1477,41 @@ function initArchiveVideos() {
 
         videos.forEach((video) => observer.observe(video));
     } else {
-        videos.forEach(playVideo);
+        resumeVisibleVideos();
     }
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            pageIsActive = false;
+
+            if (resumeTimer) {
+                clearTimeout(resumeTimer);
+                resumeTimer = null;
+            }
+
+            videos.forEach((video) => {
+                const timer = timers.get(video);
+
+                if (timer) {
+                    clearTimeout(timer);
+                    timers.delete(video);
+                }
+            });
+
+            pauseAllVideos();
+            return;
+        }
+
+        pageIsActive = true;
+
+        if (resumeTimer) clearTimeout(resumeTimer);
+
+        // Espera a que la pestaña se estabilice antes de reanudar.
+        resumeTimer = setTimeout(() => {
+            resumeTimer = null;
+            resumeVisibleVideos();
+        }, 350);
+    });
 }
 
 if (document.readyState === "loading") {
