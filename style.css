@@ -3398,6 +3398,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
+
 /* ==========================================
    ARCHIVE · PINK EDITORIAL MICROGRAPHICS
 ========================================== */
@@ -3406,148 +3407,62 @@ animation: contact-crt-scroll 0.8s linear infinite;
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: visible;
+    overflow: hidden;
     pointer-events: none;
     opacity: .8;
 }
 
-/* LÍNEAS HORIZONTALES IRREGULARES */
-#archive .archive-line-art::before {
-    content: "";
+/* Líneas horizontales */
+#archive .archive-line-art > i {
     position: absolute;
-    inset: 0 30px 18px 0;
-    background:
-        /* Grupo superior denso */
-        linear-gradient(#f579bc,#f579bc) 2% 3% / 42% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 12% 3.4% / 72% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 4% 3.8% / 31% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 19% 4.2% / 76% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 3% 4.6% / 57% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 37% 5% / 58% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 7% 5.4% / 24% 1px no-repeat,
-
-        /* Espacios abiertos */
-        linear-gradient(#f579bc,#f579bc) 43% 12% / 51% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 2% 16% / 19% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 27% 17.5% / 65% 1px no-repeat,
-
-        /* Segundo grupo denso */
-        linear-gradient(#f579bc,#f579bc) 8% 25% / 83% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 3% 25.5% / 46% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 24% 26% / 70% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 6% 26.5% / 62% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 39% 27% / 55% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 2% 27.5% / 28% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 17% 28% / 77% 1px no-repeat,
-
-        /* Líneas dispersas */
-        linear-gradient(#f579bc,#f579bc) 4% 36% / 24% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 52% 38% / 42% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 11% 43% / 78% 1px no-repeat,
-
-        /* Grupo central muy denso */
-        linear-gradient(#f579bc,#f579bc) 3% 52% / 63% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 18% 52.4% / 76% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 5% 52.8% / 34% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 31% 53.2% / 63% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 2% 53.6% / 82% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 42% 54% / 52% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 9% 54.4% / 39% 1px no-repeat,
-
-        /* Mucho aire */
-        linear-gradient(#f579bc,#f579bc) 36% 64% / 58% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 2% 71% / 27% 1px no-repeat,
-
-        /* Grupo inferior denso */
-        linear-gradient(#f579bc,#f579bc) 7% 81% / 87% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 2% 81.5% / 49% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 22% 82% / 72% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 4% 82.5% / 68% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 36% 83% / 58% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 12% 83.5% / 43% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 3% 84% / 81% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 17% 84.5% / 77% 1px no-repeat,
-
-        /* Final disperso */
-        linear-gradient(#f579bc,#f579bc) 5% 93% / 36% 1px no-repeat,
-        linear-gradient(#f579bc,#f579bc) 46% 96% / 48% 1px no-repeat;
+    display: block;
+    height: 1px;
+    background: #f579bc;
 }
 
-/* LÍNEAS VERTICALES INTERRUMPIDAS */
-#archive .archive-line-art::after {
-    content: "";
+/* Líneas verticales */
+#archive .archive-line-art > .vertical-line {
     position: absolute;
-    inset: 0 0 18px 0;
-    background:
-        linear-gradient(#f579bc,#f579bc) 8% 0 / 1px 13% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 8.4% 18% / 1px 9% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 8% 33% / 1px 17% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 8.2% 62% / 1px 8% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 8% 77% / 1px 21% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 19% 3% / 1px 28% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 19.4% 36% / 1px 7% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 19% 51% / 1px 23% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 19.2% 82% / 1px 16% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 32% 0 / 1px 7% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 32.3% 12% / 1px 22% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 32% 39% / 1px 14% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 32.2% 59% / 1px 31% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 47% 7% / 1px 19% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 47.4% 31% / 1px 12% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 47% 49% / 1px 8% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 47.2% 63% / 1px 25% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 63% 0 / 1px 17% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 63.3% 22% / 1px 34% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 63% 61% / 1px 11% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 63.2% 79% / 1px 19% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 76% 9% / 1px 8% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 76.3% 23% / 1px 26% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 76% 55% / 1px 19% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 76.2% 80% / 1px 15% no-repeat,
-
-        linear-gradient(#f579bc,#f579bc) 91% 0 / 1px 24% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 91.3% 30% / 1px 11% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 91% 47% / 1px 29% no-repeat,
-        linear-gradient(#f579bc,#f579bc) 91.2% 82% / 1px 16% no-repeat;
+    display: block;
+    width: 1px;
+    background: #f579bc;
 }
 
-/* NUMERACIÓN PERIMETRAL FIJA */
+/* Columna derecha: cada número comparte la altura de su línea */
 #archive .archive-line-art .numbers-right {
     position: absolute;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    bottom: 18px;
+    z-index: 1;
+    inset: 0 0 0 auto;
     width: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    color: #f579bc;
-    font: 8px/1 monospace;
 }
 
+#archive .archive-line-art .numbers-right span {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    color: #f579bc;
+    font: 8px/1 monospace;
+    white-space: nowrap;
+}
+
+/* Fila inferior: cada número comparte el eje de su vertical */
 #archive .archive-line-art .numbers-bottom {
     position: absolute;
-    z-index: 3;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    z-index: 1;
+    inset: auto 0 0;
     height: 14px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-end;
-    color: #f579bc;
-    font: 8px/1 monospace;
 }
 
-/* El collage conserva su posición y queda delante de las líneas */
+#archive .archive-line-art .numbers-bottom span {
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+    color: #f579bc;
+    font: 8px/1 monospace;
+    white-space: nowrap;
+}
+
+/* Mantener fotos, vídeos y contenido por delante de las líneas */
 #archive .archive-masthead,
 #archive .archive-heading,
 #archive .archive-collage,
@@ -3557,13 +3472,14 @@ animation: contact-crt-scroll 0.8s linear infinite;
     z-index: 2;
 }
 
+/* Ajustes para móvil */
 @media (max-width: 600px) {
     #archive .archive-line-art {
         opacity: .48;
     }
 
-    #archive .archive-line-art .numbers-right,
-    #archive .archive-line-art .numbers-bottom {
+    #archive .archive-line-art .numbers-right span,
+    #archive .archive-line-art .numbers-bottom span {
         font-size: 7px;
     }
 }
