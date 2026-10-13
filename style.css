@@ -3211,8 +3211,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #archive .archive-heading {
-        padding: 24px 0;
-    }
+    padding: 48px 0 24px;
+}
 
     #archive .archive-heading h2 {
         font-size: clamp(54px, 15vw, 90px);
