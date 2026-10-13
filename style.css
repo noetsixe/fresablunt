@@ -3265,3 +3265,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 }
 
+#archive .archive-masthead,
+#archive .archive-masthead *,
+#archive .archive-side-note {
+    color: #fe316d;
+    border-color: #fe316d;
+}
