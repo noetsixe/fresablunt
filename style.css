@@ -3406,20 +3406,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: hidden;
+    overflow: visible;
     pointer-events: none;
     opacity: .8;
 }
 
-/* Líneas horizontales irregulares:
-   longitudes, alturas y espacios distintos */
-/* GRUPOS IRREGULARES DE LÍNEAS HORIZONTALES */
+/* LÍNEAS HORIZONTALES IRREGULARES */
 #archive .archive-line-art::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0 30px 18px 0;
     background:
-        /* Grupo superior: líneas muy juntas */
+        /* Grupo superior denso */
         linear-gradient(#f579bc,#f579bc) 2% 3% / 42% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 12% 3.4% / 72% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 4% 3.8% / 31% 1px no-repeat,
@@ -3428,7 +3426,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         linear-gradient(#f579bc,#f579bc) 37% 5% / 58% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 7% 5.4% / 24% 1px no-repeat,
 
-        /* Zona abierta y líneas aisladas */
+        /* Espacios abiertos */
         linear-gradient(#f579bc,#f579bc) 43% 12% / 51% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 2% 16% / 19% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 27% 17.5% / 65% 1px no-repeat,
@@ -3442,12 +3440,12 @@ animation: contact-crt-scroll 0.8s linear infinite;
         linear-gradient(#f579bc,#f579bc) 2% 27.5% / 28% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 17% 28% / 77% 1px no-repeat,
 
-        /* Líneas cortas y dispersas */
+        /* Líneas dispersas */
         linear-gradient(#f579bc,#f579bc) 4% 36% / 24% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 52% 38% / 42% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 11% 43% / 78% 1px no-repeat,
 
-        /* Grupo central muy apretado */
+        /* Grupo central muy denso */
         linear-gradient(#f579bc,#f579bc) 3% 52% / 63% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 18% 52.4% / 76% 1px no-repeat,
         linear-gradient(#f579bc,#f579bc) 5% 52.8% / 34% 1px no-repeat,
@@ -3475,12 +3473,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
         linear-gradient(#f579bc,#f579bc) 46% 96% / 48% 1px no-repeat;
 }
 
-
-/* Líneas verticales cortadas en segmentos independientes */
+/* LÍNEAS VERTICALES INTERRUMPIDAS */
 #archive .archive-line-art::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0 0 18px 0;
     background:
         linear-gradient(#f579bc,#f579bc) 8% 0 / 1px 13% no-repeat,
         linear-gradient(#f579bc,#f579bc) 8.4% 18% / 1px 9% no-repeat,
@@ -3519,40 +3516,38 @@ animation: contact-crt-scroll 0.8s linear infinite;
         linear-gradient(#f579bc,#f579bc) 91.2% 82% / 1px 16% no-repeat;
 }
 
-/* Numeración pequeña al final de cada línea */
-#archive .archive-rule {
+/* NUMERACIÓN PERIMETRAL FIJA */
+#archive .archive-line-art .numbers-right {
     position: absolute;
-    height: 1px;
-    background: #f579bc;
-    z-index: 1;
-}
-
-#archive .archive-rule span {
-    position: absolute;
-    top: -9px;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    bottom: 18px;
+    width: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
     color: #f579bc;
     font: 8px/1 monospace;
-    white-space: nowrap;
 }
 
-#archive .archive-rule span:first-child {
-    left: 100%;
-    margin-left: 4px;
+#archive .archive-line-art .numbers-bottom {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    color: #f579bc;
+    font: 8px/1 monospace;
 }
 
-#archive .archive-rule span:last-child {
-    right: 100%;
-    margin-right: 4px;
-}
-
-/* Filas con posiciones y longitudes asimétricas */
-#archive .rule-1 { top: 4%; left: 2%; width: 38%; }
-#archive .rule-2 { top: 12.4%; left: 4%; width: 69%; }
-#archive .rule-3 { top: 22.5%; left: 3%; width: 21%; }
-#archive .rule-4 { top: 30.1%; left: 2%; width: 36%; }
-#archive .rule-5 { top: 39.7%; left: 13%; width: 78%; }
-
-/* Las fotos y videos quedan intactos, por delante de las líneas */
+/* El collage conserva su posición y queda delante de las líneas */
 #archive .archive-masthead,
 #archive .archive-heading,
 #archive .archive-collage,
@@ -3567,46 +3562,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         opacity: .48;
     }
 
-    #archive .archive-rule span {
+    #archive .archive-line-art .numbers-right,
+    #archive .archive-line-art .numbers-bottom {
         font-size: 7px;
     }
-}
-
-
-/* ==========================================
-   666 · NUMERACIÓN EN LOS BORDES
-========================================== */
-
-/* Ocultar la numeración anterior */
-#archive .archive-line-art > i::after,
-#archive .archive-line-art .vertical-line::after {
-    content: none;
-}
-
-/* Las horizontales terminan visualmente en su extremo derecho */
-#archive .archive-line-art > i {
-    position: absolute;
-}
-
-/* Columna derecha de números horizontales */
-#archive .archive-line-art > i::after {
-    content: "666";
-    position: absolute;
-    left: auto;
-right: calc(5vw - 100%);
-    top: -4px;
-    color: #f579bc;
-    font: 8px/1 monospace;
-    white-space: nowrap;
-}
-
-/* Fila inferior para los números de las verticales */
-#archive .archive-line-art .vertical-line::after {
-    content: "666";
-    position: absolute;
-    top: calc(100% + 4px);
-    left: -1px;
-    color: #f579bc;
-    font: 8px/1 monospace;
-    white-space: nowrap;
 }
