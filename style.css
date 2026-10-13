@@ -3055,7 +3055,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     font-size: clamp(70px, 15vw, 190px);
     font-weight: 900;
     line-height: .78;
-    letter-spacing: -0.035em;
+    letter-spacing: 0.02em;
     overflow-wrap: anywhere;
 }
 
