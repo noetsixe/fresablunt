@@ -3572,45 +3572,40 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 }
 
+
 /* ==========================================
-   NUMERACIÓN FIJA EN LOS EXTREMOS
+   666 · NUMERACIÓN EN LOS BORDES
 ========================================== */
 
-/* Líneas horizontales: 666 siempre a la derecha */
-#archive .archive-line-art > i {
-    position: absolute;
-    display: block;
-    height: 1px;
-    background: #f579bc;
-    font-style: normal;
+/* Ocultar la numeración anterior */
+#archive .archive-line-art > i::after,
+#archive .archive-line-art .vertical-line::after {
+    content: none;
 }
 
+/* Las horizontales terminan visualmente en su extremo derecho */
+#archive .archive-line-art > i {
+    position: absolute;
+}
+
+/* Columna derecha de números horizontales */
 #archive .archive-line-art > i::after {
     content: "666";
     position: absolute;
-    left: calc(100vw - 5vw - 100%);
+    left: calc(100% + 5px);
     top: -4px;
     color: #f579bc;
     font: 8px/1 monospace;
-    letter-spacing: 1px;
     white-space: nowrap;
 }
 
-/* Líneas verticales: 666 siempre abajo */
-#archive .archive-line-art .vertical-line {
-    position: absolute;
-    display: block;
-    width: 1px;
-    background: #f579bc;
-}
-
+/* Fila inferior para los números de las verticales */
 #archive .archive-line-art .vertical-line::after {
     content: "666";
     position: absolute;
     top: calc(100% + 4px);
-    left: 3px;
+    left: -1px;
     color: #f579bc;
     font: 8px/1 monospace;
-    letter-spacing: 1px;
     white-space: nowrap;
 }
