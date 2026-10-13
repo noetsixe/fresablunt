@@ -3416,16 +3416,15 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-line-art > i {
     position: absolute;
     display: block;
-    height: 0.5px;
-    background: #f579bc;
+    height: 1px;
+    background: rgba(245, 121, 188, 0.55);
 }
-
 /* Líneas verticales */
 #archive .archive-line-art > .vertical-line {
     position: absolute;
     display: block;
-    width: 0.5px;
-    background: #f579bc;
+    width: 1px;
+    background: rgba(245, 121, 188, 0.55);
 }
 
 /* Columna derecha: cada número comparte la altura de su línea */
