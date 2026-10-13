@@ -3592,7 +3592,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-line-art > i::after {
     content: "666";
     position: absolute;
-    left: calc(100% + 5px);
+    left: auto;
+right: calc(5vw - 100%);
     top: -4px;
     color: #f579bc;
     font: 8px/1 monospace;
