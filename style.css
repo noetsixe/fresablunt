@@ -3079,9 +3079,14 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .archive-jp {
     align-self: flex-end;
     color: #fe316d;
+    font-family: "Arial Black", Impact, sans-serif;
     font-size: clamp(26px, 4vw, 48px);
     font-weight: 900;
+    letter-spacing: -2px;
     writing-mode: vertical-rl;
+    text-orientation: upright;
+    transform: scaleX(.82);
+    transform-origin: bottom;
 }
 
 #archive .archive-collage {
