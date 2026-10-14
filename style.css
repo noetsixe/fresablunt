@@ -3335,9 +3335,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #archive .archive-collage > figure:nth-of-type(9) {
-        grid-column: 2;
-        grid-row: 11 / 13;
-    }
+    grid-column: 2;
+    grid-row: 12 / 14;
+}
 
     #archive .archive-collage > figure:nth-of-type(10) {
         grid-column: 1;
