@@ -3280,18 +3280,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: clamp(54px, 15vw, 90px);
     }
 
-        #archive .archive-collage {
+            /* COLLAGE MÓVIL · DISTRIBUCIÓN ESTABLE */
+
+    #archive .archive-collage {
         display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        grid-auto-rows: 8px;
-        grid-auto-flow: row dense;
-        column-gap: 9px;
-        row-gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 4px;
+        grid-auto-flow: row;
+        column-gap: 10px;
+        row-gap: 5px;
         padding: 16px 0 30px;
         align-items: stretch;
     }
-
-       /* COLLAGE JAPONÉS · MÓVIL SIN SUPERPOSICIONES */
 
     #archive .archive-item {
         position: relative;
@@ -3300,77 +3300,57 @@ animation: contact-crt-scroll 0.8s linear infinite;
         height: auto;
         min-width: 0;
         min-height: 0;
-        grid-column: span 3;
-        grid-row: span 17;
         margin: 0;
+        overflow: hidden;
+        grid-column: span 1;
+        grid-row: span 40;
         align-self: stretch;
     }
 
-    /* PIEZAS GRANDES */
+    /* IMÁGENES · TAMAÑOS IRREGULARES */
 
     #archive .archive-item--hero {
-        grid-column: span 6;
-        grid-row: span 24;
+        grid-column: 1 / -1;
+        grid-row: span 48;
     }
 
     #archive .archive-item--detail {
-        grid-column: span 3;
-        grid-row: span 18;
+        grid-column: span 1;
+        grid-row: span 38;
     }
 
     #archive .archive-item--small {
-        grid-column: span 3;
-        grid-row: span 15;
+        grid-column: span 1;
+        grid-row: span 34;
     }
 
     #archive .archive-item--wide {
-        grid-column: span 4;
-        grid-row: span 19;
+        grid-column: 1 / -1;
+        grid-row: span 42;
     }
 
     #archive .archive-item--last {
-    grid-column: span 3;
-    grid-row: span 17;
-}
+        grid-column: span 1;
+        grid-row: span 36;
+    }
 
-        /* VIDEOS · TAMAÑO LEGIBLE EN CELULAR */
+    /* TODOS LOS VIDEOS · ANCHO COMPLETO Y ALTURA CONTROLADA */
 
     #archive .archive-item:has(video) {
-        grid-column: span 3;
-        grid-row: span 24;
+        grid-column: 1 / -1;
+        grid-row: span 42;
         min-width: 0;
         min-height: 0;
-        height: auto;
-        align-self: stretch;
     }
 
-    /* Videos destacados, más anchos */
-    #archive .archive-item:has(video):nth-of-type(4n) {
-        grid-column: span 4;
-        grid-row: span 26;
-    }
-
-    /* Ningún video debe quedar reducido a dos columnas */
-    #archive .archive-item:has(video):nth-of-type(4n + 2) {
-        grid-column: span 3;
-        grid-row: span 24;
-    }
-
-    /* El video debe ocupar toda su pieza */
     #archive .archive-item video {
         display: block;
         width: 100%;
         height: 100%;
         min-width: 0;
         min-height: 0;
-        object-fit: cover;
-    }
-
-    /* SEPARACIÓN ADICIONAL ENTRE VIDEOS CONSECUTIVOS */
-
-    #archive .archive-item:has(video) + .archive-item:has(video) {
-        grid-column: 1 / span 3;
-        margin-top: 9px;
+        object-fit: contain;
+        object-position: center;
     }
 
     #archive .archive-vertical-note {
