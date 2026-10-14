@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -3506,4 +3507,195 @@ animation: contact-crt-scroll 0.8s linear infinite;
     #archive .archive-line-art .numbers-bottom span {
         font-size: 7px;
     }
+}
+
+
+
+/* ==========================================
+   ARCHIVE · FULL LYRIC TYPOGRAPHY
+========================================== */
+
+#archive {
+  position: relative;
+  isolation: isolate;
+}
+
+#archive .archive-type-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: visible;
+  pointer-events: none;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+#archive .lyric-block {
+  position: absolute;
+  width: 30%;
+  box-sizing: border-box;
+  padding: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+#archive .lyric-block p {
+  margin: 0 0 5px;
+  font-size: clamp(10px, 1.05vw, 15px);
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+#archive .lyric-block .lyric-label {
+  display: block;
+  margin: 0 0 12px;
+  color: #FE316D;
+  font-size: 9px;
+  letter-spacing: .09em;
+}
+
+#archive .lyric-block .lyric-display {
+  margin: 13px 0 8px;
+  color: #FE316D;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(25px, 3.5vw, 54px);
+  line-height: .88;
+  letter-spacing: -.055em;
+}
+
+#archive .lyric-block .lyric-big {
+  color: #FE316D;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(19px, 2.3vw, 36px);
+  line-height: .95;
+  letter-spacing: -.04em;
+}
+
+#archive .lyric-block-a {
+  top: 13%;
+  left: 1%;
+  width: 27%;
+  transform: rotate(-2deg);
+}
+
+#archive .lyric-block-b {
+  top: 19%;
+  right: 1%;
+  width: 32%;
+  transform: rotate(2deg);
+  text-align: right;
+}
+
+#archive .lyric-block-c {
+  top: 39%;
+  left: 27%;
+  width: 35%;
+  transform: rotate(-1deg);
+}
+
+#archive .lyric-block-d {
+  top: 55%;
+  right: 1%;
+  width: 32%;
+  transform: rotate(-2deg);
+  text-align: right;
+}
+
+#archive .lyric-block-e {
+  top: 69%;
+  left: 2%;
+  width: 31%;
+  transform: rotate(1deg);
+}
+
+#archive .lyric-stamp {
+  position: absolute;
+  color: #FE316D;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+
+#archive .lyric-stamp-a {
+  top: 12%;
+  right: 4%;
+  writing-mode: vertical-rl;
+}
+
+#archive .lyric-stamp-b {
+  top: 48%;
+  left: 2%;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+}
+
+#archive .lyric-stamp-c {
+  top: 88%;
+  right: 4%;
+  transform: rotate(-3deg);
+}
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+  #archive .lyric-block {
+    width: 44%;
+    padding: 4px;
+    line-height: 1.3;
+  }
+
+  #archive .lyric-block p {
+    margin-bottom: 4px;
+    font-size: 9px;
+    letter-spacing: -.055em;
+  }
+
+  #archive .lyric-block .lyric-label {
+    margin-bottom: 8px;
+    font-size: 7px;
+  }
+
+  #archive .lyric-block .lyric-display {
+    margin: 9px 0 6px;
+    font-size: clamp(20px, 6.5vw, 34px);
+    line-height: .9;
+  }
+
+  #archive .lyric-block .lyric-big {
+    font-size: clamp(16px, 4.8vw, 25px);
+  }
+
+  #archive .lyric-block-a {
+    top: 12%;
+    left: 1%;
+    width: 45%;
+  }
+
+  #archive .lyric-block-b {
+    top: 20%;
+    right: 1%;
+    width: 46%;
+  }
+
+  #archive .lyric-block-c {
+    top: 40%;
+    left: 4%;
+    width: 48%;
+  }
+
+  #archive .lyric-block-d {
+    top: 57%;
+    right: 1%;
+    width: 46%;
+  }
+
+  #archive .lyric-block-e {
+    top: 72%;
+    left: 2%;
+    width: 45%;
+  }
+
+  #archive .lyric-stamp {
+    font-size: 7px;
+  }
 }
