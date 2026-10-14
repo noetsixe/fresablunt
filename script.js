@@ -1500,7 +1500,7 @@ const scrollTrackers = new WeakMap();
             return;
         }
 
-        const candidates = videos
+                let candidates = videos
             .map((video) => ({
                 video,
                 visibility: getVisibility(video),
@@ -1514,6 +1514,40 @@ const scrollTrackers = new WeakMap();
             .sort((a, b) =>
                 b.visibility.score - a.visibility.score
             );
+
+        /* EXCEPCIÓN MÓVIL · FINAL DE ARCHIVE */
+        const archive = document.getElementById("archive");
+        const archiveRect = archive
+            ? archive.getBoundingClientRect()
+            : null;
+
+        const archiveAtEnd =
+            isMobile &&
+            archiveRect &&
+            archiveRect.bottom <= window.innerHeight + 80;
+
+        /*
+         * Si llegamos al final y ningún video cumple
+         * la zona central, elegir el video visible
+         * con mayor área en pantalla.
+         */
+        if (archiveAtEnd && candidates.length === 0) {
+            candidates = videos
+                .map((video) => ({
+                    video,
+                    visibility: getVisibility(video),
+                    state: states.get(video)
+                }))
+                .filter((item) =>
+                    item.visibility.score >= 0.15 &&
+                    item.state &&
+                    !item.state.failed
+                )
+                .sort((a, b) =>
+                    b.visibility.score - a.visibility.score
+                )
+                .slice(0, 1);
+        }
 
         const selected = candidates
             .slice(0, MAX_PLAYING)
