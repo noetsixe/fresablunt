@@ -1361,6 +1361,9 @@ function initArchiveVideos() {
 
     let pageIsActive = !document.hidden;
     let updateTimer = null;
+   let scrollSafetyActive = false;
+let scrollSafetyTimer = null;
+const scrollTrackers = new WeakMap();
 
     const states = new WeakMap();
 
@@ -1487,7 +1490,12 @@ function initArchiveVideos() {
     }
 
     function updateVideos() {
-        if (!pageIsActive || document.hidden) {
+    if (scrollSafetyActive) {
+        videos.forEach(pauseVideo);
+        return;
+    }
+
+    if (!pageIsActive || document.hidden) {
             videos.forEach(pauseVideo);
             return;
         }
@@ -1544,6 +1552,78 @@ function initArchiveVideos() {
         }, 120);
     }
 
+   
+/* SEGURO · DESPLAZAMIENTO RÁPIDO */
+
+
+function handleArchiveScroll(event) {
+    const archive = document.getElementById("archive");
+    if (!archive) return;
+
+    const rect = archive.getBoundingClientRect();
+
+    const archiveIsVisible =
+        rect.top < window.innerHeight &&
+        rect.bottom > 0;
+
+    const target = event.currentTarget;
+    const now = performance.now();
+
+    const currentPosition =
+        target === window
+            ? window.scrollY
+            : target.scrollTop;
+
+    const previous = scrollTrackers.get(target);
+
+    scrollTrackers.set(target, {
+        position: currentPosition,
+        time: now
+    });
+
+    /* Fuera de ARCHIVE, el seguro no interviene */
+    if (!archiveIsVisible) {
+        if (scrollSafetyTimer !== null) {
+            clearTimeout(scrollSafetyTimer);
+            scrollSafetyTimer = null;
+        }
+
+        scrollSafetyActive = false;
+        scheduleUpdate();
+        return;
+    }
+
+    if (previous) {
+        const elapsed = now - previous.time;
+        const distance = Math.abs(
+            currentPosition - previous.position
+        );
+
+        if (elapsed > 0 && elapsed < 100 && distance > 80) {
+            scrollSafetyActive = true;
+
+            videos.forEach(pauseVideo);
+
+            if (updateTimer !== null) {
+                clearTimeout(updateTimer);
+                updateTimer = null;
+            }
+        }
+    }
+
+    if (scrollSafetyTimer !== null) {
+        clearTimeout(scrollSafetyTimer);
+    }
+
+    scrollSafetyTimer = setTimeout(() => {
+        scrollSafetyTimer = null;
+        scrollSafetyActive = false;
+        scheduleUpdate();
+    }, 500);
+}
+
+
+
     /* Detecta cambios de visibilidad */
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver(
@@ -1558,18 +1638,30 @@ function initArchiveVideos() {
     const mainSite = document.getElementById("main-site");
 
     if (mainSite) {
-        mainSite.addEventListener(
-            "scroll",
-            scheduleUpdate,
-            { passive: true }
-        );
-    }
-
-    window.addEventListener(
+    mainSite.addEventListener(
         "scroll",
         scheduleUpdate,
         { passive: true }
     );
+
+    mainSite.addEventListener(
+        "scroll",
+        handleArchiveScroll,
+        { passive: true }
+    );
+}
+
+window.addEventListener(
+    "scroll",
+    scheduleUpdate,
+    { passive: true }
+);
+
+window.addEventListener(
+    "scroll",
+    handleArchiveScroll,
+    { passive: true }
+);
 
     window.addEventListener(
         "resize",
