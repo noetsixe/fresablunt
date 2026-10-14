@@ -1343,8 +1343,10 @@ if (contactCopyButton) {
 
 
 
+
 /* =========================================
-   ARCHIVE · CARGA CONTROLADA PARA MÓVILES
+   ARCHIVE · REPRODUCCIÓN POR ZONA VISIBLE
+   Prioridad: fluidez y estabilidad
 ========================================= */
 
 function initArchiveVideos() {
@@ -1355,14 +1357,10 @@ function initArchiveVideos() {
     if (!videos.length) return;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-    // En celular: un solo vídeo reproduciéndose a la vez.
-    // En pantallas grandes: máximo dos.
     const MAX_PLAYING = isMobile ? 1 : 2;
 
     let pageIsActive = !document.hidden;
     let updateTimer = null;
-    let observer = null;
 
     const states = new WeakMap();
 
@@ -1371,117 +1369,115 @@ function initArchiveVideos() {
         video.defaultMuted = true;
         video.loop = true;
         video.playsInline = true;
-        video.setAttribute("playsinline", "");
-        video.setAttribute("muted", "");
         video.preload = "none";
 
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+
         states.set(video, {
+            requested: false,
             loading: false,
-            ready: false,
-            failed: false,
-            requested: false
+            ready: video.readyState >= 3,
+            failed: false
+        });
+
+        video.addEventListener("canplay", () => {
+            const state = states.get(video);
+            if (!state) return;
+
+            state.loading = false;
+            state.ready = true;
+
+            video.dataset.archiveReady = "true";
+            video.dataset.archiveLoading = "false";
+
+            scheduleUpdate();
         });
 
         video.addEventListener("error", () => {
             const state = states.get(video);
-            state.failed = true;
+            if (!state) return;
+
             state.loading = false;
+            state.failed = true;
+
             video.dataset.archiveLoading = "false";
         });
     });
 
-    function isVisible(video) {
+    /* Mide cuánto espacio útil ocupa cada video */
+    function getVisibility(video) {
         const rect = video.getBoundingClientRect();
 
-        return (
-            rect.bottom > 0 &&
-            rect.top < window.innerHeight &&
-            rect.right > 0 &&
-            rect.left < window.innerWidth
+        const left = Math.max(0, rect.left);
+        const right = Math.min(window.innerWidth, rect.right);
+        const top = Math.max(0, rect.top);
+        const bottom = Math.min(window.innerHeight, rect.bottom);
+
+        const width = Math.max(0, right - left);
+        const height = Math.max(0, bottom - top);
+        const visibleArea = width * height;
+
+        const videoArea = Math.max(1, rect.width * rect.height);
+        const viewportArea = Math.max(
+            1,
+            window.innerWidth * window.innerHeight
         );
+
+        const score = visibleArea / Math.min(videoArea, viewportArea);
+        const visibleCenterY = (top + bottom) / 2;
+        const centerPosition = visibleCenterY / window.innerHeight;
+
+        const insidePriorityZone =
+            centerPosition >= 0.18 &&
+            centerPosition <= 0.82;
+
+        return {
+            score,
+            eligible:
+                visibleArea > 0 &&
+                score >= 0.35 &&
+                insidePriorityZone,
+            centerPosition
+        };
     }
 
-    function visibilityScore(video) {
-        const rect = video.getBoundingClientRect();
-
-        const visibleHeight = Math.max(
-            0,
-            Math.min(rect.bottom, window.innerHeight) -
-            Math.max(rect.top, 0)
-        );
-
-        const visibleWidth = Math.max(
-            0,
-            Math.min(rect.right, window.innerWidth) -
-            Math.max(rect.left, 0)
-        );
-
-        return visibleHeight * visibleWidth;
-    }
-
-    function loadVideo(video) {
+    /* Carga un video solo cuando entra en la zona prioritaria */
+    function prepareVideo(video) {
         const state = states.get(video);
 
-        if (state.requested || state.failed) return;
+        if (
+            !state ||
+            state.failed ||
+            state.loading ||
+            state.ready
+        ) return;
+
+        state.loading = true;
+
+        video.dataset.archiveLoading = "true";
 
         const source = video.querySelector("source[data-src]");
 
         if (source) {
             source.src = source.dataset.src;
             source.removeAttribute("data-src");
-            state.requested = true;
-            state.loading = true;
-            video.dataset.archiveLoading = "true";
-            video.load();
-        } else {
-            state.requested = true;
         }
-    }
 
-    function prepareVideo(video) {
-        const state = states.get(video);
+        state.requested = true;
 
-        if (state.failed || state.ready || state.loading) return;
-
-        loadVideo(video);
+        /* El evento canplay ya está preparado */
+        video.load();
 
         if (video.readyState >= 3) {
-            state.ready = true;
             state.loading = false;
+            state.ready = true;
+
             video.dataset.archiveReady = "true";
             video.dataset.archiveLoading = "false";
+
             scheduleUpdate();
-            return;
         }
-
-        state.loading = true;
-        video.dataset.archiveLoading = "true";
-
-        const onReady = () => {
-            state.ready = true;
-            state.loading = false;
-
-            video.dataset.archiveReady = "true";
-            video.dataset.archiveLoading = "false";
-
-            video.removeEventListener("canplay", onReady);
-            video.removeEventListener("error", onError);
-
-            scheduleUpdate();
-        };
-
-        const onError = () => {
-            state.failed = true;
-            state.loading = false;
-
-            video.dataset.archiveLoading = "false";
-
-            video.removeEventListener("canplay", onReady);
-            video.removeEventListener("error", onError);
-        };
-
-        video.addEventListener("canplay", onReady);
-        video.addEventListener("error", onError);
     }
 
     function pauseVideo(video) {
@@ -1496,80 +1492,96 @@ function initArchiveVideos() {
             return;
         }
 
-        const visibleVideos = videos
-            .filter(isVisible)
-            .sort((a, b) => visibilityScore(b) - visibilityScore(a));
+        const candidates = videos
+            .map((video) => ({
+                video,
+                visibility: getVisibility(video),
+                state: states.get(video)
+            }))
+            .filter((item) =>
+                item.visibility.eligible &&
+                item.state &&
+                !item.state.failed
+            )
+            .sort((a, b) =>
+                b.visibility.score - a.visibility.score
+            );
 
-        const selectedVideos = visibleVideos.slice(0, MAX_PLAYING);
-        const selectedSet = new Set(selectedVideos);
+        const selected = candidates
+            .slice(0, MAX_PLAYING)
+            .map((item) => item.video);
 
-        // Pausar primero los vídeos que ya no tienen prioridad.
+        const selectedSet = new Set(selected);
+
+        /* Pausa los que salen de la zona prioritaria */
         videos.forEach((video) => {
             if (!selectedSet.has(video)) {
                 pauseVideo(video);
             }
         });
 
-        selectedVideos.forEach((video) => {
+        /* Reproduce solo los videos prioritarios */
+        selected.forEach((video) => {
             const state = states.get(video);
 
-            if (!state || state.failed) return;
-
-            if (!state.requested) {
+            if (!state.ready) {
                 prepareVideo(video);
                 return;
             }
 
-            if (state.ready && video.paused) {
-                video.play().catch(() => {
-                    // El navegador puede bloquear temporalmente la reproducción.
-                });
+            if (video.paused) {
+                video.play().catch(() => {});
             }
         });
     }
 
     function scheduleUpdate() {
-        if (updateTimer) return;
+        if (updateTimer !== null) return;
 
         updateTimer = setTimeout(() => {
             updateTimer = null;
             updateVideos();
-        }, 150);
+        }, 120);
     }
 
+    /* Detecta cambios de visibilidad */
     if ("IntersectionObserver" in window) {
-        observer = new IntersectionObserver(() => {
-            scheduleUpdate();
-        }, {
-            rootMargin: "0px",
-            threshold: 0.1
-        });
+        const observer = new IntersectionObserver(
+            scheduleUpdate,
+            { threshold: [0, 0.25, 0.5, 0.75, 1] }
+        );
 
         videos.forEach((video) => observer.observe(video));
     }
 
-    // Responder al desplazamiento sin ejecutar cálculos en cada píxel.
-    const scrollContainer = document.getElementById("main-site");
+    /* Compatible con scroll normal y contenedores internos */
+    const mainSite = document.getElementById("main-site");
 
-    if (scrollContainer) {
-        scrollContainer.addEventListener("scroll", scheduleUpdate, {
-            passive: true
-        });
+    if (mainSite) {
+        mainSite.addEventListener(
+            "scroll",
+            scheduleUpdate,
+            { passive: true }
+        );
     }
 
-    window.addEventListener("scroll", scheduleUpdate, {
-        passive: true
-    });
+    window.addEventListener(
+        "scroll",
+        scheduleUpdate,
+        { passive: true }
+    );
 
-    window.addEventListener("resize", scheduleUpdate, {
-        passive: true
-    });
+    window.addEventListener(
+        "resize",
+        scheduleUpdate,
+        { passive: true }
+    );
 
     document.addEventListener("visibilitychange", () => {
         pageIsActive = !document.hidden;
 
         if (!pageIsActive) {
-            if (updateTimer) {
+            if (updateTimer !== null) {
                 clearTimeout(updateTimer);
                 updateTimer = null;
             }
@@ -1581,14 +1593,15 @@ function initArchiveVideos() {
         scheduleUpdate();
     });
 
-    // Carga únicamente los vídeos que entran en pantalla.
     updateVideos();
 }
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initArchiveVideos, {
-        once: true
-    });
+    document.addEventListener(
+        "DOMContentLoaded",
+        initArchiveVideos,
+        { once: true }
+    );
 } else {
     initArchiveVideos();
 }
