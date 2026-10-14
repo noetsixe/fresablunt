@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=Train+One&display=swap');
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -3743,40 +3743,70 @@ animation: contact-crt-scroll 0.8s linear infinite;
 /* ARCHIVE · JAPANESE UNDERGROUND TYPOGRAPHY */
 
 #archive .archive-type-layer {
-  font-family: "Syne", sans-serif;
+  font-family: "IBM Plex Mono", monospace;
 }
 
+/* Letras principales: pesadas y compactas */
 #archive .scatter-word {
-  font-family: "Syne", sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.055em;
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
   line-height: 0.88;
   text-transform: uppercase;
+  text-wrap: nowrap;
 }
 
+/* Acentos ornamentales, sin convertir toda la letra en decoración */
+#archive .lyric-scatter .scatter-word:nth-of-type(9n) {
+  font-family: "Train One", sans-serif;
+  letter-spacing: 0.015em;
+  line-height: 1;
+}
+
+/* Algunos titulares con contorno, como impresión experimental */
 #archive .scatter-word.lunar-1,
-#archive .scatter-word.lunar-10,
 #archive .scatter-word.caiman-1,
 #archive .scatter-word.true-1,
 #archive .scatter-word.amor-1 {
   font-family: "Dela Gothic One", sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  -webkit-text-stroke: 0.35px currentColor;
+  letter-spacing: -0.055em;
 }
 
+/* Códigos y microtextos */
 #archive .scatter-label,
 #archive .scatter-stamp {
   font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
   text-transform: uppercase;
 }
 
+/* Sello vertical de revista japonesa */
+#archive .scatter-stamp.stamp-c {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.16em;
+}
+
+/* Contraste tipográfico japonés */
 #archive .scatter-word.jp,
 #archive .scatter-word.japanese,
 #archive .scatter-label.jp {
   font-family: "Shippori Mincho", serif;
   font-weight: 600;
   letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+/* Más tensión visual sin añadir colores nuevos */
+#archive .scatter-stamp {
+  opacity: 0.82;
+}
+
+#archive .scatter-label {
+  opacity: 0.9;
 }
