@@ -3218,8 +3218,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 #archive .archive-collage > figure:nth-of-type(18) {
-    grid-column: 2 / 4;
-    grid-row: 23 / 25;
+    grid-column: 1;
+    grid-row: 25 / 27;
 }
 
 /* NOTA VERTICAL */
