@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -3739,18 +3739,19 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* ARCHIVE · JAPANESE MAGAZINE TYPOGRAPHY */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
-#archive .lyric-scatter {
-  font-family: "Barlow Condensed", sans-serif;
+/* ARCHIVE · JAPANESE UNDERGROUND TYPOGRAPHY */
+
+#archive .archive-type-layer {
+  font-family: "Syne", sans-serif;
 }
 
 #archive .scatter-word {
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.9;
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  text-transform: uppercase;
 }
 
 #archive .scatter-word.lunar-1,
@@ -3758,17 +3759,24 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .scatter-word.caiman-1,
 #archive .scatter-word.true-1,
 #archive .scatter-word.amor-1 {
-  font-family: "Anton", sans-serif;
+  font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
 }
 
 #archive .scatter-label,
 #archive .scatter-stamp {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+#archive .scatter-word.jp,
+#archive .scatter-word.japanese,
+#archive .scatter-label.jp {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
