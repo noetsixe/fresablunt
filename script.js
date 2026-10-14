@@ -1539,7 +1539,7 @@ const scrollTrackers = new WeakMap();
                     state: states.get(video)
                 }))
                 .filter((item) =>
-                    item.visibility.score >= 0.15 &&
+                    item.visibility.score >= 0.05 &&
                     item.state &&
                     !item.state.failed
                 )
