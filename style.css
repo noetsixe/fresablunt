@@ -3329,9 +3329,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #archive .archive-item--last {
-        grid-column: span 2;
-        grid-row: span 16;
-    }
+    grid-column: span 3;
+    grid-row: span 17;
+}
 
     /* VIDEOS · TAMAÑOS IRREGULARES */
 
@@ -3340,14 +3340,14 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-row: span 17;
     }
 
-    #archive .archive-item:has(video):nth-of-type(4n) {
+        #archive .archive-item:has(video):nth-of-type(4n) {
         grid-column: span 4;
-        grid-row: span 19;
+        grid-row: span 20;
     }
 
     #archive .archive-item:has(video):nth-of-type(4n + 2) {
-        grid-column: span 2;
-        grid-row: span 15;
+        grid-column: span 3;
+        grid-row: span 18;
     }
 
     /* IMÁGENES · RITMO VISUAL */
