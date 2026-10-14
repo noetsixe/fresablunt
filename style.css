@@ -3291,7 +3291,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         align-items: stretch;
     }
 
-    /* COLLAGE JAPONÉS · IRREGULAR, SIN SUPERPOSICIONES */
+       /* COLLAGE JAPONÉS · MÓVIL SIN SUPERPOSICIONES */
 
     #archive .archive-item {
         position: relative;
@@ -3301,12 +3301,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
         min-width: 0;
         min-height: 0;
         grid-column: span 3;
-        grid-row: span 16;
+        grid-row: span 17;
         margin: 0;
         align-self: stretch;
     }
 
-    /* Piezas grandes */
+    /* PIEZAS GRANDES */
+
     #archive .archive-item--hero {
         grid-column: span 6;
         grid-row: span 24;
@@ -3314,7 +3315,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #archive .archive-item--detail {
         grid-column: span 3;
-        grid-row: span 19;
+        grid-row: span 18;
     }
 
     #archive .archive-item--small {
@@ -3329,23 +3330,31 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #archive .archive-item--last {
         grid-column: span 2;
+        grid-row: span 16;
+    }
+
+    /* VIDEOS · TAMAÑOS IRREGULARES */
+
+    #archive .archive-item:has(video) {
+        grid-column: span 3;
         grid-row: span 17;
     }
 
-    /* Ritmo irregular para el resto de piezas */
-    #archive .archive-collage > figure:nth-of-type(6) {
-        grid-column: span 2;
-        grid-row: span 14;
+    #archive .archive-item:has(video):nth-of-type(4n) {
+        grid-column: span 4;
+        grid-row: span 19;
     }
+
+    #archive .archive-item:has(video):nth-of-type(4n + 2) {
+        grid-column: span 2;
+        grid-row: span 15;
+    }
+
+    /* IMÁGENES · RITMO VISUAL */
 
     #archive .archive-collage > figure:nth-of-type(7) {
         grid-column: span 4;
         grid-row: span 18;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(8) {
-        grid-column: span 6;
-        grid-row: span 22;
     }
 
     #archive .archive-collage > figure:nth-of-type(9) {
@@ -3353,49 +3362,16 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-row: span 14;
     }
 
-    #archive .archive-collage > figure:nth-of-type(10) {
-        grid-column: span 4;
-        grid-row: span 18;
-    }
-
     #archive .archive-collage > figure:nth-of-type(11) {
         grid-column: span 4;
-        grid-row: span 20;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(12) {
-        grid-column: span 2;
-        grid-row: span 15;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(13) {
-        grid-column: span 3;
         grid-row: span 18;
     }
 
-    #archive .archive-collage > figure:nth-of-type(14) {
-        grid-column: span 3;
-        grid-row: span 15;
-    }
+    /* SEPARACIÓN ADICIONAL ENTRE VIDEOS CONSECUTIVOS */
 
-    #archive .archive-collage > figure:nth-of-type(15) {
-        grid-column: span 3;
-        grid-row: span 19;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(16) {
-        grid-column: span 6;
-        grid-row: span 22;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(17) {
-        grid-column: span 2;
-        grid-row: span 15;
-    }
-
-    #archive .archive-collage > figure:nth-of-type(18) {
-        grid-column: span 4;
-        grid-row: span 18;
+    #archive .archive-item:has(video) + .archive-item:has(video) {
+        grid-column: 1 / span 3;
+        margin-top: 9px;
     }
 
     #archive .archive-vertical-note {
