@@ -3291,6 +3291,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     /* PRIMERAS CINCO PIEZAS */
 
+   
+    /* COLLAGE IRREGULAR · MENOS ESPACIOS VACÍOS */
+
     #archive .archive-item--hero {
         grid-column: 1 / 3;
         grid-row: 1 / 3;
@@ -3316,11 +3319,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-row: 6 / 8;
     }
 
-    /* RESTO DE PIEZAS */
-
     #archive .archive-collage > figure:nth-of-type(6) {
         grid-column: 1;
-        grid-row: 8 / 10;
+        grid-row: 7 / 9;
     }
 
     #archive .archive-collage > figure:nth-of-type(7) {
@@ -3335,52 +3336,52 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #archive .archive-collage > figure:nth-of-type(9) {
         grid-column: 2;
-        grid-row: 12 / 14;
+        grid-row: 11 / 13;
     }
 
     #archive .archive-collage > figure:nth-of-type(10) {
         grid-column: 1;
-        grid-row: 13 / 15;
+        grid-row: 12 / 14;
     }
 
     #archive .archive-collage > figure:nth-of-type(11) {
         grid-column: 1 / 3;
-        grid-row: 15 / 17;
+        grid-row: 14 / 16;
     }
 
     #archive .archive-collage > figure:nth-of-type(12) {
         grid-column: 2;
-        grid-row: 17 / 19;
+        grid-row: 16 / 18;
     }
 
     #archive .archive-collage > figure:nth-of-type(13) {
         grid-column: 1;
-        grid-row: 18 / 20;
+        grid-row: 17 / 19;
     }
 
     #archive .archive-collage > figure:nth-of-type(14) {
         grid-column: 1;
-        grid-row: 20 / 22;
+        grid-row: 19 / 21;
     }
 
     #archive .archive-collage > figure:nth-of-type(15) {
         grid-column: 2;
-        grid-row: 20 / 22;
+        grid-row: 19 / 21;
     }
 
     #archive .archive-collage > figure:nth-of-type(16) {
         grid-column: 1 / 3;
-        grid-row: 22 / 24;
+        grid-row: 21 / 23;
     }
 
     #archive .archive-collage > figure:nth-of-type(17) {
         grid-column: 2;
-        grid-row: 24 / 26;
+        grid-row: 23 / 25;
     }
 
     #archive .archive-collage > figure:nth-of-type(18) {
         grid-column: 1;
-        grid-row: 25 / 27;
+        grid-row: 24 / 26;
     }
 
     #archive .archive-vertical-note {
