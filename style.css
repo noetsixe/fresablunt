@@ -3174,7 +3174,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 #archive .archive-collage > figure:nth-of-type(9) {
     grid-column: 2;
-    grid-row: 12 / 14;
+    grid-row: 13 / 15;
 }
 
 #archive .archive-collage > figure:nth-of-type(10) {
