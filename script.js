@@ -1172,8 +1172,9 @@ function startReleaseBackground() {
     releaseBackgroundStarted = true;
 
     new window.YT.Player(releaseBackground, {
+    host: "https://www.youtube-nocookie.com",
 
-        videoId: currentRelease.youtube,
+    videoId: currentRelease.youtube,
 
         playerVars: {
             autoplay: 1,
