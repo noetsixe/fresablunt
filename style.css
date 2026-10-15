@@ -3994,16 +3994,55 @@ animation: contact-crt-scroll 0.8s linear infinite;
   align-content: stretch;
 }
 
+
+/* ARCHIVE · distribución vertical de titulares en móvil */
+
 @media (max-width: 600px) {
+  #archive .lunar-9 {
+    grid-row: 3 / span 2 !important;
+  }
+
+  #archive .lunar-10 {
+    grid-row: 8 / span 2 !important;
+  }
+
+  #archive .caiman-1 {
+    grid-row: 14 / span 2 !important;
+  }
+
+  #archive .caiman-3 {
+    grid-row: 20 / span 2 !important;
+  }
+
+  #archive .caiman-4 {
+    grid-row: 26 / span 2 !important;
+  }
+
+  #archive .true-5 {
+    grid-row: 32 / span 2 !important;
+  }
+
+  #archive .true-6 {
+    grid-row: 38 / span 2 !important;
+  }
+
+  #archive .true-19 {
+    grid-row: 44 / span 2 !important;
+  }
+
+  #archive .true-20 {
+    grid-row: 49 / span 2 !important;
+  }
+
   #archive .amor-9 {
-    grid-row: 50 / span 2 !important;
+    grid-row: 54 / span 2 !important;
   }
 
   #archive .amor-11 {
-    grid-row: 57 / span 2 !important;
+    grid-row: 59 / span 2 !important;
   }
 
   #archive .archive-type-layer {
-    grid-template-rows: repeat(60, minmax(0, 1fr));
+    grid-template-rows: repeat(62, minmax(0, 1fr));
   }
 }
