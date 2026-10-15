@@ -3518,7 +3518,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
    ========================================================= */
 #archive .archive-type-layer {
   position: absolute;
-  top: 160px;
+  top: 240px;
   right: 0;
   bottom: 0;
   left: 0;
