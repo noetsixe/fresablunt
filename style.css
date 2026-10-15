@@ -3692,21 +3692,21 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 #archive .true-20 {
   grid-column: 7 / span 6;
-  grid-row: 42 / span 2;
+  grid-row: 43 / span 2;
   font-size: clamp(23px, 3.2vw, 48px);
   transform: rotate(-2deg);
 }
 
 #archive .amor-9 {
   grid-column: 1 / span 8;
-  grid-row: 46 / span 2;
+  grid-row: 48 / span 2;
   font-size: clamp(20px, 2.7vw, 40px);
   transform: rotate(-1deg);
 }
 
 #archive .amor-11 {
   grid-column: 5 / span 8;
-  grid-row: 49 / span 2;
+  grid-row: 51 / span 2;
   font-size: clamp(20px, 2.8vw, 42px);
   font-style: italic;
   transform: rotate(1deg);
