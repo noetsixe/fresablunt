@@ -3626,7 +3626,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
   line-height: 0.98;
   letter-spacing: -0.065em;
   text-transform: uppercase;
-  text-shadow: 1px 0 currentColor;
   -webkit-text-stroke: 0;
   overflow-wrap: anywhere;
 }
@@ -3644,7 +3643,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
   grid-column: 8 / span 5;
   grid-row: 6 / span 2;
   font-size: clamp(22px, 2.8vw, 42px);
-  font-style: italic;
   transform: rotate(2deg);
 }
 
@@ -3708,7 +3706,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
   grid-column: 5 / span 8;
   grid-row: 51 / span 2;
   font-size: clamp(20px, 2.8vw, 42px);
-  font-style: italic;
   transform: rotate(1deg);
 }
 
@@ -3754,7 +3751,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
   max-width: 100%;
 
   color: #FE316D;
-font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 9px;
   font-weight: 700;
   line-height: 1.2;
@@ -3801,7 +3798,6 @@ font-family: "Space Grotesk", sans-serif;
   grid-column: 12;
   grid-row: 26 / span 2;
   writing-mode: vertical-rl;
-  font-family: "Space Grotesk", sans-serif;
   letter-spacing: 0.08em;
 }
 
@@ -3811,42 +3807,7 @@ font-family: "Space Grotesk", sans-serif;
   transform: rotate(-3deg);
 }
 
-#archive .stamp-a,
-#archive .stamp-d {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
 
-/* Acabado gráfico DIY Tokyo Punk */
-
-#archive .lunar-9,
-#archive .caiman-1,
-#archive .true-20 {
-  -webkit-text-stroke: 0.5px currentColor;
-  text-shadow:
-    2px 1px 0 #050510,
-    3px 2px 0 currentColor;
-}
-
-#archive .lunar-10,
-#archive .amor-11 {
-  font-style: italic;
-  letter-spacing: -0.045em;
-}
-
-#archive .lunar-3,
-#archive .lunar-25,
-#archive .caiman-7,
-#archive .caiman-10,
-#archive .true-10,
-#archive .true-17,
-#archive .amor-17 {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  text-decoration-color: #FE316D;
-}
 
 /* Móvil */
 
@@ -3967,14 +3928,6 @@ font-family: "Space Grotesk", sans-serif;
   #archive .amor-scatter .scatter-label {
     grid-column: 1 / span 4;
     grid-row: 31;
-  }
-
-  #archive .lunar-9,
-  #archive .caiman-1,
-  #archive .true-20 {
-    text-shadow:
-      1px 1px 0 #050510,
-      2px 2px 0 currentColor;
   }
 }
 
