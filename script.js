@@ -90,7 +90,6 @@ let spotifyPlayRequest = 0;
 
 
 let mainSiteHasBeenEntered = false;
-let spotifyPlayAttempted = false;
 
 /* =========================================================
    ⭐⭐⭐ ACTUALIZAR ESTRENO AQUÍ ⭐⭐⭐
@@ -175,7 +174,6 @@ soundToggle.addEventListener("click", async () => {
       soundToggle.setAttribute("aria-label", "Apagar sonido");
       soundLabel.textContent = "ON";
     } catch (error) {
-      console.log("No se pudo iniciar el audio:", error);
     }
   } else {
     /* No detenemos la canción. Solo quitamos el sonido. */
@@ -193,7 +191,6 @@ SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
 ========================================= */
 
 function startSpotifyOnMainEntry() {
-   console.log("[Spotify DEBUG] Entró en startSpotifyOnMainEntry");
   if (
     !spotifyController ||
     !mainSiteHasBeenEntered ||
@@ -203,27 +200,9 @@ function startSpotifyOnMainEntry() {
   }
 
   spotifyPlayAttempted = true;
-
-  const requestId = ++spotifyPlayRequest;
-
-   console.log("[Spotify DEBUG] Antes de play()", {
-  replayBlocked: spotifyReplayBlocked,
-  mainSiteHasBeenEntered,
-  playRequest: spotifyPlayRequest
-});
-   
   
 spotifyController.play()
-  .then(() => {
-    console.log("[Spotify DEBUG] play() resuelto", {
-      requestId,
-      spotifyPlayRequest,
-      spotifyReplayBlocked
-    });
-  })
   .catch((error) => {
-    console.error("[Spotify DEBUG] play() rechazado:", error);
-    spotifyPlayAttempted = false;
   }); 
    }// Cierra startSpotifyOnMainEntry()
 
@@ -248,57 +227,28 @@ spotifyController = EmbedController;
 const originalPause = spotifyController.pause.bind(spotifyController);
 
 spotifyController.pause = function (...args) {
-  console.trace("[Spotify] Se llamó a pause(). Pila de llamadas:");
   return originalPause(...args);
 };
    
   spotifyController.addListener("playback_started", () => {
-    console.log("[Spotify] Reproducción iniciada", {
-      replayBlocked: spotifyReplayBlocked
-    });
-
-     console.log("[Spotify] ¿Quién inició la reproducción?", {
-  replayBlocked: spotifyReplayBlocked,
-  playRequest: spotifyPlayRequest
-});
+    
 
     if (spotifyReplayBlocked) {
-  console.warn("[Spotify] PAUSA ordenada: playback_started");
   spotifyController.pause();
 }
   });
 
   spotifyController.addListener("playback_update", (event) => {
-console.log("[Spotify] Estado:", {
-paused: event.data.isPaused,
-replayBlocked: spotifyReplayBlocked
-});
 
-
-if (event.data.isPaused) {
-  console.warn("[Spotify] Spotify reporta PAUSA", {
-    replayBlocked: spotifyReplayBlocked,
-    playRequest: spotifyPlayRequest,
-    pauseMethod: spotifyController.pause.toString()
-  });
-}
 
 if (spotifyReplayBlocked && !event.data.isPaused) {
-  console.warn("[Spotify] PAUSA ordenada: playback_update");
   spotifyController.pause();
 }
 });
 
 
-  spotifyController.addListener("playback_error", (event) => {
-    console.error("[Spotify] Error de reproducción:", event);
-  });
-
   if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
-  console.warn("[Spotify] PAUSA ordenada: inicialización", {
-    replayBlocked: spotifyReplayBlocked,
-    mainSiteHasBeenEntered
-  });
+  
   spotifyController.pause();
   return;
 }
@@ -866,37 +816,6 @@ setTimeout(() => {
    
 }
 
-/* =========================================
-   JUGO / PARTÍCULAS
-   ========================================= */
-function createJuice() {
-  const juices = document.querySelectorAll(".juice");
-  juices.forEach((juice, index) => {
-    const directions = [
-      [-55, -35],
-      [55, -25],
-      [-70, 35],
-      [65, 45],
-      [15, -65]
-    ];
-    const [x, y] = directions[index];
-    juice.animate(
-      [
-        { opacity: 0, transform: "translate(-50%, -50%) scale(0.3)" },
-        { opacity: 1, transform: "translate(-50%, -50%) scale(1.3)" },
-        {
-          opacity: 0.9,
-          transform: `translate(calc(-50% + \({x}px), calc(-50% +\){y}px)) scale(0.65)`
-        }
-      ],
-      {
-        duration: 850 + index * 80,
-        easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
-        fill: "forwards"
-      }
-    );
-  });
-}
 
 /* =========================================
    ENTRADA AL SITIO
@@ -977,7 +896,6 @@ if (replayButton) {
     spotifyPlayRequest++;
 
     if (spotifyController) {
-  console.warn("[Spotify] PAUSA ordenada: REPLAY");
   spotifyController.pause();
 }
 
