@@ -3977,3 +3977,33 @@ animation: contact-crt-scroll 0.8s linear infinite;
       2px 2px 0 currentColor;
   }
 }
+
+/* ARCHIVE · ocupar también la zona inferior */
+
+#archive .amor-9 {
+  grid-row: 46 / span 2 !important;
+}
+
+#archive .amor-11 {
+  grid-row: 50 / span 2 !important;
+}
+
+/* Llevar el cierre hacia el borde inferior */
+#archive .archive-type-layer {
+  grid-template-rows: repeat(52, minmax(0, 1fr));
+  align-content: stretch;
+}
+
+@media (max-width: 600px) {
+  #archive .amor-9 {
+    grid-row: 46 / span 2 !important;
+  }
+
+  #archive .amor-11 {
+    grid-row: 50 / span 2 !important;
+  }
+
+  #archive .archive-type-layer {
+    grid-template-rows: repeat(52, minmax(0, 1fr));
+  }
+}
