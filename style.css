@@ -3519,6 +3519,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
    Composición editorial sin textos apilados
    ========================================================= */
 
+
 #archive .archive-type-layer {
   position: absolute;
   inset: 0;
@@ -3530,19 +3531,21 @@ animation: contact-crt-scroll 0.8s linear infinite;
   font-family: "IBM Plex Mono", monospace;
 
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: 25px;
-  grid-auto-flow: row dense;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(40, minmax(0, 2.5%));
+  grid-auto-rows: 2.5%;
+  grid-auto-flow: row;
   align-content: start;
   column-gap: 8px;
-  row-gap: 2px;
-  padding: 12px 3%;
+  row-gap: 0;
+  padding: 0 3%;
   box-sizing: border-box;
 }
 
 #archive .lyric-scatter {
   display: contents;
 }
+
 
 /* Texto secundario: pequeño y legible */
 
