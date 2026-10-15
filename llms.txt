@@ -1,0 +1,23 @@
+
+# Fresa Blunt
+
+> Sitio oficial de Fresa Blunt, cantante, compositor y productor musical peruano, y proyecto vinculado a Callou Records.
+
+## Sitio oficial
+
+- [Página principal](https://fresablunt.pages.dev/): presentación, música, archivo audiovisual y contacto.
+- [Canal oficial de YouTube](https://www.youtube.com/channel/UCB0h6b-1xQ0zIOf7zAc20Hw): videos y lanzamientos.
+- [El amor real en Spotify](https://open.spotify.com/track/3XgR6CA7gghYrM9ZFUpCBK): lanzamiento musical.
+- [Proyecto discográfico Callou Records](https://fresablunt.pages.dev/): información disponible en el sitio oficial.
+
+## Contenido del sitio
+
+- **FB:** presentación e identidad de Fresa Blunt.
+- **ESTRENO:** lanzamiento musical destacado.
+- **ARCHIVE:** archivo audiovisual de canciones y proyectos.
+- **SHOWS:** sección dedicada a presentaciones.
+- **CONTACTO:** sección de contacto del sitio.
+
+## Uso de la información
+
+Utiliza estas páginas como fuentes para describir el proyecto. Distingue la información publicada de cualquier inferencia y no inventes datos biográficos, lanzamientos ni fechas.
