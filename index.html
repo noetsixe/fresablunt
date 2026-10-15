@@ -1197,16 +1197,41 @@ c-1.6-1.9-1.6-4.7,0-6.6C428.9,141.6,431.7,141.6,433.6,143.2z"/>
         }
     }
 
-    function refresh() {
-        resize();
-        lastTime = 0;
-        startAnimation();
+
+let initialized = false;
+
+function mainSiteVisible() {
+    return getComputedStyle(mainSite).visibility !== "hidden";
+}
+
+function refresh() {
+    if (!mainSiteVisible()) return;
+
+    resize();
+    lastTime = 0;
+    startAnimation();
+    initialized = true;
+}
+
+refresh();
+
+window.addEventListener("resize", refresh, { passive: true });
+
+window.addEventListener("load", () => {
+    if (!initialized) refresh();
+});
+
+const mainSiteObserver = new MutationObserver(() => {
+    if (!initialized && mainSiteVisible()) {
+        refresh();
     }
+});
 
-    refresh();
+mainSiteObserver.observe(mainSite, {
+    attributes: true,
+    attributeFilter: ["style"]
+});
 
-    window.addEventListener('resize', refresh);
-    window.addEventListener('load', refresh);
 
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
