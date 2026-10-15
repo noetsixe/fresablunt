@@ -1109,7 +1109,6 @@ function resizeStarfield() {
 }
 
 let starfieldPaused = false;
-resumeStarfield();
 
 
 function animateStarfield() {
@@ -1305,10 +1304,14 @@ function onYouTubeIframeAPIReady() {
 }
 
 const releaseBackgroundWait = setInterval(() => {
+
     if (window.YT) {
+
         clearInterval(releaseBackgroundWait);
+
         startReleaseBackground();
     }
+
 }, 500);
 
 
