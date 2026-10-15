@@ -87,6 +87,7 @@ const hAnimation = document.getElementById("h-animation");
 let spotifyController = null;
 let spotifyReplayBlocked = false;
 let spotifyPlayRequest = 0;
+let spotifyEmbedReady = false;
 
 
 let mainSiteHasBeenEntered = false;
@@ -193,11 +194,12 @@ SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
 function startSpotifyOnMainEntry() {
   if (
     !spotifyController ||
+    !spotifyEmbedReady ||
     !mainSiteHasBeenEntered ||
     spotifyReplayBlocked
-  ) {
+) {
     return;
-  }
+}
 
   spotifyPlayAttempted = true;
   
@@ -247,15 +249,15 @@ if (spotifyReplayBlocked && !event.data.isPaused) {
 });
 
 
-  if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
-  
+   spotifyEmbedReady = true;
+
+if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
   spotifyController.pause();
   return;
 }
 
-  startSpotifyOnMainEntry();
+startSpotifyOnMainEntry();
 }
-
 );
 };
 
