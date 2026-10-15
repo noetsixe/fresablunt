@@ -3978,32 +3978,32 @@ animation: contact-crt-scroll 0.8s linear infinite;
   }
 }
 
-/* ARCHIVE · ocupar también la zona inferior */
+/* ARCHIVE · cierre inferior con más separación */
 
 #archive .amor-9 {
-  grid-row: 52 / span 2 !important;
+  grid-row: 50 / span 2 !important;
 }
 
 #archive .amor-11 {
-  grid-row: 56 / span 2 !important;
+  grid-row: 57 / span 2 !important;
 }
 
 /* Ampliar la cuadrícula hasta el final */
 #archive .archive-type-layer {
-  grid-template-rows: repeat(58, minmax(0, 1fr));
+  grid-template-rows: repeat(60, minmax(0, 1fr));
   align-content: stretch;
 }
 
 @media (max-width: 600px) {
   #archive .amor-9 {
-    grid-row: 52 / span 2 !important;
+    grid-row: 50 / span 2 !important;
   }
 
   #archive .amor-11 {
-    grid-row: 56 / span 2 !important;
+    grid-row: 57 / span 2 !important;
   }
 
   #archive .archive-type-layer {
-    grid-template-rows: repeat(58, minmax(0, 1fr));
+    grid-template-rows: repeat(60, minmax(0, 1fr));
   }
 }
