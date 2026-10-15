@@ -398,8 +398,15 @@ function animateStrawberry() {
   }
   setTimeout(animateStrawberry, 110);
 }
-animateStrawberry();
+strawberryImage.style.backgroundImage = 'url("./Fresa1.png")';
+strawberryImage.style.setProperty(
+  "--strawberry-mask",
+  'url("./Fresa1.png")'
+);
 
+requestAnimationFrame(() => {
+  animateStrawberry();
+});
 /* =========================================
    PREPARAR DESTELLO
    ========================================= */
