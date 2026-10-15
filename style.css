@@ -3631,7 +3631,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
   overflow-wrap: anywhere;
 }
 
-/* Posiciones exclusivas de titulares */
+/* Posiciones exclusivas de titulares
+   Distribución vertical por todo ARCHIVE */
 
 #archive .lunar-9 {
   grid-column: 1 / span 5;
@@ -3641,7 +3642,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 #archive .lunar-10 {
   grid-column: 8 / span 5;
-  grid-row: 5 / span 2;
+  grid-row: 6 / span 2;
   font-size: clamp(22px, 2.8vw, 42px);
   font-style: italic;
   transform: rotate(2deg);
@@ -3649,63 +3650,63 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 #archive .caiman-1 {
   grid-column: 7 / span 6;
-  grid-row: 9 / span 2;
+  grid-row: 12 / span 2;
   font-size: clamp(24px, 3.8vw, 56px);
   transform: rotate(2deg);
 }
 
 #archive .caiman-3 {
   grid-column: 1 / span 4;
-  grid-row: 12 / span 2;
+  grid-row: 17 / span 2;
   font-size: clamp(21px, 2.8vw, 42px);
   transform: rotate(-2deg);
 }
 
 #archive .caiman-4 {
   grid-column: 4 / span 5;
-  grid-row: 14 / span 2;
+  grid-row: 22 / span 2;
   font-size: clamp(24px, 3.4vw, 50px);
   transform: rotate(1deg);
 }
 
 #archive .true-5 {
   grid-column: 1 / span 5;
-  grid-row: 18 / span 2;
+  grid-row: 27 / span 2;
   font-size: clamp(21px, 2.8vw, 42px);
   transform: rotate(-2deg);
 }
 
 #archive .true-6 {
   grid-column: 7 / span 6;
-  grid-row: 21 / span 2;
+  grid-row: 32 / span 2;
   font-size: clamp(22px, 3vw, 45px);
   transform: rotate(2deg);
 }
 
 #archive .true-19 {
   grid-column: 2 / span 5;
-  grid-row: 25 / span 2;
+  grid-row: 37 / span 2;
   font-size: clamp(21px, 2.8vw, 42px);
   transform: rotate(2deg);
 }
 
 #archive .true-20 {
   grid-column: 7 / span 6;
-  grid-row: 28 / span 2;
+  grid-row: 42 / span 2;
   font-size: clamp(23px, 3.2vw, 48px);
   transform: rotate(-2deg);
 }
 
 #archive .amor-9 {
   grid-column: 1 / span 8;
-  grid-row: 32 / span 2;
+  grid-row: 46 / span 2;
   font-size: clamp(20px, 2.7vw, 40px);
   transform: rotate(-1deg);
 }
 
 #archive .amor-11 {
   grid-column: 5 / span 8;
-  grid-row: 36 / span 2;
+  grid-row: 49 / span 2;
   font-size: clamp(20px, 2.8vw, 42px);
   font-style: italic;
   transform: rotate(1deg);
