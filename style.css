@@ -3531,7 +3531,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(40, minmax(0, 1fr));
+  grid-template-rows: repeat(52, minmax(0, 1fr));
   grid-auto-rows: minmax(0, 1fr);
   grid-auto-flow: row dense;
   align-content: stretch;
