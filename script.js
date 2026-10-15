@@ -1300,40 +1300,16 @@ function startReleaseBackground() {
 }
 
 
-let youtubeAPIRequested = false;
-
-function loadYouTubeAPI() {
-    if (youtubeAPIRequested || window.YT) return;
-
-    youtubeAPIRequested = true;
-
-    const script = document.createElement("script");
-    script.src = "https://www.youtube.com/iframe_api";
-    script.async = true;
-    document.head.appendChild(script);
-}
-
-window.onYouTubeIframeAPIReady = function () {
+function onYouTubeIframeAPIReady() {
     startReleaseBackground();
-};
-
-const estrenoSection = document.getElementById("estreno");
-
-if (estrenoSection && "IntersectionObserver" in window) {
-    const youtubeObserver = new IntersectionObserver((entries) => {
-        if (entries.some(entry => entry.isIntersecting)) {
-            loadYouTubeAPI();
-            youtubeObserver.disconnect();
-        }
-    }, {
-        rootMargin: "600px 0px"
-    });
-
-    youtubeObserver.observe(estrenoSection);
-} else {
-    loadYouTubeAPI();
 }
 
+const releaseBackgroundWait = setInterval(() => {
+    if (window.YT) {
+        clearInterval(releaseBackgroundWait);
+        startReleaseBackground();
+    }
+}, 500);
 
 
 /* =========================================
