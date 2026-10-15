@@ -1112,15 +1112,9 @@ let starfieldPaused = false;
 resumeStarfield();
 
 
-let starfieldAnimationId = null;
-
 function animateStarfield() {
-  if (starfieldAnimationId !== null) {
-    cancelAnimationFrame(starfieldAnimationId);
-    starfieldAnimationId = null;
-  }
-
-  if (starfieldPaused || document.hidden) {
+  if (starfieldPaused) {
+    requestAnimationFrame(animateStarfield);
     return;
   }
 
@@ -1128,12 +1122,10 @@ function animateStarfield() {
 
   for (const star of stars) {
     star.y += star.speed;
-
     if (star.y > starCanvas.height) {
       star.y = -2;
       star.x = Math.floor(Math.random() * starCanvas.width);
     }
-
     starCtx.globalAlpha = star.brightness;
     starCtx.fillStyle = "#FFFFFF";
     starCtx.fillRect(
@@ -1145,23 +1137,8 @@ function animateStarfield() {
   }
 
   starCtx.globalAlpha = 1;
-  starfieldAnimationId = requestAnimationFrame(animateStarfield);
+  requestAnimationFrame(animateStarfield);
 }
-
-function resumeStarfield() {
-  if (
-    !starfieldPaused &&
-    !document.hidden &&
-    starfieldAnimationId === null
-  ) {
-    starfieldAnimationId = requestAnimationFrame(animateStarfield);
-  }
-}
-
-document.addEventListener("visibilitychange", resumeStarfield);
-
-resizeStarfield();
-resumeStarfield();
 
 resizeStarfield();
 animateStarfield();
