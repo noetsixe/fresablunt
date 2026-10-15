@@ -3516,10 +3516,12 @@ animation: contact-crt-scroll 0.8s linear infinite;
    ARCHIVE · TYPOGRAPHY IN FREE FALL
    Collage editorial sobre imágenes y vídeos
    ========================================================= */
-
 #archive .archive-type-layer {
   position: absolute;
-  inset: 0;
+  top: 160px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 5;
   isolation: isolate;
   pointer-events: none;
