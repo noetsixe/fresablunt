@@ -990,7 +990,11 @@ if (replayButton) {
    DESTELLO ARCOÍRIS PIXELADO
    ========================================= */
 function animateRainbowShine() {
-  if (!shineReady) return;
+  if (
+    !shineReady ||
+    returningVisitor ||
+    (started && shineCanvas.style.visibility === "hidden")
+  ) return;
   const now = performance.now();
   const cycle = 10000;
   const duration = 1700;
