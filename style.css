@@ -3898,3 +3898,67 @@ animation: contact-crt-scroll 0.8s linear infinite;
   text-underline-offset: 4px;
 }
 
+
+
+/* FRESA BLUNT · PUNK PRINT OVERRIDE */
+
+#archive .scatter-word {
+  color: #FE316D;
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.82;
+  -webkit-text-stroke: 1px #FE316D;
+  text-shadow:
+    3px 3px 0 #050510,
+    5px 5px 0 #FE316D;
+}
+
+/* TITULARES: tinta invertida */
+#archive .lunar-1,
+#archive .caiman-1,
+#archive .true-1,
+#archive .amor-3 {
+  color: #050510;
+  -webkit-text-stroke: 1px #FE316D;
+  text-shadow:
+    2px 0 #FE316D,
+    -2px 0 #FE316D,
+    0 2px #FE316D,
+    0 -2px #FE316D;
+}
+
+/* ETIQUETAS: bloques de tinta */
+#archive .scatter-label,
+#archive .scatter-stamp {
+  background: #FE316D;
+  color: #050510;
+  padding: 3px 5px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+/* ALGUNAS FRASES: impresión desplazada */
+#archive .lunar-9,
+#archive .lunar-15,
+#archive .caiman-8,
+#archive .caiman-13,
+#archive .true-18,
+#archive .true-23,
+#archive .amor-15,
+#archive .amor-20 {
+  text-shadow:
+    4px 0 #050510,
+    6px 2px #FE316D;
+}
+
+/* LÍNEAS: contraste con los titulares */
+#archive .scatter-line {
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
