@@ -3513,9 +3513,10 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
+
 /* =========================================================
    ARCHIVE · TYPOGRAPHY IN FREE FALL
-   Distribución, escala y posiciones
+   Composición editorial sin textos apilados
    ========================================================= */
 
 #archive .archive-type-layer {
@@ -3527,44 +3528,52 @@ animation: contact-crt-scroll 0.8s linear infinite;
   overflow: hidden;
   color: #fff;
   font-family: "IBM Plex Mono", monospace;
+
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 25px;
+  grid-auto-flow: row dense;
+  align-content: start;
+  column-gap: 8px;
+  row-gap: 2px;
+  padding: 12px 3%;
+  box-sizing: border-box;
 }
 
 #archive .lyric-scatter {
-  position: absolute;
-  inset: 0;
+  display: contents;
 }
 
-/* Base común: ninguna frase se vuelve titular por accidente */
-
-#archive .scatter-line,
-#archive .scatter-word,
-#archive .scatter-label,
-#archive .scatter-stamp {
-  position: absolute;
-  display: block;
-  width: max-content;
-  max-width: 75%;
-  margin: 0;
-  padding: 0;
-  overflow-wrap: anywhere;
-  line-height: 1.15;
-}
+/* Texto secundario: pequeño y legible */
 
 #archive .scatter-line,
 #archive .scatter-word {
+  position: relative;
+  inset: auto;
+  display: block;
+  grid-column: span 2;
+  align-self: center;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
   color: #fff;
   font-family: "IBM Plex Mono", monospace;
-  font-size: clamp(9px, 1vw, 13px);
+  font-size: clamp(9px, 0.85vw, 12px);
   font-weight: 500;
+  line-height: 1.2;
   letter-spacing: -0.035em;
   text-transform: none;
   text-shadow: none;
   -webkit-text-stroke: 0;
   text-decoration: none;
+  overflow-wrap: anywhere;
+  transform: none;
 }
 
-/* TITULARES OFICIALES
-   Solo las frases elegidas reciben esta escala. */
+/* Titulares oficiales */
 
 #archive .lunar-9,
 #archive .lunar-10,
@@ -3577,285 +3586,201 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .true-20,
 #archive .amor-9,
 #archive .amor-11 {
+  position: relative;
+  inset: auto;
+  z-index: 2;
+  grid-column: span 4;
+  grid-row: span 2;
+  align-self: center;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
   color: #FE316D;
   font-family: "Dela Gothic One", sans-serif;
-  font-size: clamp(25px, 3.8vw, 58px);
+  font-size: clamp(22px, 3.1vw, 46px);
   font-weight: 400;
-  line-height: 0.94;
+  line-height: 0.98;
   letter-spacing: -0.065em;
   text-transform: uppercase;
   text-shadow: 1px 0 currentColor;
   -webkit-text-stroke: 0;
-  text-decoration: none;
-  max-width: 75%;
+  overflow-wrap: anywhere;
 }
 
-/* LUNAR FANTASY
-   Los titulares ocupan zonas separadas.
-   Las demás líneas permanecen pequeñas. */
+/* Posiciones exclusivas de los titulares */
 
-#archive .lunar-1  { top: 13%; left: 4%; transform: rotate(-5deg); }
-#archive .lunar-2  { top: 16%; left: 48%; transform: rotate(90deg); transform-origin: left top; }
-#archive .lunar-3  { top: 22%; left: 16%; transform: rotate(-8deg); }
-#archive .lunar-4  { top: 25%; right: 8%; transform: rotate(4deg); }
-#archive .lunar-5  { top: 29%; left: 5%; transform: rotate(90deg); transform-origin: left top; }
-#archive .lunar-6  { top: 31%; left: 40%; }
-#archive .lunar-7  { top: 34%; right: 7%; transform: rotate(-4deg); }
-#archive .lunar-8  { top: 37%; left: 22%; }
-
-#archive .lunar-9  {
-  top: 9%;
-  left: 5%;
-  transform: rotate(-4deg);
-  font-size: clamp(25px, 3.8vw, 56px);
+#archive .lunar-9 {
+  grid-column: 1 / span 5;
+  grid-row: 2 / span 2;
+  transform: rotate(-3deg);
 }
 
 #archive .lunar-10 {
-  top: 18%;
-  right: 6%;
-  transform: rotate(3deg);
-  font-size: clamp(24px, 3.5vw, 52px);
+  grid-column: 8 / span 5;
+  grid-row: 5 / span 2;
+  font-size: clamp(22px, 2.8vw, 42px);
+  font-style: italic;
+  transform: rotate(2deg);
 }
-
-#archive .lunar-11 { top: 46%; left: 30%; transform: rotate(90deg); transform-origin: left top; }
-#archive .lunar-12 { top: 48%; left: 8%; }
-#archive .lunar-13 { top: 50%; right: 12%; }
-#archive .lunar-14 { top: 52%; left: 39%; }
-#archive .lunar-15 { top: 54%; right: 3%; transform: rotate(4deg); }
-#archive .lunar-16 { top: 58%; left: 18%; }
-#archive .lunar-17 { top: 61%; left: 4%; }
-#archive .lunar-18 { top: 63%; left: 47%; }
-#archive .lunar-19 { top: 65%; right: 12%; }
-#archive .lunar-20 { top: 67%; left: 23%; }
-#archive .lunar-21 { top: 69%; left: 6%; }
-#archive .lunar-22 { top: 70%; right: 28%; }
-#archive .lunar-23 { top: 72%; left: 35%; transform: rotate(-90deg); transform-origin: left top; }
-#archive .lunar-24 { top: 74%; right: 5%; }
-#archive .lunar-25 { top: 76%; left: 6%; }
-#archive .lunar-26 { top: 78%; left: 37%; }
-#archive .lunar-27 { top: 80%; right: 4%; }
-#archive .lunar-28 { top: 82%; left: 12%; }
-#archive .lunar-29 { top: 83%; right: 7%; }
-#archive .lunar-30 { top: 85%; left: 30%; }
-#archive .lunar-31 { top: 87%; left: 7%; }
-#archive .lunar-32 { top: 88%; right: 5%; }
-#archive .lunar-33 { top: 90%; left: 4%; }
-#archive .lunar-34 { top: 91%; right: 10%; }
-#archive .lunar-35 { top: 93%; left: 25%; }
-#archive .lunar-36 { top: 94%; right: 5%; }
-#archive .lunar-37 { top: 95%; left: 3%; }
-#archive .lunar-38 { top: 96%; left: 48%; }
-#archive .lunar-39 { top: 97%; right: 4%; }
-#archive .lunar-40 { top: 98%; left: 20%; }
-
-/* CAIMANEO
-   La frase Vine a endulzar / TO' TU DOLOR
-   se conserva dividida en dos elementos. */
 
 #archive .caiman-1 {
-  top: 27%;
-  right: 4%;
-  transform: rotate(4deg);
-  font-size: clamp(29px, 4.8vw, 72px);
+  grid-column: 7 / span 6;
+  grid-row: 9 / span 2;
+  font-size: clamp(24px, 3.8vw, 56px);
+  transform: rotate(2deg);
 }
 
-#archive .caiman-2  { top: 20%; left: 55%; }
-
 #archive .caiman-3 {
-  top: 34%;
-  left: 7%;
-  right: auto;
-  transform: rotate(-3deg);
-  font-size: clamp(24px, 3.4vw, 51px);
+  grid-column: 1 / span 4;
+  grid-row: 12 / span 2;
+  font-size: clamp(21px, 2.8vw, 42px);
+  transform: rotate(-2deg);
 }
 
 #archive .caiman-4 {
-  top: 38%;
-  left: 19%;
-  right: auto;
-  transform: rotate(2deg);
-  font-size: clamp(27px, 4vw, 60px);
+  grid-column: 4 / span 5;
+  grid-row: 14 / span 2;
+  font-size: clamp(24px, 3.4vw, 50px);
+  transform: rotate(1deg);
 }
 
-#archive .caiman-5  { top: 29%; left: 42%; }
-#archive .caiman-6  { top: 32%; right: 4%; }
-#archive .caiman-7  { top: 42%; left: 12%; }
-#archive .caiman-8  { top: 45%; right: 4%; transform: rotate(-4deg); }
-#archive .caiman-9  { top: 40%; left: 5%; }
-#archive .caiman-10 { top: 47%; left: 48%; }
-#archive .caiman-11 { top: 43%; right: 6%; }
-#archive .caiman-12 { top: 49%; left: 30%; }
-
-#archive .caiman-13 { top: 51%; left: 3%; transform: rotate(3deg); }
-#archive .caiman-14 { top: 54%; left: 17%; }
-#archive .caiman-15 { top: 56%; right: 4%; }
-#archive .caiman-16 { top: 59%; left: 6%; }
-#archive .caiman-17 { top: 61%; right: 7%; }
-
-/* TRUE O FALSE
-   Cuatro titulares, alternados a izquierda y derecha. */
-
-#archive .true-1  { top: 43%; left: 4%; }
-#archive .true-2  { top: 45%; right: 5%; }
-#archive .true-3  { top: 47%; left: 30%; }
-#archive .true-4  { top: 49%; left: 4%; }
-
 #archive .true-5 {
-  top: 47%;
-  left: 6%;
-  right: auto;
-  transform: rotate(-3deg);
-  font-size: clamp(23px, 3.4vw, 51px);
+  grid-column: 1 / span 5;
+  grid-row: 18 / span 2;
+  font-size: clamp(21px, 2.8vw, 42px);
+  transform: rotate(-2deg);
 }
 
 #archive .true-6 {
-  top: 53%;
-  left: auto;
-  right: 5%;
+  grid-column: 7 / span 6;
+  grid-row: 21 / span 2;
+  font-size: clamp(22px, 3vw, 45px);
   transform: rotate(2deg);
-  font-size: clamp(24px, 3.7vw, 55px);
 }
 
-#archive .true-7  { top: 56%; right: 4%; }
-#archive .true-8  { top: 58%; left: 6%; }
-#archive .true-9  { top: 60%; right: 8%; transform: rotate(90deg); transform-origin: right top; }
-#archive .true-10 { top: 63%; left: 15%; }
-#archive .true-11 { top: 65%; right: 5%; }
-#archive .true-12 { top: 67%; left: 6%; }
-#archive .true-13 { top: 69%; right: 7%; }
-#archive .true-14 { top: 71%; left: 4%; }
-#archive .true-15 { top: 73%; right: 4%; }
-#archive .true-16 { top: 75%; left: 15%; }
-#archive .true-17 { top: 77%; right: 5%; }
-#archive .true-18 { top: 79%; left: 4%; transform: rotate(-3deg); }
-
 #archive .true-19 {
-  top: 64%;
-  left: 8%;
-  right: auto;
+  grid-column: 2 / span 5;
+  grid-row: 25 / span 2;
+  font-size: clamp(21px, 2.8vw, 42px);
   transform: rotate(2deg);
-  font-size: clamp(23px, 3.5vw, 53px);
 }
 
 #archive .true-20 {
-  top: 70%;
-  left: auto;
-  right: 6%;
-  transform: rotate(-3deg);
-  font-size: clamp(26px, 4vw, 60px);
+  grid-column: 7 / span 6;
+  grid-row: 28 / span 2;
+  font-size: clamp(23px, 3.2vw, 48px);
+  transform: rotate(-2deg);
 }
-
-#archive .true-21 { top: 86%; right: 4%; }
-#archive .true-22 { top: 88%; left: 5%; }
-#archive .true-23 { top: 90%; right: 3%; }
-#archive .true-24 { top: 92%; left: 25%; }
-#archive .true-25 { top: 93%; right: 15%; }
-#archive .true-26 { top: 95%; left: 5%; }
-#archive .true-27 { top: 97%; right: 4%; }
-
-/* EL AMOR REAL
-   Los dos titulares largos tienen espacio propio. */
-
-#archive .amor-1  { top: 59%; left: 4%; }
-#archive .amor-2  { top: 61%; right: 6%; }
-#archive .amor-3  { top: 63%; left: 3%; transform: rotate(-3deg); }
-#archive .amor-4  { top: 66%; right: 5%; }
-#archive .amor-5  { top: 68%; left: 22%; }
-#archive .amor-6  { top: 70%; right: 4%; }
-#archive .amor-7  { top: 72%; left: 5%; transform: rotate(-4deg); }
-#archive .amor-8  { top: 75%; right: 6%; }
 
 #archive .amor-9 {
-  top: 80%;
-  left: 5%;
-  right: auto;
-  transform: rotate(-2deg);
-  font-size: clamp(22px, 3.4vw, 51px);
-  max-width: 80%;
+  grid-column: 1 / span 8;
+  grid-row: 32 / span 2;
+  font-size: clamp(20px, 2.7vw, 40px);
+  transform: rotate(-1deg);
 }
-
-#archive .amor-10 { top: 78%; right: 10%; }
 
 #archive .amor-11 {
-  top: 89%;
-  left: 19%;
-  right: auto;
-  transform: rotate(2deg);
-  font-size: clamp(23px, 3.6vw, 54px);
-  max-width: 78%;
+  grid-column: 5 / span 8;
+  grid-row: 36 / span 2;
+  font-size: clamp(20px, 2.8vw, 42px);
+  font-style: italic;
+  transform: rotate(1deg);
 }
 
-#archive .amor-12 { top: 83%; right: 5%; }
-#archive .amor-13 { top: 85%; left: 4%; }
-#archive .amor-14 { top: 87%; right: 8%; }
-#archive .amor-15 { top: 89%; left: 3%; }
-#archive .amor-16 { top: 91%; right: 4%; }
-#archive .amor-17 { top: 93%; left: 25%; }
-#archive .amor-18 { top: 94%; right: 4%; }
-#archive .amor-19 { top: 96%; left: 8%; }
-#archive .amor-20 { top: 97%; right: 5%; }
-#archive .amor-21 { top: 98%; left: 4%; }
+/* Variaciones pequeñas para que no parezca una tabla */
 
-/* MICROTEXTOS EDITORIALES */
+#archive .lunar-2,
+#archive .lunar-5,
+#archive .lunar-11,
+#archive .lunar-23,
+#archive .true-9 {
+  writing-mode: vertical-rl;
+  justify-self: center;
+}
+
+#archive .lunar-1,
+#archive .lunar-15,
+#archive .caiman-8,
+#archive .amor-3,
+#archive .amor-7 {
+  transform: rotate(-2deg);
+}
+
+#archive .lunar-4,
+#archive .lunar-25,
+#archive .caiman-13,
+#archive .true-18,
+#archive .amor-15 {
+  transform: rotate(2deg);
+}
+
+/* Etiquetas y microtextos */
 
 #archive .scatter-label,
 #archive .scatter-stamp {
+  position: relative;
+  inset: auto;
+  display: block;
+  grid-column: span 2;
+  align-self: center;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
   color: #FE316D;
   font-family: "IBM Plex Mono", monospace;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.04em;
   line-height: 1.2;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-shadow: none;
   -webkit-text-stroke: 0;
+  transform: none;
 }
 
 #archive .lunar-scatter .scatter-label {
-  top: 11%;
-  left: 3%;
+  grid-column: 1 / span 3;
+  grid-row: 1;
 }
 
 #archive .caimaneo-scatter .scatter-label {
-  top: 15%;
-  right: 3%;
+  grid-column: 9 / span 4;
+  grid-row: 8;
 }
 
 #archive .truefalse-scatter .scatter-label {
-  top: 40%;
-  right: 4%;
+  grid-column: 9 / span 4;
+  grid-row: 17;
 }
 
 #archive .amor-scatter .scatter-label {
-  top: 57%;
-  left: 4%;
+  grid-column: 1 / span 4;
+  grid-row: 31;
 }
 
 #archive .stamp-a {
-  top: 13%;
-  right: 3%;
+  grid-column: 12;
+  grid-row: 3 / span 2;
   writing-mode: vertical-rl;
 }
 
 #archive .stamp-b {
-  top: 46%;
-  left: 2%;
-  transform: rotate(-90deg);
-  transform-origin: left top;
+  grid-column: 1;
+  grid-row: 16 / span 2;
+  writing-mode: vertical-rl;
 }
 
 #archive .stamp-c {
-  top: 74%;
-  right: 3%;
-  transform: rotate(90deg);
-  transform-origin: right top;
+  grid-column: 12;
+  grid-row: 26 / span 2;
+  writing-mode: vertical-rl;
   font-family: "Train One", sans-serif;
   letter-spacing: 0.08em;
 }
 
 #archive .stamp-d {
-  top: 88%;
-  left: 3%;
+  grid-column: 1 / span 3;
+  grid-row: 35;
   transform: rotate(-3deg);
 }
 
@@ -3866,12 +3791,20 @@ animation: contact-crt-scroll 0.8s linear infinite;
   text-underline-offset: 2px;
 }
 
-/* MÓVIL */
+/* Móvil */
 
 @media (max-width: 600px) {
+  #archive .archive-type-layer {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: 22px;
+    column-gap: 5px;
+    row-gap: 2px;
+    padding: 10px 3%;
+  }
+
   #archive .scatter-line,
   #archive .scatter-word {
-    max-width: 65%;
+    grid-column: span 2;
     font-size: 8px;
     line-height: 1.2;
   }
@@ -3887,50 +3820,108 @@ animation: contact-crt-scroll 0.8s linear infinite;
   #archive .true-20,
   #archive .amor-9,
   #archive .amor-11 {
-    max-width: 88%;
-    font-size: clamp(20px, 6vw, 35px);
-    line-height: 0.98;
+    grid-column: span 4;
+    font-size: clamp(18px, 5.5vw, 30px);
+    line-height: 1;
     letter-spacing: -0.055em;
+  }
+
+  #archive .lunar-9 {
+    grid-column: 1 / span 5;
+    grid-row: 2 / span 2;
+  }
+
+  #archive .lunar-10 {
+    grid-column: 2 / span 5;
+    grid-row: 5 / span 2;
+  }
+
+  #archive .caiman-1 {
+    grid-column: 2 / span 5;
+    grid-row: 9 / span 2;
+  }
+
+  #archive .caiman-3 {
+    grid-column: 1 / span 4;
+    grid-row: 12 / span 2;
+  }
+
+  #archive .caiman-4 {
+    grid-column: 2 / span 5;
+    grid-row: 14 / span 2;
+  }
+
+  #archive .true-5 {
+    grid-column: 1 / span 5;
+    grid-row: 18 / span 2;
+  }
+
+  #archive .true-6 {
+    grid-column: 2 / span 5;
+    grid-row: 21 / span 2;
+  }
+
+  #archive .true-19 {
+    grid-column: 1 / span 5;
+    grid-row: 25 / span 2;
+  }
+
+  #archive .true-20 {
+    grid-column: 2 / span 5;
+    grid-row: 28 / span 2;
+  }
+
+  #archive .amor-9 {
+    grid-column: 1 / span 6;
+    grid-row: 32 / span 2;
+  }
+
+  #archive .amor-11 {
+    grid-column: 1 / span 6;
+    grid-row: 36 / span 2;
   }
 
   #archive .scatter-label,
   #archive .scatter-stamp {
     font-size: 6px;
   }
+
+  #archive .lunar-scatter .scatter-label {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+
+  #archive .caimaneo-scatter .scatter-label {
+    grid-column: 4 / span 3;
+    grid-row: 8;
+  }
+
+  #archive .truefalse-scatter .scatter-label {
+    grid-column: 4 / span 3;
+    grid-row: 17;
+  }
+
+  #archive .amor-scatter .scatter-label {
+    grid-column: 1 / span 4;
+    grid-row: 31;
+  }
 }
+
 
 
 /* =========================================================
    ARCHIVE · DIY TOKYO PUNK
-   Acabado gráfico, sin decidir qué frases son titulares
+   Acabado gráfico complementario
    ========================================================= */
-
-/* Textura tipográfica exclusiva de los titulares elegidos */
-
-#archive .lunar-9,
-#archive .lunar-10,
-#archive .caiman-1,
-#archive .caiman-3,
-#archive .caiman-4,
-#archive .true-5,
-#archive .true-6,
-#archive .true-19,
-#archive .true-20,
-#archive .amor-9,
-#archive .amor-11 {
-  text-shadow: 1px 0 currentColor;
-}
-
-/* Doble impresión: solo titulares seleccionados */
 
 #archive .lunar-9,
 #archive .caiman-1,
 #archive .true-20 {
-  -webkit-text-stroke: 0.6px currentColor;
-  text-shadow: 2px 1px 0 #050510, 3px 2px 0 currentColor;
+  -webkit-text-stroke: 0.5px currentColor;
+  text-shadow:
+    2px 1px 0 #050510,
+    3px 2px 0 currentColor;
 }
-
-/* Contraste editorial en dos titulares */
 
 #archive .lunar-10,
 #archive .amor-11 {
@@ -3938,24 +3929,25 @@ animation: contact-crt-scroll 0.8s linear infinite;
   letter-spacing: -0.045em;
 }
 
-/* Texto secundario: máquina de escribir */
-
-#archive .scatter-line,
-#archive .lyric-scatter .scatter-word:not(.lunar-9):not(.lunar-10):not(.caiman-1):not(.caiman-3):not(.caiman-4):not(.true-5):not(.true-6):not(.true-19):not(.true-20):not(.amor-9):not(.amor-11) {
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
-  text-shadow: none;
-  -webkit-text-stroke: 0;
+#archive .lunar-3,
+#archive .lunar-25,
+#archive .caiman-7,
+#archive .caiman-10,
+#archive .true-10,
+#archive .true-17,
+#archive .amor-17 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: #FE316D;
 }
-
-/* Móvil: reducir el desplazamiento de tinta */
 
 @media (max-width: 600px) {
   #archive .lunar-9,
   #archive .caiman-1,
   #archive .true-20 {
-    text-shadow: 1px 1px 0 #050510, 2px 2px 0 currentColor;
+    text-shadow:
+      1px 1px 0 #050510,
+      2px 2px 0 currentColor;
   }
 }
-
-
