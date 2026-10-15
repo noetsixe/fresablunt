@@ -4005,11 +4005,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-
 /* =========================================================
    FRESA BLUNT · ARCHIVE PRINT TEXTURE
    Grano de impresión + semitono editorial
    Sin velo blanco ni alteración global del color
+   Textura por encima de fotos, vídeos y tipografía
    ========================================================= */
 
 #archive {
@@ -4021,7 +4021,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 999;
   pointer-events: none;
 
   opacity: 0.16;
@@ -4046,7 +4046,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 1000;
   pointer-events: none;
 
   opacity: 0.10;
@@ -4081,5 +4081,3 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
   mix-blend-mode: multiply;
 }
-
-
