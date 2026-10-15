@@ -1108,7 +1108,7 @@ const releaseYoutube = document.getElementById("release-youtube");
 
 if (releaseYoutube) {
     releaseYoutube.src =
-        `https://www.youtube.com/embed/${currentRelease.youtube}`;
+        `https://www.youtube-nocookie.com/embed/${currentRelease.youtube}`;
 }
 
 const releaseSpotify = document.getElementById("release-spotify");
