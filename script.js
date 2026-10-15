@@ -1155,78 +1155,67 @@ if (releaseCover && currentRelease.spotify) {
 
 let releaseBackgroundStarted = false;
 
+
 function startReleaseBackground() {
 
-    if (releaseBackgroundStarted || !window.YT) return;
-
-    releaseBackgroundStarted = true;
+    if (
+        releaseBackgroundStarted ||
+        !window.YT ||
+        typeof window.YT.Player !== "function"
+    ) return;
 
     const releaseBackground =
         document.getElementById("release-background-youtube");
 
-    if (releaseBackground) {
+    if (!releaseBackground) return;
 
-        new YT.Player(releaseBackground, {
+    releaseBackgroundStarted = true;
 
-            videoId: currentRelease.youtube,
+    new window.YT.Player(releaseBackground, {
 
-            playerVars: {
-                autoplay: 1,
-                mute: 1,
-                controls: 0,
-                loop: 1,
-                playlist: currentRelease.youtube,
-                modestbranding: 1,
-                rel: 0,
-                playsinline: 1
+        videoId: currentRelease.youtube,
+
+        playerVars: {
+            autoplay: 1,
+            mute: 1,
+            controls: 0,
+            loop: 1,
+            playlist: currentRelease.youtube,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+        },
+
+        events: {
+
+            onReady: function(event) {
+
+                event.target.mute();
+
+                const duration = event.target.getDuration();
+                const startTime = duration * 0.25;
+
+                event.target.seekTo(startTime, true);
+                event.target.playVideo();
             },
 
-            events: {
+            onStateChange: function(event) {
 
-                onReady: function(event) {
+                if (
+                    event.data ===
+                    window.YT.PlayerState.ENDED
+                ) {
 
-                    event.target.mute();
+                    const duration = event.target.getDuration();
+                    const startTime = duration * 0.25;
 
-                    const duration =
-                        event.target.getDuration();
-
-                    const startTime =
-                        duration * 0.25;
-
-                    event.target.seekTo(
-                        startTime,
-                        true
-                    );
-
+                    event.target.seekTo(startTime, true);
                     event.target.playVideo();
-                },
-
-                onStateChange: function(event) {
-
-                    if (
-                        event.data ===
-                        YT.PlayerState.ENDED
-                    ) {
-
-                        const duration =
-                            event.target.getDuration();
-
-                        const startTime =
-                            duration * 0.25;
-
-                        event.target.seekTo(
-                            startTime,
-                            true
-                        );
-
-                        event.target.playVideo();
-                    }
                 }
             }
-        });
-    }
+        }
+    });
 }
-
 
 function onYouTubeIframeAPIReady() {
     startReleaseBackground();
@@ -1234,10 +1223,12 @@ function onYouTubeIframeAPIReady() {
 
 const releaseBackgroundWait = setInterval(() => {
 
-    if (window.YT) {
+    if (
+        window.YT &&
+        typeof window.YT.Player === "function"
+    ) {
 
         clearInterval(releaseBackgroundWait);
-
         startReleaseBackground();
     }
 
