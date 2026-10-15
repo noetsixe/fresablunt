@@ -3999,3 +3999,82 @@ animation: contact-crt-scroll 0.8s linear infinite;
     grid-template-rows: repeat(62, minmax(0, 1fr));
   }
 }
+
+
+
+
+/* =========================================================
+   FRESA BLUNT · ARCHIVE PRINT TEXTURE
+   Grano editorial + semitono de impresión
+   ========================================================= */
+
+#archive {
+  isolation: isolate;
+}
+
+/* Capa de textura independiente */
+#archive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+
+  opacity: 0.13;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.34) 0.55px,
+      transparent 0.9px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+
+  background-size:
+    4px 4px,
+    180px 180px;
+
+  mix-blend-mode: screen;
+}
+
+/* Trama de semitonos localizada, sin cubrir todo el collage */
+#archive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+
+  opacity: 0.10;
+
+  background-image: radial-gradient(
+    circle,
+    rgba(254, 49, 109, 0.7) 0.7px,
+    transparent 1px
+  );
+
+  background-size: 5px 5px;
+
+  mask-image: linear-gradient(
+    135deg,
+    transparent 5%,
+    #000 25%,
+    transparent 48%,
+    transparent 65%,
+    #000 88%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    transparent 5%,
+    #000 25%,
+    transparent 48%,
+    transparent 65%,
+    #000 88%,
+    transparent 100%
+  );
+}
