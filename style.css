@@ -3514,11 +3514,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
+```css
 /* =========================================================
    ARCHIVE · TYPOGRAPHY IN FREE FALL
-   Composición editorial sin textos apilados
+   Collage editorial distribuido en toda la altura
    ========================================================= */
-
 
 #archive .archive-type-layer {
   position: absolute;
@@ -3531,12 +3531,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
   font-family: "IBM Plex Mono", monospace;
 
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  
-grid-template-rows: repeat(40, minmax(0, 2.5%));
-grid-auto-rows: 2.5%;
-grid-auto-flow: row dense;
-align-content: space-between;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(40, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  grid-auto-flow: row;
+  align-content: stretch;
 
   column-gap: 8px;
   row-gap: 0;
@@ -3548,9 +3547,7 @@ align-content: space-between;
   display: contents;
 }
 
-
-/* Texto secundario: pequeño y legible */
-
+/* Textos secundarios */
 
 #archive .scatter-line,
 #archive .scatter-word {
@@ -3558,16 +3555,14 @@ align-content: space-between;
   inset: auto;
   display: block;
 
-  grid-column: span 2;
-  grid-row: auto;
-
+  grid-column: span 3;
+  grid-row: span 1;
   align-self: center;
   justify-self: start;
 
   width: fit-content;
   max-width: 100%;
   min-width: 0;
-
   margin: 0;
   padding: 0;
 
@@ -3582,11 +3577,9 @@ align-content: space-between;
   text-shadow: none;
   -webkit-text-stroke: 0;
   text-decoration: none;
-
   overflow-wrap: anywhere;
   transform: none;
 }
-
 
 /* Titulares oficiales */
 
@@ -3610,6 +3603,7 @@ align-content: space-between;
   justify-self: start;
   width: fit-content;
   max-width: 100%;
+
   color: #FE316D;
   font-family: "Dela Gothic One", sans-serif;
   font-size: clamp(22px, 3.1vw, 46px);
@@ -3622,7 +3616,7 @@ align-content: space-between;
   overflow-wrap: anywhere;
 }
 
-/* Posiciones exclusivas de los titulares */
+/* Posiciones exclusivas de titulares */
 
 #archive .lunar-9 {
   grid-column: 1 / span 5;
@@ -3702,7 +3696,7 @@ align-content: space-between;
   transform: rotate(1deg);
 }
 
-/* Variaciones pequeñas para que no parezca una tabla */
+/* Variaciones gráficas */
 
 #archive .lunar-2,
 #archive .lunar-5,
@@ -3736,11 +3730,13 @@ align-content: space-between;
   position: relative;
   inset: auto;
   display: block;
-  grid-column: span 2;
+  grid-column: span 3;
+  grid-row: span 1;
   align-self: center;
   justify-self: start;
   width: fit-content;
   max-width: 100%;
+
   color: #FE316D;
   font-family: "IBM Plex Mono", monospace;
   font-size: 9px;
@@ -3806,29 +3802,54 @@ align-content: space-between;
   text-underline-offset: 2px;
 }
 
+/* Acabado gráfico DIY Tokyo Punk */
 
-/* Distribución vertical de textos secundarios */
-
-#archive .lyric-scatter .scatter-line,
-#archive .lyric-scatter .scatter-word {
-  margin-block: 0.25vh;
+#archive .lunar-9,
+#archive .caiman-1,
+#archive .true-20 {
+  -webkit-text-stroke: 0.5px currentColor;
+  text-shadow:
+    2px 1px 0 #050510,
+    3px 2px 0 currentColor;
 }
 
+#archive .lunar-10,
+#archive .amor-11 {
+  font-style: italic;
+  letter-spacing: -0.045em;
+}
+
+#archive .lunar-3,
+#archive .lunar-25,
+#archive .caiman-7,
+#archive .caiman-10,
+#archive .true-10,
+#archive .true-17,
+#archive .amor-17 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: #FE316D;
+}
 
 /* Móvil */
 
 @media (max-width: 600px) {
   #archive .archive-type-layer {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-rows: 22px;
+    grid-template-rows: repeat(40, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+    grid-auto-flow: row;
+    align-content: stretch;
     column-gap: 5px;
-    row-gap: 2px;
-    padding: 10px 3%;
+    row-gap: 0;
+    padding: 0 3%;
   }
 
   #archive .scatter-line,
   #archive .scatter-word {
     grid-column: span 2;
+    grid-row: span 1;
     font-size: 8px;
     line-height: 1.2;
   }
@@ -3845,6 +3866,7 @@ align-content: space-between;
   #archive .amor-9,
   #archive .amor-11 {
     grid-column: span 4;
+    grid-row: span 2;
     font-size: clamp(18px, 5.5vw, 30px);
     line-height: 1;
     letter-spacing: -0.055em;
@@ -3907,6 +3929,7 @@ align-content: space-between;
 
   #archive .scatter-label,
   #archive .scatter-stamp {
+    grid-column: span 2;
     font-size: 6px;
   }
 
@@ -3929,44 +3952,7 @@ align-content: space-between;
     grid-column: 1 / span 4;
     grid-row: 31;
   }
-}
 
-
-
-/* =========================================================
-   ARCHIVE · DIY TOKYO PUNK
-   Acabado gráfico complementario
-   ========================================================= */
-
-#archive .lunar-9,
-#archive .caiman-1,
-#archive .true-20 {
-  -webkit-text-stroke: 0.5px currentColor;
-  text-shadow:
-    2px 1px 0 #050510,
-    3px 2px 0 currentColor;
-}
-
-#archive .lunar-10,
-#archive .amor-11 {
-  font-style: italic;
-  letter-spacing: -0.045em;
-}
-
-#archive .lunar-3,
-#archive .lunar-25,
-#archive .caiman-7,
-#archive .caiman-10,
-#archive .true-10,
-#archive .true-17,
-#archive .amor-17 {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  text-decoration-color: #FE316D;
-}
-
-@media (max-width: 600px) {
   #archive .lunar-9,
   #archive .caiman-1,
   #archive .true-20 {
@@ -3975,3 +3961,4 @@ align-content: space-between;
       2px 2px 0 currentColor;
   }
 }
+```
