@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=Train+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;700&family=RocknRoll+One&family=Shippori+Mincho:wght@400;500;600;700&family=Train+One&display=swap');
 /* =========================================
    FRESA BLUNT — RETRO ARCADE INTRO
    ========================================= */
@@ -3740,73 +3740,125 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* ARCHIVE · JAPANESE UNDERGROUND TYPOGRAPHY */
+
+/* ARCHIVE · TOKYO DIY PUNK ZINE */
 
 #archive .archive-type-layer {
   font-family: "IBM Plex Mono", monospace;
 }
 
-/* Letras principales: pesadas y compactas */
+/* TITULARES: tinta pesada, tensión y cortes */
 #archive .scatter-word {
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "RocknRoll One", sans-serif;
   font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
   text-transform: uppercase;
-  text-wrap: nowrap;
+  letter-spacing: -0.065em;
+  line-height: 0.86;
+  text-shadow: 1px 0 currentColor, -1px 0 currentColor;
 }
 
-/* Acentos ornamentales, sin convertir toda la letra en decoración */
-#archive .lyric-scatter .scatter-word:nth-of-type(9n) {
-  font-family: "Train One", sans-serif;
-  letter-spacing: 0.015em;
-  line-height: 1;
-}
-
-/* Algunos titulares con contorno, como impresión experimental */
-#archive .scatter-word.lunar-1,
-#archive .scatter-word.caiman-1,
-#archive .scatter-word.true-1,
-#archive .scatter-word.amor-1 {
+/* GRANDES FRASES: estética de cartel fotocopiado */
+#archive .lunar-1,
+#archive .lunar-9,
+#archive .lunar-15,
+#archive .lunar-37,
+#archive .caiman-1,
+#archive .caiman-4,
+#archive .caiman-8,
+#archive .caiman-13,
+#archive .true-1,
+#archive .true-4,
+#archive .true-18,
+#archive .true-23,
+#archive .amor-3,
+#archive .amor-6,
+#archive .amor-7,
+#archive .amor-15,
+#archive .amor-18,
+#archive .amor-20,
+#archive .amor-21 {
   font-family: "Dela Gothic One", sans-serif;
-  -webkit-text-stroke: 0.35px currentColor;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.075em;
+  text-shadow: 2px 0 currentColor;
 }
 
-/* Códigos y microtextos */
+/* FRASES SELECCIONADAS: contraste editorial */
+#archive .lunar-4,
+#archive .lunar-23,
+#archive .caiman-4,
+#archive .true-9,
+#archive .amor-7,
+#archive .amor-20 {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.035em;
+}
+
+/* LÍNEAS: aspecto de texto impreso en un fanzine */
+#archive .scatter-line {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  text-shadow: 0.35px 0 currentColor;
+}
+
+/* ALGUNAS LÍNEAS MANUALES: energía irregular */
+#archive .lunar-3,
+#archive .lunar-25,
+#archive .caiman-7,
+#archive .caiman-10,
+#archive .true-10,
+#archive .true-17,
+#archive .amor-17 {
+  font-family: "RocknRoll One", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+/* ETIQUETAS: pequeños sellos de archivo */
 #archive .scatter-label,
 #archive .scatter-stamp {
   font-family: "IBM Plex Mono", monospace;
   font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.25;
   text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
-/* Sello vertical de revista japonesa */
-#archive .scatter-stamp.stamp-c {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  letter-spacing: 0.16em;
+/* SELLOS INTERVENIDOS */
+#archive .stamp-a,
+#archive .stamp-d {
+  font-family: "RocknRoll One", sans-serif;
+  letter-spacing: -0.025em;
 }
 
-/* Contraste tipográfico japonés */
-#archive .scatter-word.jp,
-#archive .scatter-word.japanese,
-#archive .scatter-label.jp {
-  font-family: "Shippori Mincho", serif;
-  font-weight: 600;
+#archive .stamp-b {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#archive .stamp-c {
+  font-family: "Train One", sans-serif;
   letter-spacing: 0.08em;
-  line-height: 1.15;
-  text-transform: none;
 }
 
-/* Más tensión visual sin añadir colores nuevos */
-#archive .scatter-stamp {
-  opacity: 0.82;
+/* MÓVIL: conservar jerarquía y legibilidad */
+@media (max-width: 600px) {
+  #archive .scatter-word {
+    letter-spacing: -0.055em;
+  }
+
+  #archive .scatter-line {
+    letter-spacing: -0.035em;
+  }
+
+  #archive .scatter-label,
+  #archive .scatter-stamp {
+    font-size: 6px;
+  }
 }
 
-#archive .scatter-label {
-  opacity: 0.9;
-}
