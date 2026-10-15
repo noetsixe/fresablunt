@@ -3532,10 +3532,12 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-template-rows: repeat(40, minmax(0, 2.5%));
-  grid-auto-rows: 2.5%;
-  grid-auto-flow: row;
-  align-content: start;
+  
+grid-template-rows: repeat(40, minmax(0, 2.5%));
+grid-auto-rows: 2.5%;
+grid-auto-flow: row dense;
+align-content: space-between;
+
   column-gap: 8px;
   row-gap: 0;
   padding: 0 3%;
@@ -3803,6 +3805,15 @@ animation: contact-crt-scroll 0.8s linear infinite;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
+
+
+/* Distribución vertical de textos secundarios */
+
+#archive .lyric-scatter .scatter-line,
+#archive .lyric-scatter .scatter-word {
+  margin-block: 0.25vh;
+}
+
 
 /* Móvil */
 
