@@ -3549,32 +3549,42 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 /* Texto secundario: pequeño y legible */
 
+
 #archive .scatter-line,
 #archive .scatter-word {
   position: relative;
   inset: auto;
   display: block;
+
   grid-column: span 2;
+  grid-row: auto;
+
   align-self: center;
   justify-self: start;
+
   width: fit-content;
   max-width: 100%;
   min-width: 0;
+
   margin: 0;
   padding: 0;
+
   color: #fff;
   font-family: "IBM Plex Mono", monospace;
   font-size: clamp(9px, 0.85vw, 12px);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.035em;
+
   text-transform: none;
   text-shadow: none;
   -webkit-text-stroke: 0;
   text-decoration: none;
+
   overflow-wrap: anywhere;
   transform: none;
 }
+
 
 /* Titulares oficiales */
 
