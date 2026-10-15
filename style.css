@@ -3843,3 +3843,58 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
+
+/* ARCHIVE · PHOTOCOPY DAMAGE */
+
+#archive .archive-type-layer {
+  overflow: hidden;
+}
+
+/* Tinta corrida */
+#archive .lunar-1,
+#archive .caiman-1,
+#archive .true-1,
+#archive .amor-3 {
+  text-shadow:
+    2px 0 currentColor,
+    -1px 1px 0 #050510;
+}
+
+/* Titulares con borde de impresión */
+#archive .lunar-9,
+#archive .lunar-15,
+#archive .caiman-8,
+#archive .caiman-13,
+#archive .true-18,
+#archive .true-23,
+#archive .amor-15,
+#archive .amor-20 {
+  -webkit-text-stroke: 1px currentColor;
+  paint-order: stroke fill;
+}
+
+/* Etiquetas como sellos de fotocopia */
+#archive .scatter-label,
+#archive .scatter-stamp {
+  background: #FE316D;
+  color: #050510;
+  padding: 2px 4px;
+  width: max-content;
+}
+
+/* Archivo intervenido */
+#archive .stamp-b {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* Pequeños cortes tipográficos */
+#archive .lunar-23,
+#archive .caiman-10,
+#archive .true-17,
+#archive .amor-17 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
