@@ -4004,70 +4004,48 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
+
 /* =========================================================
-   FRESA BLUNT · PRINT TEXTURE
-   Tinta irregular, grano editorial y trama de revista
+   FRESA BLUNT · ARCHIVE PRINT GRAIN
+   Textura neutra de impresión, sin teñir los colores
    ========================================================= */
 
-#archive {
-  isolation: isolate;
+#archive::before,
+#archive::after {
+  content: none;
 }
 
-/* Grano orgánico: sin velo blanco ni efecto de televisión */
+/* Grano monocromático, muy fino */
 #archive::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 4;
   pointer-events: none;
+  opacity: 0.12;
 
-  opacity: 0.20;
-
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.68' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   background-size: 180px 180px;
   mix-blend-mode: soft-light;
 }
 
-/* Trama de tinta rosa, irregular y localizada */
+/* Trama neutra de impresión, sin tinta rosa */
 #archive::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 4;
   pointer-events: none;
+  opacity: 0.055;
 
-  opacity: 0.17;
-
-  background-image:
-    radial-gradient(
-      circle,
-      #FE316D 0.65px,
-      transparent 0.95px
-    );
+  background-image: radial-gradient(
+    circle,
+    #000 0.55px,
+    transparent 0.85px
+  );
 
   background-size: 4px 4px;
-
-  mask-image: linear-gradient(
-    125deg,
-    transparent 0%,
-    #000 22%,
-    transparent 43%,
-    transparent 67%,
-    #000 84%,
-    transparent 100%
-  );
-
-  -webkit-mask-image: linear-gradient(
-    125deg,
-    transparent 0%,
-    #000 22%,
-    transparent 43%,
-    transparent 67%,
-    #000 84%,
-    transparent 100%
-  );
-
   mix-blend-mode: multiply;
 }
 
