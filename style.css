@@ -3512,12 +3512,17 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* ARCHIVE · TYPOGRAPHY IN FREE FALL */
+
+/* =========================================================
+   ARCHIVE · TYPOGRAPHY IN FREE FALL
+   Distribución, escala y posiciones
+   ========================================================= */
 
 #archive .archive-type-layer {
   position: absolute;
   inset: 0;
   z-index: 5;
+  isolation: isolate;
   pointer-events: none;
   overflow: hidden;
   color: #fff;
@@ -3528,6 +3533,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
   position: absolute;
   inset: 0;
 }
+
+/* Base común: ninguna frase se vuelve titular por accidente */
 
 #archive .scatter-line,
 #archive .scatter-word,
@@ -3540,47 +3547,81 @@ animation: contact-crt-scroll 0.8s linear infinite;
   margin: 0;
   padding: 0;
   overflow-wrap: anywhere;
-  line-height: 1.05;
+  line-height: 1.15;
 }
 
-#archive .scatter-line {
-  color: #fff;
-  font-size: clamp(9px, 1vw, 14px);
-  font-weight: 500;
-}
-
+#archive .scatter-line,
 #archive .scatter-word {
-  color: #FE316D;
-  font-family: "Anton", Impact, sans-serif;
-  font-size: clamp(28px, 5vw, 76px);
-  line-height: .85;
-  letter-spacing: -.055em;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(9px, 1vw, 13px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  text-decoration: none;
 }
 
-#archive .scatter-label,
-#archive .scatter-stamp {
+/* TITULARES OFICIALES
+   Solo las frases elegidas reciben esta escala. */
+
+#archive .lunar-9,
+#archive .lunar-10,
+#archive .caiman-1,
+#archive .caiman-3,
+#archive .caiman-4,
+#archive .true-5,
+#archive .true-6,
+#archive .true-19,
+#archive .true-20,
+#archive .amor-9,
+#archive .amor-11 {
   color: #FE316D;
-  font-size: 9px;
-  letter-spacing: .09em;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: clamp(25px, 3.8vw, 58px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  text-shadow: 1px 0 currentColor;
+  -webkit-text-stroke: 0;
+  text-decoration: none;
+  max-width: 75%;
 }
 
-/* LUNAR FANTASY: posiciones independientes */
+/* LUNAR FANTASY
+   Los titulares ocupan zonas separadas.
+   Las demás líneas permanecen pequeñas. */
 
-#archive .lunar-1  { top: 13%; left: 4%; font-size: clamp(30px, 5vw, 76px); transform: rotate(-5deg); }
-#archive .lunar-2  { top: 18%; left: 48%; transform: rotate(90deg); transform-origin: left top; }
+#archive .lunar-1  { top: 13%; left: 4%; transform: rotate(-5deg); }
+#archive .lunar-2  { top: 16%; left: 48%; transform: rotate(90deg); transform-origin: left top; }
 #archive .lunar-3  { top: 22%; left: 16%; transform: rotate(-8deg); }
 #archive .lunar-4  { top: 25%; right: 8%; transform: rotate(4deg); }
 #archive .lunar-5  { top: 29%; left: 5%; transform: rotate(90deg); transform-origin: left top; }
 #archive .lunar-6  { top: 31%; left: 40%; }
 #archive .lunar-7  { top: 34%; right: 7%; transform: rotate(-4deg); }
 #archive .lunar-8  { top: 37%; left: 22%; }
-#archive .lunar-9  { top: 39%; left: 5%; font-size: clamp(24px, 4vw, 60px); transform: rotate(-3deg); }
-#archive .lunar-10 { top: 44%; right: 6%; }
+
+#archive .lunar-9  {
+  top: 9%;
+  left: 5%;
+  transform: rotate(-4deg);
+  font-size: clamp(25px, 3.8vw, 56px);
+}
+
+#archive .lunar-10 {
+  top: 18%;
+  right: 6%;
+  transform: rotate(3deg);
+  font-size: clamp(24px, 3.5vw, 52px);
+}
+
 #archive .lunar-11 { top: 46%; left: 30%; transform: rotate(90deg); transform-origin: left top; }
 #archive .lunar-12 { top: 48%; left: 8%; }
 #archive .lunar-13 { top: 50%; right: 12%; }
 #archive .lunar-14 { top: 52%; left: 39%; }
-#archive .lunar-15 { top: 54%; right: 3%; font-size: clamp(24px, 3.8vw, 56px); transform: rotate(4deg); }
+#archive .lunar-15 { top: 54%; right: 3%; transform: rotate(4deg); }
 #archive .lunar-16 { top: 58%; left: 18%; }
 #archive .lunar-17 { top: 61%; left: 4%; }
 #archive .lunar-18 { top: 63%; left: 47%; }
@@ -3602,42 +3643,82 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .lunar-34 { top: 91%; right: 10%; }
 #archive .lunar-35 { top: 93%; left: 25%; }
 #archive .lunar-36 { top: 94%; right: 5%; }
-#archive .lunar-37 { top: 95%; left: 3%; font-size: clamp(24px, 4vw, 60px); }
+#archive .lunar-37 { top: 95%; left: 3%; }
 #archive .lunar-38 { top: 96%; left: 48%; }
 #archive .lunar-39 { top: 97%; right: 4%; }
 #archive .lunar-40 { top: 98%; left: 20%; }
 
-/* CAIMANEO */
+/* CAIMANEO
+   La frase Vine a endulzar / TO' TU DOLOR
+   se conserva dividida en dos elementos. */
 
-#archive .caiman-1  { top: 17%; right: 3%; font-size: clamp(34px, 6vw, 90px); transform: rotate(5deg); }
+#archive .caiman-1 {
+  top: 27%;
+  right: 4%;
+  transform: rotate(4deg);
+  font-size: clamp(29px, 4.8vw, 72px);
+}
+
 #archive .caiman-2  { top: 20%; left: 55%; }
-#archive .caiman-3  { top: 23%; right: 10%; transform: rotate(-90deg); transform-origin: right top; }
-#archive .caiman-4  { top: 26%; left: 3%; font-size: clamp(28px, 4.5vw, 68px); transform: rotate(-4deg); }
+
+#archive .caiman-3 {
+  top: 34%;
+  left: 7%;
+  right: auto;
+  transform: rotate(-3deg);
+  font-size: clamp(24px, 3.4vw, 51px);
+}
+
+#archive .caiman-4 {
+  top: 38%;
+  left: 19%;
+  right: auto;
+  transform: rotate(2deg);
+  font-size: clamp(27px, 4vw, 60px);
+}
+
 #archive .caiman-5  { top: 29%; left: 42%; }
 #archive .caiman-6  { top: 32%; right: 4%; }
-#archive .caiman-7  { top: 34%; left: 12%; }
-#archive .caiman-8  { top: 36%; right: 4%; font-size: clamp(30px, 5.5vw, 82px); transform: rotate(-4deg); }
+#archive .caiman-7  { top: 42%; left: 12%; }
+#archive .caiman-8  { top: 45%; right: 4%; transform: rotate(-4deg); }
 #archive .caiman-9  { top: 40%; left: 5%; }
-#archive .caiman-10 { top: 41%; left: 48%; }
+#archive .caiman-10 { top: 47%; left: 48%; }
 #archive .caiman-11 { top: 43%; right: 6%; }
-#archive .caiman-12 { top: 45%; left: 30%; }
-#archive .caiman-13 { top: 47%; left: 3%; font-size: clamp(25px, 4.5vw, 66px); transform: rotate(3deg); }
-#archive .caiman-14 { top: 50%; left: 17%; }
-#archive .caiman-15 { top: 52%; right: 4%; }
-#archive .caiman-16 { top: 54%; left: 6%; }
-#archive .caiman-17 { top: 56%; right: 7%; }
+#archive .caiman-12 { top: 49%; left: 30%; }
 
-/* TRUE O FALSE */
+#archive .caiman-13 { top: 51%; left: 3%; transform: rotate(3deg); }
+#archive .caiman-14 { top: 54%; left: 17%; }
+#archive .caiman-15 { top: 56%; right: 4%; }
+#archive .caiman-16 { top: 59%; left: 6%; }
+#archive .caiman-17 { top: 61%; right: 7%; }
 
-#archive .true-1  { top: 42%; left: 4%; font-size: clamp(34px, 6vw, 90px); transform: rotate(-4deg); }
+/* TRUE O FALSE
+   Cuatro titulares, alternados a izquierda y derecha. */
+
+#archive .true-1  { top: 43%; left: 4%; }
 #archive .true-2  { top: 45%; right: 5%; }
 #archive .true-3  { top: 47%; left: 30%; }
-#archive .true-4  { top: 49%; left: 4%; font-size: clamp(20px, 3.3vw, 50px); transform: rotate(3deg); }
-#archive .true-5  { top: 52%; right: 8%; }
-#archive .true-6  { top: 54%; left: 20%; }
+#archive .true-4  { top: 49%; left: 4%; }
+
+#archive .true-5 {
+  top: 47%;
+  left: 6%;
+  right: auto;
+  transform: rotate(-3deg);
+  font-size: clamp(23px, 3.4vw, 51px);
+}
+
+#archive .true-6 {
+  top: 53%;
+  left: auto;
+  right: 5%;
+  transform: rotate(2deg);
+  font-size: clamp(24px, 3.7vw, 55px);
+}
+
 #archive .true-7  { top: 56%; right: 4%; }
 #archive .true-8  { top: 58%; left: 6%; }
-#archive .true-9  { top: 60%; right: 8%; font-size: clamp(32px, 5vw, 75px); transform: rotate(90deg); transform-origin: right top; }
+#archive .true-9  { top: 60%; right: 8%; transform: rotate(90deg); transform-origin: right top; }
 #archive .true-10 { top: 63%; left: 15%; }
 #archive .true-11 { top: 65%; right: 5%; }
 #archive .true-12 { top: 67%; left: 6%; }
@@ -3646,193 +3727,169 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .true-15 { top: 73%; right: 4%; }
 #archive .true-16 { top: 75%; left: 15%; }
 #archive .true-17 { top: 77%; right: 5%; }
-#archive .true-18 { top: 79%; left: 4%; font-size: clamp(30px, 5vw, 74px); transform: rotate(-3deg); }
-#archive .true-19 { top: 82%; right: 7%; }
-#archive .true-20 { top: 84%; left: 20%; }
+#archive .true-18 { top: 79%; left: 4%; transform: rotate(-3deg); }
+
+#archive .true-19 {
+  top: 64%;
+  left: 8%;
+  right: auto;
+  transform: rotate(2deg);
+  font-size: clamp(23px, 3.5vw, 53px);
+}
+
+#archive .true-20 {
+  top: 70%;
+  left: auto;
+  right: 6%;
+  transform: rotate(-3deg);
+  font-size: clamp(26px, 4vw, 60px);
+}
+
 #archive .true-21 { top: 86%; right: 4%; }
 #archive .true-22 { top: 88%; left: 5%; }
-#archive .true-23 { top: 90%; right: 3%; font-size: clamp(30px, 4.5vw, 68px); }
+#archive .true-23 { top: 90%; right: 3%; }
 #archive .true-24 { top: 92%; left: 25%; }
 #archive .true-25 { top: 93%; right: 15%; }
 #archive .true-26 { top: 95%; left: 5%; }
 #archive .true-27 { top: 97%; right: 4%; }
 
-/* EL AMOR REAL */
+/* EL AMOR REAL
+   Los dos titulares largos tienen espacio propio. */
 
 #archive .amor-1  { top: 59%; left: 4%; }
 #archive .amor-2  { top: 61%; right: 6%; }
-#archive .amor-3  { top: 63%; left: 3%; font-size: clamp(22px, 4vw, 60px); transform: rotate(-3deg); }
+#archive .amor-3  { top: 63%; left: 3%; transform: rotate(-3deg); }
 #archive .amor-4  { top: 66%; right: 5%; }
 #archive .amor-5  { top: 68%; left: 22%; }
-#archive .amor-6  { top: 70%; right: 4%; font-size: clamp(30px, 5vw, 75px); }
-#archive .amor-7  { top: 72%; left: 5%; font-size: clamp(28px, 4.5vw, 68px); transform: rotate(-4deg); }
+#archive .amor-6  { top: 70%; right: 4%; }
+#archive .amor-7  { top: 72%; left: 5%; transform: rotate(-4deg); }
 #archive .amor-8  { top: 75%; right: 6%; }
-#archive .amor-9  { top: 77%; left: 5%; }
-#archive .amor-10 { top: 79%; right: 10%; }
-#archive .amor-11 { top: 81%; left: 20%; }
+
+#archive .amor-9 {
+  top: 80%;
+  left: 5%;
+  right: auto;
+  transform: rotate(-2deg);
+  font-size: clamp(22px, 3.4vw, 51px);
+  max-width: 80%;
+}
+
+#archive .amor-10 { top: 78%; right: 10%; }
+
+#archive .amor-11 {
+  top: 89%;
+  left: 19%;
+  right: auto;
+  transform: rotate(2deg);
+  font-size: clamp(23px, 3.6vw, 54px);
+  max-width: 78%;
+}
+
 #archive .amor-12 { top: 83%; right: 5%; }
 #archive .amor-13 { top: 85%; left: 4%; }
 #archive .amor-14 { top: 87%; right: 8%; }
-#archive .amor-15 { top: 89%; left: 3%; font-size: clamp(28px, 4.5vw, 68px); }
+#archive .amor-15 { top: 89%; left: 3%; }
 #archive .amor-16 { top: 91%; right: 4%; }
 #archive .amor-17 { top: 93%; left: 25%; }
-#archive .amor-18 { top: 94%; right: 4%; font-size: clamp(28px, 5vw, 75px); }
+#archive .amor-18 { top: 94%; right: 4%; }
 #archive .amor-19 { top: 96%; left: 8%; }
-#archive .amor-20 { top: 97%; right: 5%; font-size: clamp(24px, 4vw, 60px); }
-#archive .amor-21 { top: 98%; left: 4%; font-size: clamp(22px, 3.5vw, 52px); }
+#archive .amor-20 { top: 97%; right: 5%; }
+#archive .amor-21 { top: 98%; left: 4%; }
 
 /* MICROTEXTOS EDITORIALES */
 
-#archive .scatter-label { position: absolute; }
-#archive .lunar-scatter .scatter-label { top: 11%; left: 3%; }
-#archive .caiman-scatter .scatter-label { top: 15%; right: 3%; }
-#archive .truefalse-scatter .scatter-label { top: 40%; right: 4%; }
-#archive .amor-scatter .scatter-label { top: 57%; left: 4%; }
-
-#archive .stamp-a { top: 13%; right: 3%; writing-mode: vertical-rl; }
-#archive .stamp-b { top: 46%; left: 2%; transform: rotate(-90deg); transform-origin: left top; }
-#archive .stamp-c { top: 74%; right: 3%; transform: rotate(90deg); transform-origin: right top; }
-#archive .stamp-d { top: 88%; left: 3%; transform: rotate(-3deg); }
-
-/* MÓVIL: mantener la dispersión sin columnas */
-
-@media (max-width: 600px) {
-  #archive .scatter-line {
-    max-width: 65%;
-    font-size: 8px;
-  }
-
-  #archive .scatter-word {
-    max-width: 90%;
-    font-size: clamp(20px, 7vw, 38px);
-  }
-
-  #archive .scatter-label,
-  #archive .scatter-stamp {
-    font-size: 6px;
-  }
-
-  #archive .lunar-1 { font-size: 27px; }
-  #archive .lunar-4 { font-size: 25px; }
-  #archive .lunar-9 { font-size: 23px; }
-  #archive .lunar-15 { font-size: 24px; }
-  #archive .lunar-37 { font-size: 23px; }
-
-  #archive .caiman-1 { font-size: 29px; }
-  #archive .caiman-4 { font-size: 25px; }
-  #archive .caiman-8 { font-size: 27px; }
-  #archive .caiman-13 { font-size: 23px; }
-
-  #archive .true-1 { font-size: 30px; }
-  #archive .true-4 { font-size: 20px; }
-  #archive .true-18 { font-size: 25px; }
-  #archive .true-23 { font-size: 24px; }
-
-  #archive .amor-3 { font-size: 22px; }
-  #archive .amor-6 { font-size: 24px; }
-  #archive .amor-7 { font-size: 23px; }
-  #archive .amor-15 { font-size: 23px; }
-  #archive .amor-18 { font-size: 24px; }
-  #archive .amor-20 { font-size: 21px; }
-  #archive .amor-21 { font-size: 19px; }
-}
-
-
-
-
-
-
-/* ARCHIVE · DIY TOKYO PUNK */
-
-#archive .archive-type-layer {
-  isolation: isolate;
-}
-
-/* Letras de cartel: tinta pesada e irregular */
-#archive .scatter-word {
-  font-family: "Dela Gothic One", sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -0.065em;
-  line-height: 0.86;
-  text-shadow: 1px 0 currentColor;
-}
-
-/* Palabras golpeadas: doble impresión */
-#archive .lunar-1,
-#archive .lunar-9,
-#archive .caiman-1,
-#archive .caiman-8,
-#archive .true-1,
-#archive .true-18,
-#archive .amor-3,
-#archive .amor-15,
-#archive .amor-20 {
-  -webkit-text-stroke: 1px currentColor;
-  text-shadow: 3px 2px 0 #050510, 4px 3px 0 currentColor;
-}
-
-/* Recortes editoriales */
-#archive .lunar-4,
-#archive .lunar-23,
-#archive .caiman-4,
-#archive .true-9,
-#archive .amor-7,
-#archive .amor-18 {
-  font-family: "Shippori Mincho", serif;
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: -0.04em;
-  text-transform: none;
-  -webkit-text-stroke: 0.4px currentColor;
-}
-
-/* Texto pequeño: máquina de escribir */
-#archive .scatter-line {
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
-  letter-spacing: -0.045em;
-}
-
-/* Frases seleccionadas: contraste punk */
-#archive .lunar-3,
-#archive .lunar-25,
-#archive .caiman-7,
-#archive .caiman-10,
-#archive .true-10,
-#archive .true-17,
-#archive .amor-17 {
-  font-family: "RocknRoll One", sans-serif;
-  letter-spacing: -0.06em;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}
-
-/* Sellos de archivo */
 #archive .scatter-label,
 #archive .scatter-stamp {
+  color: #FE316D;
   font-family: "IBM Plex Mono", monospace;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.035em;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
   text-transform: uppercase;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+}
+
+#archive .lunar-scatter .scatter-label {
+  top: 11%;
+  left: 3%;
+}
+
+#archive .caimaneo-scatter .scatter-label {
+  top: 15%;
+  right: 3%;
+}
+
+#archive .truefalse-scatter .scatter-label {
+  top: 40%;
+  right: 4%;
+}
+
+#archive .amor-scatter .scatter-label {
+  top: 57%;
+  left: 4%;
+}
+
+#archive .stamp-a {
+  top: 13%;
+  right: 3%;
+  writing-mode: vertical-rl;
+}
+
+#archive .stamp-b {
+  top: 46%;
+  left: 2%;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+}
+
+#archive .stamp-c {
+  top: 74%;
+  right: 3%;
+  transform: rotate(90deg);
+  transform-origin: right top;
+  font-family: "Train One", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+#archive .stamp-d {
+  top: 88%;
+  left: 3%;
+  transform: rotate(-3deg);
 }
 
 #archive .stamp-a,
 #archive .stamp-d {
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
 
-#archive .stamp-c {
-  font-family: "Train One", sans-serif;
-  letter-spacing: 0.08em;
-}
+/* MÓVIL */
 
 @media (max-width: 600px) {
+  #archive .scatter-line,
   #archive .scatter-word {
+    max-width: 65%;
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  #archive .lunar-9,
+  #archive .lunar-10,
+  #archive .caiman-1,
+  #archive .caiman-3,
+  #archive .caiman-4,
+  #archive .true-5,
+  #archive .true-6,
+  #archive .true-19,
+  #archive .true-20,
+  #archive .amor-9,
+  #archive .amor-11 {
+    max-width: 88%;
+    font-size: clamp(20px, 6vw, 35px);
+    line-height: 0.98;
     letter-spacing: -0.055em;
   }
 
@@ -3842,5 +3899,63 @@ animation: contact-crt-scroll 0.8s linear infinite;
   }
 }
 
+
+/* =========================================================
+   ARCHIVE · DIY TOKYO PUNK
+   Acabado gráfico, sin decidir qué frases son titulares
+   ========================================================= */
+
+/* Textura tipográfica exclusiva de los titulares elegidos */
+
+#archive .lunar-9,
+#archive .lunar-10,
+#archive .caiman-1,
+#archive .caiman-3,
+#archive .caiman-4,
+#archive .true-5,
+#archive .true-6,
+#archive .true-19,
+#archive .true-20,
+#archive .amor-9,
+#archive .amor-11 {
+  text-shadow: 1px 0 currentColor;
+}
+
+/* Doble impresión: solo titulares seleccionados */
+
+#archive .lunar-9,
+#archive .caiman-1,
+#archive .true-20 {
+  -webkit-text-stroke: 0.6px currentColor;
+  text-shadow: 2px 1px 0 #050510, 3px 2px 0 currentColor;
+}
+
+/* Contraste editorial en dos titulares */
+
+#archive .lunar-10,
+#archive .amor-11 {
+  font-style: italic;
+  letter-spacing: -0.045em;
+}
+
+/* Texto secundario: máquina de escribir */
+
+#archive .scatter-line,
+#archive .lyric-scatter .scatter-word:not(.lunar-9):not(.lunar-10):not(.caiman-1):not(.caiman-3):not(.caiman-4):not(.true-5):not(.true-6):not(.true-19):not(.true-20):not(.amor-9):not(.amor-11) {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+}
+
+/* Móvil: reducir el desplazamiento de tinta */
+
+@media (max-width: 600px) {
+  #archive .lunar-9,
+  #archive .caiman-1,
+  #archive .true-20 {
+    text-shadow: 1px 1px 0 #050510, 2px 2px 0 currentColor;
+  }
+}
 
 
