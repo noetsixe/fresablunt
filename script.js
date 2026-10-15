@@ -1297,20 +1297,40 @@ function startReleaseBackground() {
     }
 }
 
-function onYouTubeIframeAPIReady() {
-    startReleaseBackground();
+
+let youtubeAPIRequested = false;
+
+function loadYouTubeAPI() {
+    if (youtubeAPIRequested || window.YT) return;
+
+    youtubeAPIRequested = true;
+
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    script.async = true;
+    document.head.appendChild(script);
 }
 
-const releaseBackgroundWait = setInterval(() => {
+window.onYouTubeIframeAPIReady = function () {
+    startReleaseBackground();
+};
 
-    if (window.YT) {
+const estrenoSection = document.getElementById("estreno");
 
-        clearInterval(releaseBackgroundWait);
+if (estrenoSection && "IntersectionObserver" in window) {
+    const youtubeObserver = new IntersectionObserver((entries) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+            loadYouTubeAPI();
+            youtubeObserver.disconnect();
+        }
+    }, {
+        rootMargin: "600px 0px"
+    });
 
-        startReleaseBackground();
-    }
-
-}, 500);
+    youtubeObserver.observe(estrenoSection);
+} else {
+    loadYouTubeAPI();
+}
 
 
 
