@@ -2575,10 +2575,14 @@ transform: none;
         margin-top: 50px;
     }
 
-    #estreno .release-cover {
-        width: 180px;
-        height: 180px;
-    }
+    
+#estreno .release-cover {
+    width: 230px;
+    height: 230px;
+    position: relative;
+    top: -25px;
+}
+
 
 #estreno .release-links {
     justify-content: center;
