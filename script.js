@@ -1022,7 +1022,7 @@ function drawRainbowShine(progress) {
   const centerY = h * 0.5;
   const radiusX = w * 0.28;
   const radiusY = h * 0.75;
-  const pixel = 3;
+  const pixel = 4;
 
   /* COLORES QUE VAN APARECIENDO */
   const colors = [
