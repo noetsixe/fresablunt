@@ -3741,69 +3741,60 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* ARCHIVE · TOKYO DIY PUNK ZINE */
+
+/* ARCHIVE · DIY TOKYO PUNK */
 
 #archive .archive-type-layer {
-  font-family: "IBM Plex Mono", monospace;
+  isolation: isolate;
 }
 
-/* TITULARES: tinta pesada, tensión y cortes */
+/* Letras de cartel: tinta pesada e irregular */
 #archive .scatter-word {
-  font-family: "RocknRoll One", sans-serif;
+  font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: -0.065em;
   line-height: 0.86;
-  text-shadow: 1px 0 currentColor, -1px 0 currentColor;
+  text-shadow: 1px 0 currentColor;
 }
 
-/* GRANDES FRASES: estética de cartel fotocopiado */
+/* Palabras golpeadas: doble impresión */
 #archive .lunar-1,
 #archive .lunar-9,
-#archive .lunar-15,
-#archive .lunar-37,
 #archive .caiman-1,
-#archive .caiman-4,
 #archive .caiman-8,
-#archive .caiman-13,
 #archive .true-1,
-#archive .true-4,
 #archive .true-18,
-#archive .true-23,
 #archive .amor-3,
-#archive .amor-6,
-#archive .amor-7,
 #archive .amor-15,
-#archive .amor-18,
-#archive .amor-20,
-#archive .amor-21 {
-  font-family: "Dela Gothic One", sans-serif;
-  letter-spacing: -0.075em;
-  text-shadow: 2px 0 currentColor;
+#archive .amor-20 {
+  -webkit-text-stroke: 1px currentColor;
+  text-shadow: 3px 2px 0 #050510, 4px 3px 0 currentColor;
 }
 
-/* FRASES SELECCIONADAS: contraste editorial */
+/* Recortes editoriales */
 #archive .lunar-4,
 #archive .lunar-23,
 #archive .caiman-4,
 #archive .true-9,
 #archive .amor-7,
-#archive .amor-20 {
+#archive .amor-18 {
   font-family: "Shippori Mincho", serif;
   font-weight: 700;
   font-style: italic;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
+  text-transform: none;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 
-/* LÍNEAS: aspecto de texto impreso en un fanzine */
+/* Texto pequeño: máquina de escribir */
 #archive .scatter-line {
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   letter-spacing: -0.045em;
-  text-shadow: 0.35px 0 currentColor;
 }
 
-/* ALGUNAS LÍNEAS MANUALES: energía irregular */
+/* Frases seleccionadas: contraste punk */
 #archive .lunar-3,
 #archive .lunar-25,
 #archive .caiman-7,
@@ -3812,33 +3803,27 @@ animation: contact-crt-scroll 0.8s linear infinite;
 #archive .true-17,
 #archive .amor-17 {
   font-family: "RocknRoll One", sans-serif;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.06em;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
-/* ETIQUETAS: pequeños sellos de archivo */
+/* Sellos de archivo */
 #archive .scatter-label,
 #archive .scatter-stamp {
   font-family: "IBM Plex Mono", monospace;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.035em;
-  line-height: 1.25;
   text-transform: uppercase;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
 }
 
-/* SELLOS INTERVENIDOS */
 #archive .stamp-a,
 #archive .stamp-d {
-  font-family: "RocknRoll One", sans-serif;
-  letter-spacing: -0.025em;
-}
-
-#archive .stamp-b {
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }
 
 #archive .stamp-c {
@@ -3846,14 +3831,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
   letter-spacing: 0.08em;
 }
 
-/* MÓVIL: conservar jerarquía y legibilidad */
 @media (max-width: 600px) {
   #archive .scatter-word {
     letter-spacing: -0.055em;
-  }
-
-  #archive .scatter-line {
-    letter-spacing: -0.035em;
   }
 
   #archive .scatter-label,
@@ -3861,4 +3841,5 @@ animation: contact-crt-scroll 0.8s linear infinite;
     font-size: 6px;
   }
 }
+
 
