@@ -1632,20 +1632,3 @@ if (document.readyState === "loading") {
 } else {
     initArchiveVideos();
 }
-
-const bgVideo = document.querySelector("#main-video video");
-
-if (bgVideo) {
-    bgVideo.addEventListener("waiting", () => {
-        console.warn("El vídeo se quedó esperando datos");
-    });
-
-    bgVideo.addEventListener("error", () => {
-        console.error("Error al reproducir el vídeo:", bgVideo.error);
-    });
-
-    bgVideo.addEventListener("ended", () => {
-        bgVideo.currentTime = 0;
-        bgVideo.play().catch(() => {});
-    });
-}
