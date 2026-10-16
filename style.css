@@ -4285,7 +4285,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         object-position: center center !important;
         
         /* El truco del zoom: Agrandamos el video uniformemente con scale() para que devore los huecos de los lados */
-        transform: scale(1.18) !important; /* Puedes subir o bajar este número (ej. 1.15 a 1.25) si quieres más o menos zoom */
+        transform: scale(2) !important; /* Puedes subir o bajar este número (ej. 1.15 a 1.25) si quieres más o menos zoom */
         transform-origin: center center !important;
         
         top: 0 !important;
