@@ -4089,77 +4089,12 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
-/* FRESA BLUNT · AJUSTE AISLADO PARA TABLET VERTICAL */
-@media screen and (min-width: 601px) and (max-width: 1100px)
-and (orientation: portrait) {
 
-    /* Presentación: centrar el bloque dentro de la pantalla */
-    #main-video {
-        position: relative;
-        height: 100vh;
-        height: 100svh;
-        overflow: hidden;
-    }
 
-    #artist-intro {
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-    }
 
-    /* Estreno: distribuir el contenido sin reproductor */
-    #estreno {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-        height: 100svh;
-        min-height: 0;
-        overflow: hidden;
-    }
-
-    #estreno .release {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-        margin: 0;
-        padding: 16px 7%;
-        box-sizing: border-box;
-    }
-
-    #estreno .release-video,
+/* FRESA BLUNT · OCULTAR SPOTIFY EN TABLETS */
+@media screen and (min-width: 601px) and (max-width: 1100px) {
     #spotify-player {
         display: none !important;
-    }
-
-    #estreno .release-side {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin: 0;
-    }
-
-    #estreno .release-cover {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: clamp(180px, 32vw, 240px);
-        height: auto;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-        margin: 0 auto;
-    }
-
-    #estreno .release-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 16px 0 0;
-        gap: 14px;
     }
 }
