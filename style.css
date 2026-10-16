@@ -4116,6 +4116,14 @@ animation: contact-crt-scroll 0.8s linear infinite;
         overflow: hidden;
     }
 
+   #main-video {
+    outline: 3px solid red !important;
+}
+
+#estreno {
+    outline: 3px solid lime !important;
+}
+
     #main-video video {
         top: 0;
         left: 0;
