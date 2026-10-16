@@ -4293,31 +4293,40 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: block !important;
         background: #070610 !important;
     }
-
-    #artist-intro {
+#artist-intro {
         position: absolute !important;
         top: 25% !important;
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
         max-width: 520px !important;
-        transform: translateY(0) !important;
-        z-index: 10 !important;
+        transform: none !important;
+        z-index: 999999 !important; /* Capa ultra alta para ganarle a cualquier script */
         
-        /* Forzamos dimensiones mínimas para que el contenedor nunca colapse ni desaparezca */
+        /* Forzamos visibilidad absoluta a prueba de scripts */
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        min-height: 150px !important;
-        height: auto !important;
+        clip: auto !important;
+        clip-path: none !important;
+        pointer-events: auto !important;
+        will-change: opacity, visibility !important;
         
         /* Sin cajas, fondos, bordes ni sombras */
         background: transparent !important;
+        background-color: transparent !important;
         padding: 0 !important;
         border: none !important;
         box-shadow: none !important;
     }
 
+    #artist-intro * {
+        display: revert !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #ffffff !important;
+        text-shadow: none !important;
+    }
     #artist-intro h1 {
         display: block !important;
         visibility: visible !important;
