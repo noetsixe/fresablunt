@@ -1087,16 +1087,22 @@ if (!localStorage.getItem("fresaBootSeen")) {
    ========================================= */
 const colorWave = document.getElementById("color-wave");
 
+
 function triggerColorWave() {
   colorWave.classList.remove("active");
-  void colorWave.offsetWidth;
-  colorWave.classList.add("active");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      colorWave.classList.add("active");
+    });
+  });
 
   // Quitar active cuando termine la animación
   setTimeout(() => {
     colorWave.classList.remove("active");
   }, 2500);
 }
+
 
 /* Primera aparición después de 3 segundos */
 setTimeout(() => {
