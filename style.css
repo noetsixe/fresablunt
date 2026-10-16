@@ -4295,7 +4295,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 #artist-intro {
         position: absolute !important;
-        top: 25% !important;
+        top: 32% !important;
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
@@ -4333,7 +4333,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         opacity: 1 !important;
         position: relative !important;
         z-index: 11 !important;
-        font-size: 34px !important;
+        font-size: 42px !important;
         letter-spacing: -2px !important;
         width: 100% !important;
         margin-bottom: 12px !important;
@@ -4356,8 +4356,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         width: 100% !important;
         max-width: 100% !important;
         color: #ffffff !important;
-        font-size: 12px !important;
-        line-height: 1.4 !important; /* Corregido el dos puntos por punto y coma */
+        font-size: 15px !important;
+        line-height: 1.4 !important;
         margin-bottom: 10px !important;
         text-shadow: none !important;
     }
@@ -4381,7 +4381,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: inline-block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        font-size: 12px !important;
+        font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
     }
@@ -4390,8 +4390,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: inline-block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        width: 20px !important;
-        height: 20px !important;
+        width: 24px !important;
+        height: 24px !important;
         fill: #ffffff !important;
     }
     /* 2. ESTRENO HORIZONTAL: Evitar que la portada y los links se corten a la derecha */
