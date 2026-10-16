@@ -4100,11 +4100,25 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 }
 
+/* TABLET VERTICAL: CENTRAR PORTADA DE ESTRENO */
 @media screen and (min-width: 601px) and (max-width: 1100px) and (orientation: portrait) {
-    #estreno .release-side .release-cover {
-        left: 50%;
+    #estreno .release-side {
+        position: relative;
+        left: 0;
+        right: 0;
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
-        transform: translateX(-50%);
+        align-items: center;
+        transform: none;
+    }
+
+    #estreno .release-cover {
+        position: relative;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
+        transform: none;
     }
 }
