@@ -4258,7 +4258,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-column: auto !important;
     }
 
-
 }
 
 /* =========================================================
@@ -4369,7 +4368,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         height: 20px !important;
         fill: #ffffff !important;
     }
-}
+
     /* 2. ESTRENO HORIZONTAL: Evitar que la portada y los links se corten a la derecha */
     #estreno {
         height: auto !important;
@@ -4432,4 +4431,4 @@ animation: contact-crt-scroll 0.8s linear infinite;
         margin: 0 !important;
     }
 }
-   
+}   
