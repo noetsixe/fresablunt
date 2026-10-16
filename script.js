@@ -875,8 +875,9 @@ function enterMainSite() {
 
     document.body.style.overflow = "auto";
 
-  mainSiteHasBeenEntered = true;
-  startSpotifyOnMainEntry();
+ mainSiteHasBeenEntered = true;
+startSpotifyOnMainEntry();
+startReleaseBackground();
 }
 
 /* =========================================
@@ -1221,10 +1222,15 @@ function startReleaseBackground() {
 }
 
 function onYouTubeIframeAPIReady() {
-    startReleaseBackground();
+    if (mainSiteHasBeenEntered) {
+        startReleaseBackground();
+    }
 }
 
+
 const releaseBackgroundWait = setInterval(() => {
+
+    if (!mainSiteHasBeenEntered) return;
 
     if (
         window.YT &&
@@ -1236,6 +1242,7 @@ const releaseBackgroundWait = setInterval(() => {
     }
 
 }, 500);
+
 
 
 /* =========================================
