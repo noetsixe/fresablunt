@@ -4267,40 +4267,43 @@ animation: contact-crt-scroll 0.8s linear infinite;
    ========================================================= */
 @media screen and (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) {
 
-    /* 1. PRESENTACIÓN HORIZONTAL: Video de fondo completo y texto a la izquierda */
+
     #main-video {
         position: relative !important;
         height: 100vh !important;
         overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
         background: #070610 !important;
     }
 
     #main-video video {
-        position: absolute !important;
+        position: relative !important;
         width: 100% !important;
-        height: 100% !important;
+        height: 50vh !important; /* El video ocupa exactamente el 50% superior */
         object-fit: cover !important;
         top: 0 !important;
         left: 0 !important;
         transform: none !important;
         z-index: 1 !important;
-        filter: brightness(0.65) contrast(0.95) !important; 
+        display: block !important;
     }
 
     #artist-intro {
         position: absolute !important;
-        top: 50% !important;
+        top: 55% !important; /* Posicionado en la mitad inferior para superponerse cleanly */
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
         max-width: 520px !important;
-        transform: translateY(-50%) !important;
+        transform: translateY(0) !important;
         z-index: 10 !important;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        background: rgba(7, 6, 16, 0.8) !important;
-        padding: 24px !important;
+        background: rgba(7, 6, 16, 0.9) !important; /* Fondo sólido para garantizar legibilidad total */
+        padding: 20px !important;
         border-radius: 8px !important;
     }
 
@@ -4310,10 +4313,10 @@ animation: contact-crt-scroll 0.8s linear infinite;
         opacity: 1 !important;
         position: relative !important;
         z-index: 11 !important;
-        font-size: 38px !important;
+        font-size: 34px !important;
         letter-spacing: -2px !important;
         width: 100% !important;
-        margin-bottom: 15px !important;
+        margin-bottom: 12px !important;
         
         background: none !important;
         -webkit-background-clip: initial !important;
@@ -4333,9 +4336,9 @@ animation: contact-crt-scroll 0.8s linear infinite;
         width: 100% !important;
         max-width: 100% !important;
         color: #ffffff !important;
-        font-size: 13px !important;
-        line-height: 1.5 !important;
-        margin-bottom: 12px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 10px !important;
         text-shadow: 1px 1px 4px rgba(0,0,0,0.9) !important;
     }
 
@@ -4345,22 +4348,23 @@ animation: contact-crt-scroll 0.8s linear infinite;
         width: 100% !important;
         margin-left: 0 !important;
         transform: none !important;
-        margin-top: 15px !important;
-        gap: 15px !important;
+        margin-top: 10px !important;
+        gap: 12px !important;
         flex-wrap: wrap !important;
         justify-content: flex-start !important;
     }
 
     .social-links a {
-        font-size: 13px !important;
+        font-size: 12px !important;
         color: #ffffff !important;
     }
 
     .social-links svg {
-        width: 24px !important;
-        height: 24px !important;
+        width: 20px !important;
+        height: 20px !important;
         fill: #ffffff !important;
     }
+}
 
 
     /* 2. ESTRENO HORIZONTAL: Evitar que la portada y los links se corten a la derecha */
