@@ -4086,3 +4086,57 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
   mix-blend-mode: multiply;
 }
+
+
+
+
+/* FRESA BLUNT · FIX RESPONSIVE PARA iPAD */
+@media screen and (min-width: 700px) and (max-width: 1100px) {
+
+    /* Evitar que las secciones recorten elementos */
+    #fb,
+    #estreno {
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
+    #fb *,
+    #estreno * {
+        box-sizing: border-box;
+    }
+
+    /* PRESENTACIÓN · mantener visible el contenido */
+    #fb {
+        min-height: 100vh;
+        min-height: 100svh;
+        height: auto;
+        position: relative;
+    }
+
+    #fb h1,
+    #fb h2,
+    #fb .title,
+    #fb .fb-title,
+    #fb .hero-title {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    /* ESTRENO · evitar que portada y enlaces se recorten */
+    #estreno {
+        min-height: 100vh;
+        min-height: 100svh;
+        height: auto;
+        position: relative;
+    }
+
+    #estreno img,
+    #estreno video {
+        max-width: 100%;
+    }
+
+    #estreno a {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+}
