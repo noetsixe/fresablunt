@@ -4101,21 +4101,26 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
+/* =========================================================
+   SOLUCIÓN DEFINITIVA Y RADICAL PARA TABLETS (601px a 1024px)
+   ========================================================= */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
 
-/* =========================================
-   PARCHE DEFINITIVO PARA TABLETS (601px a 1100px)
-   ========================================= */
-@media screen and (min-width: 601px) and (max-width: 1100px) {
-
-    /* 1. Forzar que el sitio no se desborde horizontalmente */
+    /* 1. Bloquear cualquier desbordamiento horizontal */
     html, body, #main-site {
         width: 100% !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
     }
 
-    /* 2. Arreglar el video de presentación principal */
+    /* 2. PRESENTACIÓN: Forzar orden en la pantalla inicial */
+    #main-video {
+        position: relative !important;
+        height: 100vh !important;
+    }
+
     #main-video video {
+        position: absolute !important;
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
@@ -4124,42 +4129,76 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #artist-intro {
-        left: 6% !important;
+        position: absolute !important;
         top: 50% !important;
-        width: 45% !important;
-        max-width: 450px !important;
+        left: 6% !important;
+        right: 6% !important;
+        width: auto !important;
+        max-width: 600px !important;
         transform: translateY(-50%) !important;
+        z-index: 5 !important;
     }
 
     #artist-intro h1 {
-        font-size: 44px !important;
+        font-size: 45px !important;
         letter-spacing: -2px !important;
+        width: 100% !important;
     }
 
-    /* 3. Arreglar la sección ESTRENO para que no se superpongan los elementos */
+    .artist-description {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 13px !important;
+    }
+
+    .social-links {
+        width: 100% !important;
+        margin-left: 0 !important;
+        transform: translateY(15px) !important;
+        gap: 15px !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+    }
+
+    .social-links a {
+        font-size: 13px !important;
+    }
+
+    .social-links svg {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* 3. ESTRENO: Neutralizar desajustes y anular floats/transforms rotos */
+    #estreno {
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 40px 5% !important;
+    }
+
     #estreno .release {
-        flex-direction: row !important;
+        flex-direction: column !important;
         align-items: center !important;
-        justify-content: space-between !important;
         gap: 20px !important;
         margin-top: 20px !important;
+        width: 100% !important;
     }
 
     #estreno .release-video {
-        width: 55% !important;
-        max-width: none !important;
+        width: 100% !important;
+        max-width: 700px !important;
     }
 
     #estreno .release-side {
-        width: 40% !important;
-        margin-top: 0 !important;
+        width: 100% !important;
         transform: none !important;
+        margin-top: 20px !important;
         align-items: center !important;
     }
 
     #estreno .release-cover {
-        width: 180px !important;
-        height: 180px !important;
+        width: 200px !important;
+        height: 200px !important;
         position: static !important;
         margin: 0 auto 15px auto !important;
     }
@@ -4169,7 +4208,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 10px !important;
+        gap: 14px !important;
         margin: 0 !important;
         transform: none !important;
     }
@@ -4179,15 +4218,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-column: auto !important;
     }
 
-    /* 4. Neutralizar el desmadre del ARCHIVE en tablet */
+    /* 4. ARCHIVE: Aislar el grid para que no explote en tablet */
     #archive.archive-editorial {
         min-height: auto !important;
-        padding: 40px 5% !important;
+        height: auto !important;
+        padding: 50px 5% !important;
     }
 
     #archive .archive-collage {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        grid-auto-rows: 110px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-auto-rows: 120px !important;
         gap: 15px !important;
+        width: 100% !important;
     }
 }
