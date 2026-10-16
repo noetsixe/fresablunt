@@ -4092,9 +4092,10 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* FRESA BLUNT · OCULTAR SPOTIFY EN TABLETS */
+
+/* OCULTAR REPRODUCTOR EN TABLETS */
 @media screen and (min-width: 601px) and (max-width: 1100px) {
-    #spotify-player {
+    #estreno .release-video {
         display: none !important;
     }
 }
