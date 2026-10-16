@@ -4278,16 +4278,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         background: #070610 !important;
     }
 
-    #main-video video {
+   #main-video video {
         position: relative !important;
         width: 100% !important;
-        height: 50vh !important; /* El video ocupa exactamente el 50% superior */
-        object-fit: cover !important;
+        height: 52vh !important; /* Ligeramente más holgado para que no comprima abajo */
+        object-fit: contain !important; /* Muestra el video completo sin recortar ningún borde */
+        object-position: top center !important; /* Anclado arriba para que respete toda la escena */
         top: 0 !important;
         left: 0 !important;
         transform: none !important;
         z-index: 1 !important;
         display: block !important;
+        background: #070610 !important;
     }
 
     #artist-intro {
