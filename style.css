@@ -4102,7 +4102,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 /* =========================================================
-   SOLUCIÓN DEFINITIVA PRESENTACIÓN TABLETS (Texto visible y video ajustado)
+   SOLUCIÓN ABSOLUTA PRESENTACIÓN TABLETS (Video arriba, texto visible abajo)
    ========================================================= */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
@@ -4113,36 +4113,43 @@ animation: contact-crt-scroll 0.8s linear infinite;
         overflow-x: hidden !important;
     }
 
-    /* 2. PRESENTACIÓN */
+    /* 2. PRESENTACIÓN: Video arriba, texto abajo */
     #main-video {
         position: relative !important;
         height: 100vh !important;
         overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        background: #070610 !important; /* Fondo sólido por si acaso */
     }
 
     #main-video video {
-        position: absolute !important;
-        width: 180% !important;
-        height: auto !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 50vh !important; /* Ocupa exactamente la mitad superior */
         object-fit: cover !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
         z-index: 1 !important;
+        display: block !important;
     }
 
     #artist-intro {
-        position: absolute !important;
-        top: 50% !important;
-        left: 6% !important;
-        right: 6% !important;
-        width: auto !important;
-        max-width: 650px !important;
-        transform: translateY(-50%) !important;
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 6% !important;
+        transform: none !important;
         z-index: 10 !important;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        background: #070610 !important; /* Fondo sólido para que el texto nunca quede detrás del video */
     }
 
     #artist-intro h1 {
@@ -4151,16 +4158,17 @@ animation: contact-crt-scroll 0.8s linear infinite;
         opacity: 1 !important;
         position: relative !important;
         z-index: 11 !important;
-        font-size: 42px !important;
+        font-size: 36px !important;
         letter-spacing: -2px !important;
         width: 100% !important;
-        /* Apagamos temporalmente el texto transparente para asegurar que se vea blanco y sólido */
+        margin-bottom: 15px !important;
+        
+        /* Forzar texto blanco sólido legible */
         background: none !important;
         -webkit-background-clip: initial !important;
         background-clip: initial !important;
         -webkit-text-fill-color: #ffffff !important;
         color: #ffffff !important;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
     }
 
     #artist-intro .artist-description,
@@ -4175,7 +4183,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         color: #ffffff !important;
         font-size: 13px !important;
         line-height: 1.5 !important;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
+        margin-bottom: 12px !important;
     }
 
     .social-links {
@@ -4183,7 +4191,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         z-index: 11 !important;
         width: 100% !important;
         margin-left: 0 !important;
-        transform: translateY(15px) !important;
+        transform: none !important;
+        margin-top: 15px !important;
         gap: 15px !important;
         flex-wrap: wrap !important;
         justify-content: flex-start !important;
@@ -4200,7 +4209,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         fill: #ffffff !important;
     }
 
-    /* 3. ESTRENO: Mantenerlo ordenado como ya te gustó */
+    /* 3. ESTRENO: Mantener ordenado */
     #estreno {
         height: auto !important;
         min-height: 100vh !important;
