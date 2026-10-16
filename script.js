@@ -553,11 +553,12 @@ for (let i = 1; i <= 4; i++) {
 
 function dropBlunt() {
   blunt.style.opacity = "1";
-  blunt.classList.remove("blunt-falling");
-  void blunt.offsetWidth;
+blunt.classList.remove("blunt-falling");
 
+requestAnimationFrame(() => {
   blunt.style.backgroundImage = 'url("./pixil-frame-0.png")';
   blunt.classList.add("blunt-falling");
+});
 
   let bluntFrame = 0;
   let bluntAnimation;
