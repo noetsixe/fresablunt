@@ -1591,13 +1591,7 @@ function handleArchiveScroll(event) {
     /* Compatible con scroll normal y contenedores internos */
     const mainSite = document.getElementById("main-site");
 
-    if (mainSite) {
-    mainSite.addEventListener(
-        "scroll",
-        scheduleUpdate,
-        { passive: true }
-    );
-
+   if (mainSite) {
     mainSite.addEventListener(
         "scroll",
         handleArchiveScroll,
