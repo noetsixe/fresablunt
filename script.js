@@ -1302,7 +1302,7 @@ const scrollTrackers = new WeakMap();
         video.defaultMuted = true;
         video.loop = true;
         video.playsInline = true;
-        video.preload = "none";
+       video.preload = "auto";
 
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
@@ -1487,9 +1487,14 @@ const scrollTrackers = new WeakMap();
             const state = states.get(video);
 
             if (!state.ready) {
-                prepareVideo(video);
-                return;
-            }
+    prepareVideo(video);
+
+    if (video.readyState >= 2) {
+        video.play().catch(() => {});
+    }
+
+    return;
+}
 
             if (video.paused) {
                 video.play().catch(() => {});
