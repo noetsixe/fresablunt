@@ -4296,19 +4296,20 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #artist-intro {
         position: absolute !important;
-        top: 55% !important;
-        left: 6% !important;
+        top: 25% !important; /* <--- Esto hace que suba y quede justo a la mitad del video de arriba */
+        left: 6% !important; /* <--- Pegado a la izquierda */
         right: auto !important;
         width: 48vw !important;
         max-width: 520px !important;
         transform: translateY(0) !important;
-        z-index: 10 !important;
+        z-index: 10 !important; /* <--- Por encima del video (z-index: 1) */
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        background: rgba(7, 6, 16, 0.95) !important; /* Fondo sólido para que el texto resalte perfecto */
-        padding: 20px !important;
-        border-radius: 8px !important;
+        background: rgba(7, 6, 16, 0.90) !important; /* Fondo elegante semi-transparente para que el texto resalte encima del video */
+        padding: 22px !important;
+        border-radius: 10px !important;
+        backdrop-filter: blur(4px) !important; /* Difumina sutilmente el video detrás del cuadro de texto */
     }
 
     #artist-intro h1 {
