@@ -1899,12 +1899,6 @@ text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
     mix-blend-mode: overlay;
 }
 
-/* PRUEBA TEMPORAL: RENDIMIENTO DEL VÍDEO */
-#main-video::before {
-    display: none !important;
-}
-
-
 /* Ocultar barra de scroll, mantener el desplazamiento */
 html {
     scrollbar-width: none;
