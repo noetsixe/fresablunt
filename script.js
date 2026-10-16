@@ -1021,16 +1021,19 @@ starCtx.imageSmoothingEnabled = false;
 const stars = [];
 
 function resizeStarfield() {
-  starCanvas.width = window.innerWidth;
-  starCanvas.height = window.innerHeight;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  starCanvas.width = width;
+  starCanvas.height = height;
   stars.length = 0;
 
-  const amount = Math.floor((starCanvas.width * starCanvas.height) / 9000);
+  const amount = Math.floor((width * height) / 9000);
 
   for (let i = 0; i < amount; i++) {
     stars.push({
-      x: Math.floor(Math.random() * starCanvas.width),
-      y: Math.floor(Math.random() * starCanvas.height),
+      x: Math.floor(Math.random() * width),
+      y: Math.floor(Math.random() * height),
       size: Math.random() < 0.88 ? 1 : 2,
       speed:
         Math.random() < 0.75
