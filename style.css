@@ -4095,12 +4095,13 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* OCULTAR SPOTIFY FLOTANTE SOLO EN TABLET VERTICAL */
-@media screen and (min-width: 601px) and (max-width: 1100px) and (orientation: portrait) {
-    body #spotify-player,
-    body #spotify-embed {
+
+/* FRESA BLUNT · SPOTIFY FLOTANTE FUERA EN TABLET VERTICAL */
+@media (orientation: portrait) and (hover: none) {
+    html body #spotify-player {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
         pointer-events: none !important;
     }
 }
