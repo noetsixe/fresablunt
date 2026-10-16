@@ -55,50 +55,6 @@
 
     <link rel="preload" as="image" href="./Fresa1.png" fetchpriority="high">
 
-
-    <style>
-/* ========================================================
-   PARCHE DE EMERGENCIA PARA TABLETS (Evita desbordes y textos tapados)
-   ======================================================== */
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-    /* 1. Evitar que cualquier caja, imagen o video rompa la pantalla */
-    *, *:before, *:after {
-        box-sizing: border-box !important;
-    }
-
-    body, main {
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
-    }
-
-    /* 2. Forzar que los elementos multimedia se adapten */
-    img, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* 3. Evitar alturas fijas que ahogan y tapan los textos */
-    h1, h2, h3, p, span {
-        height: auto !important;
-        word-break: break-word !important;
-    }
-
-    /* 4. Arreglar la sección de inicio y videos para que no se superpongan */
-    #main-video video {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    /* 5. Ajustar contenedores principales del archive si se enciman */
-    .archive-collage {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
-        padding: 10px !important;
-    }
-}
-</style>
-    
 </head>
 
 <body>
