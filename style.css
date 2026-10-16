@@ -4101,14 +4101,51 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
-@media screen and (min-width: 601px) and (max-width: 1100px) and (orientation: portrait) {
+
+/* =========================================
+   TABLET HORIZONTAL
+   PRESENTACIÓN + ESTRENO
+========================================= */
+
+@media screen and (min-width: 601px) and (max-width: 1100px) and (orientation: landscape) {
+
+    /* PRESENTACIÓN */
+
+    #artist-intro {
+        width: min(430px, 38vw);
+    }
+
+    .artist-description {
+        width: 100%;
+        max-width: 470px;
+    }
+
+    /* ESTRENO */
+
+    #estreno .release {
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    #estreno .release-video {
+        width: min(800px, 58vw);
+        flex-shrink: 0;
+    }
+
     #estreno .release-side {
+        width: 220px;
+        flex-shrink: 0;
         align-items: center;
         transform: none;
     }
 
     #estreno .release-cover {
-        left: 0;
-        margin-inline: auto;
+        width: 220px;
+        height: 220px;
+        left: auto;
+        top: auto;
+        margin-inline: 0;
     }
+}
+
 }
