@@ -4267,7 +4267,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
    ========================================================= */
 @media screen and (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) {
 
-
     #main-video {
         position: relative !important;
         height: 100vh !important;
@@ -4280,24 +4279,21 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #main-video video {
         position: relative !important;
-        /* Hacemos un zoom proporcional aumentando ligeramente el ancho y la altura */
-        width: 112% !important;
-        height: 54vh !important; 
-        /* Mantenemos el contain para no deformarlo, pero el zoom extra rellena los bordes */
-        object-fit: contain !important; 
-        /* Lo centramos perfectamente para que el zoom abarque toda la mitad superior por igual */
+        width: 100% !important;
+        height: 52vh !important; 
+        /* Usamos cover para que rellene absolutamente todo el espacio sin dejar huecos a los lados */
+        object-fit: cover !important; 
         object-position: center center !important; 
-        top: -2vh !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
         z-index: 1 !important;
         display: block !important;
-        background: #070610 !important;
     }
 
     #artist-intro {
         position: absolute !important;
-        top: 55% !important; /* Ubicado impecable en la mitad inferior */
+        top: 55% !important;
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
@@ -4307,7 +4303,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        background: rgba(7, 6, 16, 0.92) !important; /* Fondo sólido para legibilidad total del texto */
+        background: rgba(7, 6, 16, 0.92) !important;
         padding: 20px !important;
         border-radius: 8px !important;
     }
