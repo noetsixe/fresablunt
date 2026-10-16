@@ -4102,45 +4102,47 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 /* =========================================================
-   SOLUCIÓN DEFINITIVA Y RADICAL PARA TABLETS (601px a 1024px)
+   SOLUCIÓN DEFINITIVA PRESENTACIÓN TABLETS (Texto visible y video ajustado)
    ========================================================= */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
-    /* 1. Bloquear cualquier desbordamiento horizontal */
+    /* 1. Bloquear desbordamiento horizontal */
     html, body, #main-site {
         width: 100% !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
     }
 
-    /* 2. PRESENTACIÓN: Forzar orden en la pantalla inicial */
+    /* 2. PRESENTACIÓN */
     #main-video {
         position: relative !important;
         height: 100vh !important;
+        overflow: hidden !important;
     }
 
     #main-video video {
         position: absolute !important;
-        width: 100% !important;
-        height: 100% !important;
+        width: 180% !important;
+        height: auto !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
         object-fit: cover !important;
-        top: 0 !important;
-        left: 0 !important;
+        z-index: 1 !important;
     }
 
-        #artist-intro {
+    #artist-intro {
         position: absolute !important;
         top: 50% !important;
         left: 6% !important;
-        right: auto !important;
-        width: 88% !important;
-        max-width: 600px !important;
+        right: 6% !important;
+        width: auto !important;
+        max-width: 650px !important;
         transform: translateY(-50%) !important;
-        z-index: 20 !important;
+        z-index: 10 !important;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        color: #fff !important;
     }
 
     #artist-intro h1 {
@@ -4148,12 +4150,17 @@ animation: contact-crt-scroll 0.8s linear infinite;
         visibility: visible !important;
         opacity: 1 !important;
         position: relative !important;
-        z-index: 21 !important;
-        font-size: 45px !important;
+        z-index: 11 !important;
+        font-size: 42px !important;
         letter-spacing: -2px !important;
         width: 100% !important;
-        color: #fff !important;
-        -webkit-text-fill-color: #fff !important;
+        /* Apagamos temporalmente el texto transparente para asegurar que se vea blanco y sólido */
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-fill-color: #ffffff !important;
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
     }
 
     #artist-intro .artist-description,
@@ -4162,15 +4169,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         visibility: visible !important;
         opacity: 1 !important;
         position: relative !important;
-        z-index: 21 !important;
+        z-index: 11 !important;
         width: 100% !important;
         max-width: 100% !important;
-        color: #fff !important;
+        color: #ffffff !important;
         font-size: 13px !important;
         line-height: 1.5 !important;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
     }
 
     .social-links {
+        position: relative !important;
+        z-index: 11 !important;
         width: 100% !important;
         margin-left: 0 !important;
         transform: translateY(15px) !important;
@@ -4181,14 +4191,16 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     .social-links a {
         font-size: 13px !important;
+        color: #ffffff !important;
     }
 
     .social-links svg {
         width: 24px !important;
         height: 24px !important;
+        fill: #ffffff !important;
     }
 
-    /* 3. ESTRENO: Neutralizar desajustes y anular floats/transforms rotos */
+    /* 3. ESTRENO: Mantenerlo ordenado como ya te gustó */
     #estreno {
         height: auto !important;
         min-height: 100vh !important;
@@ -4237,7 +4249,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         grid-column: auto !important;
     }
 
-    /* 4. ARCHIVE: Aislar el grid para que no explote en tablet */
+    /* 4. ARCHIVE */
     #archive.archive-editorial {
         min-height: auto !important;
         height: auto !important;
