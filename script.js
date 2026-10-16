@@ -1302,7 +1302,7 @@ const scrollTrackers = new WeakMap();
         video.defaultMuted = true;
         video.loop = true;
         video.playsInline = true;
-       video.preload = "auto";
+       video.preload = "none";
 
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
@@ -1326,6 +1326,10 @@ const scrollTrackers = new WeakMap();
 
             scheduleUpdate();
         });
+
+       video.addEventListener("loadeddata", () => {
+    video.dataset.archiveFrameReady = "true";
+});
 
         video.addEventListener("error", () => {
             const state = states.get(video);
@@ -1376,42 +1380,25 @@ const scrollTrackers = new WeakMap();
     }
 
     /* Carga un video solo cuando entra en la zona prioritaria */
-    function prepareVideo(video) {
-        const state = states.get(video);
+   function prepareVideo(video) {
+    const state = states.get(video);
 
-        if (
-            !state ||
-            state.failed ||
-            state.loading ||
-            state.ready
-        ) return;
+    if (!state || state.failed || state.loading || state.ready) return;
 
-        state.loading = true;
+    state.loading = true;
+    video.dataset.archiveLoading = "true";
 
-        video.dataset.archiveLoading = "true";
+    const source = video.querySelector("source[data-src]");
 
-        const source = video.querySelector("source[data-src]");
-
-        if (source) {
-            source.src = source.dataset.src;
-            source.removeAttribute("data-src");
-        }
-
-        state.requested = true;
-
-        /* El evento canplay ya está preparado */
-        video.load();
-
-        if (video.readyState >= 3) {
-            state.loading = false;
-            state.ready = true;
-
-            video.dataset.archiveReady = "true";
-            video.dataset.archiveLoading = "false";
-
-            scheduleUpdate();
-        }
+    if (source) {
+        source.src = source.dataset.src;
+        source.removeAttribute("data-src");
     }
+
+    state.requested = true;
+    video.preload = "auto";
+    video.load();
+}
 
     function pauseVideo(video) {
         if (!video.paused) {
@@ -1488,11 +1475,6 @@ const scrollTrackers = new WeakMap();
 
             if (!state.ready) {
     prepareVideo(video);
-
-    if (video.readyState >= 2) {
-        video.play().catch(() => {});
-    }
-
     return;
 }
 
