@@ -4278,15 +4278,18 @@ animation: contact-crt-scroll 0.8s linear infinite;
         background: #070610 !important;
     }
 
-   #main-video video {
+    #main-video video {
         position: relative !important;
-        width: 100% !important;
-        height: 52vh !important; /* Ligeramente más holgado para que no comprima abajo */
-        object-fit: contain !important; /* Muestra el video completo sin recortar ningún borde */
-        object-position: top center !important; /* Anclado arriba para que respete toda la escena */
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
+        /* Hacemos un zoom proporcional aumentando ligeramente el ancho y la altura */
+        width: 112% !important;
+        height: 54vh !important; 
+        /* Mantenemos el contain para no deformarlo, pero el zoom extra rellena los bordes */
+        object-fit: contain !important; 
+        /* Lo centramos perfectamente para que el zoom abarque toda la mitad superior por igual */
+        object-position: center center !important; 
+        top: -2vh !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         z-index: 1 !important;
         display: block !important;
         background: #070610 !important;
@@ -4294,7 +4297,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
     #artist-intro {
         position: absolute !important;
-        top: 55% !important; /* Posicionado en la mitad inferior para superponerse cleanly */
+        top: 55% !important; /* Ubicado impecable en la mitad inferior */
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
@@ -4304,7 +4307,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        background: rgba(7, 6, 16, 0.9) !important; /* Fondo sólido para garantizar legibilidad total */
+        background: rgba(7, 6, 16, 0.92) !important; /* Fondo sólido para legibilidad total del texto */
         padding: 20px !important;
         border-radius: 8px !important;
     }
@@ -4367,7 +4370,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
         fill: #ffffff !important;
     }
 }
-
 
     /* 2. ESTRENO HORIZONTAL: Evitar que la portada y los links se corten a la derecha */
     #estreno {
