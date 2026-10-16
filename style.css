@@ -4128,27 +4128,46 @@ animation: contact-crt-scroll 0.8s linear infinite;
         left: 0 !important;
     }
 
-    #artist-intro {
+        #artist-intro {
         position: absolute !important;
         top: 50% !important;
         left: 6% !important;
-        right: 6% !important;
-        width: auto !important;
+        right: auto !important;
+        width: 88% !important;
         max-width: 600px !important;
         transform: translateY(-50%) !important;
-        z-index: 5 !important;
+        z-index: 20 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #fff !important;
     }
 
     #artist-intro h1 {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 21 !important;
         font-size: 45px !important;
         letter-spacing: -2px !important;
         width: 100% !important;
+        color: #fff !important;
+        -webkit-text-fill-color: #fff !important;
     }
 
-    .artist-description {
+    #artist-intro .artist-description,
+    #artist-intro .artist-description p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 21 !important;
         width: 100% !important;
         max-width: 100% !important;
+        color: #fff !important;
         font-size: 13px !important;
+        line-height: 1.5 !important;
     }
 
     .social-links {
