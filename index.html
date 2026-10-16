@@ -1210,8 +1210,7 @@ function refresh() {
 refresh();
 
 window.addEventListener('resize', refresh);
-window.addEventListener('load', refresh);
-
+    
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             if (animationId) {
