@@ -209,23 +209,6 @@ spotifyController.play()
    }// Cierra startSpotifyOnMainEntry()
 
 
-let spotifyApiRequested = false;
-
-function loadSpotifyIframeAPI() {
-  if (spotifyApiRequested) return;
-
-  spotifyApiRequested = true;
-
-  const script = document.createElement("script");
-  script.src = "https://open.spotify.com/embed/iframe-api/v1";
-  script.async = true;
-  script.onerror = () => {
-    spotifyApiRequested = false;
-  };
-
-  document.body.appendChild(script);
-}
-
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
 const element = document.getElementById("spotify-embed");
 
@@ -895,7 +878,6 @@ function enterMainSite() {
 
  
 mainSiteHasBeenEntered = true;
-loadSpotifyIframeAPI();
 startSpotifyOnMainEntry();
 startReleaseBackground();
 
