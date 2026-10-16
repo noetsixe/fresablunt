@@ -4089,70 +4089,65 @@ animation: contact-crt-scroll 0.8s linear infinite;
 }
 
 
-
-
-/* FRESA BLUNT · TABLET VERTICAL */
+/* FRESA BLUNT · AJUSTE AISLADO PARA TABLET VERTICAL */
 @media screen and (min-width: 601px) and (max-width: 1100px)
-       and (orientation: portrait) {
+and (orientation: portrait) {
 
-    /* PRESENTACIÓN */
+    /* Presentación: centrar el bloque dentro de la pantalla */
     #main-video {
+        position: relative;
         height: 100vh;
         height: 100svh;
         overflow: hidden;
     }
 
     #artist-intro {
-        top: 50%;
-        left: 7%;
-        right: 7%;
-        width: auto;
-        transform: translateY(-50%);
+        top: 50% !important;
+        transform: translateY(-50%) !important;
     }
 
-    #artist-intro h1 {
-        width: auto;
-        max-width: 100%;
-        font-size: clamp(42px, 7vw, 64px);
+    /* Estreno: distribuir el contenido sin reproductor */
+    #estreno {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        height: 100svh;
+        min-height: 0;
+        overflow: hidden;
     }
 
-    .artist-description {
-        max-width: 560px;
-        font-size: clamp(14px, 2vw, 18px);
+    #estreno .release {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 16px 7%;
+        box-sizing: border-box;
     }
 
-    /* ESTRENO */
+    #estreno .release-video,
     #spotify-player {
         display: none !important;
     }
 
-    #estreno .release {
-        min-height: 75vh;
-        min-height: 75svh;
+    #estreno .release-side {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 24px;
-        margin-top: 0;
-        padding: 20px 7%;
-        box-sizing: border-box;
-    }
-
-    #estreno .release-video {
-        display: none !important;
-    }
-
-    #estreno .release-side {
         width: 100%;
-        align-items: center;
-        margin-top: 0;
+        margin: 0;
     }
 
     #estreno .release-cover {
         position: relative;
         top: auto;
         left: auto;
-        width: clamp(180px, 35vw, 250px);
+        width: clamp(180px, 32vw, 240px);
         height: auto;
         aspect-ratio: 1 / 1;
         object-fit: cover;
@@ -4160,11 +4155,11 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
     #estreno .release-links {
-        width: 100%;
-        margin: 18px 0 0;
+        display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        width: 100%;
+        margin: 16px 0 0;
         gap: 14px;
     }
 }
-
