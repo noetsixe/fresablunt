@@ -4090,53 +4090,64 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-/* FRESA BLUNT · FIX RESPONSIVE PARA iPAD */
-@media screen and (min-width: 700px) and (max-width: 1100px) {
 
-    /* Evitar que las secciones recorten elementos */
-    #fb,
-    #estreno {
-        overflow: visible;
-        box-sizing: border-box;
-    }
+/* =========================================
+   FRESA BLUNT · TABLET POR ORIENTACIÓN
+   Vertical = móvil | Horizontal = laptop
+   ========================================= */
 
-    #fb *,
-    #estreno * {
-        box-sizing: border-box;
-    }
+/* iPad y tablets en VERTICAL */
+@media screen and (min-width: 700px) and (max-width: 1100px)
+       and (orientation: portrait) {
 
-    /* PRESENTACIÓN · mantener visible el contenido */
-    #fb {
-        min-height: 100vh;
-        min-height: 100svh;
-        height: auto;
-        position: relative;
-    }
-
-    #fb h1,
-    #fb h2,
-    #fb .title,
-    #fb .fb-title,
-    #fb .hero-title {
+    /* Activar el comportamiento responsive móvil */
+    #main-site {
+        width: 100%;
         max-width: 100%;
-        overflow-wrap: break-word;
     }
 
-    /* ESTRENO · evitar que portada y enlaces se recorten */
-    #estreno {
-        min-height: 100vh;
-        min-height: 100svh;
-        height: auto;
-        position: relative;
+    #fb,
+    #estreno,
+    #archive,
+    #shows,
+    #contacto {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
+    #fb img,
     #estreno img,
+    #fb video,
     #estreno video {
         max-width: 100%;
+        height: auto;
+    }
+}
+
+/* iPad y tablets en HORIZONTAL */
+@media screen and (min-width: 700px) and (max-width: 1400px)
+       and (orientation: landscape) {
+
+    /* Recuperar el espacio de escritorio */
+    #main-site {
+        width: 100%;
+        max-width: 100%;
     }
 
-    #estreno a {
+    #fb,
+    #estreno,
+    #archive,
+    #shows,
+    #contacto {
         max-width: 100%;
-        overflow-wrap: anywhere;
+        min-width: 0;
+    }
+
+    #fb img,
+    #estreno img,
+    #fb video,
+    #estreno video {
+        max-width: 100%;
     }
 }
