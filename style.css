@@ -4295,7 +4295,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 #artist-intro {
         position: absolute !important;
-        top: 32% !important;
+        top: 48% !important;
         left: 6% !important;
         right: auto !important;
         width: 48vw !important;
@@ -4372,7 +4372,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         margin-left: 0 !important;
         transform: none !important;
         margin-top: 10px !important;
-        gap: 12px !important;
+        gap: 24px !important;
         flex-wrap: wrap !important;
         justify-content: flex-start !important;
     }
