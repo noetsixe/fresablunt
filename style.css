@@ -4108,7 +4108,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
    PRESENTACIÓN + ESTRENO
 ========================================= */
 
-@media screen and (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+@media screen and (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) {
 
     /* PRESENTACIÓN */
 
