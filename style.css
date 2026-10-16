@@ -4090,12 +4090,6 @@ animation: contact-crt-scroll 0.8s linear infinite;
 
 
 
-
-
-
-
-
-
 /* FRESA BLUNT · SPOTIFY FLOTANTE FUERA EN TABLET VERTICAL */
 @media (orientation: portrait) and (hover: none) {
     html body #spotify-player {
@@ -4103,6 +4097,20 @@ animation: contact-crt-scroll 0.8s linear infinite;
         visibility: hidden !important;
         opacity: 0 !important;
         pointer-events: none !important;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1100px) and (orientation: portrait) {
+    #estreno .release {
+        align-items: center;
+    }
+
+    #estreno .release-side {
+        align-items: center;
+    }
+
+    #estreno .release-cover {
+        left: 0;
     }
 }
 
