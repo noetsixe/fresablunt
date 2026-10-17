@@ -459,6 +459,9 @@ function vibrateDevice(pattern = 100) {
 
 strawberry.addEventListener("click", () => {
    
+  // ---> AGREGA ESTA LÍNEA AQUÍ <---
+  preloadHeavyAnimationAssets();
+
    spotifyReplayBlocked = false;
   spotifyPlayRequest++;
    
@@ -522,38 +525,53 @@ setTimeout(() => {
 });
 
 /* =========================================
-   CAÍDA DEL BLUNT
+   CAÍDA DEL BLUNT (OPTIMIZADO PARA EL HILO PRINCIPAL)
    ========================================= */
-/* CAÍDA DEL BLUNT */
 const bluntFrames = [];
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 6; i++) { // Precargamos solo la mitad inicial para liberar el hilo principal
   const img = new Image();
   img.src = `./pixil-frame-${i}.png`;
   bluntFrames.push(img);
 }
 
-/* FRAMES BB 14 → 21 */
+// Contenedores vacíos para las animaciones pesadas
 const bbFrames = [];
-for (let i = 14; i <= 21; i++) {
-  const img = new Image();
-  img.src = `./BB (${i}).png`;
-  bbFrames.push(img);
-}
-
-/* FRAMES A1 1 → 31 */
 const a1Frames = [];
-for (let i = 1; i <= 31; i++) {
-  const img = new Image();
-  img.src = `./A1 (${i}).png`;
-  a1Frames.push(img);
-}
-
 const hFrames = [];
+let heavyAssetsLoaded = false;
 
-for (let i = 1; i <= 4; i++) {
-  const img = new Image();
-  img.src = `./H (${i}).png`;
-  hFrames.push(img);
+// Función para cargar los frames pesados solo cuando el usuario interactúa
+function preloadHeavyAnimationAssets() {
+  if (heavyAssetsLoaded) return;
+  heavyAssetsLoaded = true;
+
+  // Resto de frames de blunt
+  for (let i = 6; i < 12; i++) {
+    const img = new Image();
+    img.src = `./pixil-frame-${i}.png`;
+    bluntFrames.push(img);
+  }
+
+  /* FRAMES BB 14 → 21 */
+  for (let i = 14; i <= 21; i++) {
+    const img = new Image();
+    img.src = `./BB (${i}).png`;
+    bbFrames.push(img);
+  }
+
+  /* FRAMES A1 1 → 31 */
+  for (let i = 1; i <= 31; i++) {
+    const img = new Image();
+    img.src = `./A1 (${i}).png`;
+    a1Frames.push(img);
+  }
+
+  /* FRAMES H */
+  for (let i = 1; i <= 4; i++) {
+    const img = new Image();
+    img.src = `./H (${i}).png`;
+    hFrames.push(img);
+  }
 }
 
 function dropBlunt() {
