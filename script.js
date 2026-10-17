@@ -89,7 +89,6 @@ let spotifyReplayBlocked = false;
 let spotifyPlayRequest = 0;
 let spotifyEmbedReady = false;
 
-
 let mainSiteHasBeenEntered = false;
 
 /* =========================================================
@@ -188,7 +187,7 @@ soundToggle.addEventListener("click", async () => {
 });
 
 /* =========================================
-SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
+SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO (OPTIMIZADO)
 ========================================= */
 
 function startSpotifyOnMainEntry() {
@@ -202,8 +201,6 @@ function startSpotifyOnMainEntry() {
     return;
   }
 
-  spotifyPlayAttempted = true;
-  
   try {
     spotifyController.play().catch((error) => {
       // Silencia cualquier bloqueo del navegador sin romper nada
@@ -213,58 +210,61 @@ function startSpotifyOnMainEntry() {
   }
 }
 
+// Función para inyectar y preparar la API de Spotify de forma diferida
+function loadSpotifyPlayerAPI() {
+  if (window._spotifyApiLoaded) return;
+  window._spotifyApiLoaded = true;
+
+  // Creamos el script de la API de Spotify de manera dinámica solo cuando se necesita
+  const script = document.createElement('script');
+  script.src = "https://open.spotify.com/embed/iframe-api/v1";
+  script.async = true;
+  document.body.appendChild(script);
+}
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
-const element = document.getElementById("spotify-embed");
+  const element = document.getElementById("spotify-embed");
+  if (!element) return;
 
-if (!element) return;
+  const options = {
+    width: "100%",
+    height: "152",
+    uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
+  };
 
-const options = {
-width: "100%",
-height: "152",
-uri: "spotify:playlist:5d1xHYxXLiQb480Zs9787P"
-};
+  IFrameAPI.createController(
+    element,
+    options,
+    (EmbedController) => {
+      spotifyController = EmbedController;
 
-IFrameAPI.createController(
-element,
-options,
-(EmbedController) => {
-spotifyController = EmbedController;
+      const originalPause = spotifyController.pause.bind(spotifyController);
+      spotifyController.pause = function (...args) {
+        return originalPause(...args);
+      };
 
-   
-const originalPause = spotifyController.pause.bind(spotifyController);
+      spotifyController.addListener("playback_started", () => {
+        if (spotifyReplayBlocked) {
+          spotifyController.pause();
+        }
+      });
 
-spotifyController.pause = function (...args) {
-  return originalPause(...args);
-};
-   
-  spotifyController.addListener("playback_started", () => {
-    
+      spotifyController.addListener("playback_update", (event) => {
+        if (spotifyReplayBlocked && !event.data.isPaused) {
+          spotifyController.pause();
+        }
+      });
 
-    if (spotifyReplayBlocked) {
-  spotifyController.pause();
-}
-  });
+      spotifyEmbedReady = true;
 
-  spotifyController.addListener("playback_update", (event) => {
+      if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
+        spotifyController.pause();
+        return;
+      }
 
-
-if (spotifyReplayBlocked && !event.data.isPaused) {
-  spotifyController.pause();
-}
-});
-
-
-   spotifyEmbedReady = true;
-
-if (spotifyReplayBlocked || !mainSiteHasBeenEntered) {
-  spotifyController.pause();
-  return;
-}
-
-startSpotifyOnMainEntry();
-}
-);
+      startSpotifyOnMainEntry();
+    }
+  );
 };
 
 
@@ -870,7 +870,7 @@ function startMainFade() {
 
 function enterMainSite() {
   /* Aquí ya terminó el segundo de transición */
-     localStorage.setItem(
+  localStorage.setItem(
     ENTRY_MEMORY_KEY,
     String(Date.now())
   );
@@ -880,13 +880,15 @@ function enterMainSite() {
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
 
-    document.body.style.overflow = "auto";
-
+  document.body.style.overflow = "auto";
  
-mainSiteHasBeenEntered = true;
-startSpotifyOnMainEntry();
-startReleaseBackground();
-
+  mainSiteHasBeenEntered = true;
+  
+  // ---> AQUÍ ACTIVAMOS SPOTIFY DE FORMA DIFERIDA <---
+  loadSpotifyPlayerAPI();
+  
+  startSpotifyOnMainEntry();
+  startReleaseBackground();
 }
 
 /* =========================================
@@ -900,6 +902,9 @@ if (returningVisitor) {
   mainSite.style.opacity = "1";
 
   document.body.style.overflow = "auto";
+
+  // ---> AQUÍ TAMBIÉN ACTIVAMOS SPOTIFY SI ENTRA DIRECTO <---
+  loadSpotifyPlayerAPI();
 }
 
 /* =========================================
