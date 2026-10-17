@@ -4361,21 +4361,20 @@ animation: contact-crt-scroll 0.8s linear infinite;
         text-shadow: none !important;
     }
 
-    .social-links {
+   .social-links {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
-        position: absolute !important; /* <--- Lo sacamos del flujo para centrarlo en la pantalla */
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important; /* <--- Ancho de pantalla completa */
-        transform: none !important;
-        margin-top: 15px !important;
-        gap: 20px !important;
+        position: absolute !important;
+        top: 75% !important; /* Ajusta esta altura si quieres que baje o suba más */
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Esto lo clava exactamente en el centro horizontal de la tablet */
+        z-index: 999999 !important;
+        width: max-content !important;
+        gap: 25px !important;
         flex-wrap: nowrap !important;
-        justify-content: center !important; /* <--- Ahora sí, centro absoluto de la pantalla */
+        justify-content: center !important;
         align-items: center !important;
-        z-index: 11 !important;
     }
 
     .social-links a {
@@ -4386,7 +4385,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-        margin-right: 0 !important; /* Sin márgenes que desentren */
+        margin: 0 !important;
     }
     .social-links svg {
         display: inline-block !important;
