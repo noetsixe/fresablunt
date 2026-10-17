@@ -4264,8 +4264,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
    CONFIGURACIÓN EXCLUSIVA PARA TABLET EN HORIZONTAL (Landscape)
    (Mantiene el vertical intacto y arregla video, texto y estreno)
    ========================================================= */
-@media screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
-
+@media screen and (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) and (pointer: coarse) and (hover: none) {
     #main-video {
         position: relative !important;
         height: 100vh !important;
