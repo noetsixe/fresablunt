@@ -4367,7 +4367,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     opacity: 1 !important;
     position: fixed !important;
     left: 50% !important;
-   top: calc(48% + 320px) !important;
+   top: calc(48% + 300px) !important;
     width: max-content !important;
     max-width: 100% !important;
     margin: 0 !important;
