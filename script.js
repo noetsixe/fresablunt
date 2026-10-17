@@ -1061,6 +1061,12 @@ let starfieldPaused = false;
 
 
 function animateStarfield() {
+  // Si la pestaña está oculta, frenamos el bucle para liberar CPU de inmediato
+  if (document.hidden) {
+    setTimeout(animateStarfield, 1000);
+    return;
+  }
+
   if (starfieldPaused) {
     requestAnimationFrame(animateStarfield);
     return;
