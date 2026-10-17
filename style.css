@@ -4365,17 +4365,17 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
-        position: relative !important;
-        z-index: 11 !important;
-        width: 100% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        position: absolute !important; /* <--- Lo sacamos del flujo para centrarlo en la pantalla */
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important; /* <--- Ancho de pantalla completa */
         transform: none !important;
-        margin-top: 10px !important;
-        gap: 15px !important;
-        flex-wrap: nowrap !important; /* <--- Cambiado de wrap a nowrap para que NUNCA bajen a otra línea */
-        justify-content: center !important;
+        margin-top: 15px !important;
+        gap: 20px !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important; /* <--- Ahora sí, centro absoluto de la pantalla */
         align-items: center !important;
+        z-index: 11 !important;
     }
 
     .social-links a {
@@ -4386,9 +4386,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-       margin-right: 0 !important;
+        margin-right: 0 !important; /* Sin márgenes que desentren */
     }
-
     .social-links svg {
         display: inline-block !important;
         visibility: visible !important;
