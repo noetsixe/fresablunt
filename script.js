@@ -194,19 +194,24 @@ SPOTIFY — REPRODUCIR AL ENTRAR AL SITIO
 function startSpotifyOnMainEntry() {
   if (
     !spotifyController ||
+    typeof spotifyController.play !== "function" ||
     !spotifyEmbedReady ||
     !mainSiteHasBeenEntered ||
     spotifyReplayBlocked
-) {
+  ) {
     return;
-}
+  }
 
   spotifyPlayAttempted = true;
   
-spotifyController.play()
-  .catch((error) => {
-  }); 
-   }// Cierra startSpotifyOnMainEntry()
+  try {
+    spotifyController.play().catch((error) => {
+      // Silencia cualquier bloqueo del navegador sin romper nada
+    });
+  } catch (e) {
+    // Protección adicional
+  }
+}
 
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
