@@ -1120,127 +1120,121 @@ c-1.6-1.9-1.6-4.7,0-6.6C428.9,141.6,431.7,141.6,433.6,143.2z"/>
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 <script src="https://www.youtube.com/iframe_api" async></script>
 
-<script src="script.js"></script>
-
-
-
-
+<script src="script.js" defer></script>
 
 <script>
-(() => {
-    const canvas = document.getElementById('cosmic-starfield');
-    const mainSite = document.getElementById('main-site');
-    const archive = document.getElementById('archive');
+document.addEventListener("DOMContentLoaded", () => {
+    (() => {
+        const canvas = document.getElementById('cosmic-starfield');
+        const mainSite = document.getElementById('main-site');
+        const archive = document.getElementById('archive');
 
-    if (!canvas || !mainSite || !archive) return;
+        if (!canvas || !mainSite || !archive) return;
 
-    const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
 
-    let w = 0;
-    let h = 0;
-    let dpr = 1;
-    let stars = [];
-    let animationId = null;
-    let lastTime = 0;
-    let regionTop = 0;
+        let w = 0;
+        let h = 0;
+        let dpr = 1;
+        let stars = [];
+        let animationId = null;
+        let lastTime = 0;
+        let regionTop = 0;
 
-    function resize() {
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        function resize() {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-        w = mainSite.clientWidth;
-        h = mainSite.scrollHeight;
-        regionTop = archive.offsetTop;
+            w = mainSite.clientWidth;
+            h = mainSite.scrollHeight;
+            regionTop = archive.offsetTop;
 
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(h * dpr);
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
 
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        const spaceHeight = Math.max(0, h - regionTop);
-        const count = Math.floor(w * spaceHeight / 1800);
+            const spaceHeight = Math.max(0, h - regionTop);
+            const count = Math.floor(w * spaceHeight / 1800);
 
-        stars = Array.from({ length: count }, () => ({
-            x: Math.random() * w,
-            y: regionTop + Math.random() * spaceHeight,
-            size: Math.random() < 0.9 ? 1 : 2,
-            speed: 12 + Math.random() * 42,
-            color: Math.random() < 0.035
-                ? '#FE316D'
-                : Math.random() < 0.06
-                    ? '#31FEC2'
-                    : '#FFFFFF'
-        }));
+            stars = Array.from({ length: count }, () => ({
+                x: Math.random() * w,
+                y: regionTop + Math.random() * spaceHeight,
+                size: Math.random() < 0.9 ? 1 : 2,
+                speed: 12 + Math.random() * 42,
+                color: Math.random() < 0.035
+                    ? '#FE316D'
+                    : Math.random() < 0.06
+                        ? '#31FEC2'
+                        : '#FFFFFF'
+            }));
 
-        ctx.clearRect(0, 0, w, h);
-    }
-
-    function draw(time) {
-        animationId = null;
-
-        if (document.hidden) return;
-
-        const dt = lastTime
-            ? Math.min((time - lastTime) / 1000, 0.05)
-            : 0;
-
-        lastTime = time;
-
-        ctx.clearRect(0, 0, w, h);
-
-        for (const s of stars) {
-            s.y += s.speed * dt;
-
-            if (s.y > h) {
-                s.y = regionTop;
-                s.x = Math.random() * w;
-            }
-
-            ctx.fillStyle = s.color;
-            ctx.fillRect(
-                Math.round(s.x),
-                Math.round(s.y),
-                s.size,
-                s.size
-            );
+            ctx.clearRect(0, 0, w, h);
         }
 
-        animationId = requestAnimationFrame(draw);
-    }
+        function draw(time) {
+            animationId = null;
 
-    function startAnimation() {
-        if (!animationId && !document.hidden) {
+            if (document.hidden) return;
+
+            const dt = lastTime
+                ? Math.min((time - lastTime) / 1000, 0.05)
+                : 0;
+
+            lastTime = time;
+
+            ctx.clearRect(0, 0, w, h);
+
+            for (const s of stars) {
+                s.y += s.speed * dt;
+
+                if (s.y > h) {
+                    s.y = regionTop;
+                    s.x = Math.random() * w;
+                }
+
+                ctx.fillStyle = s.color;
+                ctx.fillRect(
+                    Math.round(s.x),
+                    Math.round(s.y),
+                    s.size,
+                    s.size
+                );
+            }
+
             animationId = requestAnimationFrame(draw);
         }
-    }
 
-
-function refresh() {
-    resize();
-    lastTime = 0;
-    startAnimation();
-}
-
-refresh();
-
-window.addEventListener('resize', refresh);
-    
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
+        function startAnimation() {
+            if (!animationId && !document.hidden) {
+                animationId = requestAnimationFrame(draw);
             }
+        }
+
+        function refresh() {
+            resize();
             lastTime = 0;
-        } else {
             startAnimation();
         }
-    });
-})();
-</script>
 
-    
+        refresh();
+
+        window.addEventListener('resize', refresh);
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+                lastTime = 0;
+            } else {
+                startAnimation();
+            }
+        });
+    })();
+});
+</script>
 </body>
-    
 </html>
