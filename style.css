@@ -4372,7 +4372,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
     max-width: 100% !important;
     margin: 0 !important;
     transform: translateX(-50%) !important;
-    gap: 32px !important;
+    gap: 45px !important;
     flex-wrap: nowrap !important;
     justify-content: center !important;
     align-items: center !important;
