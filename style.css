@@ -4373,7 +4373,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         margin-top: 10px !important;
         gap: 15px !important;
         flex-wrap: nowrap !important; /* <--- Cambiado de wrap a nowrap para que NUNCA bajen a otra línea */
-        justify-content: flex-start !important;
+        justify-content: center !important;
         align-items: center !important;
     }
 
@@ -4385,7 +4385,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-        margin-right: 5px !important; /* <--- Reducido para que entren todos en una sola línea */
+        margin-right: 10px !important; /* <--- Reducido para que entren todos en una sola línea */
     }
 
     .social-links svg {
