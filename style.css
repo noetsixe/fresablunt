@@ -4386,7 +4386,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-        margin-right: 30px !important; /* <--- Este es el cambio exacto para separarlos entre sí (sube o baja este número a tu gusto) */
+        margin-right: 18px !important; /* <--- Reducido para que entren todos en una sola línea */
     }
 
     .social-links svg {
