@@ -4104,7 +4104,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
 /* =========================================================
    SOLUCIÓN ABSOLUTA PRESENTACIÓN TABLETS (Video arriba, texto visible abajo)
    ========================================================= */
-@media screen and (min-width: 601px) and (max-width: 1024px) {
+@media screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
 
     /* 1. Bloquear desbordamiento horizontal */
     html, body, #main-site {
@@ -4362,22 +4362,22 @@ animation: contact-crt-scroll 0.8s linear infinite;
     }
 
    .social-links {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 11 !important;
-        width: max-content !important; /* <--- Esto hace que la caja mida exactamente lo que suman los iconos juntos */
-        max-width: 100% !important;
-        margin-top: 15px !important;
-        margin-left: auto !important;   /* <--- Empuja automáticamente la caja hacia el centro */
-        margin-right: auto !important;  /* <--- Empuja automáticamente la caja hacia el centro */
-        transform: none !important;
-        gap: 20px !important;
-        flex-wrap: nowrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    left: 50% !important;
+    top: calc(48% + 160px) !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    transform: translateX(-50%) !important;
+    gap: 20px !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 999999 !important;
+}
 
     .social-links a {
         display: inline-flex !important;
