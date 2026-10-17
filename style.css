@@ -4367,17 +4367,20 @@ animation: contact-crt-scroll 0.8s linear infinite;
     opacity: 1 !important;
     position: fixed !important;
     left: 50% !important;
-   top: calc(48% + 300px) !important;
-    width: 80vw !important;
+    top: calc(48% + 300px) !important;
+    width: max-content !important;
     max-width: 100% !important;
     margin: 0 !important;
     transform: translateX(-50%) !important;
-    column-gap: 60px !important;
-justify-content: space-between !important;
+    gap: 60px !important;
     flex-wrap: nowrap !important;
     justify-content: center !important;
     align-items: center !important;
     z-index: 999999 !important;
+}
+
+.social-links a + a {
+    margin-left: 0 !important;
 }
 
     .social-links a {
