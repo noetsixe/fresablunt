@@ -4365,13 +4365,15 @@ animation: contact-crt-scroll 0.8s linear infinite;
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
-        position: absolute !important;
-        top: 75% !important; /* Ajusta esta altura si quieres que baje o suba más */
-        left: 50% !important;
-        transform: translateX(-50%) !important; /* Esto lo clava exactamente en el centro horizontal de la tablet */
-        z-index: 999999 !important;
-        width: max-content !important;
-        gap: 25px !important;
+        position: relative !important;
+        z-index: 11 !important;
+        width: max-content !important; /* <--- Esto hace que la caja mida exactamente lo que suman los iconos juntos */
+        max-width: 100% !important;
+        margin-top: 15px !important;
+        margin-left: auto !important;   /* <--- Empuja automáticamente la caja hacia el centro */
+        margin-right: auto !important;  /* <--- Empuja automáticamente la caja hacia el centro */
+        transform: none !important;
+        gap: 20px !important;
         flex-wrap: nowrap !important;
         justify-content: center !important;
         align-items: center !important;
@@ -4385,7 +4387,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-        margin: 0 !important;
+        margin: 0 !important; /* <--- Cero márgenes para que el gap mande de forma simétrica */
     }
     .social-links svg {
         display: inline-block !important;
