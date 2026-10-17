@@ -4372,9 +4372,10 @@ animation: contact-crt-scroll 0.8s linear infinite;
         margin-left: 0 !important;
         transform: none !important;
         margin-top: 10px !important;
-        gap: 24px !important;
-        flex-wrap: wrap !important;
+        gap: 15px !important;
+        flex-wrap: nowrap !important; /* <--- Cambiado de wrap a nowrap para que NUNCA bajen a otra línea */
         justify-content: flex-start !important;
+        align-items: center !important;
     }
 
     .social-links a {
