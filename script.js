@@ -210,16 +210,18 @@ function startSpotifyOnMainEntry() {
   }
 }
 
-// Función para inyectar y preparar la API de Spotify de forma diferida
+// Carga inteligente de Spotify al entrar al sitio principal
 function loadSpotifyPlayerAPI() {
   if (window._spotifyApiLoaded) return;
   window._spotifyApiLoaded = true;
 
-  // Creamos el script de la API de Spotify de manera dinámica solo cuando se necesita
-  const script = document.createElement('script');
-  script.src = "https://open.spotify.com/embed/iframe-api/v1";
-  script.async = true;
-  document.body.appendChild(script);
+  // Damos un respiro de 800ms para que la transición visual ocurra a la perfección y luego inyectamos Spotify
+  setTimeout(() => {
+    const script = document.createElement('script');
+    script.src = "https://open.spotify.com/embed/iframe-api/v1";
+    script.async = true;
+    document.body.appendChild(script);
+  }, 800);
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
