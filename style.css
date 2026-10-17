@@ -4386,7 +4386,7 @@ animation: contact-crt-scroll 0.8s linear infinite;
         font-size: 14px !important;
         color: #ffffff !important;
         text-decoration: none !important;
-        margin-right: 18px !important; /* <--- Reducido para que entren todos en una sola línea */
+        margin-right: 5px !important; /* <--- Reducido para que entren todos en una sola línea */
     }
 
     .social-links svg {
