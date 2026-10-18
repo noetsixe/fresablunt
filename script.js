@@ -933,6 +933,19 @@ if (returningVisitor) {
   starfieldPaused = true;
 
   loadSpotifyPlayerAPI();
+
+  // ---> ASEGURAMOS QUE YOUTUBE ARRANQUE AL ENTRAR DIRECTO <---
+  if (window.YT && typeof window.YT.Player === "function") {
+    startReleaseBackground();
+  } else {
+    // Si la API aún no cargaba, dejamos que el bucle o el evento la detecte sin bloquear nada
+    const checkYT = setInterval(() => {
+      if (window.YT && typeof window.YT.Player === "function") {
+        clearInterval(checkYT);
+        startReleaseBackground();
+      }
+    }, 300);
+  }
 }
 
 /* =========================================
