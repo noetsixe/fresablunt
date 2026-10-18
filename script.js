@@ -75,7 +75,16 @@ const shineCtx = shineCanvas.getContext("2d");
 const scoreValue = document.getElementById("score-value");
 const bgMusic = document.getElementById("bg-music");
 const gameMortal = new Audio("./GAMEMORTAL.mp3");
-gameMortal.preload = "none"; // Evita que pese en la carga inicial de la página
+gameMortal.preload = "auto"; // Mantiene el navegador listo
+
+// 1. Descarga automática de respaldo a los 1.5 segundos por si el usuario tarda en hacer clic
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    if (gameMortal.readyState < 2) {
+      gameMortal.load();
+    }
+  }, 1500);
+});
 const soundToggle = document.getElementById("sound-toggle");
 const focusVignette = document.getElementById("focus-vignette");
 const soundLabel = document.getElementById("sound-label");
@@ -469,6 +478,11 @@ function vibrateDevice(pattern = 100) {
 
 strawberry.addEventListener("click", () => {
    
+  // ---> BLINDAJE EXTRA: Si el usuario tocó la fresa de inmediato, forzamos la carga por si acaso <---
+  if (gameMortal.readyState < 2) {
+    gameMortal.load();
+  }
+
   // ---> AGREGA ESTA LÍNEA AQUÍ <---
   preloadHeavyAnimationAssets();
 
