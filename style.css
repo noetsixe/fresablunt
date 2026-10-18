@@ -1840,10 +1840,11 @@ text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
 
 @keyframes fresa-title-shine {
     0%, 45% {
-        transform: translateX(0);
+        background-position: 100% 0;
     }
+
     95%, 100% {
-        transform: translateX(-50%);
+        background-position: 0% 0;
     }
 }
 
