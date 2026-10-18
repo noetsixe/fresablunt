@@ -393,11 +393,9 @@ function stopIntroMessages() {
   }
 }
 
-if (!returningVisitor) {
-  setTimeout(() => {
-    showRandomMessage();
-  }, 5000);
-}
+setTimeout(() => {
+  showRandomMessage();
+}, 5000);
 
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
@@ -899,23 +897,24 @@ function startMainFade() {
 }
 
 function enterMainSite() {
+  /* Aquí ya terminó el segundo de transición */
   localStorage.setItem(
     ENTRY_MEMORY_KEY,
     String(Date.now())
   );
-
+   
   intro.style.display = "none";
+
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
+
   document.body.style.overflow = "auto";
-
+ 
   mainSiteHasBeenEntered = true;
-
-  // ---> APAGAMOS RECURSOS DEL INTRO <---
-  stopIntroMessages();
-  starfieldPaused = true;
-
+  
+  // ---> AQUÍ ACTIVAMOS SPOTIFY DE FORMA DIFERIDA <---
   loadSpotifyPlayerAPI();
+  
   startSpotifyOnMainEntry();
   startReleaseBackground();
 }
@@ -926,14 +925,13 @@ function enterMainSite() {
 
 if (returningVisitor) {
   intro.style.display = "none";
+
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
+
   document.body.style.overflow = "auto";
 
-  // ---> APAGAMOS RECURSOS DEL INTRO <---
-  stopIntroMessages();
-  starfieldPaused = true;
-
+  // ---> AQUÍ TAMBIÉN ACTIVAMOS SPOTIFY SI ENTRA DIRECTO <---
   loadSpotifyPlayerAPI();
 }
 
@@ -1268,29 +1266,24 @@ function startReleaseBackground() {
 
 function onYouTubeIframeAPIReady() {
     if (mainSiteHasBeenEntered) {
-        if (typeof window.requestIdleCallback === "function") {
-            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
-        } else {
-            requestAnimationFrame(startReleaseBackground);
-        }
+        startReleaseBackground();
     }
 }
 
 
 const releaseBackgroundWait = setInterval(() => {
+
     if (!mainSiteHasBeenEntered) return;
 
     if (
         window.YT &&
         typeof window.YT.Player === "function"
     ) {
+
         clearInterval(releaseBackgroundWait);
-        if (typeof window.requestIdleCallback === "function") {
-            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
-        } else {
-            requestAnimationFrame(startReleaseBackground);
-        }
+        startReleaseBackground();
     }
+
 }, 500);
 
 
