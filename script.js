@@ -904,13 +904,15 @@ function enterMainSite() {
  
   mainSiteHasBeenEntered = true;
   
-  // ---> AQUÍ ACTIVAMOS SPOTIFY DE FORMA DIFERIDA <---
+  // ---> APAGAMOS DEFINITIVAMENTE LOS TIMERS DEL INTRO <---
+  stopIntroMessages();
+  starfieldPaused = true;
+
   loadSpotifyPlayerAPI();
   
   startSpotifyOnMainEntry();
   startReleaseBackground();
 }
-
 /* =========================================
    ENTRADA DIRECTA SI YA ENTRÓ HACE MENOS DE 24 H
    ========================================= */
@@ -923,7 +925,10 @@ if (returningVisitor) {
 
   document.body.style.overflow = "auto";
 
-  // ---> AQUÍ TAMBIÉN ACTIVAMOS SPOTIFY SI ENTRA DIRECTO <---
+  // ---> APAGAMOS DEFINITIVAMENTE LOS TIMERS DEL INTRO AQUÍ TAMBIÉN <---
+  stopIntroMessages();
+  starfieldPaused = true;
+
   loadSpotifyPlayerAPI();
 }
 
