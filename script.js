@@ -393,9 +393,11 @@ function stopIntroMessages() {
   }
 }
 
-setTimeout(() => {
-  showRandomMessage();
-}, 5000);
+if (!returningVisitor) {
+  setTimeout(() => {
+    showRandomMessage();
+  }, 5000);
+}
 
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
@@ -897,24 +899,23 @@ function startMainFade() {
 }
 
 function enterMainSite() {
-  /* Aquí ya terminó el segundo de transición */
   localStorage.setItem(
     ENTRY_MEMORY_KEY,
     String(Date.now())
   );
-   
-  intro.style.display = "none";
 
+  intro.style.display = "none";
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
-
   document.body.style.overflow = "auto";
- 
+
   mainSiteHasBeenEntered = true;
-  
-  // ---> AQUÍ ACTIVAMOS SPOTIFY DE FORMA DIFERIDA <---
+
+  // ---> APAGAMOS RECURSOS DEL INTRO <---
+  stopIntroMessages();
+  starfieldPaused = true;
+
   loadSpotifyPlayerAPI();
-  
   startSpotifyOnMainEntry();
   startReleaseBackground();
 }
@@ -925,13 +926,14 @@ function enterMainSite() {
 
 if (returningVisitor) {
   intro.style.display = "none";
-
   mainSite.style.visibility = "visible";
   mainSite.style.opacity = "1";
-
   document.body.style.overflow = "auto";
 
-  // ---> AQUÍ TAMBIÉN ACTIVAMOS SPOTIFY SI ENTRA DIRECTO <---
+  // ---> APAGAMOS RECURSOS DEL INTRO <---
+  stopIntroMessages();
+  starfieldPaused = true;
+
   loadSpotifyPlayerAPI();
 }
 
@@ -1266,24 +1268,29 @@ function startReleaseBackground() {
 
 function onYouTubeIframeAPIReady() {
     if (mainSiteHasBeenEntered) {
-        startReleaseBackground();
+        if (typeof window.requestIdleCallback === "function") {
+            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
+        } else {
+            requestAnimationFrame(startReleaseBackground);
+        }
     }
 }
 
 
 const releaseBackgroundWait = setInterval(() => {
-
     if (!mainSiteHasBeenEntered) return;
 
     if (
         window.YT &&
         typeof window.YT.Player === "function"
     ) {
-
         clearInterval(releaseBackgroundWait);
-        startReleaseBackground();
+        if (typeof window.requestIdleCallback === "function") {
+            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
+        } else {
+            requestAnimationFrame(startReleaseBackground);
+        }
     }
-
 }, 500);
 
 
