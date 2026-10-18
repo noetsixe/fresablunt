@@ -1258,7 +1258,12 @@ function startReleaseBackground() {
 
 function onYouTubeIframeAPIReady() {
     if (mainSiteHasBeenEntered) {
-        startReleaseBackground();
+        // Ejecución inmediata pero cedinedo el primer ciclo al renderizado visual
+        if (typeof window.requestIdleCallback === "function") {
+            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
+        } else {
+            requestAnimationFrame(startReleaseBackground);
+        }
     }
 }
 
@@ -1273,7 +1278,12 @@ const releaseBackgroundWait = setInterval(() => {
     ) {
 
         clearInterval(releaseBackgroundWait);
-        startReleaseBackground();
+        
+        if (typeof window.requestIdleCallback === "function") {
+            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
+        } else {
+            requestAnimationFrame(startReleaseBackground);
+        }
     }
 
 }, 500);
