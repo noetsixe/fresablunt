@@ -928,26 +928,18 @@ if (returningVisitor) {
 
   document.body.style.overflow = "auto";
 
-  // ---> APAGAMOS DEFINITIVAMENTE LOS TIMERS DEL INTRO AQUÍ TAMBIÉN <---
   stopIntroMessages();
   starfieldPaused = true;
 
   loadSpotifyPlayerAPI();
 
-  // ---> ASEGURAMOS QUE YOUTUBE ARRANQUE AL ENTRAR DIRECTO <---
-  if (window.YT && typeof window.YT.Player === "function") {
-    startReleaseBackground();
-  } else {
-    // Si la API aún no cargaba, dejamos que el bucle o el evento la detecte sin bloquear nada
-    const checkYT = setInterval(() => {
-      if (window.YT && typeof window.YT.Player === "function") {
-        clearInterval(checkYT);
-        startReleaseBackground();
-      }
-    }, 300);
+  // ---> ASEGURAR QUE LA API DE YOUTUBE EXISTA AL ENTRAR DIRECTO <---
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
   }
 }
-
 /* =========================================
    REPLAY — VOLVER AL INTRO
    ========================================= */
@@ -1693,9 +1685,13 @@ window.addEventListener(
 if (document.readyState === "loading") {
     document.addEventListener(
         "DOMContentLoaded",
-        initArchiveVideos,
+        () => {
+            initArchiveVideos();
+            setTimeout(updateVideos, 300); // Fuerza la carga de los primeros videos al entrar
+        },
         { once: true }
     );
 } else {
     initArchiveVideos();
+    setTimeout(updateVideos, 300);
 }
