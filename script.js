@@ -385,11 +385,9 @@ function stopIntroMessages() {
   }
 }
 
-// Solo iniciamos los mensajes aleatorios si el usuario no es un visitante recurrente (es decir, verá el intro)
-if (!returningVisitor) {
-  setTimeout(() => {
-    showRandomMessage();
-  }, 5000);
+setTimeout(() => {
+  showRandomMessage();
+}, 5000);
 }
 
 /* =========================================
@@ -907,10 +905,6 @@ function enterMainSite() {
  
   mainSiteHasBeenEntered = true;
   
-  // ---> APAGAMOS DEFINITIVAMENTE LOS TIMERS DEL INTRO <---
-  stopIntroMessages();
-  starfieldPaused = true;
-
   loadSpotifyPlayerAPI();
   
   startSpotifyOnMainEntry();
@@ -928,17 +922,10 @@ if (returningVisitor) {
 
   document.body.style.overflow = "auto";
 
-  stopIntroMessages();
+
   starfieldPaused = true;
 
   loadSpotifyPlayerAPI();
-
-  // ---> ASEGURAR QUE LA API DE YOUTUBE EXISTA AL ENTRAR DIRECTO <---
-  if (!window.YT) {
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
-  }
 }
 /* =========================================
    REPLAY — VOLVER AL INTRO
@@ -1685,13 +1672,9 @@ window.addEventListener(
 if (document.readyState === "loading") {
     document.addEventListener(
         "DOMContentLoaded",
-        () => {
-            initArchiveVideos();
-            setTimeout(updateVideos, 300); // Fuerza la carga de los primeros videos al entrar
-        },
+        initArchiveVideos,
         { once: true }
     );
 } else {
     initArchiveVideos();
-    setTimeout(updateVideos, 300);
 }
