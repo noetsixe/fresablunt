@@ -904,11 +904,13 @@ function enterMainSite() {
  
   mainSiteHasBeenEntered = true;
   
+  // ---> AQUÍ ACTIVAMOS SPOTIFY DE FORMA DIFERIDA <---
   loadSpotifyPlayerAPI();
   
   startSpotifyOnMainEntry();
   startReleaseBackground();
 }
+
 /* =========================================
    ENTRADA DIRECTA SI YA ENTRÓ HACE MENOS DE 24 H
    ========================================= */
@@ -921,11 +923,10 @@ if (returningVisitor) {
 
   document.body.style.overflow = "auto";
 
-
-  starfieldPaused = true;
-
+  // ---> AQUÍ TAMBIÉN ACTIVAMOS SPOTIFY SI ENTRA DIRECTO <---
   loadSpotifyPlayerAPI();
 }
+
 /* =========================================
    REPLAY — VOLVER AL INTRO
    ========================================= */
@@ -1257,12 +1258,7 @@ function startReleaseBackground() {
 
 function onYouTubeIframeAPIReady() {
     if (mainSiteHasBeenEntered) {
-        // Ejecución inmediata pero cedinedo el primer ciclo al renderizado visual
-        if (typeof window.requestIdleCallback === "function") {
-            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
-        } else {
-            requestAnimationFrame(startReleaseBackground);
-        }
+        startReleaseBackground();
     }
 }
 
@@ -1277,12 +1273,7 @@ const releaseBackgroundWait = setInterval(() => {
     ) {
 
         clearInterval(releaseBackgroundWait);
-        
-        if (typeof window.requestIdleCallback === "function") {
-            window.requestIdleCallback(startReleaseBackground, { timeout: 200 });
-        } else {
-            requestAnimationFrame(startReleaseBackground);
-        }
+        startReleaseBackground();
     }
 
 }, 500);
