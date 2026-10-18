@@ -210,18 +210,26 @@ function startSpotifyOnMainEntry() {
   }
 }
 
-// Carga inteligente de Spotify al entrar al sitio principal
+// Carga optimizada de Spotify al entrar al sitio principal sin bloquear el hilo principal
 function loadSpotifyPlayerAPI() {
   if (window._spotifyApiLoaded) return;
   window._spotifyApiLoaded = true;
 
-  // Damos un respiro de 800ms para que la transición visual ocurra a la perfección y luego inyectamos Spotify
-  setTimeout(() => {
+  const loadScript = () => {
+    if (document.getElementById("spotify-iframe-api")) return;
     const script = document.createElement('script');
+    script.id = "spotify-iframe-api";
     script.src = "https://open.spotify.com/embed/iframe-api/v1";
     script.async = true;
     document.body.appendChild(script);
-  }, 800);
+  };
+
+  // Usamos requestIdleCallback si está disponible para no competir con la renderización visual, o un pequeño retardo de seguridad
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(() => loadScript(), { timeout: 1000 });
+  } else {
+    setTimeout(loadScript, 500);
+  }
 }
 
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
