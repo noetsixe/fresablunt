@@ -388,7 +388,6 @@ function stopIntroMessages() {
 setTimeout(() => {
   showRandomMessage();
 }, 5000);
-}
 
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
