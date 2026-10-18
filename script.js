@@ -385,9 +385,12 @@ function stopIntroMessages() {
   }
 }
 
-setTimeout(() => {
-  showRandomMessage();
-}, 5000);
+// Solo iniciamos los mensajes aleatorios si el usuario no es un visitante recurrente (es decir, verá el intro)
+if (!returningVisitor) {
+  setTimeout(() => {
+    showRandomMessage();
+  }, 5000);
+}
 
 /* =========================================
    ANIMACIÓN IDLE DE LA FRESA
