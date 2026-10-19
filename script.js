@@ -1548,7 +1548,7 @@ const scrollTrackers = new WeakMap();
         updateTimer = setTimeout(() => {
             updateTimer = null;
             updateVideos();
-        }, 120);
+        }, 180); // <--- Mayor respiro para el procesador móvil durante el scroll
     }
 
    
