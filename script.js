@@ -1437,7 +1437,7 @@ const scrollTrackers = new WeakMap();
         };
     }
 
-    /* Carga un video solo cuando entra en la zona prioritaria */
+    /* Carga un video de forma anticipada para evitar demoras */
    function prepareVideo(video) {
     const state = states.get(video);
 
@@ -1454,7 +1454,7 @@ const scrollTrackers = new WeakMap();
     }
 
     state.requested = true;
-    video.preload = "auto";
+    video.preload = "auto"; // Carga automática anticipada
     video.load();
 }
 
