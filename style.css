@@ -3116,6 +3116,8 @@ animation: contact-crt-scroll 0.8s linear infinite;
     margin: 0;
     overflow: hidden;
     background: transparent;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 #archive .archive-item img,
